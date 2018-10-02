@@ -26,13 +26,14 @@ import Header from 'components/Header';
 import Footer from 'components/Footer';
 
 const Wrapper = styled.div`
-  height:calc(100vh - 200px);
+  height:calc(100vh - 200px - 124px);
   width:100%;
   display:flex;
   justify-content:space-between;
   padding-right:72px;
   padding-left:34px;
   z-index:5;
+  align-items:center
 `;
 /* eslint-disable react/prefer-stateless-function */
 export class Work extends React.Component {
@@ -46,7 +47,7 @@ export class Work extends React.Component {
         <Header dispatch={this.props.dispatch} />
         <Wrapper>
           <WorkMenu updateProjectAction={updateProjectAction} dispatch={this.props.dispatch} projects={PROJECTS} />
-          {this.props.work.showProject ? (<InfoPanel text={TEXT} project={this.props.work.project} showProject={this.props.work.showProject}/>) : null}
+          <InfoPanel text={TEXT} project={this.props.work.project} showProject={this.props.work.showProject}/>
         </Wrapper>
         <ThreeBackground />
         <Footer />

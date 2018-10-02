@@ -42,7 +42,7 @@ class WorkMenu extends React.Component {
   render() {
     const projectLength = this.props.projects.length;
     return(
-      <div style={{marginTop:'15px'}}>
+      <div style={{marginTop:'-88px'}}>
         <ul>
           {this.props.projects.map(function(x,index){
             return(

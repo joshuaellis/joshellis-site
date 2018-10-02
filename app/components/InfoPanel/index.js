@@ -22,9 +22,12 @@ const ColourLayer = styled.div`
     z-index:1;
 `;
 const Wrapper = styled.div`
-    width:304px;
-    height:360px;
-    margin-top:16px;
+    width:672px;
+    height:312px;
+    margin-top:-64px;
+`;
+
+const Section = styled.section`
 `;
 
 const Span = styled.span`
@@ -41,11 +44,18 @@ export default class InfoPanel extends React.Component{
         return(
             <Wrapper>
                 <TextWrapper>
-                    <section style={{margin:'auto'}}>
+                {this.props.showProject ? 
+                (<div style={{display:'flex', justifyContent:'flex-start'}}>
+                    <Section style={{minWidth:'256px', marginRight:'56px'}}>
                         <p style={{marginBottom: '16px'}}><Span>Role: </Span> {text[0]}</p>
-                        <p><Span>INFO: </Span>{text[1]}</p>
-                        {text[2] ? (<p style={{marginTop: '16px'}}><Span>See here: </Span><a target="_blank" style={{textDecoration:"none"}} href={text[2]}>{text[3]}</a></p>):null}
-                    </section>
+                        <p style={{marginBottom: '16px'}}><Span>Studio: </Span> {text[1]}</p>
+                        {text[3] ? (<p style={{marginTop: '16px'}}><Span>See here: </Span><a target="_blank" style={{textDecoration:"none"}} href={text[3]}>{text[4]}</a></p>):null}
+                    </Section>
+                    <Section style={{maxWidth:'312px'}}>
+                        <p><Span>INFO: </Span>{text[2]}</p>
+                    </Section>
+                </div>):(<div style={{display:'flex', justifyContent:'center', alignItems:'center'}}><p style={{alignSelf:'center',marginTop:'15%'}}><Span>Select a project to view</Span></p></div>)
+                }
                 </TextWrapper>
                 <ColourLayer />
             </Wrapper>
