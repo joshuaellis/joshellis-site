@@ -1,0 +1,40 @@
+newmtl 03___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0941 0.0314 0.0627
+	Kd 0.0941 0.0314 0.0627
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl 02___Defaultcc
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5882 0.5882 0.5882
+	Kd 0.5882 0.5882 0.5882
+	Ks 0.0000 0.0000 0.0000
+	Ke 1.0000 1.0000 1.0000
+	map_Ke ./light-cols2.gif
+
+newmtl 13___Defaultmm
+	Ns 36.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2588 0.0706 0.1020
+	Kd 0.2588 0.0706 0.1020
+	Ks 0.7740 0.7740 0.7740
+	Ke 0.0000 0.0000 0.0000
+	map_Ka ./gateway/rosary.jpg
+	map_Kd ./gateway/rosary.jpg
+	map_bump ./gateway/rosary.jpg
+	bump ./gateway/rosary.jpg
