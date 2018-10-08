@@ -12,7 +12,8 @@ export const TEXT = {
     'Black Mirror':[
         'Designer // Developer',
         'Applied Works',
-        'Using the javascript libary P5.js I was able to co-create a series of digital tools to distort imagery taken from the show whether that be an icon or photograph. They were then produced into chapter openers for the book "Inside Black Mirror" and from there the tools were simplified to be given a new life online.',
+        '2018',
+        `Using the javascript library P5.js I was able to co-create a series of digital tools used to distort imagery taken from the show whether that be a significant icon or still. The artworks were then produced as chapter openers for the book "Inside Black Mirror". The tool's were then taken and simplified into filters for a web app where users can either alter their own content or one of the base images from the book.`,
         '#',
         'insideblackmirror.com',
         
@@ -21,6 +22,7 @@ export const TEXT = {
     'WEF':[
         'Designer',
         'Applied Works',
+        '2018',
         'The Global Competitive Index (GCI) produced by WEF every year is used by millions of policy-makers and industries across the world. 2018 saw me updating the colour scheme to create an engaging chart and redesigning the accompanying icon set to be up to date with their iconography guidelines produced that year.',
         '#',
         'gci-2018.com'
@@ -29,6 +31,7 @@ export const TEXT = {
     'Design Council':[
         'Designer // Art Director',
         'Applied Works',
+        '2018',
         'The goal of this project was to create an engaging story of why the UK government must invest in design earlier on in education in terms that policy-makers would understand. During this project I had the opportunity to commission illustrator, Nathalie Lees to bring to life this story.',
         'http://designskills.designcouncil.org.uk/?src=home',
         'designskills.com'
@@ -37,6 +40,7 @@ export const TEXT = {
     'Genesys':[
         'Designer',
         'Applied Works',
+        '2017 - 2018',
         '',
     ],
 }

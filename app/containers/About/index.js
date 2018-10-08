@@ -32,9 +32,7 @@ const Wrapper = styled.div`
   padding-top:72px;
 `;
 
-const GifWrapper = styled.div`
-  height:200px;
-  width:200px;
+const Img = styled.img`
   position:fixed;
   z-index:0;
   background-color:white;
@@ -56,9 +54,7 @@ export class About extends React.Component {
         <Wrapper>
           {this.props.about.windowShowing == true ? (<Window dispatch={this.props.dispatch} title={messages.windowHeader.header} message={messages.windowCopy} />) : null }
         </Wrapper>
-        <GifWrapper>
-          <img src={Ralph} style={{height:'100%',width:'100%'}} />
-        </GifWrapper>
+          {this.props.about.windowShowing == false? (<Img src={Ralph} width='240px' alt="little ralphie wiggum"/>) : null }
         <Footer />
       </div>
     );

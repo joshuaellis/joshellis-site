@@ -46,13 +46,14 @@ export default class InfoPanel extends React.Component{
                 <TextWrapper>
                 {this.props.showProject ? 
                 (<div style={{display:'flex', justifyContent:'flex-start'}}>
-                    <Section style={{minWidth:'256px', marginRight:'56px'}}>
+                    <Section style={{minWidth:'272px', marginRight:'48px'}}>
                         <p style={{marginBottom: '16px'}}><Span>Role: </Span> {text[0]}</p>
                         <p style={{marginBottom: '16px'}}><Span>Studio: </Span> {text[1]}</p>
-                        {text[3] ? (<p style={{marginTop: '16px'}}><Span>See here: </Span><a target="_blank" style={{textDecoration:"none"}} href={text[3]}>{text[4]}</a></p>):null}
+                        <p style={{marginBottom: '16px'}}><Span>Year: </Span> {text[2]}</p>
+                        {text[4] ? (<p style={{marginTop: '16px'}}><Span>See here: </Span><a target="_blank" style={{textDecoration:"none"}} href={text[4]}>{text[5]}</a></p>):null}
                     </Section>
                     <Section style={{maxWidth:'312px'}}>
-                        <p><Span>INFO: </Span>{text[2]}</p>
+                        <p><Span>INFO: </Span>{text[3]}</p>
                     </Section>
                 </div>):(<div style={{display:'flex', justifyContent:'center', alignItems:'center'}}><p style={{alignSelf:'center',marginTop:'15%'}}><Span>Select a project to view</Span></p></div>)
                 }
@@ -64,6 +65,7 @@ export default class InfoPanel extends React.Component{
 }
 
 InfoPanel.propTypes = {
-    text:PropTypes.object.isRequired,
-    project: PropTypes.string.isRequired,
+    text:PropTypes.object,
+    project: PropTypes.string,
+    showProject: PropTypes.bool.isRequired
 }

@@ -41,6 +41,14 @@ module.exports = options => ({
         exclude: /node_modules/,
         use: ['style-loader', 'css-loader'],
       },
+      { 
+        test: /\.(glsl|frag|vert)$/, 
+        use: 'raw-loader', 
+        exclude: /node_modules/ },
+      { 
+        test: /\.(glsl|frag|vert)$/, 
+        use: 'glslify-loader', 
+        exclude: /node_modules/ },
       {
         // Preprocess 3rd party .css files located in node_modules
         test: /\.css$/,

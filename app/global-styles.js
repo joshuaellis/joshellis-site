@@ -76,7 +76,7 @@ injectGlobal`
     height: 100%;
     width: 100%;
     font-size: 62.5%;
-    background-color:#000000;
+    background-color: transparent;
   }
   h1,h2,h3,h4,h5,h6,p,b,a,label{
     margin:0;
@@ -120,7 +120,7 @@ injectGlobal`
     font-weight: 400;
     font-size:1.6rem;
     line-height:2.4rem;
-    letter-spacing:0.05rem;
+    letter-spacing:0.1rem;
   }
   label{
     font-family:'FRAC-Medium';

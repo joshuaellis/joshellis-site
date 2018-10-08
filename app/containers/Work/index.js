@@ -20,8 +20,6 @@ import styled from 'styled-components';
 
 import WorkMenu from 'components/WorkMenu';
 import InfoPanel from 'components/InfoPanel';
-import ThreeScene from 'components/Three';
-import ThreeBackground from 'components/ThreeBackground'
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
@@ -40,7 +38,7 @@ export class Work extends React.Component {
   render() {
     return (
       <div>
-        <Helmet bodyAttributes={{style: 'background-color : transparent'}}>
+        <Helmet>
           <title>Josh Ellis – Work</title>
           <meta name="description" content="Description of Work" />
         </Helmet>
@@ -49,7 +47,6 @@ export class Work extends React.Component {
           <WorkMenu updateProjectAction={updateProjectAction} dispatch={this.props.dispatch} projects={PROJECTS} />
           <InfoPanel text={TEXT} project={this.props.work.project} showProject={this.props.work.showProject}/>
         </Wrapper>
-        <ThreeBackground />
         <Footer />
       </div>
     );

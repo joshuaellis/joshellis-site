@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const MainWrapper = styled.div`
-    height:280px;
     width:704px;
     border:solid 2px #4a94ff;
     z-index:10;

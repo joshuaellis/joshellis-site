@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Title from '../Title';
 import {Route, Switch} from 'react-router-dom';
 import Navigation from '../Navigation';
+import DumbNavigation from '../DumbNav'
 
 
 const Wrapper = styled.div`
@@ -22,6 +23,7 @@ export default class Header extends React.Component{
                 <Switch>
                     <Route  path="/about" render={()=><Navigation dispatch={this.props.dispatch} />} />
                     <Route  path="/work" render={()=><Navigation dispatch={this.props.dispatch} />} />
+                    {this.props.lost ? (<DumbNavigation dispatch={this.props.dispatch} />) : null}
                 </Switch>
             </Wrapper>
         );

@@ -20,8 +20,8 @@ import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Work from 'containers/Work';
 import About from 'containers/About';
-import Header from 'components/Header';
-import Footer from 'components/Footer';
+import ThreeBackground from 'components/ThreeBackground'
+import ProtonBackground from 'components/ProtonBackground'
 
 export class App extends React.Component {
   constructor(props){
@@ -39,6 +39,7 @@ export class App extends React.Component {
             <Route exact path="/about" component={About} />
             <Route component={NotFoundPage} />
           </Switch>
+          <ThreeBackground />
       </div>
     );
   }

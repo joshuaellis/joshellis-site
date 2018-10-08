@@ -10,17 +10,35 @@
  */
 
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import styled from 'styled-components'
+import { Helmet } from 'react-helmet';
 
-import messages from './messages';
+import Header from 'components/Header';
+import Footer from 'components/Footer';
+import ConfusedTravolta from 'images/johnTravolta.gif'
+
+const FlexDiv = styled.div`
+  display:flex;
+  align-items:flex-start;
+  justify-content: space-between;
+  margin: 40px 56px 80px 56px;
+`;
 
 /* eslint-disable react/prefer-stateless-function */
 export default class NotFound extends React.PureComponent {
   render() {
     return (
-      <h1>
-        <FormattedMessage {...messages.header} />
-      </h1>
+      <div>
+        <Helmet>
+          <title>Josh Ellis – Oops!</title>
+        </Helmet>
+        <Header lost='true' />
+        <FlexDiv>
+          <h2>Oops! This page doesn't exist.</h2>
+          <img height='320px' src={ConfusedTravolta} alt="lost travolta" />
+        </FlexDiv>
+        <Footer />
+      </div>
     );
   }
 }

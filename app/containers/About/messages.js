@@ -14,6 +14,6 @@ export default defineMessages({
     'Current position: ' : 'Designer at Applied Works',
     'Current location: ' : 'London',
     'Notable mentions: ' : 'Creative Review',
-    'Background information:' : 'A creative technologist looking at how digital experiences can be used to enhance day to day life whether it’s screen based or physical, technology plays a role in the work produced.',
+    'Background information:' : 'A creative technologist looking at how digital experiences can be used to enhance day to day life whether it’s screen based or physical, technology plays a role in the work produced. If you have a project you think I can help with, either designing or development please contact me.',
   },
 });
