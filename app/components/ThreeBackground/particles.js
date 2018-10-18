@@ -42,7 +42,7 @@ const RandFloatSpread = function ( range ) {
   var x, y, z;
 
   for (i = 0, offset = 0; i < count; i++) {
-    x = -2000;
+    x = -1000;
     y = 0;
     z = 0;
 
@@ -56,8 +56,8 @@ const RandFloatSpread = function ( range ) {
   // buffer control points
   for (i = 0, offset = 0; i < count; i++) {
     x = RandFloat(-400, 400);
-    y = RandFloat(500, 600);
-    z = RandFloat(-8000,-100);
+    y = RandFloat(400, 600);
+    z = RandFloat(-1200, -800);
 
     for (j = 0; j < prefabGeometry.vertices.length; j++) {
       aControlPoint1.array[offset++] = x;
@@ -67,9 +67,9 @@ const RandFloatSpread = function ( range ) {
   }
 
   for (i = 0, offset = 0; i < count; i++) {
-    x = RandFloat(-1000, 1000);
-    y = RandFloat(-1200, 1200);
-    z = RandFloat(100, 800);
+    x = RandFloat(-400, 400);
+    y = RandFloat(-600, -400);
+    z = RandFloat(800, 1200);
 
     for (j = 0; j < prefabGeometry.vertices.length; j++) {
       aControlPoint2.array[offset++] = x;

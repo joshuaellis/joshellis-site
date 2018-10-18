@@ -42,7 +42,7 @@ class WorkMenu extends React.Component {
   render() {
     const projectLength = this.props.projects.length;
     return(
-      <div style={{marginTop:'-88px',height:'336px',overflowY:'hidden',paddingRight:'24px', overflowX:'hidden'}}>
+      <div style={{marginTop:'-88px'}}>
         <ul>
           {this.props.projects.map(function(x,index){
             return(
@@ -52,7 +52,7 @@ class WorkMenu extends React.Component {
                     (<SVG  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 82"><rect style={{fill:'none'}} width="20" height="82" /><circle cx="10" cy="10" r="6" /></SVG>) : 
                     (<SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 82"><rect style={{fill:'none'}} width="20" height="82" /><circle cx="10" cy="10" r="6" /><rect x="9" y="10" width="2" height="72" /></SVG>)
                   }
-                <a onClick={this.handleHoverOn} onMouseEnter={this.handleHoverOn} onMouseLeave={this.handleHoverOff}><span>//0{index + 1}</span> {x}</a>
+                <a onMouseEnter={this.handleHoverOn} onMouseLeave={this.handleHoverOff}><span>//0{index + 1}</span> {x}</a>
               </li>
             )
           },this)}
