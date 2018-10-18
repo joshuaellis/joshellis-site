@@ -34,7 +34,10 @@ export default class NotFound extends React.PureComponent {
         </Helmet>
         <Header lost='true' />
         <FlexDiv>
-          <h2>Oops! This page doesn't exist.</h2>
+          <div>
+            <h2>This page doesn't exist.</h2>
+            <h4 style={{fontSize:'24px',fontWeight:'400', marginTop:'16px'}}>Don't worry, John is as <br></br>confused as you are.</h4>
+          </div>
           <img height='320px' src={ConfusedTravolta} alt="lost travolta" />
         </FlexDiv>
         <Footer />

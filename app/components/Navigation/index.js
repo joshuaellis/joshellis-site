@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {NavLink} from 'react-router-dom';
 
 const Link = styled(NavLink)`
-    font-family:'Relevant-Thin';
+    font-family:'Relevant-Thin', Helvetica, sans-serif;
     font-weight: 200;
     font-size:1.6rem;
     margin-left:32px;

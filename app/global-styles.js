@@ -89,41 +89,41 @@ injectGlobal`
   }
 
   h1{
-    font-family:'Relevant-Medium';
+    font-family:'Relevant-Medium', Helvetica, sans-serif;
     font-weight: 500;
     font-size:4.8rem;
     letter-spacing:0.15rem;
   }
 
   h2{
-    font-family:'Relevant';
+    font-family:'Relevant', Helvetica, sans-serif;
     font-weight: 400;
     font-size:3.2rem;
   }
 
   h4{
-    font-family:'Relevant-Thin';
+    font-family:'Relevant-Thin', Helvetica, sans-serif;
     font-weight: 200;
     font-size:1.6rem;
     letter-spacing:0.1rem;
   }
 
   h6{
-    font-family:'FRAC-Regular';
+    font-family:'FRAC-Regular', Helvetica, sans-serif;
     font-weight:400;
     font-size:1.8rem;
     display:inline;
   }
 
   p{
-    font-family:'Relevant';
+    font-family:'Relevant', Helvetica, sans-serif;
     font-weight: 400;
     font-size:1.6rem;
     line-height:2.4rem;
     letter-spacing:0.1rem;
   }
   label{
-    font-family:'FRAC-Medium';
+    font-family:'FRAC-Medium', Helvetica, sans-serif;
     font-weight: 500;
     font-size:1rem;
   }
@@ -131,8 +131,37 @@ injectGlobal`
     color:#4a94ff;
     cursor: pointer;
   }
+  a:active{
+    color:#FFF;
+    cursor: pointer;
+  }
   ::selection{
     background-color:white;
     color:white;
+  }
+  .disabledButton{
+    opacity:0.5;
+    pointer-events:none;
+  }
+  @media only screen and (max-width: 696px){
+    h1{
+      font-size:3.2rem;
+    }
+  
+    h2{
+      font-size:2.4rem;
+    }
+  
+    h4{
+      font-size:1.4rem;
+    }
+  
+    h6{
+      font-size:1.8rem;
+    }
+  
+    p{
+      font-size:1.4rem;
+    }
   }
 `;
