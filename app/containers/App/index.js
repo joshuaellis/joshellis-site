@@ -21,7 +21,6 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Work from 'containers/Work';
 import About from 'containers/About';
 import ThreeBackground from 'components/ThreeBackground'
-import ProtonBackground from 'components/ProtonBackground'
 
 export class App extends React.Component {
   constructor(props){
@@ -32,14 +31,14 @@ export class App extends React.Component {
   }
   render(){
     return (
-      <div>
-          <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route exact path="/work" component={Work} />
-            <Route exact path="/about" component={About} />
-            <Route component={NotFoundPage} />
-          </Switch>
-          <ThreeBackground />
+      <div style={{maxWidth:'1440px', margin:'auto',overflowY:'hidden', overflowX:'hidden'}}>
+        <ThreeBackground />  
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/work" component={Work} />
+          <Route exact path="/about" component={About} />
+          <Route component={NotFoundPage} />
+        </Switch>
       </div>
     );
   }

@@ -53,9 +53,9 @@ export default class ThreeScene extends Component{
     this.renderer.render(this.scene, this.camera)
   }
   handleResize = () => {
-    this.camera.aspect = this.mWidth / this.mHeight;
+    this.camera.aspect = this.mount.clientWidth / this.mount.clientHeight;
     this.camera.updateProjectionMatrix();
-    this.renderer.setSize( this.mWidth, this.mHeight );
+    this.renderer.setSize( this.mount.clientWidth, this.mount.clientHeight );
   }
   sceneSetup = () => {
     this.mWidth = this.mount.clientWidth;

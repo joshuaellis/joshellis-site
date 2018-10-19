@@ -1,6 +1,6 @@
 import React, { Children } from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import MediaQuery from 'react-responsive';
 
 const TextWrapper = styled.div`
     background-color: rgba(49,255,123,0.2);
@@ -22,11 +22,11 @@ const TextWrapper = styled.div`
     z-index:1;
     `;
     const Wrapper = styled.div`
-    width:288px;
+    width:100%;
     height:28px;
     `;
     const A = styled.a`
-        font-family:'FRAC-Medium';
+        font-family:'FRAC-Medium', Helvetica, sans-serif;
         font-weight: 500;
         font-size:1rem;
         text-decoration:none;
@@ -38,14 +38,28 @@ export default class Social extends React.Component{
     }
     render(){
         return(
-            <Wrapper>
-                <TextWrapper>
-                    <A target="_blank" href="mailto:joshua.ellis18@gmail.com">Email</A>
-                    <A target="_blank" href="https://www.instagram.com/planet_josh/?hl=en">Instagram</A>
-                    <A target="_blank" href="https://www.linkedin.com/in/joshua-ellis-66b362114/">LinkedIn</A>
-                </TextWrapper>
-                <ColourLayer />
-            </Wrapper>
+            <div style={{width:'100%'}}>
+                <MediaQuery maxDeviceWidth={696}>
+                    <Wrapper>
+                        <TextWrapper>
+                            <A target="_blank" href="mailto:joshua.ellis18@gmail.com">Email</A>
+                            <A target="_blank" href="https://www.instagram.com/planet_josh/?hl=en">Instagram</A>
+                            <A target="_blank" href="https://www.linkedin.com/in/joshua-ellis-66b362114/">LinkedIn</A>
+                        </TextWrapper>
+                        <ColourLayer />
+                    </Wrapper>
+                </MediaQuery>
+                <MediaQuery minDeviceWidth={697}>
+                    <Wrapper style={{maxWidth:'288px', float:'right'}}>
+                        <TextWrapper>
+                            <A target="_blank" href="mailto:joshua.ellis18@gmail.com">Email</A>
+                            <A target="_blank" href="https://www.instagram.com/planet_josh/?hl=en">Instagram</A>
+                            <A target="_blank" href="https://www.linkedin.com/in/joshua-ellis-66b362114/">LinkedIn</A>
+                        </TextWrapper>
+                        <ColourLayer />
+                    </Wrapper>
+                </MediaQuery>
+            </div>
         )
     }
 }

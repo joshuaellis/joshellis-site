@@ -3,10 +3,12 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const MainWrapper = styled.div`
-    width:704px;
+    min-width:600px;
+    max-width:704px;
     border:solid 2px #4a94ff;
     z-index:10;
     background-color:#0f0f0f;
+    margin: auto 72px auto 72px
 `;
 const TitleBar = styled.div`
     width:100%;

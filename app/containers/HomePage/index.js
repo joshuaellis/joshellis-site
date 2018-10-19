@@ -14,6 +14,7 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectHomePage from './selectors';
 import reducer from './reducer';
 import styled from 'styled-components';
+import MediaQuery from 'react-responsive';
 
 import Navigation from 'components/LargeNavigation';
 import Header from 'components/Header';
@@ -32,11 +33,16 @@ export class HomePage extends React.Component {
   render() {
     return(
       <div>
-        <Header />
-        <Wrapper>
-          <Navigation />
-        </Wrapper>
-        <Footer />
+          <Header />
+          <Wrapper>
+            <MediaQuery minDeviceWidth={697} >
+              <Navigation portrait={false} />
+            </MediaQuery>
+            <MediaQuery maxDeviceWidth={696} >
+              <Navigation portrait={true} />
+            </MediaQuery>
+          </Wrapper>
+          <Footer />
       </div>
     )
   }

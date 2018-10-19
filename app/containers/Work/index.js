@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+import MediaQuery from 'react-responsive';
 
 import injectReducer from 'utils/injectReducer';
 import makeSelectWork from './selectors';
@@ -22,6 +23,7 @@ import WorkMenu from 'components/WorkMenu';
 import InfoPanel from 'components/InfoPanel';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
+import MobileInfoPanel from 'components/MobileInfoPanel'
 
 const Wrapper = styled.div`
   height:calc(100vh - 200px - 124px);
@@ -31,7 +33,19 @@ const Wrapper = styled.div`
   padding-right:72px;
   padding-left:34px;
   z-index:5;
-  align-items:center
+  align-items:center;
+
+  @media (max-width: 1059px){
+    padding-top:48px;
+    padding-right:56px;
+  };
+
+  @media (max-width: 640px){
+    height:100%;
+    width:100%;
+    display:block;
+    padding: 0px 32px 0px 16px;
+  }
 `;
 /* eslint-disable react/prefer-stateless-function */
 export class Work extends React.Component {
@@ -43,11 +57,24 @@ export class Work extends React.Component {
           <meta name="description" content="Description of Work" />
         </Helmet>
         <Header dispatch={this.props.dispatch} />
-        <Wrapper>
-          <WorkMenu updateProjectAction={updateProjectAction} dispatch={this.props.dispatch} projects={PROJECTS} />
-          <InfoPanel text={TEXT} project={this.props.work.project} showProject={this.props.work.showProject}/>
-        </Wrapper>
+        <MediaQuery maxDeviceWidth={696}>
+          <Wrapper>
+            <MobileInfoPanel updateProjectAction={updateProjectAction} location={this.props.location} dispatch={this.props.dispatch} project={this.props.work.project} projectList={PROJECTS} message={TEXT} /> 
+          </Wrapper>
+        </MediaQuery>
+        <MediaQuery orientation={'landscape'} minDeviceWidth={697}>
+          <Wrapper>
+            <WorkMenu updateProjectAction={updateProjectAction} dispatch={this.props.dispatch} projects={PROJECTS} />
+            <InfoPanel text={TEXT} project={this.props.work.project} showProject={this.props.work.showProject}/>
+          </Wrapper>
+        </MediaQuery>
+        <MediaQuery orientation={'portrait'} minDeviceWidth={697}>
+          <Wrapper style={{position:'relative',bottom:'32px'}}>
+            <MobileInfoPanel updateProjectAction={updateProjectAction} location={this.props.location} dispatch={this.props.dispatch} project={this.props.work.project} projectList={PROJECTS} message={TEXT} /> 
+          </Wrapper>
+        </MediaQuery>
         <Footer />
+        
       </div>
     );
   }
