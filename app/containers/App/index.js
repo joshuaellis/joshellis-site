@@ -11,28 +11,29 @@
  * the linting exception.
  */
 
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
+import React from 'react'
+import { Switch, Route } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { compose } from 'redux'
+import MediaQuery from 'react-responsive'
 
-import HomePage from 'containers/HomePage/Loadable';
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import Work from 'containers/Work';
-import About from 'containers/About';
+import HomePage from 'containers/HomePage/Loadable'
+import NotFoundPage from 'containers/NotFoundPage/Loadable'
+import Work from 'containers/Work'
+import About from 'containers/About'
 import ThreeBackground from 'components/ThreeBackground'
 
 export class App extends React.Component {
-  constructor(props){
+  constructor (props) {
     super(props)
   }
-  componentDidMount(){
-    document.getElementById('loadingGIF').style.display = 'none';
+  componentDidMount () {
+    document.getElementById('loadingGIF').style.display = 'none'
   }
-  render(){
+  render () {
     return (
-      <div style={{maxWidth:'1440px', margin:'auto',overflowY:'hidden', overflowX:'hidden'}}>
-        <ThreeBackground />  
+      <div style={{ maxWidth: '1440px', margin: 'auto', overflowY: 'hidden', overflowX: 'hidden' }}>
+        <ThreeBackground />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/work" component={Work} />
@@ -40,18 +41,18 @@ export class App extends React.Component {
           <Route component={NotFoundPage} />
         </Switch>
       </div>
-    );
+    )
   }
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return {
-    dispatch,
-  };
+    dispatch
+  }
 }
 const withConnect = connect(
-  mapDispatchToProps,
-);
+  mapDispatchToProps
+)
 export default compose(
-  withConnect,
-)(App);
+  withConnect
+)(App)

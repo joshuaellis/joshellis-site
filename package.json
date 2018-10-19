@@ -47,17 +47,17 @@
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "prettify": "prettier --write"
   },
-  "lint-staged": {
-    "*.js": [
-      "npm run lint:eslint:fix",
-      "git add --force"
-    ],
-    "*.json": [
-      "prettier --write",
-      "git add --force"
-    ]
-  },
-  "pre-commit": "lint:staged",
+  // "lint-staged": {
+  //   "*.js": [
+  //     "npm run lint:eslint:fix",
+  //     "git add --force"
+  //   ],
+  //   "*.json": [
+  //     "prettier --write",
+  //     "git add --force"
+  //   ]
+  // },
+  // "pre-commit": "lint:staged",
   "babel": {
     "plugins": [
       "styled-components"
@@ -204,16 +204,20 @@
     "enzyme": "3.3.0",
     "enzyme-adapter-react-16": "1.1.1",
     "enzyme-to-json": "3.3.4",
-    "eslint": "4.19.1",
+    "eslint": "^5.7.0",
     "eslint-config-airbnb": "16.1.0",
     "eslint-config-airbnb-base": "12.1.0",
     "eslint-config-prettier": "2.9.0",
+    "eslint-config-standard": "^12.0.0",
     "eslint-import-resolver-webpack": "0.10.0",
-    "eslint-plugin-import": "2.12.0",
+    "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "6.0.3",
+    "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-prettier": "2.6.0",
+    "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-react": "7.9.1",
     "eslint-plugin-redux-saga": "0.9.0",
+    "eslint-plugin-standard": "^4.0.0",
     "eventsource-polyfill": "0.9.6",
     "exports-loader": "0.7.0",
     "file-loader": "1.1.11",
