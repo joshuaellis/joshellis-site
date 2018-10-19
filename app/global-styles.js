@@ -1,5 +1,14 @@
 import { injectGlobal } from 'styled-components';
 
+import FracExtraBold from './fonts/FRAC/FRAC-extrabold.ttf';
+import FracBold from './fonts/FRAC/FRAC-bold.ttf';
+import FracMedium from './fonts/FRAC/FRAC-medium.ttf';
+import FracRegular from './fonts/FRAC/FRAC-regular.ttf';
+import RelevantBold from './fonts/Relevant/Relevant-Bold.ttf';
+import RelevantMedium from './fonts/Relevant/Relevant-Medium.ttf';
+import RelevantRegular from './fonts/Relevant/Relevant-Normal.ttf';
+import RelevantThin from './fonts/Relevant/Relevant-Thin.ttf';
+
 /* eslint no-unused-expressions: 0 */
 injectGlobal`
   @font-face {
@@ -8,7 +17,7 @@ injectGlobal`
     font-weight:800;
     src:
     local('FRAC-ExtraBold')
-    url(./fonts/FRAC/FRAC-extrabold.ttf);
+    url('${FracExtraBold}');
   }
 
   @font-face {
@@ -17,7 +26,7 @@ injectGlobal`
     font-weight:600;
     src:
     local('FRAC-Bold')
-    url(./fonts/FRAC/FRAC-bold.ttf);
+    url('${FracBold}');
   }
 
   @font-face {
@@ -26,7 +35,7 @@ injectGlobal`
     font-weight: 500;
     src:
     local('FRAC-Medium')
-    url(./fonts/FRAC/FRAC-medium.ttf);
+    url('${FracMedium}');
   }
 
   @font-face {
@@ -35,7 +44,7 @@ injectGlobal`
     font-weight: 400;
     src:
     local('FRAC-Regular')
-    url(./fonts/FRAC/FRAC-regular.ttf);
+    url('${FracRegular}');
   }
 
   @font-face {
@@ -44,7 +53,7 @@ injectGlobal`
     font-weight: 600;
     src:
     local('Relevant-Bold')
-    url(./fonts/Relevant/Relevant-Bold.ttf);
+    url('${RelevantBold}');
   }
   @font-face {
     font-family: 'Relevant';
@@ -52,7 +61,7 @@ injectGlobal`
     font-weight: 500;
     src:
     local('Relevant-Medium')
-    url(./fonts/Relevant/Relevant-Medium.ttf);
+    url('${RelevantMedium}');
   }
   @font-face {
     font-family: 'Relevant';
@@ -60,7 +69,7 @@ injectGlobal`
     font-weight: 400;
     src:
     local('Relevant')
-    url(./fonts/Relevant/Relevant-Normal.ttf);
+    url('${RelevantRegular}');
   }
   @font-face {
     font-family: 'Relevant';
@@ -68,7 +77,7 @@ injectGlobal`
     font-weight: 200;
     src:
     local('Relevant-Thin')
-    url(./fonts/Relevant/Relevant-Thin.ttf);
+    url('${RelevantThin}');
   }
 
   html,
@@ -89,41 +98,41 @@ injectGlobal`
   }
 
   h1{
-    font-family:'Relevant-Medium', Helvetica, sans-serif;
+    font-family:'Relevant-Medium';
     font-weight: 500;
     font-size:4.8rem;
     letter-spacing:0.15rem;
   }
 
   h2{
-    font-family:'Relevant', Helvetica, sans-serif;
+    font-family:'Relevant';
     font-weight: 400;
     font-size:3.2rem;
   }
 
   h4{
-    font-family:'Relevant-Thin', Helvetica, sans-serif;
+    font-family:'Relevant-Thin';
     font-weight: 200;
     font-size:1.6rem;
     letter-spacing:0.1rem;
   }
 
   h6{
-    font-family:'FRAC-Regular', Helvetica, sans-serif;
+    font-family:'FRAC-Regular';
     font-weight:400;
     font-size:1.8rem;
     display:inline;
   }
 
   p{
-    font-family:'Relevant', Helvetica, sans-serif;
+    font-family:'Relevant';
     font-weight: 400;
     font-size:1.6rem;
     line-height:2.4rem;
     letter-spacing:0.1rem;
   }
   label{
-    font-family:'FRAC-Medium', Helvetica, sans-serif;
+    font-family:'FRAC-Medium';
     font-weight: 500;
     font-size:1rem;
   }
@@ -131,37 +140,8 @@ injectGlobal`
     color:#4a94ff;
     cursor: pointer;
   }
-  a:active{
-    color:#FFF;
-    cursor: pointer;
-  }
   ::selection{
     background-color:white;
     color:white;
-  }
-  .disabledButton{
-    opacity:0.5;
-    pointer-events:none;
-  }
-  @media only screen and (max-width: 696px){
-    h1{
-      font-size:3.2rem;
-    }
-  
-    h2{
-      font-size:2.4rem;
-    }
-  
-    h4{
-      font-size:1.4rem;
-    }
-  
-    h6{
-      font-size:1.8rem;
-    }
-  
-    p{
-      font-size:1.4rem;
-    }
   }
 `;
