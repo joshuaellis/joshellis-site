@@ -28,7 +28,7 @@ import RelevantThinTTF from './fonts/Relevant/Relevant-Thin.ttf'
 /* eslint no-unused-expressions: 0 */
 injectGlobal`
 @font-face {
-  font-family: 'Relevant-Normal';
+  font-family: 'Relevant';
   src: url('${RelevantRegularWOFF2}') format('woff2'),
       url('${RelevantRegularWOFF}') format('woff'),
       url('${RelevantRegularTTF}') format('truetype');

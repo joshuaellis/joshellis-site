@@ -72,7 +72,7 @@ export class About extends React.Component {
           <Wrapper>
             {this.props.about.windowShowing == true ? (<Window dispatch={this.props.dispatch} title={messages.windowHeader.header} message={messages.windowCopy} />) : null }
           </Wrapper>
-          {this.props.about.windowShowing == false ? (<Img src={Ralph} width='240px' alt="little ralphie wiggum"/>) : null }
+          <Img src={Ralph} width='240px' alt="little ralphie wiggum"/>
         </MediaQuery>
         <Footer />
       </div>

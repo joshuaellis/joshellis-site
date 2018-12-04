@@ -15,6 +15,7 @@ import makeSelectHomePage from './selectors'
 import reducer from './reducer'
 import styled from 'styled-components'
 import MediaQuery from 'react-responsive'
+import { Helmet } from 'react-helmet'
 
 import Navigation from 'components/LargeNavigation'
 import Header from 'components/Header'
@@ -36,6 +37,10 @@ export class HomePage extends React.Component {
   render () {
     return (
       <div>
+        <Helmet>
+          <title>Josh Ellis</title>
+          <meta name="description" content="Josh Ellis is a creative technologist based in London, he is a professional designer and freelance web developer." />
+        </Helmet>
         <Header />
         <Wrapper>
           <MediaQuery minDeviceWidth={697} >

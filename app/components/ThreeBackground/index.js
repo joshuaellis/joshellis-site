@@ -5,16 +5,17 @@ import particle from './particles';
 export default class ThreeScene extends Component{
   constructor(props){
       super(props)
-      this.state = {
-        particleCount: 100000,
-      }
   }
   async componentDidMount(){
     await this.sceneSetup();
+    this.particleCount = 60000;
+    if(this.mount.clientWidth < 680 && this.mount.clientHeight < 800){
+      this.particleCount = 20000;
+    }
     this.duration = 20;
     this.time =  0.0;
     this.timeStep = (1 / 60);
-    this.particleSystem = particle(this.state.particleCount, this.duration);
+    this.particleSystem = particle(this.particleCount, this.duration,this.mount.clientHeight,this.mount.clientWidth);
     this.particleSystem.frustumCulled = false;
 
     this.light = new THREE.PointLight(0xffffff, 2, 1000, 2);
@@ -77,7 +78,7 @@ export default class ThreeScene extends Component{
   render(){
       return(
         <div
-          style={{ width: '100%', height: '100%', position:'absolute', left:'0',top:'0', zIndex:'-1'}}
+          style={{ width: '100vw', height: '100vh', position:'absolute', left:'0',top:'0', zIndex:'-1'}}
           ref={(mount) => { this.mount = mount }}
         />
       )

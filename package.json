@@ -10,6 +10,7 @@
     "npm": ">=5",
     "node": ">=8"
   },
+  //"homepage": "http://gitname.github.io/planet",
   "author": "Max Stoiber",
   "license": "MIT",
   "scripts": {
@@ -47,17 +48,17 @@
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "prettify": "prettier --write"
   },
-  // "lint-staged": {
-  //   "*.js": [
-  //     "npm run lint:eslint:fix",
-  //     "git add --force"
-  //   ],
-  //   "*.json": [
-  //     "prettier --write",
-  //     "git add --force"
-  //   ]
-  // },
-  // "pre-commit": "lint:staged",
+  "lint-staged": {
+    "*.js": [
+      "npm run lint:eslint:fix",
+      "git add --force"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add --force"
+    ]
+  },
+  "pre-commit": "lint:staged",
   "babel": {
     "plugins": [
       "styled-components"
@@ -162,6 +163,7 @@
     "react": "16.4.1",
     "react-dom": "16.4.1",
     "react-easy-swipe": "0.0.16",
+    "react-ga": "^2.5.3",
     "react-helmet": "5.2.0",
     "react-intl": "2.4.0",
     "react-loadable": "5.4.0",
@@ -221,12 +223,13 @@
     "eventsource-polyfill": "0.9.6",
     "exports-loader": "0.7.0",
     "file-loader": "1.1.11",
+    "gh-pages": "^2.0.1",
     "html-loader": "0.5.5",
     "html-webpack-plugin": "3.2.0",
     "husky": "0.14.3",
-    "image-webpack-loader": "^4.4.0",
+    "image-webpack-loader": "^4.5.0",
     "imports-loader": "0.8.0",
-    "jest-cli": "23.1.0",
+    "jest-cli": "^23.6.0",
     "jest-styled-components": "5.0.1",
     "lint-staged": "7.2.0",
     "ngrok": "3.0.1",
@@ -245,6 +248,7 @@
     "stylelint-config-styled-components": "0.1.1",
     "stylelint-processor-styled-components": "1.3.1",
     "svg-url-loader": "2.3.2",
+    "uglifyjs-webpack-plugin": "^2.0.1",
     "url-loader": "1.0.1",
     "webpack": "4.12.0",
     "webpack-cli": "^3.0.8",

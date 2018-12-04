@@ -13,7 +13,6 @@ const TextWrapper = styled.div`
     position:relative;
     z-index:10;
     margin-bottom:auto;
-    overflow-y:scroll;
     @media (max-width:320px){
         padding:8px 32px 24px 16px;
     }
@@ -69,12 +68,17 @@ const A = styled(Link)`
     }
 `;
 
+const TextDiv = styled.div`
+    
+`;
+
 export default class MobileInfoPanel extends React.Component{
     constructor(props){
         super(props)
         this.location = props.location.pathname.replace(/\//ig,'');
         this.swipeDirection = null;
         props.updateProjectAction ? (props.dispatch(props.updateProjectAction('Black Mirror'))) : null;
+        this.copyBox = React.createRef()
     }
     handleForwardClick = () => {
         let val = this.props.projectList.indexOf(this.props.project) + 1;
@@ -84,6 +88,7 @@ export default class MobileInfoPanel extends React.Component{
         else{
             this.props.dispatch(this.props.updateProjectAction(this.props.projectList[0]))
         }
+        
     }
     handleBackwardClick = () => {
         let val = this.props.projectList.indexOf(this.props.project) - 1;
@@ -170,9 +175,11 @@ export default class MobileInfoPanel extends React.Component{
         if(this.location == 'about'){
             return(
                 <TextWrapper>
-                    <p><Span>{text[0]}</Span>{text[1]}</p>
-                    <p style={{marginBottom:'8px'}}><Span>{text[2]}</Span>{text[3]}</p>
-                    <p><Span>{text[4]}</Span>{text[5]}</p>
+                    <div style={{height:'100%', overflowY:'scroll'}} ref={this.copyBox}>
+                        <p><Span>{text[0]}</Span>{text[1]}</p>
+                        <p style={{marginBottom:'8px'}}><Span>{text[2]}</Span>{text[3]}</p>
+                        <p><Span>{text[4]}</Span>{text[5]}</p>
+                    </div>
                 </TextWrapper>
             )
         }
@@ -184,11 +191,13 @@ export default class MobileInfoPanel extends React.Component{
             else{
             return(
                 <TextWrapper>
-                    <p><Span>Role: </Span>{text[0]}</p>
-                    <p><Span>Studio: </Span>{text[1]}</p>
-                    <p><Span>Year: </Span>{text[2]}</p>
-                    {text[4] ? (<p><Span>See Here: </Span><a target="_blank" style={{textDecoration:"none"}} href={text[4]}>{text[5]}</a></p>) : null }
-                    <p style={{marginTop:'16px'}}><Span>Info: </Span>{text[3]}</p>
+                    <div style={{height:'100%', overflowY:'scroll'}} ref={this.copyBox}>
+                        <p><Span>Role: </Span>{text[0]}</p>
+                        <p><Span>Studio: </Span>{text[1]}</p>
+                        <p><Span>Year: </Span>{text[2]}</p>
+                        {text[4] ? (<p><Span>See Here: </Span><a target="_blank" style={{textDecoration:"none"}} href={text[4]}>{text[5]}</a></p>) : null }
+                        <p style={{marginTop:'16px'}}><Span>Info: </Span>{text[3]}</p>
+                    </div>
                 </TextWrapper>
             )
             }
@@ -237,6 +246,9 @@ export default class MobileInfoPanel extends React.Component{
         else{
             return
         }
+    }
+    componentDidUpdate(){
+        this.copyBox.current.scrollTop = 0
     }
     render(){
         if(this.props.message){

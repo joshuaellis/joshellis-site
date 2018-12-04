@@ -1,9 +1,9 @@
 // Important modules this config uses
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const WebpackPwaManifest = require('webpack-pwa-manifest');
-const OfflinePlugin = require('offline-plugin');
-const { HashedModuleIdsPlugin } = require('webpack');
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const WebpackPwaManifest = require('webpack-pwa-manifest')
+const OfflinePlugin = require('offline-plugin')
+const { HashedModuleIdsPlugin } = require('webpack')
 
 module.exports = require('./webpack.base.babel')({
   mode: 'production',
@@ -14,7 +14,7 @@ module.exports = require('./webpack.base.babel')({
   // Utilize long-term caching by adding content hashes (not compilation hashes) to compiled assets
   output: {
     filename: '[name].[chunkhash].js',
-    chunkFilename: '[name].[chunkhash].chunk.js',
+    chunkFilename: '[name].[chunkhash].chunk.js'
   },
 
   optimization: {
@@ -23,12 +23,13 @@ module.exports = require('./webpack.base.babel')({
     sideEffects: true,
     concatenateModules: true,
     splitChunks: { chunks: 'all' },
-    runtimeChunk: true,
+    runtimeChunk: true
   },
 
   plugins: [
     // Minify and optimize the index.html
     new HtmlWebpackPlugin({
+      title: 'Josh Ellis',
       template: 'app/index.html',
       minify: {
         removeComments: true,
@@ -40,9 +41,10 @@ module.exports = require('./webpack.base.babel')({
         keepClosingSlash: true,
         minifyJS: true,
         minifyCSS: true,
-        minifyURLs: true,
+        minifyURLs: true
       },
       inject: true,
+      favicon: './app/images/favicon.ico'
     }),
 
     // Put it in the end to capture all the HtmlWebpackPlugin's
@@ -62,36 +64,28 @@ module.exports = require('./webpack.base.babel')({
         // All chunks marked as `additional`, loaded after main section
         // and do not prevent SW to install. Change to `optional` if
         // do not want them to be preloaded at all (cached only when first loaded)
-        additional: ['*.chunk.js'],
+        additional: ['*.chunk.js']
       },
 
       // Removes warning for about `additional` section usage
-      safeToUseOptionalCaches: true,
+      safeToUseOptionalCaches: true
     }),
 
     new WebpackPwaManifest({
       name: 'Josh Ellis',
       short_name: 'JE',
-      description: 'My personal website',
-      background_color: '#fafafa',
-      theme_color: '#010d63',
-      icons: [
-        {
-          src: path.resolve('app/images/favicon.ico'),
-          sizes: [72, 96, 120, 128, 144, 152, 167, 180, 192, 384, 512],
-        },
-      ],
+      description: 'My personal website'
     }),
 
     new HashedModuleIdsPlugin({
       hashFunction: 'sha256',
       hashDigest: 'hex',
-      hashDigestLength: 20,
-    }),
+      hashDigestLength: 20
+    })
   ],
 
   performance: {
     assetFilter: assetFilename =>
-      !/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename),
-  },
-});
+      !/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename)
+  }
+})
