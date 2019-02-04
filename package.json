@@ -10,7 +10,6 @@
     "npm": ">=5",
     "node": ">=8"
   },
-  //"homepage": "http://gitname.github.io/planet",
   "author": "Max Stoiber",
   "license": "MIT",
   "scripts": {
@@ -23,7 +22,7 @@
     "postinstall": "npm run build:dll",
     "prebuild": "npm run build:clean",
     "build": "cross-env NODE_ENV=production webpack --config internals/webpack/webpack.prod.babel.js --color -p --progress --hide-modules --display-optimization-bailout",
-    "build:clean": "rimraf ./build",
+    "build:clean": "nrimraf ./build",
     "build:dll": "node ./internals/scripts/dependencies.js",
     "start": "cross-env NODE_ENV=development node server",
     "start:tunnel": "cross-env NODE_ENV=development ENABLE_TUNNEL=true node server",
@@ -49,10 +48,7 @@
     "prettify": "prettier --write"
   },
   "lint-staged": {
-    "*.js": [
-      "npm run lint:eslint:fix",
-      "git add --force"
-    ],
+    "*.js": [],
     "*.json": [
       "prettier --write",
       "git add --force"

@@ -50,11 +50,12 @@ export default class Social extends React.Component {
           </Wrapper>
         </MediaQuery>
         <MediaQuery minDeviceWidth={697}>
-          <Wrapper style={{ maxWidth: '288px', float: 'right' }}>
+          <Wrapper style={{ maxWidth: '368px', float: 'right' }}>
             <TextWrapper>
               <A target="_blank" href="mailto:joshua.ellis18@gmail.com">Email</A>
               <A target="_blank" href="https://www.instagram.com/planet_josh/?hl=en">Instagram</A>
               <A target="_blank" href="https://www.linkedin.com/in/joshua-ellis-66b362114/">LinkedIn</A>
+              <A target="_blank" href="https://github.com/joshuaellis">Github</A>
             </TextWrapper>
             <ColourLayer />
           </Wrapper>

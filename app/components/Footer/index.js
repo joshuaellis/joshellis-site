@@ -34,7 +34,7 @@ export default class Footer extends React.Component {
         </MediaQuery>
         <MediaQuery minDeviceWidth={697} >
           <Wrapper>
-            <label style={{ marginTop: 8, width: '100%' }}>version 2.0</label>
+            <label style={{ marginTop: 8, width: '100%' }}>version 2.1</label>
             <Social />
           </Wrapper>
         </MediaQuery>
