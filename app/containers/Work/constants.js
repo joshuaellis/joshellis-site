@@ -14,7 +14,7 @@ export const TEXT = {
     'Applied Works',
     '2018',
     `Using the javascript library P5.js I was able to co-create a series of digital tools used to distort imagery taken from the show whether that be a significant icon or still. The artworks were then produced as chapter openers for the book "Inside Black Mirror".`,
-    'www.insideblackmirror.com',
+    'https://www.insideblackmirror.com/',
     'insideblackmirror.com'
   ],
 
