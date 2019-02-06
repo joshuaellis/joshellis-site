@@ -22,6 +22,8 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable'
 import Work from 'containers/Work'
 import About from 'containers/About'
 import ThreeBackground from 'components/ThreeBackground'
+import Header from 'components/Header'
+import Footer from 'components/Footer'
 
 //Google Analytics
 import ReactGA from 'react-ga';
@@ -39,6 +41,7 @@ export class App extends React.Component {
     return (
       <div style={{ maxWidth: '1440px', margin: 'auto', overflowY: 'hidden', overflowX: 'hidden' }}>
         <ThreeBackground />
+        <Header />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/work" component={Work} />
@@ -55,6 +58,7 @@ export class App extends React.Component {
             </svg>
           </div>
         </MediaQuery>
+        <Footer />
       </div>
     )
   }

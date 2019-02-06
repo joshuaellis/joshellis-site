@@ -67,7 +67,6 @@ export class Work extends React.Component {
           <title>Josh Ellis – Work</title>
           <meta name="description" content="Josh Ellis is a creative technologist based in London, he is a professional designer and freelance web developer. This page displays a small collection of works that he has had the opportunity to be part of." />
         </Helmet>
-        <Header />
         <MediaQuery maxDeviceWidth={696}>
           <Wrapper>
             <MobileInfoPanel updateProject={updateProject} location={location} project={work.project} projectList={PROJECTS} message={TEXT} />
@@ -84,7 +83,6 @@ export class Work extends React.Component {
             <MobileInfoPanel updateProject={updateProject} location={location} project={work.project} projectList={PROJECTS} message={TEXT} />
           </Wrapper>
         </MediaQuery>
-        <Footer />
       </div>
     )
   }

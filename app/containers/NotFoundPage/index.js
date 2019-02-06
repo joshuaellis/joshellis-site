@@ -16,7 +16,7 @@ import MediaQuery from 'react-responsive'
 
 import Header from 'components/Header'
 import Footer from 'components/Footer'
-import ConfusedTravolta from 'images/johnTravolta.gif'
+import ConfusedTravolta from 'assets/images/johnTravolta.gif'
 
 const FlexDiv = styled.div`
   display:flex;
@@ -34,7 +34,6 @@ export default class NotFound extends React.PureComponent {
   render () {
     return (
       <div>
-        <Header lost='true' />
         <FlexDiv>
           <MediaQuery orientation={'landscape'} minDeviceWidth={780}>
             <div>
@@ -51,7 +50,6 @@ export default class NotFound extends React.PureComponent {
             <img style={{ marginTop: '32px' }} width='100%' src={ConfusedTravolta} alt="lost travolta" />
           </MediaQuery>
         </FlexDiv>
-        <Footer />
       </div>
     )
   }

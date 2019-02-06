@@ -16,14 +16,14 @@ import makeSelectAbout from './selectors'
 import reducer from './reducer'
 import { closeWindow, openWindow } from '../../actions/app.about.actions';
 
-import messages from './messages'
+import { messages } from './messages'
 import Window from 'components/Window'
 import styled from 'styled-components'
 import Header from 'components/Header'
 import Footer from 'components/Footer'
 import MobileInfoPanel from 'components/MobileInfoPanel'
 
-import Ralph from 'images/ralph.gif'
+import Ralph from 'assets/images/ralph.gif'
 
 const Wrapper = styled.div`
   width:100%;
@@ -71,7 +71,6 @@ export class About extends React.Component {
           <title>Josh Ellis – About</title>
           <meta name="description" content={messages.windowCopy['Background information:']} />
         </Helmet>
-        <Header />
         <MediaQuery maxDeviceWidth={696}>
           <Wrapper>
             <MobileInfoPanel location={location} dispatch={this.props.dispatch} message={messages.mobileCopy} />
@@ -83,7 +82,6 @@ export class About extends React.Component {
           </Wrapper>
           <Img src={Ralph} width='240px' alt="little ralphie wiggum"/>
         </MediaQuery>
-        <Footer />
       </div>
     )
   }

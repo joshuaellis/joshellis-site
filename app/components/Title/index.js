@@ -55,7 +55,7 @@ const Wrapper = styled.div`
     }
     `;
 
-export default function Title (props) {
+function Title (props) {
     return(
         <Wrapper>
             <TextWrapper>
@@ -71,3 +71,5 @@ Title.propTypes = {
     standfirst: PropTypes.string.isRequired,
     children: PropTypes.node.isRequired,
   };
+
+export default Title;

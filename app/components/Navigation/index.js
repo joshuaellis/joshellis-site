@@ -11,7 +11,7 @@ const Link = styled(NavLink)`
     letter-spacing:0.05rem;
 `
 
-export default function Navigation () {
+function Navigation () {
   return (
     <div>
       <Link exact to="/about" activeStyle={{ fontFamily: 'Relevant-Bold' }}>About</Link>
@@ -20,3 +20,5 @@ export default function Navigation () {
     </div>
   )
 }
+
+export default Navigation;

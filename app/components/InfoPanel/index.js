@@ -39,7 +39,7 @@ const Span = styled.span`
     letter-spacing:-0.01em
 `;
 
-export default function InfoPanel (props) {
+function InfoPanel (props) {
     const {project, showProject } = props;
     let text = props.text[project]
     return(
@@ -92,3 +92,5 @@ InfoPanel.propTypes = {
     project: PropTypes.string,
     showProject: PropTypes.bool
 }
+
+export default InfoPanel;

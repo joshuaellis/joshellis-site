@@ -3,9 +3,7 @@
  *
  * This contains all the text for the HomePage component.
  */
-import { defineMessages } from 'react-intl';
-
-export default defineMessages({
+export const messages = {
   windowHeader:{
     id:'app.components.About.windowHeader',
     header:'information'
@@ -21,5 +19,4 @@ export default defineMessages({
     'Current Location: ','London',
     'Background info: ','A creative technologist invesigating how digital experiences can be used to enhance day to day life. Whether it’s screen based or physical, technology plays a role in the work produced. If you have a project you think I can help with, either designing or development please contact me.',
   ],
-});
-
+};
