@@ -4,8 +4,6 @@
  *
  */
 
-export const DEFAULT_ACTION = 'app/Work/DEFAULT_ACTION'
-
 export const PROJECTS = ['Black Mirror', 'World Forum', 'Design Council', 'Genesys']
 
 export const TEXT = {

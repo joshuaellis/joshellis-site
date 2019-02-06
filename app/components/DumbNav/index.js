@@ -11,17 +11,12 @@ const Link = styled(NavLink)`
     letter-spacing:0.05rem;
 `
 
-export default class Navigation extends React.Component{
-    constructor(props){
-        super(props);
-    }
-    render(){
-        return(
-            <div>
-                <Link exact to="/about" activeStyle={{fontWeight:600,}}>About</Link>
-                <p style={{fontFamily:'Relevant-Thin',fontWeight: 200,display:'inline',marginLeft:'32px',opacity:0.5,letterSpacing:'0.05rem',}}>Experiments</p>
-                <Link exact to="/work" activeStyle={{fontWeight:600,}}>Work</Link>
-            </div>
-        );
-    }
+export default function Navigation(){
+    return(
+        <div>
+            <Link exact to="/about" activeStyle={{fontWeight:600,}}>About</Link>
+            <p style={{fontFamily:'Relevant-Thin',fontWeight: 200,display:'inline',marginLeft:'32px',opacity:0.5,letterSpacing:'0.05rem',}}>Experiments</p>
+            <Link exact to="/work" activeStyle={{fontWeight:600,}}>Work</Link>
+        </div>
+    );
 }

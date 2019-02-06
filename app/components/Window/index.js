@@ -40,28 +40,15 @@ const CopyBox = styled.div`
 const P = styled.h6`
     display:inline;
     font-size:1.6rem;
-`;
+`
 
-export default class Window extends React.Component{
-    constructor(props){
-        super(props);
-        this.messageKeys = Object.keys(this.props.message);
-        this.onClick = this.onClick.bind(this);
-    }
-    onClick(){
-        const action = {
-            type: 'CLOSE_WINDOW',
-            id:0,
-            windowShowing:false,
-        }
-        this.props.dispatch(action)
-    }
-    render(){
-       return(
+function Window(props){
+    let messageKeys = Object.keys(props.message);
+    return(
         <MainWrapper>
             <TitleBar>
-                <h6>{this.props.title}</h6>
-                <CloseBox onClick={this.onClick}>
+                <h6>{props.title}</h6>
+                <CloseBox onClick={props.closeWindow}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 46">
                         <g>
                             <polygon style={{fill:'#4a94ff'}} points="28.71 16.71 27.29 15.29 22 20.59 16.71 15.29 15.29 16.71 20.59 22 15.29 27.29 16.71 28.71 22 23.41 27.29 28.71 28.71 27.29 23.41 22 28.71 16.71" />
@@ -71,14 +58,15 @@ export default class Window extends React.Component{
                 </CloseBox>
             </TitleBar>
             <CopyBox>
-                {this.messageKeys.map(function(key,index){return(<div style={{marginBottom:'4px'}} key={index}><P>{key}</P><p style={{display:'inline'}}>{this.props.message[key]}</p></div>)},this)}
+                {messageKeys.map(function(key,index){return(<div style={{marginBottom:'4px'}} key={index}><P>{key}</P><p style={{display:'inline'}}>{props.message[key]}</p></div>)})}
             </CopyBox>
         </MainWrapper>
-       )
-    }
+    )
 }
-
 Window.propTypes = {
     title: PropTypes.string.isRequired,
     message: PropTypes.object,
-};
+    dispatchClose : PropTypes.func,
+}
+
+export default Window;

@@ -3,7 +3,6 @@
  * About
  *
  */
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -15,6 +14,7 @@ import MediaQuery from 'react-responsive'
 import injectReducer from 'utils/injectReducer'
 import makeSelectAbout from './selectors'
 import reducer from './reducer'
+import { closeWindow, openWindow } from '../../actions/app.about.actions';
 
 import messages from './messages'
 import Window from 'components/Window'
@@ -54,23 +54,32 @@ const Img = styled.img`
 
 /* eslint-disable react/prefer-stateless-function */
 export class About extends React.Component {
+  componentWillUnmount(){
+    if(!this.props.about.windowShowing){
+      this.props.dispatchOpen();
+    }
+  }
   render () {
-    // console.log(this.props)
+    const {
+      dispatchClose,
+      about,
+      location
+    } = this.props
     return (
       <div>
         <Helmet>
           <title>Josh Ellis – About</title>
           <meta name="description" content={messages.windowCopy['Background information:']} />
         </Helmet>
-        <Header dispatch={this.props.dispatch} />
+        <Header />
         <MediaQuery maxDeviceWidth={696}>
           <Wrapper>
-            <MobileInfoPanel location={this.props.location} dispatch={this.props.dispatch} message={messages.mobileCopy} />
+            <MobileInfoPanel location={location} dispatch={this.props.dispatch} message={messages.mobileCopy} />
           </Wrapper>
         </MediaQuery>
         <MediaQuery minDeviceWidth={697}>
           <Wrapper>
-            {this.props.about.windowShowing == true ? (<Window dispatch={this.props.dispatch} title={messages.windowHeader.header} message={messages.windowCopy} />) : null }
+            {about.windowShowing == true ? (<Window closeWindow={dispatchClose} title={messages.windowHeader.header} message={messages.windowCopy} />) : null }
           </Wrapper>
           <Img src={Ralph} width='240px' alt="little ralphie wiggum"/>
         </MediaQuery>
@@ -80,28 +89,32 @@ export class About extends React.Component {
   }
 }
 
+
 About.propTypes = {
-  dispatch: PropTypes.func.isRequired
-}
+  dispatchClose: PropTypes.func,
+  location:PropTypes.object.isRequired,
+  about:PropTypes.object.isRequired,
+};
 
 const mapStateToProps = createStructuredSelector({
   about: makeSelectAbout()
-})
+});
 
 function mapDispatchToProps (dispatch) {
   return {
+    dispatchClose: () => dispatch(closeWindow()),
+    dispatchOpen: () => dispatch(openWindow()),
     dispatch
-  }
+  };
 }
 
 const withConnect = connect(
   mapStateToProps,
   mapDispatchToProps
-)
-
-const withReducer = injectReducer({ key: 'about', reducer })
+);
+const withReducer = injectReducer({ key: 'about', reducer });
 
 export default compose(
   withReducer,
   withConnect
-)(About)
+)(About);

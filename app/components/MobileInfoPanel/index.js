@@ -72,31 +72,33 @@ const TextDiv = styled.div`
     
 `;
 
-export default class MobileInfoPanel extends React.Component{
+class MobileInfoPanel extends React.Component{
     constructor(props){
         super(props)
         this.location = props.location.pathname.replace(/\//ig,'');
         this.swipeDirection = null;
-        props.updateProjectAction ? (props.dispatch(props.updateProjectAction('Black Mirror'))) : null;
+        props.updateProject ? (props.updateProject('Black Mirror')) : null;
         this.copyBox = React.createRef()
     }
     handleForwardClick = () => {
-        let val = this.props.projectList.indexOf(this.props.project) + 1;
-        if(this.props.projectList[val]){
-            this.props.dispatch(this.props.updateProjectAction(this.props.projectList[val]))
+        const { projectList, project, updateProject } = this.props;
+        let val = projectList.indexOf(project) + 1;
+        if(projectList[val]){
+            updateProject(projectList[val])
         }
         else{
-            this.props.dispatch(this.props.updateProjectAction(this.props.projectList[0]))
+            updateProject(projectList[0])
         }
         
     }
     handleBackwardClick = () => {
-        let val = this.props.projectList.indexOf(this.props.project) - 1;
-        if(this.props.projectList[val]){
-            this.props.dispatch(this.props.updateProjectAction(this.props.projectList[val]))
+        const { projectList, project, updateProject } = this.props;
+        let val = projectList.indexOf(project) - 1;
+        if(projectList[val]){
+            updateProject(projectList[val])
         }
         else{
-            this.props.dispatch(this.props.updateProjectAction(this.props.projectList[this.props.projectList.length - 1]))
+            updateProject(projectList[projectList.length - 1])
         }
     }
     handleSwipe = () => {
@@ -269,3 +271,5 @@ export default class MobileInfoPanel extends React.Component{
         }
     }
 }
+
+export default MobileInfoPanel;

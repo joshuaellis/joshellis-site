@@ -11,31 +11,12 @@ const Link = styled(NavLink)`
     letter-spacing:0.05rem;
 `
 
-export default class Navigation extends React.Component {
-  constructor (props) {
-    super(props)
-    this.handleAbout = this.handleAbout.bind(this)
-    this.handleWork = this.handleWork.bind(this)
-  }
-  handleAbout () {
-    const action = {
-      type: 'RESET_WORK'
-    }
-    this.props.dispatch(action)
-  }
-  handleWork () {
-    const action = {
-      type: 'OPEN_WINDOW'
-    }
-    this.props.dispatch(action)
-  }
-  render () {
-    return (
-      <div>
-        <Link onClick={this.handleAbout} exact to="/about" activeStyle={{ fontFamily: 'Relevant-Bold' }}>About</Link>
-        <p style={{ fontFamily: 'Relevant-Thin', fontWeight: 200, display: 'inline', marginLeft: '32px', opacity: 0.5, letterSpacing: '0.05rem' }}>Experiments</p>
-        <Link onClick={this.handleWork} exact to="/work" activeStyle={{ fontFamily: 'Relevant-Bold' }}>Work</Link>
-      </div>
-    )
-  }
+export default function Navigation () {
+  return (
+    <div>
+      <Link exact to="/about" activeStyle={{ fontFamily: 'Relevant-Bold' }}>About</Link>
+      <p style={{ fontFamily: 'Relevant-Thin', fontWeight: 200, display: 'inline', marginLeft: '32px', opacity: 0.5, letterSpacing: '0.05rem' }}>Experiments</p>
+      <Link exact to="/work" activeStyle={{ fontFamily: 'Relevant-Bold' }}>Work</Link>
+    </div>
+  )
 }
