@@ -1,3 +1,14 @@
+<<<<<<< HEAD:app/content/work.content.js
+=======
+/*
+ *
+ * Work constants
+ *
+ */
+
+export const DEFAULT_ACTION = 'app/Work/DEFAULT_ACTION'
+
+>>>>>>> parent of 9323e9d4... removed all actions to seperate file:app/containers/Work/constants.js
 export const PROJECTS = ['Black Mirror', 'World Forum', 'Design Council', 'Genesys']
 
 export const TEXT = {
