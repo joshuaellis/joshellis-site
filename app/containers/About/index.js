@@ -14,7 +14,7 @@ import MediaQuery from 'react-responsive'
 import injectReducer from 'utils/injectReducer'
 import makeSelectAbout from './selectors'
 import reducer from './reducer'
-import { closeWindow, openWindow } from '../../actions/app.about.actions';
+import { closeWindow, openWindow } from './actions';
 
 import { messages } from '../../content/about.content.js'
 import Window from 'components/Window'

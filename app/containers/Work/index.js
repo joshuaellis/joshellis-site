@@ -16,7 +16,7 @@ import injectReducer from 'utils/injectReducer'
 import makeSelectWork from './selectors'
 import reducer from './reducer'
 import { PROJECTS, TEXT } from '../../content/work.content.js'
-import { resetWorkAction, updateProjectAction, updateTextAction } from '../../actions/app.work.actions';
+import { resetWorkAction, updateProjectAction, updateTextAction } from './actions';
 import styled from 'styled-components'
 
 import WorkMenu from 'components/WorkMenu'
@@ -89,7 +89,7 @@ export class Work extends React.Component {
 }
 
 Work.propTypes = {
-  work: PropTypes.object.func,
+  work: PropTypes.object,
 }
 
 const mapStateToProps = createStructuredSelector({
