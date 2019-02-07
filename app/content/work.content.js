@@ -1,9 +1,3 @@
-/*
- *
- * Work constants
- *
- */
-
 export const PROJECTS = ['Black Mirror', 'World Forum', 'Design Council', 'Genesys']
 
 export const TEXT = {

@@ -15,7 +15,7 @@ import MediaQuery from 'react-responsive'
 import injectReducer from 'utils/injectReducer'
 import makeSelectWork from './selectors'
 import reducer from './reducer'
-import { PROJECTS, TEXT } from './constants'
+import { PROJECTS, TEXT } from '../../content/work.content.js'
 import { resetWorkAction, updateProjectAction, updateTextAction } from '../../actions/app.work.actions';
 import styled from 'styled-components'
 

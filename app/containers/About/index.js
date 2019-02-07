@@ -16,7 +16,7 @@ import makeSelectAbout from './selectors'
 import reducer from './reducer'
 import { closeWindow, openWindow } from '../../actions/app.about.actions';
 
-import { messages } from './messages'
+import { messages } from '../../content/about.content.js'
 import Window from 'components/Window'
 import styled from 'styled-components'
 import Header from 'components/Header'
