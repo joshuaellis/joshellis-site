@@ -41,7 +41,6 @@ export class HomePage extends React.Component {
           <title>Josh Ellis</title>
           <meta name="description" content="Josh Ellis is a creative technologist based in London, he is a professional designer and freelance web developer." />
         </Helmet>
-        <Header />
         <Wrapper>
           <MediaQuery minDeviceWidth={697} >
             <Navigation portrait={false} />
@@ -50,7 +49,6 @@ export class HomePage extends React.Component {
             <Navigation portrait={true} />
           </MediaQuery>
         </Wrapper>
-        <Footer />
       </div>
     )
   }

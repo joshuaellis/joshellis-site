@@ -55,40 +55,21 @@ const Wrapper = styled.div`
     }
     `;
 
-export default class Title extends React.Component{
-    constructor(props){
-        super(props)
-    }
-    handleAbout = () => {
-        const action = {
-            type:'RESET_WORK'
-        };
-        this.props.dispatch(action);
-    }
-    handleWork = () => {
-        const action = {
-            type:'OPEN_WINDOW'
-        };
-        this.props.dispatch(action);
-    }
-    handleEvents = () => {
-        this.handleAbout();
-        this.handleWork();
-    }
-    render(){
-        return(
-            <Wrapper>
-                <TextWrapper>
-                    <h1><Link onClick={this.handleEvents} exact to="/" activeStyle={{pointerEvents:'none'}}>{this.props.children}</Link></h1>
-                    <h4>{this.props.standfirst}</h4>
-                </TextWrapper>
-                <ColourLayer />
-            </Wrapper>
-        )
-    }
+function Title (props) {
+    return(
+        <Wrapper>
+            <TextWrapper>
+                <h1><Link exact to="/" activeStyle={{pointerEvents:'none'}}>{props.children}</Link></h1>
+                <h4>{props.standfirst}</h4>
+            </TextWrapper>
+            <ColourLayer />
+        </Wrapper>
+    )
 }
 
 Title.propTypes = {
     standfirst: PropTypes.string.isRequired,
     children: PropTypes.node.isRequired,
   };
+
+export default Title;

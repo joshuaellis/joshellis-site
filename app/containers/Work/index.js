@@ -15,8 +15,8 @@ import MediaQuery from 'react-responsive'
 import injectReducer from 'utils/injectReducer'
 import makeSelectWork from './selectors'
 import reducer from './reducer'
-import { PROJECTS, TEXT } from './constants'
-import { updateProjectAction } from './actions'
+import { PROJECTS, TEXT } from '../../content/work.content.js'
+import { resetWorkAction, updateProjectAction, updateTextAction } from './actions';
 import styled from 'styled-components'
 
 import WorkMenu from 'components/WorkMenu'
@@ -51,38 +51,45 @@ const Wrapper = styled.div`
 `
 /* eslint-disable react/prefer-stateless-function */
 export class Work extends React.Component {
+  componentWillUnmount(){
+    this.props.resetWork();
+  }
   render () {
+    const {
+      location,
+      work,
+      updateProject,
+      updateText,
+    } = this.props;
     return (
       <div>
         <Helmet>
           <title>Josh Ellis – Work</title>
           <meta name="description" content="Josh Ellis is a creative technologist based in London, he is a professional designer and freelance web developer. This page displays a small collection of works that he has had the opportunity to be part of." />
         </Helmet>
-        <Header dispatch={this.props.dispatch} />
         <MediaQuery maxDeviceWidth={696}>
           <Wrapper>
-            <MobileInfoPanel updateProjectAction={updateProjectAction} location={this.props.location} dispatch={this.props.dispatch} project={this.props.work.project} projectList={PROJECTS} message={TEXT} />
+            <MobileInfoPanel updateProject={updateProject} location={location} project={work.project} projectList={PROJECTS} message={TEXT} />
           </Wrapper>
         </MediaQuery>
         <MediaQuery orientation={'landscape'} minDeviceWidth={697}>
           <Wrapper>
-            <WorkMenu updateProjectAction={updateProjectAction} dispatch={this.props.dispatch} projects={PROJECTS} />
-            <InfoPanel text={TEXT} project={this.props.work.project} showProject={this.props.work.showProject}/>
+            <WorkMenu updateProject={updateProject} projects={PROJECTS} />
+            <InfoPanel text={TEXT} project={work.project} showProject={work.showProject}/>
           </Wrapper>
         </MediaQuery>
         <MediaQuery orientation={'portrait'} minDeviceWidth={697}>
           <Wrapper style={{ position: 'relative', bottom: '32px' }}>
-            <MobileInfoPanel updateProjectAction={updateProjectAction} location={this.props.location} dispatch={this.props.dispatch} project={this.props.work.project} projectList={PROJECTS} message={TEXT} />
+            <MobileInfoPanel updateProject={updateProject} location={location} project={work.project} projectList={PROJECTS} message={TEXT} />
           </Wrapper>
         </MediaQuery>
-        <Footer />
       </div>
     )
   }
 }
 
 Work.propTypes = {
-  dispatch: PropTypes.func.isRequired
+  work: PropTypes.object,
 }
 
 const mapStateToProps = createStructuredSelector({
@@ -91,6 +98,9 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps (dispatch) {
   return {
+    resetWork: ()=>dispatch(resetWorkAction()),
+    updateProject : (project,bool) => dispatch(updateProjectAction(project,bool)),
+    updateText: (text) => dispatch(updateTextAction(text)), 
     dispatch
   }
 }

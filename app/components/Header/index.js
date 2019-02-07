@@ -22,29 +22,26 @@ const Wrapper = styled.div`
     
 `
 
-export default class Header extends React.Component {
-  constructor (props) {
-    super(props)
-  }
-  render () {
-    return (
+function Header(props){
+  return (
       <div>
         <MediaQuery maxDeviceWidth={696} >
           <Wrapper>
-            <Title dispatch={this.props.dispatch} standfirst="Creative Technologist">Josh Ellis</Title>
+            <Title standfirst="Creative Technologist">Josh Ellis</Title>
           </Wrapper>
         </MediaQuery>
         <MediaQuery minDeviceWidth={697}>
           <Wrapper>
-            <Title dispatch={this.props.dispatch} standfirst="Creative Technologist">Josh Ellis</Title>
+            <Title standfirst="Creative Technologist">Josh Ellis</Title>
             <Switch>
-              <Route path="/about" render={() => <Navigation dispatch={this.props.dispatch} />} />
-              <Route path="/work" render={() => <Navigation dispatch={this.props.dispatch} />} />
-              {this.props.lost ? (<DumbNavigation dispatch={this.props.dispatch} />) : null}
+              <Route path="/about" render={() => <Navigation />} />
+              <Route path="/work" render={() => <Navigation />} />
+              {props.lost ? (<DumbNavigation />) : null}
             </Switch>
           </Wrapper>
         </MediaQuery>
       </div>
     )
-  }
 }
+
+export default Header;

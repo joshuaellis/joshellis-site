@@ -32,12 +32,8 @@ const A = styled.a`
         text-decoration:none;
     `
 
-export default class Social extends React.Component {
-  constructor (props) {
-    super(props)
-  }
-  render () {
-    return (
+function Social () {
+  return (
       <div style={{ width: '100%' }}>
         <MediaQuery maxDeviceWidth={696}>
           <Wrapper>
@@ -62,5 +58,6 @@ export default class Social extends React.Component {
         </MediaQuery>
       </div>
     )
-  }
 }
+
+export default Social;

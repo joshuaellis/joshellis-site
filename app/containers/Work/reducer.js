@@ -5,7 +5,6 @@
  */
 
 import { fromJS } from 'immutable';
-import { DEFAULT_ACTION } from './constants';
 
 export const initialState = fromJS({
     showProject:false,
@@ -15,8 +14,6 @@ export const initialState = fromJS({
 
 function workReducer(state = initialState, action) {
   switch (action.type) {
-    case DEFAULT_ACTION:
-      return state;
     case 'UPDATE_PROJECT':
       return fromJS({...state,  showProject:action.showProject, project:action.project});
     case 'UPDATE_TEXT':

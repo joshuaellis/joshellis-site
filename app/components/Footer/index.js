@@ -23,22 +23,22 @@ const Wrapper = styled.div`
     }
 `
 
-export default class Footer extends React.Component {
-  render () {
-    return (
-      <div>
-        <MediaQuery maxDeviceWidth={696} >
-          <Wrapper style={{ padding: '0', paddingLeft: '40px', paddingRight: '16px', bottom: '48px', height: '0px' }}>
-            <Social />
-          </Wrapper>
-        </MediaQuery>
-        <MediaQuery minDeviceWidth={697} >
-          <Wrapper>
-            <label style={{ marginTop: 8, width: '100%' }}>version 2.1</label>
-            <Social />
-          </Wrapper>
-        </MediaQuery>
-      </div>
-    )
-  }
+function Footer () {
+  return (
+    <div>
+      <MediaQuery maxDeviceWidth={696} >
+        <Wrapper style={{ padding: '0', paddingLeft: '40px', paddingRight: '16px', bottom: '48px', height: '0px' }}>
+          <Social />
+        </Wrapper>
+      </MediaQuery>
+      <MediaQuery minDeviceWidth={697} >
+        <Wrapper>
+          <label style={{ marginTop: 8, width: '100%' }}>version 2.1</label>
+          <Social />
+        </Wrapper>
+      </MediaQuery>
+    </div>
+  )
 }
+
+export default Footer;

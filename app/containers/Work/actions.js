@@ -1,17 +1,3 @@
-/*
- *
- * Work actions
- *
- */
-
-import { DEFAULT_ACTION } from './constants';
-
-export function defaultAction() {
-  return {
-    type: DEFAULT_ACTION,
-  };
-}
-
 export function updateProjectAction(project,bool){
   return {
     type: 'UPDATE_PROJECT',
@@ -24,5 +10,11 @@ export function updateTextAction(text){
   return{
     type: 'UPDATE_TEXT',
     text,
+  }
+}
+
+export function resetWorkAction(){
+  return {
+    type: 'RESET_WORK',
   }
 }

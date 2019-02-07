@@ -33,65 +33,58 @@ const Wrapper = styled.div`
     }
 `;
 
-const Section = styled.section`
-`;
-
 const Span = styled.span`
     font-family:'FRAC-Regular';
     font-weight:400;
     letter-spacing:-0.01em
 `;
 
-export default class InfoPanel extends React.Component{
-    constructor(props){
-        super(props);
-    }
-    render(){
-        let text = this.props.text[this.props.project]
-        return(
-            <Wrapper>
-                <MediaQuery minDeviceWidth={1060}>
-                    <TextWrapper>
-                    {this.props.showProject ? 
-                    (<div style={{display:'flex', justifyContent:'flex-start'}}>
-                        <Section style={{minWidth:'272px', marginRight:'48px'}}>
+function InfoPanel (props) {
+    const {project, showProject } = props;
+    let text = props.text[project]
+    return(
+        <Wrapper>
+            <MediaQuery minDeviceWidth={1060}>
+                <TextWrapper>
+                {showProject ? 
+                (<div style={{display:'flex', justifyContent:'flex-start'}}>
+                    <section style={{minWidth:'272px', marginRight:'48px'}}>
+                        <p style={{marginBottom: '16px'}}><Span>Role: </Span> {text[0]}</p>
+                        <p style={{marginBottom: '16px'}}><Span>Studio: </Span> {text[1]}</p>
+                        <p style={{marginBottom: '16px'}}><Span>Year: </Span> {text[2]}</p>
+                        {text[4] ? (<p style={{marginTop: '16px'}}><Span>See here: </Span><a target="_blank" style={{textDecoration:"none"}} href={text[4]}>{text[5]}</a></p>):null}
+                    </section>
+                    <section style={{maxWidth:'312px'}}>
+                        <p><Span>INFO: </Span>{text[3]}</p>
+                    </section>
+                </div>):(<div style={{display:'flex', justifyContent:'center', alignItems:'center'}}><p style={{alignSelf:'center',marginTop:'15%'}}><Span>Select a project to view</Span></p></div>)
+                }
+                </TextWrapper>
+            </MediaQuery>
+            <MediaQuery maxDeviceWidth={1059}>
+                <TextWrapper>
+                {showProject ? 
+                (<div style={{display:'flex', flexDirection:'column', justifyContent:'flex-start'}}>
+                    <section style={{display:'flex'}}>
+                        <section style={{display:'inline-block', marginRight:'16px', minWidth:'208px'}}>
                             <p style={{marginBottom: '16px'}}><Span>Role: </Span> {text[0]}</p>
-                            <p style={{marginBottom: '16px'}}><Span>Studio: </Span> {text[1]}</p>
                             <p style={{marginBottom: '16px'}}><Span>Year: </Span> {text[2]}</p>
+                        </section>
+                        <section style={{display:'inline-block'}}>
+                            <p style={{marginBottom: '16px'}}><Span>Studio: </Span> {text[1]}</p>
                             {text[4] ? (<p style={{marginTop: '16px'}}><Span>See here: </Span><a target="_blank" style={{textDecoration:"none"}} href={text[4]}>{text[5]}</a></p>):null}
-                        </Section>
-                        <Section style={{maxWidth:'312px'}}>
-                            <p><Span>INFO: </Span>{text[3]}</p>
-                        </Section>
-                    </div>):(<div style={{display:'flex', justifyContent:'center', alignItems:'center'}}><p style={{alignSelf:'center',marginTop:'15%'}}><Span>Select a project to view</Span></p></div>)
-                    }
-                    </TextWrapper>
-                </MediaQuery>
-                <MediaQuery maxDeviceWidth={1059}>
-                    <TextWrapper>
-                    {this.props.showProject ? 
-                    (<div style={{display:'flex', flexDirection:'column', justifyContent:'flex-start'}}>
-                        <Section style={{display:'flex'}}>
-                            <Section style={{display:'inline-block', marginRight:'16px', minWidth:'208px'}}>
-                                <p style={{marginBottom: '16px'}}><Span>Role: </Span> {text[0]}</p>
-                                <p style={{marginBottom: '16px'}}><Span>Year: </Span> {text[2]}</p>
-                            </Section>
-                            <Section style={{display:'inline-block'}}>
-                                <p style={{marginBottom: '16px'}}><Span>Studio: </Span> {text[1]}</p>
-                                {text[4] ? (<p style={{marginTop: '16px'}}><Span>See here: </Span><a target="_blank" style={{textDecoration:"none"}} href={text[4]}>{text[5]}</a></p>):null}
-                            </Section>
-                        </Section>
-                        <Section style={{display:'block'}}>
-                            <p><Span>INFO: </Span>{text[3]}</p>
-                        </Section>
-                    </div>):(<div style={{display:'flex', justifyContent:'center', alignItems:'center'}}><p style={{alignSelf:'center',marginTop:'15%'}}><Span>Select a project to view</Span></p></div>)
-                    }
-                    </TextWrapper>
-                </MediaQuery>
-                <ColourLayer />
-            </Wrapper>
-        )
-    }
+                        </section>
+                    </section>
+                    <section style={{display:'block'}}>
+                        <p><Span>INFO: </Span>{text[3]}</p>
+                    </section>
+                </div>):(<div style={{display:'flex', justifyContent:'center', alignItems:'center'}}><p style={{alignSelf:'center',marginTop:'15%'}}><Span>Select a project to view</Span></p></div>)
+                }
+                </TextWrapper>
+            </MediaQuery>
+            <ColourLayer />
+        </Wrapper>
+    )
 }
 
 InfoPanel.propTypes = {
@@ -100,6 +93,4 @@ InfoPanel.propTypes = {
     showProject: PropTypes.bool
 }
 
-// <svg width="100%" style={{fill: 'rgba(249,56,35,0.35)', zIndex:'1',position:'relative',bottom:'100%',right:'24px'}}>
-// <rect width="100%" />
-// </svg>
+export default InfoPanel;
