@@ -85,7 +85,7 @@ MobileInfoPanel.propTypes = {
   projectList: PropTypes.array,
   updateProject: PropTypes.func,
   project: PropTypes.string,
-  message: PropTypes.object,
+  message: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   location: PropTypes.object,
 };
 

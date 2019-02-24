@@ -149,6 +149,11 @@ const GlobalStyle = createGlobalStyle`
     line-height:2.4rem;
     letter-spacing:0.1rem;
   }
+  label{
+    font-family:'FRAC-Medium';
+    font-weight: 500;
+    font-size:1rem;
+  }
   a:not(.active):hover{
     color:#4a94ff;
     cursor: pointer;

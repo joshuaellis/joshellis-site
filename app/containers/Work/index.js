@@ -109,7 +109,7 @@ Work.propTypes = {
   work: PropTypes.object,
   resetWork: PropTypes.func,
   updateProject: PropTypes.func,
-  location: PropTypes.string,
+  location: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({

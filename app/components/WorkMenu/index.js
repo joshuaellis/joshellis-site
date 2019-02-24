@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/no-unescaped-entities */
 /**
  *
@@ -16,9 +18,6 @@ const SVG = styled.svg`
   top: 35px;
   margin-right: 10px;
   margin-top: -4px;
-`;
-const Button = styled.button`
-  border: none;
 `;
 
 /* eslint-disable react/prefer-stateless-function */
@@ -74,7 +73,7 @@ function WorkMenu(props) {
                 <rect x="9" y="10" width="2" height="72" />
               </SVG>
             )}
-            <Button
+            <a
               onClick={handleHoverOn}
               onMouseEnter={handleHoverOn}
               onMouseLeave={handleHoverOff}
@@ -85,7 +84,7 @@ function WorkMenu(props) {
                 {index + 1}
               </span>{' '}
               {x}
-            </Button>
+            </a>
           </li>
         ))}
         )}
