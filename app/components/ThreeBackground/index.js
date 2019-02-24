@@ -2,62 +2,72 @@ import React, { Component } from 'react';
 import * as THREE from 'three-full';
 import particle from './particles';
 
-export default class ThreeScene extends Component{
-  constructor(props){
-      super(props)
-  }
-  async componentDidMount(){
+export default class ThreeScene extends Component {
+  async componentDidMount() {
     await this.sceneSetup();
     this.particleCount = 60000;
-    if(this.mount.clientWidth < 680 && this.mount.clientHeight < 800){
+    if (this.mount.clientWidth < 680 && this.mount.clientHeight < 800) {
       this.particleCount = 20000;
     }
     this.duration = 20;
-    this.time =  0.0;
-    this.timeStep = (1 / 60);
-    this.particleSystem = particle(this.particleCount, this.duration,this.mount.clientHeight,this.mount.clientWidth);
+    this.time = 0.0;
+    this.timeStep = 1 / 60;
+    this.particleSystem = particle(
+      this.particleCount,
+      this.duration,
+      this.mount.clientHeight,
+      this.mount.clientWidth,
+    );
     this.particleSystem.frustumCulled = false;
 
     this.light = new THREE.PointLight(0xffffff, 2, 1000, 2);
     this.light.position.set(0, 100, 0);
 
-    this.scene.add(this.light)
-    this.scene.add(this.particleSystem)
+    this.scene.add(this.light);
+    this.scene.add(this.particleSystem);
     this.start();
-    window.addEventListener("resize", this.handleResize);
+    window.addEventListener('resize', this.handleResize);
   }
-  componentWillUnmount(){
-    this.stop()
-    this.mount.removeChild(this.renderer.domElement)
+
+  componentWillUnmount() {
+    this.stop();
+    this.mount.removeChild(this.renderer.domElement);
   }
+
   start = () => {
     if (!this.frameId) {
-      this.frameId = requestAnimationFrame(this.animate)
+      this.frameId = requestAnimationFrame(this.animate);
     }
-  }
+  };
+
   stop = () => {
-    cancelAnimationFrame(this.frameId)
-  }
-  update = () =>{
-    this.particleSystem.material.uniforms['uTime'].value = this.time;
-  }
+    cancelAnimationFrame(this.frameId);
+  };
+
+  update = () => {
+    this.particleSystem.material.uniforms.uTime.value = this.time;
+  };
+
   animate = () => {
     this.update();
     this.renderScene();
 
-    this.time +=this.timeStep;
+    this.time += this.timeStep;
     this.time %= this.duration;
 
-    this.frameId = window.requestAnimationFrame(this.animate)
-  }
+    this.frameId = window.requestAnimationFrame(this.animate);
+  };
+
   renderScene = () => {
-    this.renderer.render(this.scene, this.camera)
-  }
+    this.renderer.render(this.scene, this.camera);
+  };
+
   handleResize = () => {
     this.camera.aspect = this.mount.clientWidth / this.mount.clientHeight;
     this.camera.updateProjectionMatrix();
-    this.renderer.setSize( this.mount.clientWidth, this.mount.clientHeight );
-  }
+    this.renderer.setSize(this.mount.clientWidth, this.mount.clientHeight);
+  };
+
   sceneSetup = () => {
     this.mWidth = this.mount.clientWidth;
     this.mHeight = this.mount.clientHeight;
@@ -66,21 +76,31 @@ export default class ThreeScene extends Component{
       60,
       this.mWidth / this.mHeight,
       0.1,
-      8000
+      8000,
     );
-    this.camera.position.set(0,50,600);
-    this.camera.rotation.set(0,0,-100.2)
-    this.renderer = new THREE.WebGLRenderer({ antialias: true }) 
-    this.renderer.setClearColor('#000000')
-    this.renderer.setSize(this.mWidth, this.mHeight)
-    this.mount.appendChild(this.renderer.domElement)
+    this.camera.position.set(0, 50, 600);
+    this.camera.rotation.set(0, 0, -100.2);
+    this.renderer = new THREE.WebGLRenderer({ antialias: true });
+    this.renderer.setClearColor('#000000');
+    this.renderer.setSize(this.mWidth, this.mHeight);
+    this.mount.appendChild(this.renderer.domElement);
+  };
+
+  render() {
+    return (
+      <div
+        style={{
+          width: '100vw',
+          height: '100vh',
+          position: 'absolute',
+          left: '0',
+          top: '0',
+          zIndex: '-1',
+        }}
+        ref={mount => {
+          this.mount = mount;
+        }}
+      />
+    );
   }
-  render(){
-      return(
-        <div
-          style={{ width: '100vw', height: '100vh', position:'absolute', left:'0',top:'0', zIndex:'-1'}}
-          ref={(mount) => { this.mount = mount }}
-        />
-      )
-    }
-  }
+}

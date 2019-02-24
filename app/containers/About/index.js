@@ -3,116 +3,124 @@
  * About
  *
  */
-import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Helmet } from 'react-helmet'
-import { createStructuredSelector } from 'reselect'
-import { compose } from 'redux'
-import MediaQuery from 'react-responsive'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
+import { createStructuredSelector } from 'reselect';
+import { compose } from 'redux';
+import MediaQuery from 'react-responsive';
 
-import injectReducer from 'utils/injectReducer'
-import makeSelectAbout from './selectors'
-import reducer from './reducer'
+import injectReducer from 'utils/injectReducer';
+import Window from 'components/Window';
+import styled from 'styled-components';
+import MobileInfoPanel from 'components/MobileInfoPanel';
+import Ralph from 'assets/images/ralph.gif';
+import makeSelectAbout from './selectors';
+import reducer from './reducer';
 import { closeWindow, openWindow } from './actions';
 
-import { messages } from '../../content/about.content.js'
-import Window from 'components/Window'
-import styled from 'styled-components'
-import Header from 'components/Header'
-import Footer from 'components/Footer'
-import MobileInfoPanel from 'components/MobileInfoPanel'
-
-import Ralph from 'assets/images/ralph.gif'
+import { messages } from '../../content/about.content';
 
 const Wrapper = styled.div`
-  width:100%;
-  display:flex;
-  justify-content:center;
-  align-items:flex-start;
-  padding-top:72px;
-  @media (min-height:1440px){
-    padding-top:176px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 72px;
+  @media (min-height: 1440px) {
+    padding-top: 176px;
   }
   @media (max-height: 780px) {
-    padding-top:32px;
+    padding-top: 32px;
   }
-  @media (max-width: 640px){
-    display:block;
+  @media (max-width: 640px) {
+    display: block;
     padding: 0px 32px 0px 16px;
   }
-`
+`;
 
 const Img = styled.img`
-  position:fixed;
-  z-index:0;
-  background-color:white;
+  position: fixed;
+  z-index: 0;
+  background-color: white;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-`
+`;
 
 /* eslint-disable react/prefer-stateless-function */
 export class About extends React.Component {
-  componentWillUnmount(){
-    if(!this.props.about.windowShowing){
+  componentWillUnmount() {
+    if (!this.props.about.windowShowing) {
       this.props.dispatchOpen();
     }
   }
-  render () {
-    const {
-      dispatchClose,
-      about,
-      location
-    } = this.props
+
+  render() {
+    const { dispatchClose, about, location } = this.props;
     return (
       <div>
         <Helmet>
           <title>Josh Ellis – About</title>
-          <meta name="description" content={messages.windowCopy['Background information:']} />
+          <meta
+            name="description"
+            content={messages.windowCopy['Background information:']}
+          />
         </Helmet>
         <MediaQuery maxDeviceWidth={696}>
           <Wrapper>
-            <MobileInfoPanel location={location} dispatch={this.props.dispatch} message={messages.mobileCopy} />
+            <MobileInfoPanel
+              location={location}
+              dispatch={this.props.dispatch}
+              message={messages.mobileCopy}
+            />
           </Wrapper>
         </MediaQuery>
         <MediaQuery minDeviceWidth={697}>
           <Wrapper>
-            {about.windowShowing == true ? (<Window closeWindow={dispatchClose} title={messages.windowHeader.header} message={messages.windowCopy} />) : null }
+            {about.windowShowing === true ? (
+              <Window
+                closeWindow={dispatchClose}
+                title={messages.windowHeader.header}
+                message={messages.windowCopy}
+              />
+            ) : null}
           </Wrapper>
-          <Img src={Ralph} width='240px' alt="little ralphie wiggum"/>
+          <Img src={Ralph} width="240px" alt="little ralphie wiggum" />
         </MediaQuery>
       </div>
-    )
+    );
   }
 }
 
-
 About.propTypes = {
   dispatchClose: PropTypes.func,
-  location:PropTypes.object.isRequired,
-  about:PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  about: PropTypes.object.isRequired,
+  dispatchOpen: PropTypes.func.isRequired,
+  dispatch: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
-  about: makeSelectAbout()
+  about: makeSelectAbout(),
 });
 
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
     dispatchClose: () => dispatch(closeWindow()),
     dispatchOpen: () => dispatch(openWindow()),
-    dispatch
+    dispatch,
   };
 }
 
 const withConnect = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 );
 const withReducer = injectReducer({ key: 'about', reducer });
 
 export default compose(
   withReducer,
-  withConnect
+  withConnect,
 )(About);

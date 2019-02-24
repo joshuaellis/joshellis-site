@@ -1,32 +1,31 @@
-import { injectGlobal } from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
 
-import FracExtraBoldWOFF2 from './assets/fonts/FRAC/FRAC-ExtraBold.woff2'
-import FracExtraBoldWOFF from './assets/fonts/FRAC/FRAC-ExtraBold.woff'
-import FracExtraBoldTTF from './assets/fonts/FRAC/FRAC-ExtraBold.ttf'
-import FracBoldWOFF2 from './assets/fonts/FRAC/FRAC-Bold.woff2'
-import FracBoldWOFF from './assets/fonts/FRAC/FRAC-Bold.woff'
-import FracBoldTTF from './assets/fonts/FRAC/FRAC-Bold.ttf'
-import FracMediumWOFF2 from './assets/fonts/FRAC/FRAC-Medium.woff2'
-import FracMediumWOFF from './assets/fonts/FRAC/FRAC-Medium.woff'
-import FracMediumTTF from './assets/fonts/FRAC/FRAC-Medium.ttf'
-import FracRegularWOFF2 from './assets/fonts/FRAC/FRAC-Regular.woff2'
-import FracRegularWOFF from './assets/fonts/FRAC/FRAC-Regular.woff'
-import FracRegularTTF from './assets/fonts/FRAC/FRAC-Regular.ttf'
-import RelevantBoldWOFF2 from './assets/fonts/Relevant/Relevant-Bold.woff2'
-import RelevantBoldWOFF from './assets/fonts/Relevant/Relevant-Bold.woff'
-import RelevantBoldTTF from './assets/fonts/Relevant/Relevant-Bold.ttf'
-import RelevantMediumWOFF2 from './assets/fonts/Relevant/Relevant-Medium.woff2'
-import RelevantMediumWOFF from './assets/fonts/Relevant/Relevant-Medium.woff'
-import RelevantMediumTTF from './assets/fonts/Relevant/Relevant-Medium.ttf'
-import RelevantRegularWOFF2 from './assets/fonts/Relevant/Relevant-Normal.woff2'
-import RelevantRegularWOFF from './assets/fonts/Relevant/Relevant-Normal.woff'
-import RelevantRegularTTF from './assets/fonts/Relevant/Relevant-Normal.ttf'
-import RelevantThinWOFF2 from './assets/fonts/Relevant/Relevant-Thin.woff2'
-import RelevantThinWOFF from './assets/fonts/Relevant/Relevant-Thin.woff'
-import RelevantThinTTF from './assets/fonts/Relevant/Relevant-Thin.ttf'
+import FracExtraBoldWOFF2 from './assets/fonts/FRAC/FRAC-ExtraBold.woff2';
+import FracExtraBoldWOFF from './assets/fonts/FRAC/FRAC-ExtraBold.woff';
+import FracExtraBoldTTF from './assets/fonts/FRAC/FRAC-ExtraBold.ttf';
+import FracBoldWOFF2 from './assets/fonts/FRAC/FRAC-Bold.woff2';
+import FracBoldWOFF from './assets/fonts/FRAC/FRAC-Bold.woff';
+import FracBoldTTF from './assets/fonts/FRAC/FRAC-Bold.ttf';
+import FracMediumWOFF2 from './assets/fonts/FRAC/FRAC-Medium.woff2';
+import FracMediumWOFF from './assets/fonts/FRAC/FRAC-Medium.woff';
+import FracMediumTTF from './assets/fonts/FRAC/FRAC-Medium.ttf';
+import FracRegularWOFF2 from './assets/fonts/FRAC/FRAC-Regular.woff2';
+import FracRegularWOFF from './assets/fonts/FRAC/FRAC-Regular.woff';
+import FracRegularTTF from './assets/fonts/FRAC/FRAC-Regular.ttf';
+import RelevantBoldWOFF2 from './assets/fonts/Relevant/Relevant-Bold.woff2';
+import RelevantBoldWOFF from './assets/fonts/Relevant/Relevant-Bold.woff';
+import RelevantBoldTTF from './assets/fonts/Relevant/Relevant-Bold.ttf';
+import RelevantMediumWOFF2 from './assets/fonts/Relevant/Relevant-Medium.woff2';
+import RelevantMediumWOFF from './assets/fonts/Relevant/Relevant-Medium.woff';
+import RelevantMediumTTF from './assets/fonts/Relevant/Relevant-Medium.ttf';
+import RelevantRegularWOFF2 from './assets/fonts/Relevant/Relevant-Normal.woff2';
+import RelevantRegularWOFF from './assets/fonts/Relevant/Relevant-Normal.woff';
+import RelevantRegularTTF from './assets/fonts/Relevant/Relevant-Normal.ttf';
+import RelevantThinWOFF2 from './assets/fonts/Relevant/Relevant-Thin.woff2';
+import RelevantThinWOFF from './assets/fonts/Relevant/Relevant-Thin.woff';
+import RelevantThinTTF from './assets/fonts/Relevant/Relevant-Thin.ttf';
 
-/* eslint no-unused-expressions: 0 */
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
 @font-face {
   font-family: 'Relevant';
   src: url('${RelevantRegularWOFF2}') format('woff2'),
@@ -192,4 +191,6 @@ injectGlobal`
       font-size:1.4rem;
     }
   }
-`
+`;
+
+export default GlobalStyle;
