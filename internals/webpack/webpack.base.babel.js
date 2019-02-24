@@ -41,14 +41,6 @@ module.exports = options => ({
         exclude: /node_modules/,
         use: ['style-loader', 'css-loader'],
       },
-      { 
-        test: /\.(glsl|frag|vert)$/, 
-        use: 'raw-loader', 
-        exclude: /node_modules/ },
-      { 
-        test: /\.(glsl|frag|vert)$/, 
-        use: 'glslify-loader', 
-        exclude: /node_modules/ },
       {
         // Preprocess 3rd party .css files located in node_modules
         test: /\.css$/,
@@ -59,14 +51,6 @@ module.exports = options => ({
         test: /\.(eot|otf|ttf|woff|woff2)$/,
         use: 'file-loader',
       },
-      {
-        test: /\.(obj|mtl)$/,
-        use: 'file-loader',
-      },
-      // {
-      //   test:/\.mtl$/,
-      //   use: 'mtl-loader',
-      // },
       {
         test: /\.svg$/,
         use: [
@@ -130,15 +114,8 @@ module.exports = options => ({
     ],
   },
   plugins: options.plugins.concat([
-    new webpack.ProvidePlugin({
-      // make fetch available
-      fetch: 'exports-loader?self.fetch!whatwg-fetch',
-    }),
-    new webpack.ProvidePlugin({
-      'THREE': 'three'
-    }),
     // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV`
-    // inside your code for any environment checks; UglifyJS will automatically
+    // inside your code for any environment checks; Terser will automatically
     // drop any unreachable code.
     new webpack.DefinePlugin({
       'process.env': {

@@ -1,24 +1,10 @@
-node_modules
+# Don't check auto-generated stuff into git
+coverage
 build
+node_modules
+stats.json
 
-# OS generated files #
-######################
-**.DS_Store*
-ehthumbs.db
-Icon?
-Thumbs.db
-._*
-
-# Packages #
-############
-*.7z
-*.dmg
-*.gz
-*.bz2
-*.iso
-*.jar
-*.rar
-*.tar
-*.zip
-*.tgz
-*.map
+# Cruft
+.DS_Store
+npm-debug.log
+.idea
