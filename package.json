@@ -78,9 +78,12 @@
     "prop-types": "15.6.2",
     "react": "16.6.0",
     "react-dom": "16.6.0",
+    "react-easy-swipe": "0.0.17",
+    "react-ga": "^2.5.7",
     "react-helmet": "5.2.0",
     "react-intl": "2.7.2",
     "react-redux": "5.0.7",
+    "react-responsive": "^6.1.1",
     "react-router-dom": "4.3.1",
     "redux": "4.0.1",
     "redux-immutable": "4.0.0",
@@ -88,6 +91,7 @@
     "reselect": "4.0.0",
     "sanitize.css": "4.1.0",
     "styled-components": "4.0.2",
+    "three-full": "^11.3.2",
     "warning": "4.0.2"
   },
   "devDependencies": {
