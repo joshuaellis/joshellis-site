@@ -1,0 +1,27 @@
+    ul{
+        list-style:none;
+        width:328px;
+    }
+    li{
+        color:#ffffff;
+        font-family:'Relevant';
+        font-weight: 400;
+        font-size:3.2rem;
+        line-height:6.8rem;
+        letter-spacing:0.05rem;
+        margin-top:0;
+        margin-bottom:0;
+    }
+    li span{
+        font-family:'FRAC-Bold';
+        font-weight: 400;
+        font-size:1.2rem;
+        display:inline;
+    }
+    li a:hover{
+        font-weight:600;
+    }
+    li span:hover{
+        font-family:'FRAC-ExtraBold';
+        font-weight:800;
+    }

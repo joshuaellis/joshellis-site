@@ -1,25 +1,75 @@
-/*
+/**
+ *
  * HomePage
  *
- * This is the first thing users see of our App, at the '/' route
- *
- * NOTE: while this component should technically be a stateless functional
- * component (SFC), hot reloading does not currently support SFCs. If hot
- * reloading is not a necessity for you then you can refactor it and remove
- * the linting exception.
  */
 
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { compose } from 'redux';
+
+import injectReducer from 'utils/injectReducer';
+import styled from 'styled-components';
+import MediaQuery from 'react-responsive';
+import { Helmet } from 'react-helmet';
+
+import Navigation from 'components/LargeNavigation';
+import reducer from './reducer';
+import makeSelectHomePage from './selectors';
+
+const Wrapper = styled.div`
+  height: calc(100vh - 200px);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (min-height: 1440px) {
+    height: calc(100vh - 440px);
+  }
+`;
 
 /* eslint-disable react/prefer-stateless-function */
-export default class HomePage extends React.PureComponent {
+export class HomePage extends React.Component {
   render() {
     return (
-      <h1>
-        <FormattedMessage {...messages.header} />
-      </h1>
+      <div>
+        <Helmet>
+          <title>Josh Ellis</title>
+          <meta
+            name="description"
+            content="Josh Ellis is a creative technologist based in London, he is a professional designer and freelance web developer."
+          />
+        </Helmet>
+        <Wrapper>
+          <MediaQuery minDeviceWidth={697}>
+            <Navigation portrait={false} />
+          </MediaQuery>
+          <MediaQuery maxDeviceWidth={696}>
+            <Navigation portrait />
+          </MediaQuery>
+        </Wrapper>
+      </div>
     );
   }
 }
+
+const mapStateToProps = createStructuredSelector({
+  homepage: makeSelectHomePage(),
+});
+
+function mapDispatchToProps() {
+  return {};
+}
+
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
+
+const withReducer = injectReducer({ key: 'homePage', reducer });
+
+export default compose(
+  withReducer,
+  withConnect,
+)(HomePage);
