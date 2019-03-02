@@ -6,7 +6,11 @@ export const messages = {
   windowCopy: {
     'Current position: ': 'Designer at Applied Works',
     'Current location: ': 'London',
-    'Notable mentions: ': 'Creative Review',
+    'Notable mentions: ': ['Gradwatch 2017', 'Creative Review'],
+    mentions_url: [
+      'https://www.creativereview.co.uk/gradwatch-2017-kingstons-graphic-design-degree-show/',
+      'https://www.creativereview.co.uk/new-book-delves-into-the-dystopian-world-of-black-mirror/',
+    ],
     'Background information: ':
       'A creative technologist investigating how digital experiences can be used to enhance day to day life.  Whether it’s screen based or physical, technology plays a role in the work produced. If you have a project you think I can help with, either designing or development please contact me.',
   },

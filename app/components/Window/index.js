@@ -42,6 +42,15 @@ const P = styled.h6`
   font-size: 1.6rem;
 `;
 
+const A = styled.a`
+  font-family: 'Relevant';
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  letter-spacing: 0.1rem;
+  margin-right: 8px;
+`;
+
 function Window(props) {
   const messageKeys = Object.keys(props.message);
   return (
@@ -61,12 +70,37 @@ function Window(props) {
         </CloseBox>
       </TitleBar>
       <CopyBox>
-        {messageKeys.map(key => (
-          <div style={{ marginBottom: '4px' }} key={`message no.${key}`}>
-            <P>{key}</P>
-            <p style={{ display: 'inline' }}>{props.message[key]}</p>
-          </div>
-        ))}
+        {messageKeys.map(key => {
+          if (key !== 'mentions_url') {
+            if (key === 'Notable mentions: ') {
+              return (
+                <div style={{ marginBottom: '4px' }} key={`message no.${key}`}>
+                  <P>{key}</P>
+                  {props.message[key].map((x, index) => (
+                    <A
+                      as="a"
+                      // eslint-disable-next-line react/no-array-index-key
+                      key={`mention link ${index}`}
+                      target="_blank"
+                      href={props.message.mentions_url[index]}
+                      style={{ display: 'inline' }}
+                      rel="noopener"
+                    >
+                      {x}
+                    </A>
+                  ))}
+                </div>
+              );
+            }
+            return (
+              <div style={{ marginBottom: '4px' }} key={`message no.${key}`}>
+                <P>{key}</P>
+                <p style={{ display: 'inline' }}>{props.message[key]}</p>
+              </div>
+            );
+          }
+          return null;
+        })}
       </CopyBox>
     </MainWrapper>
   );
