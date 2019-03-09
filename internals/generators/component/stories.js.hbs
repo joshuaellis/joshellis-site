@@ -1,6 +1,12 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { withKnobs } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 
 import {{ properCase name }} from '../app/components/{{ properCase name }}';
 
-storiesOf('{{ properCase name }}', module).add('default', () => <{{ properCase name }} />);
+const stories = storiesOf('{{ properCase name }}', module);
+
+stories.addDecorator(withKnobs);
+
+stories.add('default', () => (<{{ properCase name }} />));
