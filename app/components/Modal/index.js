@@ -17,23 +17,23 @@ function Modal(props) {
   const ModalContainer = styled.div`
     width: 100vw;
     height: 100vh;
-    display: flex;
     background-color: #1a1a1a;
     opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   `;
 
   return (
     <ModalContainer>
-      <Window title={title} closeWindow={closeWindow}>
-        {message}
-      </Window>
+      <Window title={title} closeWindow={closeWindow} message={message} />
     </ModalContainer>
   );
 }
 
 Modal.propTypes = {
   title: PropTypes.string.isRequired,
-  message: PropTypes.object,
+  message: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   closeWindow: PropTypes.func,
 };
 

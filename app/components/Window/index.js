@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -52,7 +53,10 @@ const A = styled.a`
 `;
 
 function Window(props) {
-  const messageKeys = Object.keys(props.message);
+  let messageKeys = [];
+  if (props.message) {
+    messageKeys = Object.keys(props.message);
+  }
   return (
     <MainWrapper>
       <TitleBar>
@@ -70,44 +74,52 @@ function Window(props) {
         </CloseBox>
       </TitleBar>
       <CopyBox>
-        {messageKeys.map(key => {
-          if (key !== 'mentions_url') {
-            if (key === 'Notable mentions: ') {
+        {typeof props.message === 'string'
+          ? (<div><p>{props.message}</p></div>)
+          : messageKeys.map(key => {
+            if (key !== 'mentions_url') {
+              if (key === 'Notable mentions: ') {
+                return (
+                  <div
+                    style={{ marginBottom: '4px' }}
+                    key={`message no.${key}`}
+                  >
+                    <P>{key}</P>
+                    {props.message[key].map((x, index) => (
+                      <A
+                        as="a"
+                        // eslint-disable-next-line react/no-array-index-key
+                        key={`mention link ${index}`}
+                        target="_blank"
+                        href={props.message.mentions_url[index]}
+                        style={{ display: 'inline' }}
+                        rel="noopener"
+                      >
+                        {x}
+                      </A>
+                    ))}
+                  </div>
+                );
+              }
               return (
-                <div style={{ marginBottom: '4px' }} key={`message no.${key}`}>
+                <div
+                  style={{ marginBottom: '4px' }}
+                  key={`message no.${key}`}
+                >
                   <P>{key}</P>
-                  {props.message[key].map((x, index) => (
-                    <A
-                      as="a"
-                      // eslint-disable-next-line react/no-array-index-key
-                      key={`mention link ${index}`}
-                      target="_blank"
-                      href={props.message.mentions_url[index]}
-                      style={{ display: 'inline' }}
-                      rel="noopener"
-                    >
-                      {x}
-                    </A>
-                  ))}
+                  <p style={{ display: 'inline' }}>{props.message[key]}</p>
                 </div>
               );
             }
-            return (
-              <div style={{ marginBottom: '4px' }} key={`message no.${key}`}>
-                <P>{key}</P>
-                <p style={{ display: 'inline' }}>{props.message[key]}</p>
-              </div>
-            );
-          }
-          return null;
-        })}
+            return null;
+          })}
       </CopyBox>
     </MainWrapper>
   );
 }
 Window.propTypes = {
   title: PropTypes.string.isRequired,
-  message: PropTypes.object,
+  message: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   closeWindow: PropTypes.func,
 };
 
