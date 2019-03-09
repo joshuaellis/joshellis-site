@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 /**
  * NotFoundPage
  *
@@ -12,7 +13,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import MediaQuery from 'react-responsive';
-import ConfusedTravolta from 'assets/images/johnTravolta.gif';
 
 const FlexDiv = styled.div`
   display: flex;
@@ -45,7 +45,11 @@ export default class NotFound extends React.PureComponent {
                 confused as you are.
               </h4>
             </div>
-            <img height="320px" src={ConfusedTravolta} alt="lost travolta" />
+            <img
+              height="320px"
+              src={require('assets/images/johnTravolta.gif')}
+              alt="lost travolta"
+            />
           </MediaQuery>
           <MediaQuery maxDeviceWidth={779}>
             <div>
@@ -58,7 +62,7 @@ export default class NotFound extends React.PureComponent {
             <img
               style={{ marginTop: '32px' }}
               width="100%"
-              src={ConfusedTravolta}
+              src={require('assets/images/johnTravolta.gif')}
               alt="lost travolta"
             />
           </MediaQuery>

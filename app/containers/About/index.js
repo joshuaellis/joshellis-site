@@ -49,6 +49,20 @@ const Img = styled.img`
   transform: translate(-50%, -50%);
 `;
 
+const P = styled.h6`
+  display: inline;
+  font-size: 1.6rem;
+`;
+
+const A = styled.a`
+  font-family: 'Relevant';
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  letter-spacing: 0.1rem;
+  margin-right: 8px;
+`;
+
 /* eslint-disable react/prefer-stateless-function */
 export class About extends React.Component {
   componentWillUnmount() {
@@ -59,6 +73,7 @@ export class About extends React.Component {
 
   render() {
     const { dispatchClose, about, location } = this.props;
+    const messageKeys = Object.keys(messages.windowCopy);
     return (
       <div>
         <Helmet>
@@ -72,7 +87,6 @@ export class About extends React.Component {
           <Wrapper>
             <MobileInfoPanel
               location={location}
-              dispatch={this.props.dispatch}
               message={messages.mobileCopy}
             />
           </Wrapper>
@@ -83,8 +97,47 @@ export class About extends React.Component {
               <Window
                 closeWindow={dispatchClose}
                 title={messages.windowHeader.header}
-                message={messages.windowCopy}
-              />
+              >
+                {messageKeys.map(key => {
+                  if (key !== 'mentions_url') {
+                    if (key === 'Notable mentions: ') {
+                      return (
+                        <div
+                          style={{ marginBottom: '4px' }}
+                          key={`message no.${key}`}
+                        >
+                          <P>{key}</P>
+                          {messages.windowCopy[key].map((x, index) => (
+                            <A
+                              as="a"
+                              // eslint-disable-next-line react/no-array-index-key
+                              key={`mention link ${index}`}
+                              target="_blank"
+                              href={messages.windowCopy.mentions_url[index]}
+                              style={{ display: 'inline' }}
+                              rel="noopener"
+                            >
+                              {x}
+                            </A>
+                          ))}
+                        </div>
+                      );
+                    }
+                    return (
+                      <div
+                        style={{ marginBottom: '4px' }}
+                        key={`message no.${key}`}
+                      >
+                        <P>{key}</P>
+                        <p style={{ display: 'inline' }}>
+                          {messages.windowCopy[key]}
+                        </p>
+                      </div>
+                    );
+                  }
+                  return null;
+                })}
+              </Window>
             ) : null}
           </Wrapper>
           <Img src={Ralph} width="240px" alt="little ralphie wiggum" />
@@ -99,7 +152,6 @@ About.propTypes = {
   location: PropTypes.object.isRequired,
   about: PropTypes.object.isRequired,
   dispatchOpen: PropTypes.func.isRequired,
-  dispatch: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
