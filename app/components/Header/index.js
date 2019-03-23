@@ -6,6 +6,7 @@ import { Route, Switch } from 'react-router-dom';
 import MediaQuery from 'react-responsive';
 import Title from '../Title';
 import Navigation from '../Navigation';
+import DumbNavigation from '../DumbNav';
 
 const Wrapper = styled.div`
   display: flex;
@@ -22,27 +23,26 @@ const Wrapper = styled.div`
   }
 `;
 
-class Header extends React.Component {
-  render() {
-    return (
-      <React.Fragment>
-        <MediaQuery maxDeviceWidth={696}>
-          <Wrapper>
-            <Title standfirst="Creative Technologist">Josh Ellis</Title>
-          </Wrapper>
-        </MediaQuery>
-        <MediaQuery minDeviceWidth={697}>
-          <Wrapper>
-            <Title standfirst="Creative Technologist">Josh Ellis</Title>
-            <Switch>
-              <Route path="/about" render={() => <Navigation />} />
-              <Route path="/work" render={() => <Navigation />} />
-            </Switch>
-          </Wrapper>
-        </MediaQuery>
-      </React.Fragment>
-    );
-  }
+function Header(props) {
+  return (
+    <React.Fragment>
+      <MediaQuery maxDeviceWidth={696}>
+        <Wrapper>
+          <Title standfirst="Creative Technologist">Josh Ellis</Title>
+        </Wrapper>
+      </MediaQuery>
+      <MediaQuery minDeviceWidth={697}>
+        <Wrapper>
+          <Title standfirst="Creative Technologist">Josh Ellis</Title>
+          <Switch>
+            <Route path="/about" render={() => <Navigation />} />
+            <Route path="/work" render={() => <Navigation />} />
+            {props.lost ? <DumbNavigation /> : null}
+          </Switch>
+        </Wrapper>
+      </MediaQuery>
+    </React.Fragment>
+  );
 }
 
 export default Header;

@@ -18,7 +18,7 @@ import reducer from './reducer';
 import { dispatchCloseModal, dispatchOpenModal } from './actions';
 
 /* eslint-disable react/prefer-stateless-function */
-export class Global extends React.PureComponent {
+export class Global extends React.Component {
   render() {
     const { global, openModal, closeModal } = this.props;
     return (

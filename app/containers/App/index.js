@@ -41,7 +41,7 @@ export class App extends React.Component {
         }}
       >
         <GlobalStyle />
-        <Global />
+        <Route path="/" component={Global} />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/work" component={Work} />
