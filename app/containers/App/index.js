@@ -13,19 +13,13 @@
 
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
 import MediaQuery from 'react-responsive';
 
+import Global from 'containers/Global';
 import HomePage from 'containers/HomePage';
 import NotFoundPage from 'containers/NotFoundPage';
 import Work from 'containers/Work';
 import About from 'containers/About';
-import ThreeBackground from 'components/ThreeBackground';
-import Header from 'components/Header';
-import Footer from 'components/Footer';
-
-// Google Analytics
 import ReactGA from 'react-ga';
 import GlobalStyle from '../../global-styles';
 
@@ -46,8 +40,8 @@ export class App extends React.Component {
           overflowX: 'hidden',
         }}
       >
-        <ThreeBackground />
-        <Header />
+        <GlobalStyle />
+        <Global />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/work" component={Work} />
@@ -60,7 +54,7 @@ export class App extends React.Component {
           orientation="landscape"
         >
           <div
-            id="overlay"
+            id="rotate overlay"
             style={{
               height: '100vh',
               width: '100vw',
@@ -100,17 +94,9 @@ export class App extends React.Component {
             </svg>
           </div>
         </MediaQuery>
-        <Footer />
-        <GlobalStyle />
       </div>
     );
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
-const withConnect = connect(mapDispatchToProps);
-export default compose(withConnect)(App);
+export default App;

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -37,7 +38,25 @@ const CopyBox = styled.div`
   margin: 24px 40px 40px 40px;
 `;
 
+const P = styled.h6`
+  display: inline;
+  font-size: 1.6rem;
+`;
+
+const A = styled.a`
+  font-family: 'Relevant';
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  letter-spacing: 0.1rem;
+  margin-right: 8px;
+`;
+
 function Window(props) {
+  let messageKeys = [];
+  if (props.message) {
+    messageKeys = Object.keys(props.message);
+  }
   return (
     <MainWrapper>
       <TitleBar>
@@ -54,14 +73,55 @@ function Window(props) {
           </svg>
         </CloseBox>
       </TitleBar>
-      <CopyBox>{props.children}</CopyBox>
+      <CopyBox>
+        {typeof props.message === 'string' ? (
+          <div>
+            <p>{props.message}</p>
+          </div>
+        ) : (
+          messageKeys.map(key => {
+            if (key !== 'mentions_url') {
+              if (key === 'Notable mentions: ') {
+                return (
+                  <div
+                    style={{ marginBottom: '4px' }}
+                    key={`message no.${key}`}
+                  >
+                    <P>{key}</P>
+                    {props.message[key].map((x, index) => (
+                      <A
+                        as="a"
+                        // eslint-disable-next-line react/no-array-index-key
+                        key={`mention link ${index}`}
+                        target="_blank"
+                        href={props.message.mentions_url[index]}
+                        style={{ display: 'inline' }}
+                        rel="noopener"
+                      >
+                        {x}
+                      </A>
+                    ))}
+                  </div>
+                );
+              }
+              return (
+                <div style={{ marginBottom: '4px' }} key={`message no.${key}`}>
+                  <P>{key}</P>
+                  <p style={{ display: 'inline' }}>{props.message[key]}</p>
+                </div>
+              );
+            }
+            return null;
+          })
+        )}
+      </CopyBox>
     </MainWrapper>
   );
 }
 Window.propTypes = {
   title: PropTypes.string.isRequired,
+  message: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   closeWindow: PropTypes.func,
-  children: PropTypes.any,
 };
 
 export default Window;
