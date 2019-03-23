@@ -23,10 +23,6 @@ const Wrapper = styled.div`
 `;
 
 class Header extends React.Component {
-  shouldComponentUpdate() {
-    return false;
-  }
-
   render() {
     return (
       <React.Fragment>

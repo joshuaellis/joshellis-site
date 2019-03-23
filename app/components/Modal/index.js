@@ -48,6 +48,13 @@ class Modal extends React.PureComponent {
       top: 0;
       z-index: 9999;
     `;
+    const P = styled.h6`
+      display: inline;
+      font-size: 1.6rem;
+    `;
+
+    const messageKeys = Object.keys(message);
+
     const JSX_MODAL = (
       <ModalContainer onClick={this.backgroundCloser}>
         <Window
@@ -55,8 +62,14 @@ class Modal extends React.PureComponent {
           onMouseLeave={this.setHoverState}
           title={title}
           closeWindow={closeWindow}
-          message={message}
-        />
+        >
+          {messageKeys.map(key => (
+            <div style={{ marginBottom: '4px' }} key={`message no.${key}`}>
+              <P>{key}</P>
+              <p style={{ display: 'inline' }}>{message[key]}</p>
+            </div>
+          ))}
+        </Window>
       </ModalContainer>
     );
 
