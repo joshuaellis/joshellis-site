@@ -11,30 +11,57 @@ import styled from 'styled-components';
 
 import Window from '../Window';
 
-/* eslint-disable react/prefer-stateless-function */
-function Modal(props) {
-  const { title, closeWindow, message } = props;
+class Modal extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      windowHover: false,
+    };
+  }
 
-  const ModalContainer = styled.div`
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(26, 26, 26, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 9999;
-  `;
+  backgroundCloser = () => {
+    if (!this.state.windowHover) {
+      this.props.closeWindow();
+    }
+  };
 
-  const JSX_MODAL = (
-    <ModalContainer>
-      <Window title={title} closeWindow={closeWindow} message={message} />
-    </ModalContainer>
-  );
+  setHoverState = () => {
+    if (!this.state.windowHover) {
+      this.setState({ windowHover: true });
+    } else {
+      this.setState({ windowHover: false });
+    }
+  };
 
-  return ReactDOM.createPortal(JSX_MODAL, document.querySelector('#modal'));
+  render() {
+    const { title, closeWindow, message } = this.props;
+
+    const ModalContainer = styled.div`
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(26, 26, 26, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 9999;
+    `;
+    const JSX_MODAL = (
+      <ModalContainer onClick={this.backgroundCloser}>
+        <Window
+          onMouseEnter={this.setHoverState}
+          onMouseLeave={this.setHoverState}
+          title={title}
+          closeWindow={closeWindow}
+          message={message}
+        />
+      </ModalContainer>
+    );
+
+    return ReactDOM.createPortal(JSX_MODAL, document.querySelector('#modal'));
+  }
 }
 
 Modal.propTypes = {

@@ -58,7 +58,10 @@ function Window(props) {
     messageKeys = Object.keys(props.message);
   }
   return (
-    <MainWrapper>
+    <MainWrapper
+      onMouseEnter={props.onMouseEnter}
+      onMouseLeave={props.onMouseLeave}
+    >
       <TitleBar>
         <h6>{props.title}</h6>
         <CloseBox onClick={props.closeWindow}>
@@ -122,6 +125,8 @@ Window.propTypes = {
   title: PropTypes.string.isRequired,
   message: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   closeWindow: PropTypes.func,
+  onMouseLeave: PropTypes.func,
+  onMouseEnter: PropTypes.func,
 };
 
 export default Window;

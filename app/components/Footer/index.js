@@ -57,7 +57,7 @@ function Footer(props) {
           <Wrapper>
             <label
               onClick={props.openModal}
-              style={{ marginTop: 8, width: '100%' }}
+              style={{ marginTop: 8, width: '100%', cursor: 'pointer' }}
             >
               version 2.1
             </label>
