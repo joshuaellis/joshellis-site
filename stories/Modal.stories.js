@@ -5,16 +5,16 @@ import { action } from '@storybook/addon-actions';
 
 import Modal from '../app/components/Modal';
 
-const message = 'this is a test message';
+import { CHANGE_LOG_TEXT } from '../app/content/global.content';
 
 const stories = storiesOf('Modal', module);
 
 stories.addDecorator(withKnobs);
 
-stories.add('default', () => (
+stories.add('Using string', () => (
   <Modal
-    title="Modal Title"
-    message={message}
+    title="Changelog"
+    message={CHANGE_LOG_TEXT}
     closeWindow={action('window closed')}
   />
 ));

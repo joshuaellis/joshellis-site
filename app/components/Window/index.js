@@ -74,9 +74,12 @@ function Window(props) {
         </CloseBox>
       </TitleBar>
       <CopyBox>
-        {typeof props.message === 'string'
-          ? (<div><p>{props.message}</p></div>)
-          : messageKeys.map(key => {
+        {typeof props.message === 'string' ? (
+          <div>
+            <p>{props.message}</p>
+          </div>
+        ) : (
+          messageKeys.map(key => {
             if (key !== 'mentions_url') {
               if (key === 'Notable mentions: ') {
                 return (
@@ -102,17 +105,15 @@ function Window(props) {
                 );
               }
               return (
-                <div
-                  style={{ marginBottom: '4px' }}
-                  key={`message no.${key}`}
-                >
+                <div style={{ marginBottom: '4px' }} key={`message no.${key}`}>
                   <P>{key}</P>
                   <p style={{ display: 'inline' }}>{props.message[key]}</p>
                 </div>
               );
             }
             return null;
-          })}
+          })
+        )}
       </CopyBox>
     </MainWrapper>
   );
