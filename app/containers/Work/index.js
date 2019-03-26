@@ -68,6 +68,7 @@ export class Work extends React.Component {
             content="Josh Ellis is a creative technologist based in London, he is a professional designer and freelance web developer. This page displays a small collection of works that he has had the opportunity to be part of."
           />
         </Helmet>
+        {/* this is for regular mobiles & tablets */}
         <MediaQuery maxDeviceWidth={696}>
           <Wrapper>
             <MobileInfoPanel
@@ -79,6 +80,7 @@ export class Work extends React.Component {
             />
           </Wrapper>
         </MediaQuery>
+        {/* this is for desktop++ */}
         <MediaQuery orientation="landscape" minDeviceWidth={697}>
           <Wrapper>
             <WorkMenu updateProject={updateProject} projects={PROJECTS} />
@@ -89,6 +91,7 @@ export class Work extends React.Component {
             />
           </Wrapper>
         </MediaQuery>
+        {/* this is for landscape tablets */}
         <MediaQuery orientation="portrait" minDeviceWidth={697}>
           <Wrapper style={{ position: 'relative', bottom: '32px' }}>
             <MobileInfoPanel
@@ -122,7 +125,6 @@ function mapDispatchToProps(dispatch) {
     updateProject: (project, bool) =>
       dispatch(updateProjectAction(project, bool)),
     updateText: text => dispatch(updateTextAction(text)),
-    dispatch,
   };
 }
 
