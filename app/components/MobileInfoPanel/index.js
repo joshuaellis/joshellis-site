@@ -3,7 +3,6 @@
 /* eslint-disable react/no-string-refs */
 import React from 'react';
 import styled from 'styled-components';
-import Swipe from 'react-easy-swipe';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
@@ -348,13 +347,11 @@ class MobileInfoPanel extends React.Component {
             flexDirection: 'column',
           }}
         >
-          <Swipe>
-            {this.buildButtons()}
-            <Wrapper>
-              {this.buildCopy()}
-              <ColourLayer />
-            </Wrapper>
-          </Swipe>
+          {this.buildButtons()}
+          <Wrapper>
+            {this.buildCopy()}
+            <ColourLayer />
+          </Wrapper>
         </div>
       );
     }

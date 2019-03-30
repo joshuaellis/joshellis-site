@@ -40,7 +40,6 @@ export class App extends React.Component {
           overflowX: 'hidden',
         }}
       >
-        <GlobalStyle />
         <Route path="/" component={Global} />
         <Switch>
           <Route exact path="/" component={HomePage} />
@@ -94,6 +93,7 @@ export class App extends React.Component {
             </svg>
           </div>
         </MediaQuery>
+        <GlobalStyle />
       </div>
     );
   }

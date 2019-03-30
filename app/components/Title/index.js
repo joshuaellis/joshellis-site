@@ -3,6 +3,22 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
+function Title(props) {
+  return (
+    <Wrapper>
+      <TextWrapper>
+        <h1>
+          <Link exact to="/" activeStyle={{ pointerEvents: 'none' }}>
+            {props.children}
+          </Link>
+        </h1>
+        <h4>{props.standfirst}</h4>
+      </TextWrapper>
+      <ColourLayer />
+    </Wrapper>
+  );
+}
+
 const Link = styled(NavLink)`
   font-family: inherit;
   font-weight: inherit;
@@ -51,22 +67,6 @@ const Wrapper = styled.div`
     height: 80px;
   }
 `;
-
-function Title(props) {
-  return (
-    <Wrapper>
-      <TextWrapper>
-        <h1>
-          <Link exact to="/" activeStyle={{ pointerEvents: 'none' }}>
-            {props.children}
-          </Link>
-        </h1>
-        <h4>{props.standfirst}</h4>
-      </TextWrapper>
-      <ColourLayer />
-    </Wrapper>
-  );
-}
 
 Title.propTypes = {
   standfirst: PropTypes.string.isRequired,

@@ -39,18 +39,19 @@ function Cursor(props) {
   );
 }
 
-const CursorDiv = styled.div(props => ({
-  background: props.background,
+const CursorDiv = styled.div(attrs => ({
   height: '64px',
   width: '64px',
   zIndex: 9999,
   position: 'absolute',
   display: 'flex',
-  left: `${props.x - 32}px`,
-  top: `${props.y - 32}px`,
+  left: `${attrs.x - 32}px`,
+  top: `${attrs.y - 32}px`,
   pointerEvents: 'none',
   mixBlendMode: 'difference',
-  visibility: props.hide ? 'hidden' : 'visible',
+  opacity: attrs.hide ? '0' : '1',
+  visibility: attrs.hide ? 'hidden' : 'visible',
+  transition: 'visibility 0.25s, opacity 0.25s',
 }));
 
 Cursor.propTypes = {

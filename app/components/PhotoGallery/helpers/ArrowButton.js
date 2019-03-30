@@ -15,7 +15,7 @@ function ArrowButton(props) {
       outline: none;
     }
 
-    @media screen and (min-device-width: 1100px) and (-webkit-min-device-pixel-ratio: 2) {
+    @media screen and (min-device-width: 1050px) and (-webkit-min-device-pixel-ratio: 2) {
       opacity: 0;
       transition: opacity 1s;
     }

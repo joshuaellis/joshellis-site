@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 /**
  *
  * PhotoGallery
@@ -9,6 +8,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import MediaQuery from 'react-responsive';
+
 import Cursor from '../Cursor';
 import ArrowButton from './helpers/ArrowButton';
 import ImageContainer from './helpers/ImageContainer';
@@ -18,10 +19,11 @@ class PhotoGallery extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentSlide: 0,
-      slideLimit: this.props.imgArr.length - 1,
+      position: 0,
+      slideLimit: props.imgArr.length,
       leftHandSide: null,
-      imageWidth: null,
+      sliding: false,
+      direction: props.imgArr.length === 2 ? 'prev' : 'next',
     };
     this.hide = false;
     this.imageWidth = 0;
@@ -39,26 +41,23 @@ class PhotoGallery extends React.Component {
   }
 
   handleForwardClick = () => {
-    const { currentSlide, slideLimit, imageWidth } = this.state;
-    if (currentSlide === slideLimit) {
-      this.setState({ currentSlide: 0 });
-    } else {
-      this.setState({ currentSlide: currentSlide + 1 });
-    }
-    console.log(imageWidth);
+    const { position } = this.state;
+    const { imgArr } = this.props;
+    const numItems = imgArr.length;
+    if (numItems === 2 && position === 1) return;
+    this.doSliding('next', position === numItems - 1 ? 0 : position + 1);
   };
 
   handleBackwardClick = () => {
-    const { currentSlide, slideLimit } = this.state;
-    if (currentSlide === 0) {
-      this.setState({ currentSlide: slideLimit });
-    } else {
-      this.setState({ currentSlide: currentSlide - 1 });
-    }
+    const { position } = this.state;
+    const { imgArr } = this.props;
+    const numItems = imgArr.length;
+    if (numItems === 2 && position === 0) return;
+    this.doSliding('prev', position === 0 ? numItems - 1 : position - 1);
   };
 
   handleClose = () => {
-    this.setState({ currentSlide: 0 });
+    this.setState({ position: 0 });
     this.props.closeGallery();
   };
 
@@ -92,9 +91,29 @@ class PhotoGallery extends React.Component {
     this.hide = false;
   };
 
+  doSliding = (direction, position) => {
+    this.setState({
+      sliding: true,
+      direction,
+      position,
+    });
+
+    setTimeout(() => {
+      this.setState({
+        sliding: false,
+      });
+    }, 50);
+  };
+
   render() {
     const { imgArr } = this.props;
-    const { currentSlide, leftHandSide, sliding } = this.state;
+    const {
+      position,
+      leftHandSide,
+      sliding,
+      direction,
+      slideLimit,
+    } = this.state;
     return (
       <GalleryContainer>
         <CloseBox
@@ -112,7 +131,12 @@ class PhotoGallery extends React.Component {
             </g>
           </svg>
         </CloseBox>
-        <ImageContainer currentSlide={currentSlide} sliding={sliding}>
+        <ImageContainer
+          sliding={sliding}
+          direction={direction}
+          position={position}
+          numSlides={slideLimit}
+        >
           {imgArr}
         </ImageContainer>
         <NavContainers onClick={this.handleNavClick}>
@@ -121,12 +145,14 @@ class PhotoGallery extends React.Component {
             handleForwardClick={this.handleForwardClick}
           />
         </NavContainers>
-        <Cursor
-          left={leftHandSide}
-          x={this.horizontalPos}
-          y={this.verticalPos}
-          hide={this.hide}
-        />
+        <MediaQuery minDeviceWidth={1110}>
+          <Cursor
+            left={leftHandSide}
+            x={this.horizontalPos}
+            y={this.verticalPos}
+            hide={this.hide}
+          />
+        </MediaQuery>
       </GalleryContainer>
     );
   }
@@ -171,15 +197,6 @@ const NavContainers = styled.div`
   left: 0;
   top: 0;
 `;
-
-// const measureElement = element => {
-//   // eslint-disable-next-line react/no-find-dom-node
-//   const DOMNode = ReactDOM.findDOMNode(element);
-//   return {
-//     width: DOMNode.offsetWidth,
-//     height: DOMNode.offsetHeight,
-//   };
-// };
 
 PhotoGallery.propTypes = {
   imgArr: PropTypes.array.isRequired,

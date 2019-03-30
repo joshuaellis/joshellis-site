@@ -28,7 +28,8 @@ const image = [
     src: IMG_BE_RIGHT_BACK,
     alt: 'image_03',
     id: 'image_03',
-    caption: 'this is a third image caption',
+    caption:
+      'this is a third image caption that is really long to test on mobile',
   },
 ];
 
