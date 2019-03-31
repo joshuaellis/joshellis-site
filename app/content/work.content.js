@@ -1,3 +1,7 @@
+import IMG_WALDO from '../assets/images/work-images/black-mirror/waldo-2.jpg';
+import IMG_USS_CALLISTER from '../assets/images/work-images/black-mirror/USS-callister.jpg';
+import IMG_BE_RIGHT_BACK from '../assets/images/work-images/black-mirror/Brb-layers-1.jpg';
+
 export const PROJECTS = [
   'Black Mirror',
   'World Forum',
@@ -13,6 +17,7 @@ export const TEXT = {
     `Using the javascript library P5.js I was able to co-create a series of digital tools used to distort imagery taken from the show whether that be a significant icon or still. The artworks were then produced as chapter openers for the book "Inside Black Mirror".`,
     'https://www.insideblackmirror.com/',
     'insideblackmirror.com',
+    true,
   ],
 
   'World Forum': [
@@ -38,5 +43,29 @@ export const TEXT = {
     'Applied Works',
     '2017 - 2018',
     "Through strategy to UX design, any Genesys brief brings brand new challenges that require a rigourous process of interegation to ensure the end result satisfys the audience, stakeholders and client's needs. One of our main tasks is to maintain a robust and detailed UX guideline library to ensure coherent design across any project we undertake from them.",
+  ],
+};
+
+export const IMAGES = {
+  'Black Mirror': [
+    {
+      src: IMG_WALDO,
+      alt: 'image_01',
+      id: 'image_01',
+      caption: 'this is an image caption',
+    },
+    {
+      src: IMG_USS_CALLISTER,
+      alt: 'image_02',
+      id: 'image_02',
+      caption: 'this is a second image caption',
+    },
+    {
+      src: IMG_BE_RIGHT_BACK,
+      alt: 'image_03',
+      id: 'image_03',
+      caption:
+        'this is a third image caption that is really long to test on mobile',
+    },
   ],
 };
