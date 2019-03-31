@@ -15,7 +15,7 @@ import ArrowButton from './helpers/ArrowButton';
 import ImageContainer from './helpers/ImageContainer';
 
 /* eslint-disable react/prefer-stateless-function */
-class PhotoGallery extends React.Component {
+class PhotoGallery extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,12 +24,10 @@ class PhotoGallery extends React.Component {
       leftHandSide: null,
       sliding: false,
       direction: props.imgArr.length === 2 ? 'prev' : 'next',
+      horizontalPos: -100,
+      verticalPos: -100,
+      hide: false,
     };
-    this.hide = false;
-    this.imageWidth = 0;
-    this.offset = 0;
-    this.horizontalPos = 0;
-    this.verticalPos = 0;
   }
 
   componentDidMount() {
@@ -65,12 +63,18 @@ class PhotoGallery extends React.Component {
     e.preventDefault();
     const x = e.screenX;
     const halfWidth = window.innerWidth / 2;
-    this.horizontalPos = e.clientX;
-    this.verticalPos = e.clientY;
     if (x <= halfWidth) {
-      this.setState({ leftHandSide: true });
+      this.setState({
+        leftHandSide: true,
+        horizontalPos: e.clientX,
+        verticalPos: e.clientY,
+      });
     } else {
-      this.setState({ leftHandSide: false });
+      this.setState({
+        leftHandSide: false,
+        horizontalPos: e.clientX,
+        verticalPos: e.clientY,
+      });
     }
   };
 
@@ -84,11 +88,11 @@ class PhotoGallery extends React.Component {
   };
 
   handleMouseEnterClose = () => {
-    this.hide = true;
+    this.setState({ hide: true });
   };
 
   handleMouseLeaveClose = () => {
-    this.hide = false;
+    this.setState({ hide: false });
   };
 
   doSliding = (direction, position) => {
@@ -113,6 +117,9 @@ class PhotoGallery extends React.Component {
       sliding,
       direction,
       slideLimit,
+      horizontalPos,
+      verticalPos,
+      hide,
     } = this.state;
     return (
       <GalleryContainer>
@@ -148,9 +155,9 @@ class PhotoGallery extends React.Component {
         <MediaQuery minDeviceWidth={1110}>
           <Cursor
             left={leftHandSide}
-            x={this.horizontalPos}
-            y={this.verticalPos}
-            hide={this.hide}
+            x={horizontalPos}
+            y={verticalPos}
+            hide={hide}
           />
         </MediaQuery>
       </GalleryContainer>

@@ -22,45 +22,29 @@ import {
   resetWorkAction,
   updateProjectAction,
   updateTextAction,
+  setGalleryBooleanAction,
 } from './actions';
-import { PROJECTS, TEXT } from '../../content/work.content';
+import { PROJECTS, TEXT, IMAGES } from '../../content/work.content';
 import reducer from './reducer';
 import makeSelectWork from './selectors';
+import PhotoGallery from '../../components/PhotoGallery';
 
-const Wrapper = styled.div`
-  height: calc(100vh - 200px - 124px);
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding-right: 72px;
-  padding-left: 34px;
-  z-index: 5;
-  align-items: center;
-  @media (min-height: 1440px) {
-    height: calc(100vh - 680px);
-  }
-  @media (max-width: 1059px) {
-    padding-top: 64px;
-    padding-right: 56px;
-  }
-
-  @media (max-width: 640px) {
-    height: 100%;
-    width: 100%;
-    display: block;
-    padding: 0px 32px 0px 16px;
-  }
-`;
 /* eslint-disable react/prefer-stateless-function */
-export class Work extends React.Component {
+export class Work extends React.PureComponent {
   componentWillUnmount() {
     this.props.resetWork();
   }
 
   render() {
-    const { location, work, updateProject } = this.props;
+    const {
+      location,
+      work,
+      updateProject,
+      openGallery,
+      closeGallery,
+    } = this.props;
     return (
-      <div>
+      <React.Fragment>
         <Helmet>
           <title>Josh Ellis – Work</title>
           <meta
@@ -88,6 +72,7 @@ export class Work extends React.Component {
               text={TEXT}
               project={work.project}
               showProject={work.showProject}
+              openGallery={openGallery}
             />
           </Wrapper>
         </MediaQuery>
@@ -103,16 +88,49 @@ export class Work extends React.Component {
             />
           </Wrapper>
         </MediaQuery>
-      </div>
+        {work.showGallery && IMAGES[work.project] ? (
+          <PhotoGallery
+            imgArr={IMAGES[work.project]}
+            closeGallery={closeGallery}
+          />
+        ) : null}
+      </React.Fragment>
     );
   }
 }
+
+const Wrapper = styled.div`
+  height: calc(100vh - 200px - 124px);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 72px;
+  padding-left: 34px;
+  z-index: 5;
+  align-items: center;
+  @media (min-height: 1440px) {
+    height: calc(100vh - 680px);
+  }
+  @media (max-width: 1059px) {
+    padding-top: 64px;
+    padding-right: 56px;
+  }
+
+  @media (max-width: 640px) {
+    height: 100%;
+    width: 100%;
+    display: block;
+    padding: 0px 32px 0px 16px;
+  }
+`;
 
 Work.propTypes = {
   work: PropTypes.object,
   resetWork: PropTypes.func,
   updateProject: PropTypes.func,
   location: PropTypes.object,
+  openGallery: PropTypes.func,
+  closeGallery: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -125,6 +143,8 @@ function mapDispatchToProps(dispatch) {
     updateProject: (project, bool) =>
       dispatch(updateProjectAction(project, bool)),
     updateText: text => dispatch(updateTextAction(text)),
+    openGallery: () => dispatch(setGalleryBooleanAction(true)),
+    closeGallery: () => dispatch(setGalleryBooleanAction(false)),
   };
 }
 
