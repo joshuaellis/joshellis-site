@@ -1,8 +1,14 @@
 import IMG_WALDO from '../assets/images/work-images/black-mirror/waldo-2.jpg';
 import IMG_USS_CALLISTER from '../assets/images/work-images/black-mirror/USS-callister.jpg';
 import IMG_BE_RIGHT_BACK from '../assets/images/work-images/black-mirror/Brb-layers-1.jpg';
+import IMG_MILLION_MERITS from '../assets/images/work-images/black-mirror/15millymerits.jpg';
+import IMG_ARKANGEL from '../assets/images/work-images/black-mirror/244_Arkangel_ReProof.jpg';
+import IMG_NATIONAL_ANTHEM from '../assets/images/work-images/black-mirror/National-athem-pig-edit.jpg';
+import IMG_NOSEDIVE from '../assets/images/work-images/black-mirror/Nosedive.jpg';
+import IMG_SAN_JUNIPERO from '../assets/images/work-images/black-mirror/San-Junipero.jpg';
 
 export const PROJECTS = [
+  'Blackshaw',
   'Black Mirror',
   'World Forum',
   'Design Council',
@@ -10,11 +16,20 @@ export const PROJECTS = [
 ];
 
 export const TEXT = {
+  Blackshaw: [
+    'Developer',
+    'Freelance',
+    '2019',
+    `Working with design Charlotte Mistry I created a fully bespoke Wordpress theme and plugin for their rebranded front-end. What was important for the client was the flexibility in building their project pages, to do this I created a module backend system to create flexible content blocks. The end result was a light weight theme with minimal libraries and image optimizing.`,
+    'https://www.blackshawinteriordesign.com/',
+    'blackshaw.com',
+  ],
+
   'Black Mirror': [
     'Designer // Developer',
     'Applied Works',
     '2018',
-    `Using the javascript library P5.js I was able to co-create a series of digital tools used to distort imagery taken from the show whether that be a significant icon or still. The artworks were then produced as chapter openers for the book "Inside Black Mirror".`,
+    `Using the javascript library P5.js I was able to co-create a series of digital tools used to distort imagery taken from the show whether that be a significant icon or still. The artworks were then produced as chapter openers for the book "Inside Black Mirror" in collaboration with Zoë Bather & Ebury Publishing.`,
     'https://www.insideblackmirror.com/',
     'insideblackmirror.com',
     true,
@@ -49,23 +64,52 @@ export const TEXT = {
 export const IMAGES = {
   'Black Mirror': [
     {
-      src: IMG_WALDO,
-      alt: 'image_01',
-      id: 'image_01',
-      caption: 'this is an image caption',
+      src: IMG_NATIONAL_ANTHEM,
+      alt: 'Black Mirror – National Anthem',
+      id: 'national-anthem',
+      caption: 'Series 1, Episode 1 – The National Anthem',
     },
     {
-      src: IMG_USS_CALLISTER,
-      alt: 'image_02',
-      id: 'image_02',
-      caption: 'this is a second image caption',
+      src: IMG_MILLION_MERITS,
+      alt: 'Black Mirror – 15 Million Merits',
+      id: 'million-merits',
+      caption: 'Series 1, Episode 2 – 15 Million Merits',
     },
     {
       src: IMG_BE_RIGHT_BACK,
-      alt: 'image_03',
-      id: 'image_03',
-      caption:
-        'this is a third image caption that is really long to test on mobile',
+      alt: 'Black Mirror – Be Right Back',
+      id: 'be-right-back',
+      caption: 'Series 2, Episode 1 – Be Right Back',
+    },
+    {
+      src: IMG_WALDO,
+      alt: 'Black Mirror - The Waldo Moment',
+      id: 'waldo',
+      caption: 'Series 2, Episode 3 – The Waldo Moment',
+    },
+    {
+      src: IMG_NOSEDIVE,
+      alt: 'Black Mirror - Nosedive',
+      id: 'nosedive',
+      caption: 'Series 3, Episode 1 – Nosedive',
+    },
+    {
+      src: IMG_SAN_JUNIPERO,
+      alt: 'Black Mirror - San Junipero',
+      id: 'san-junipero',
+      caption: 'Series 3, Episode 4 – San Junipero',
+    },
+    {
+      src: IMG_USS_CALLISTER,
+      alt: 'Black Mirror - USS Callister',
+      id: 'callister',
+      caption: 'Series 4, Episode 1 – USS Callister',
+    },
+    {
+      src: IMG_ARKANGEL,
+      alt: 'Black Mirror - Arkangel',
+      id: 'arkangel',
+      caption: 'Series 4, Episode 2 – Arkangel',
     },
   ],
 };
