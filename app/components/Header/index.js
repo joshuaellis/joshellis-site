@@ -23,7 +23,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Header = React.memo(props => (
+const Header = props => (
   <React.Fragment>
     <MediaQuery maxDeviceWidth={696}>
       <Wrapper>
@@ -41,6 +41,6 @@ const Header = React.memo(props => (
       </Wrapper>
     </MediaQuery>
   </React.Fragment>
-));
+);
 
 export default Header;
