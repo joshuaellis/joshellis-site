@@ -3,24 +3,8 @@
 /* eslint-disable react/no-string-refs */
 import React from 'react';
 import styled from 'styled-components';
-import Swipe from 'react-easy-swipe';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-
-const ColourLayer = styled.div`
-  background-color: rgba(249, 56, 35, 0.35);
-  width: 100%;
-  height: 100%;
-  position: relative;
-  bottom: calc(100% + 16px);
-  right: 16px;
-  z-index: 1;
-`;
-const Wrapper = styled.div`
-  width: 100%;
-  height: calc(38vh - 0px);
-  margin: 16px;
-`;
 
 class MobileInfoPanel extends React.Component {
   constructor(props) {
@@ -32,24 +16,6 @@ class MobileInfoPanel extends React.Component {
   }
 
   buildCopy = () => {
-    const TextWrapper = styled.div`
-      background-color: rgba(271, 59, 255, 0.35);
-      text-align: left;
-      padding: 12px 32px 24px 16px;
-      width: 100%;
-      height: 100%;
-      position: relative;
-      z-index: 10;
-      margin-bottom: auto;
-      @media (max-width: 320px) {
-        padding: 8px 32px 24px 16px;
-      }
-    `;
-    const Span = styled.span`
-      font-family: 'FRAC-Regular';
-      font-weight: 400;
-      letter-spacing: -0.01em;
-    `;
     let text = this.props.message;
     if (this.location === 'about') {
       return (
@@ -125,33 +91,6 @@ class MobileInfoPanel extends React.Component {
   };
 
   buildButtons = () => {
-    const HeadingWrapper = styled.div`
-      min-width: 258px;
-      display: flex;
-      margin: 0px auto 32px auto;
-      position: relative;
-      left: 8px;
-      justify-content: space-between;
-      @media (max-width: 320px) {
-        margin-bottom: 8px;
-      }
-    `;
-    const A = styled(Link)`
-      &:focus {
-        outline: none;
-      }
-    `;
-    const SVG = styled.svg`
-      width: 24px;
-      height: 24px;
-    `;
-    const Label = styled.span`
-      font-family: 'FRAC-Bold';
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      font-size: 12px;
-    `;
-
     if (this.location === 'about') {
       return (
         <HeadingWrapper>
@@ -348,19 +287,76 @@ class MobileInfoPanel extends React.Component {
             flexDirection: 'column',
           }}
         >
-          <Swipe>
-            {this.buildButtons()}
-            <Wrapper>
-              {this.buildCopy()}
-              <ColourLayer />
-            </Wrapper>
-          </Swipe>
+          {this.buildButtons()}
+          <Wrapper>
+            {this.buildCopy()}
+            <ColourLayer />
+          </Wrapper>
         </div>
       );
     }
     return null;
   }
 }
+
+const HeadingWrapper = styled.div`
+  min-width: 258px;
+  display: flex;
+  margin: 0px auto 32px auto;
+  position: relative;
+  left: 8px;
+  justify-content: space-between;
+  @media (max-width: 320px) {
+    margin-bottom: 8px;
+  }
+`;
+const A = styled(Link)`
+  &:focus {
+    outline: none;
+  }
+`;
+const SVG = styled.svg`
+  width: 24px;
+  height: 24px;
+`;
+const Label = styled.span`
+  font-family: 'FRAC-Bold';
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  font-size: 12px;
+`;
+const ColourLayer = styled.div`
+  background-color: rgba(249, 56, 35, 0.35);
+  width: 100%;
+  height: 100%;
+  position: relative;
+  bottom: calc(100% + 16px);
+  right: 16px;
+  z-index: 1;
+`;
+const Wrapper = styled.div`
+  width: 100%;
+  height: calc(38vh - 0px);
+  margin: 16px;
+`;
+const TextWrapper = styled.div`
+  background-color: rgba(271, 59, 255, 0.35);
+  text-align: left;
+  padding: 12px 32px 24px 16px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 10;
+  margin-bottom: auto;
+  @media (max-width: 320px) {
+    padding: 8px 32px 24px 16px;
+  }
+`;
+const Span = styled.span`
+  font-family: 'FRAC-Regular';
+  font-weight: 400;
+  letter-spacing: -0.01em;
+`;
 
 MobileInfoPanel.propTypes = {
   projectList: PropTypes.array,

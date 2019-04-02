@@ -12,14 +12,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import './WorkMenu.css';
 
-const SVG = styled.svg`
-  width: 20px;
-  position: relative;
-  top: 35px;
-  margin-right: 10px;
-  margin-top: -4px;
-`;
-
 /* eslint-disable react/prefer-stateless-function */
 function WorkMenu(props) {
   const handleHoverOn = e => {
@@ -48,16 +40,7 @@ function WorkMenu(props) {
   };
   const projectLength = props.projects.length;
   return (
-    <div
-      style={{
-        whiteSpace: 'nowrap',
-        marginTop: '-88px',
-        height: '336px',
-        overflowY: 'hidden',
-        paddingRight: '24px',
-        overflowX: 'hidden',
-      }}
-    >
+    <Div>
       <ul>
         {props.projects.map((x, index) => (
           <li data-tag={x} id="parentLi" key={x}>
@@ -89,9 +72,25 @@ function WorkMenu(props) {
         ))}
         )}
       </ul>
-    </div>
+    </Div>
   );
 }
+
+const SVG = styled.svg`
+  width: 20px;
+  position: relative;
+  top: 35px;
+  margin-right: 10px;
+  margin-top: -4px;
+`;
+
+const Div = styled.div`
+  whitespace: nowrap;
+  margin-top: -88px;
+  height: 336px;
+  padding-right: 24px;
+  overflow-x: hidden;
+`;
 
 WorkMenu.propTypes = {
   projects: PropTypes.array.isRequired,

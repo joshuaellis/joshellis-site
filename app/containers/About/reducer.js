@@ -11,9 +11,9 @@ export const initialState = fromJS({ windowShowing: true });
 function aboutReducer(state = initialState, action) {
   switch (action.type) {
     case 'CLOSE_WINDOW':
-      return fromJS({ ...state, windowShowing: false });
+      return state.set('windowShowing', false);
     case 'OPEN_WINDOW':
-      return fromJS({ ...state, windowShowing: true });
+      return state.set('windowShowing', true);
     default:
       return state;
   }

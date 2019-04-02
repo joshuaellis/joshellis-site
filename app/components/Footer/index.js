@@ -2,7 +2,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import MediaQuery from 'react-responsive';
-import PropTypes from 'prop-types';
 import Modal from 'components/Modal';
 
 import { CHANGE_LOG_TEXT } from 'content/global.content';
@@ -28,51 +27,61 @@ const Wrapper = styled.div`
   }
 `;
 
-function Footer(props) {
-  return (
-    <React.Fragment>
-      {props.modalState ? (
-        <Modal
-          id="changelog_modal"
-          title="Changelog"
-          message={CHANGE_LOG_TEXT}
-          closeWindow={props.closeModal}
-        />
-      ) : null}
+export default class Footer extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showModal: false,
+    };
+  }
+
+  showModal = () => {
+    this.setState({ showModal: true });
+  };
+
+  hideModal = () => {
+    this.setState({ showModal: false });
+  };
+
+  render() {
+    const { showModal } = this.state;
+    return (
       <React.Fragment>
-        <MediaQuery maxDeviceWidth={696}>
-          <Wrapper
-            style={{
-              padding: '0',
-              paddingLeft: '40px',
-              paddingRight: '16px',
-              bottom: '48px',
-              height: '0px',
-            }}
-          >
-            <Social />
-          </Wrapper>
-        </MediaQuery>
-        <MediaQuery minDeviceWidth={697}>
-          <Wrapper>
-            <label
-              onClick={props.openModal}
-              style={{ marginTop: 8, width: '100%', cursor: 'pointer' }}
+        {showModal ? (
+          <Modal
+            id="changelog_modal"
+            title="Changelog"
+            message={CHANGE_LOG_TEXT}
+            closeWindow={this.hideModal}
+          />
+        ) : null}
+        <React.Fragment>
+          <MediaQuery maxDeviceWidth={696}>
+            <Wrapper
+              style={{
+                padding: '0',
+                paddingLeft: '40px',
+                paddingRight: '16px',
+                bottom: '48px',
+                height: '0px',
+              }}
             >
-              version 2.1
-            </label>
-            <Social />
-          </Wrapper>
-        </MediaQuery>
+              <Social />
+            </Wrapper>
+          </MediaQuery>
+          <MediaQuery minDeviceWidth={697}>
+            <Wrapper>
+              <label
+                onClick={this.showModal}
+                style={{ marginTop: 8, width: '100%', cursor: 'pointer' }}
+              >
+                version 2.1
+              </label>
+              <Social />
+            </Wrapper>
+          </MediaQuery>
+        </React.Fragment>
       </React.Fragment>
-    </React.Fragment>
-  );
+    );
+  }
 }
-
-Footer.propTypes = {
-  openModal: PropTypes.func,
-  closeModal: PropTypes.func,
-  modalState: PropTypes.bool,
-};
-
-export default Footer;

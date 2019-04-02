@@ -10,20 +10,19 @@ export const initialState = fromJS({
   showProject: false,
   project: 'none',
   text: 'none',
+  showGallery: false,
 });
 
 function workReducer(state = initialState, action) {
   switch (action.type) {
     case 'UPDATE_PROJECT':
-      return fromJS({
-        ...state,
-        showProject: action.showProject,
-        project: action.project,
-      });
+      return state.set('project', action.project).set('showProject', true);
     case 'UPDATE_TEXT':
-      return fromJS({ ...state, text: action.text });
+      return state.set('text', action.text);
     case 'RESET_WORK':
-      return fromJS({ ...state, showProject: false });
+      return state.set('showProject', false);
+    case 'SET_GALLERY_BOOL':
+      return state.set('showGallery', action.showGallery);
     default:
       return state;
   }
