@@ -8,15 +8,26 @@ import IMG_NOSEDIVE from '../assets/images/work-images/black-mirror/Nosedive.jpg
 import IMG_SAN_JUNIPERO from '../assets/images/work-images/black-mirror/San-Junipero.jpg';
 
 export const PROJECTS = [
-  'Blackshaw',
+  // 'Giles Revell',
+  'Blackshaw Interior',
   'Black Mirror',
+  // 'Hoffmann Centre',
   'World Forum',
   'Design Council',
   'Genesys',
 ];
 
 export const TEXT = {
-  Blackshaw: [
+  'Giles Revell': [
+    'Designer // Developer',
+    'Freelance',
+    '2019',
+    'This is about the project',
+    'https://www.cartographiccolour.com/',
+    'cartographiccolour.com',
+  ],
+
+  'Blackshaw Interior': [
     'Developer',
     'Freelance',
     '2019',
@@ -33,6 +44,15 @@ export const TEXT = {
     'https://www.insideblackmirror.com/',
     'insideblackmirror.com',
     true,
+  ],
+
+  'Hoffmann Centre': [
+    'Designer',
+    'Applied Works',
+    '2018',
+    'About the project',
+    'https://hoffmanncentre.chathamhouse.org/',
+    'hoffmanncentre.org',
   ],
 
   'World Forum': [
