@@ -9,6 +9,10 @@ const Link = styled(NavLink)`
   margin-left: 32px;
   text-decoration: none;
   letter-spacing: 0.05rem;
+
+  @media (min-width: 1920px) {
+    font-size: 2rem;
+  }
 `;
 
 function Navigation() {
