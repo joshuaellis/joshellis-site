@@ -20,11 +20,11 @@ function InfoPanel(props) {
                 <P>
                   <Span>Studio: </Span> {text[1]}
                 </P>
+              </Col01>
+              <Col02>
                 <P>
                   <Span>Year: </Span> {text[2]}
                 </P>
-              </Col01>
-              <Col02>
                 {text[4] ? (
                   <P>
                     <Span>See here: </Span>
@@ -37,14 +37,6 @@ function InfoPanel(props) {
                     </a>
                   </P>
                 ) : null}
-                {text[6] ? (
-                  <P>
-                    <Span>Images: </Span>
-                    <Button onClick={openGallery} type="button">
-                      Click here
-                    </Button>
-                  </P>
-                ) : null}
               </Col02>
             </TopSection>
             <BottomSection>
@@ -52,6 +44,14 @@ function InfoPanel(props) {
                 <Span>INFO: </Span>
                 {text[3]}
               </P>
+              {text[6] ? (
+                <P>
+                  <Span>Images: </Span>
+                  <Button onClick={openGallery} type="button">
+                    Click here
+                  </Button>
+                </P>
+              ) : null}
             </BottomSection>
           </ContentContainer>
         ) : (
