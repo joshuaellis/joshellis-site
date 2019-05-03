@@ -38,7 +38,7 @@ export class About extends React.Component {
         <Helmet>
           <title>Josh Ellis – About</title>
         </Helmet>
-        <MediaQuery maxDeviceWidth={768}>
+        <MediaQuery maxDeviceWidth={767}>
           <Wrapper>
             <MobileInfoPanel
               location={location}
@@ -46,7 +46,7 @@ export class About extends React.Component {
             />
           </Wrapper>
         </MediaQuery>
-        <MediaQuery minDeviceWidth={769}>
+        <MediaQuery minDeviceWidth={768}>
           <Wrapper>
             {about.windowShowing === true ? (
               <Window
@@ -117,7 +117,8 @@ const Wrapper = styled.div`
     padding: 10%;
   }
   @media (min-width: 768px) {
-    padding: 0px 15% 15% 15%;
+    padding: 0%;
+    padding-bottom: 15%;
     display: flex;
     align-items: center;
     justify-content: center;

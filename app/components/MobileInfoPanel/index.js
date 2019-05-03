@@ -1,19 +1,16 @@
-/* eslint-disable indent */
 /* eslint-disable no-nested-ternary */
-/* eslint-disable react/jsx-no-comment-textnodes */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable react/no-string-refs */
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-// import { Link } from 'react-router-dom';
 
 class MobileInfoPanel extends React.Component {
   constructor(props) {
     super(props);
     this.location = props.location.pathname.replace(/\//gi, '');
     this.swipeDirection = null;
-    props.updateProject ? props.updateProject('Giles Revell') : null;
+    if (props.updateProject) {
+      props.updateProject('Giles Revell');
+    }
   }
 
   handleForwardClick = () => {
@@ -80,7 +77,7 @@ class MobileInfoPanel extends React.Component {
             </ButtonSpan>
             <H2 location={this.location}>
               <Label>
-                //0
+                {`//0`}
                 {this.location === 'work' ? val + 1 : '0'}
               </Label>
               {this.location === 'work' ? this.props.project : 'About'}
