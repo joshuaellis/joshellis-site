@@ -38,6 +38,7 @@ export class App extends React.Component {
   render() {
     return (
       <AppContainer>
+        <GlobalStyle />
         <ThreeBackground />
         <Header />
         <Switch>
@@ -54,7 +55,6 @@ export class App extends React.Component {
           <RotateScreen />
         </MediaQuery>
         <Footer />
-        <GlobalStyle />
       </AppContainer>
     );
   }
