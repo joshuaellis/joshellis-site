@@ -57,11 +57,13 @@ export class Work extends React.PureComponent {
               project={work.project}
               projectList={PROJECTS}
               message={TEXT}
+              openGallery={openGallery}
+              imgArr={IMAGES[work.project]}
             />
           </MobileWrapper>
         </MediaQuery>
         {/* this is for desktop++ */}
-        <MediaQuery orientation="landscape" minWidth={1024}>
+        <MediaQuery minWidth={1024}>
           <Wrapper>
             <WorkMenu updateProject={updateProject} projects={PROJECTS} />
             <InfoPanel

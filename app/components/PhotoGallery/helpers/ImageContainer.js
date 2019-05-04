@@ -8,15 +8,14 @@ function ImageContainer(props) {
   const getOrder = itemIndex => {
     const numItems = children.length;
     if (numItems === 2) return itemIndex;
-
-    if (itemIndex - position < 0)
+    if (itemIndex - position < 0) {
       return numItems - Math.abs(itemIndex - position);
+    }
     return itemIndex - position;
   };
   return (
     <Container>
       <Wrapper>
-        {/* why not in middle??!?!?!?!?!?!?!?!?!? */}
         <OverflowContainer
           sliding={sliding}
           direction={direction}
@@ -82,7 +81,7 @@ const OverflowContainer = styled.div`
     }
     if (!props.sliding) return 'translateX(calc(-100% - 32px))';
     if (props.direction === 'prev')
-      return 'translateX(calc(2 * (-100% - 20px)))';
+      return 'translateX(calc(2 * (-100% - 32px)))';
     return 'translateX(0%)';
   }};
 `;
