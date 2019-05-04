@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable no-nested-ternary */
 import React from 'react';
 import styled from 'styled-components';
@@ -130,10 +131,35 @@ class MobileInfoPanel extends React.Component {
                       </A>
                     </P>
                   ) : null}
-                  <P style={{ marginTop: '16px' }}>
+                  <P style={{ margin: '16px 0px' }}>
                     <Span>Info: </Span>
                     {text[3]}
                   </P>
+                  {text[6] ? (
+                    <React.Fragment>
+                      <P>
+                        <Span>Images: </Span>
+                        <Button onClick={this.props.openGallery} type="button">
+                          Click here
+                        </Button>
+                      </P>
+                      <ImagesContainer>
+                        {this.props.imgArr.map(x => (
+                          <React.Fragment>
+                            <IMG src={x.src} alt={x.alt} id={x.id} />
+                            <p
+                              style={{
+                                width: '100%',
+                                margin: '4px 0px 24px 0px',
+                              }}
+                            >
+                              {x.caption}
+                            </p>
+                          </React.Fragment>
+                        ))}
+                      </ImagesContainer>
+                    </React.Fragment>
+                  ) : null}
                 </React.Fragment>
               ) : (
                 <p>Something went wrong...</p>
@@ -211,14 +237,13 @@ const TextWrapper = styled.div`
   height: 100%;
   z-index: 10;
   margin-left: 16px;
-  margin-right: 16px;
   @media (min-width: 544px) {
     padding: 12px 40px 32px 24px;
   }
 `;
 const ColourLayer = styled.div`
   background-color: rgba(249, 56, 35, 0.35);
-  width: calc(100% - 64px);
+  width: calc(100% - 48px);
   position: absolute;
   height: 100%;
   bottom: 16px;
@@ -238,12 +263,37 @@ const A = styled.a`
   margin-right: 12px;
 `;
 
+const Button = styled.button`
+  padding: 0px;
+  margin: 0px;
+  display: none;
+  text-decoration: underline;
+  @media (min-width: 768px) {
+    display: block;
+  }
+`;
+
+const ImagesContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
+const IMG = styled.img`
+  width: 100%;
+`;
+
 MobileInfoPanel.propTypes = {
   projectList: PropTypes.array,
   updateProject: PropTypes.func,
   project: PropTypes.string,
   message: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   location: PropTypes.object,
+  openGallery: PropTypes.func,
+  imgArr: PropTypes.array,
 };
 
 export default MobileInfoPanel;

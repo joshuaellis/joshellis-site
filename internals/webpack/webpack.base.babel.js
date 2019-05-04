@@ -78,11 +78,12 @@ module.exports = options => ({
             loader: 'image-webpack-loader',
             options: {
               mozjpeg: {
-                enabled: false,
+                // enabled: false,
                 // NOTE: mozjpeg is disabled as it causes errors in some Linux environments
                 // Try enabling it in your environment by switching the config to:
-                // enabled: true,
-                // progressive: true,
+                enabled: true,
+                progressive: true,
+                quality: 75,
               },
               gifsicle: {
                 interlaced: false,

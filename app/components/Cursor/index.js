@@ -12,6 +12,8 @@ import styled from 'styled-components';
 function Cursor(props) {
   const svgStyle = {
     fill: 'rgba(255,255,255,1)',
+    width: '100%',
+    height: '100%',
   };
   if (props.left) {
     return (

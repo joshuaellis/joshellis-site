@@ -32,11 +32,19 @@ class PhotoGallery extends React.PureComponent {
 
   componentDidMount() {
     window.addEventListener('mousemove', this.getMouseLocation);
+    document.addEventListener('keydown', this.handleEsc, false);
   }
 
   componentWillUnmount() {
     window.removeEventListener('mousemove', this.getMouseLocation);
+    document.removeEventListener('keydown', this.handleEsc, false);
   }
+
+  handleEsc = e => {
+    if (e.keyCode === 27) {
+      this.props.closeGallery();
+    }
+  };
 
   handleForwardClick = () => {
     const { position } = this.state;

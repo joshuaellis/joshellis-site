@@ -151,6 +151,9 @@ const GlobalStyle = createGlobalStyle`
     line-height:2.0rem;
       letter-spacing:0.1rem;
   }
+  button{
+    font-family:'Relevant', Helvetica, sans-serif;
+  }
   label{
     font-family:'FRAC-Medium', Helvetica, sans-serif;
     font-weight: 500;
