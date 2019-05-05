@@ -18,8 +18,10 @@ const Wrapper = styled.div`
   justify-content: center;
   height: 100%;
   @media (min-width: 768px) {
+    height: 100%;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     padding: 40px 120px;
   }
   @media (min-width: 1024px) {
