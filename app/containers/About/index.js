@@ -118,6 +118,12 @@ const Wrapper = styled.div`
   }
   @media (min-width: 768px) {
     padding: 0px 15% 15% 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @media (min-width: 1920px) {
+    padding: 5% 15% 9% 15%;
   }
 `;
 

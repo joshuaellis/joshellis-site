@@ -36,7 +36,9 @@ const Wrapper = styled.div`
     width: 360px;
     float: left;
   }
-  @media (min-width: 1024px) {
+  @media (min-width: 1920px) {
+    height: 184px;
+    width: 440px;
   }
 `;
 const TextWrapper = styled.div`

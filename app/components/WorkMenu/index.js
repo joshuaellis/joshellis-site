@@ -41,7 +41,7 @@ function WorkMenu(props) {
   const projectLength = props.projects.length;
   return (
     <Div>
-      <ul>
+      <List>
         {props.projects.map((x, index) => (
           <li data-tag={x} id="parentLi" key={x}>
             {index + 1 === projectLength ? (
@@ -71,7 +71,7 @@ function WorkMenu(props) {
           </li>
         ))}
         )}
-      </ul>
+      </List>
     </Div>
   );
 }
@@ -85,11 +85,15 @@ const SVG = styled.svg`
 `;
 
 const Div = styled.div`
-  whitespace: nowrap;
-  margin-top: -88px;
-  height: 336px;
-  padding-right: 24px;
+  white-space: nowrap;
   overflow-x: hidden;
+  grid-column: 1;
+  height: calc((100vh / 9) * 4.5);
+`;
+
+const List = styled.ul`
+  padding-left: 48px;
+  margin: 0px;
 `;
 
 WorkMenu.propTypes = {
