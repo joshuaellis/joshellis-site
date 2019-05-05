@@ -3,30 +3,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import MediaQuery from 'react-responsive';
 
 function InfoPanel(props) {
   const { project, showProject, openGallery } = props;
   const text = props.text[project];
   return (
     <Wrapper>
-      <TextWrapper>
-        {showProject ? (
-          <ContentContainer>
-            <TopSection>
-              <Col01>
-                <P>
+      <MediaQuery minWidth={1060}>
+        <TextWrapper>
+          {showProject ? (
+            <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+              <section style={{ minWidth: '272px', marginRight: '48px' }}>
+                <p style={{ marginBottom: '16px' }}>
                   <Span>Role: </Span> {text[0]}
-                </P>
-                <P>
+                </p>
+                <p style={{ marginBottom: '16px' }}>
                   <Span>Studio: </Span> {text[1]}
-                </P>
-                <P>
+                </p>
+                <p style={{ marginBottom: '16px' }}>
                   <Span>Year: </Span> {text[2]}
-                </P>
-              </Col01>
-              <Col02>
+                </p>
                 {text[4] ? (
-                  <P>
+                  <p style={{ marginBottom: '16px' }}>
                     <Span>See here: </Span>
                     <a
                       target="_blank"
@@ -35,80 +34,145 @@ function InfoPanel(props) {
                     >
                       {text[5]}
                     </a>
-                  </P>
+                  </p>
                 ) : null}
                 {text[6] ? (
-                  <P>
+                  <p>
                     <Span>Images: </Span>
                     <Button onClick={openGallery} type="button">
                       Click here
                     </Button>
-                  </P>
+                  </p>
                 ) : null}
-              </Col02>
-            </TopSection>
-            <BottomSection>
-              <P>
-                <Span>INFO: </Span>
-                {text[3]}
-              </P>
-            </BottomSection>
-          </ContentContainer>
-        ) : (
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <p style={{ alignSelf: 'center', marginTop: '15%' }}>
-              <Span>Select a project to view</Span>
-            </p>
-          </div>
-        )}
-      </TextWrapper>
+              </section>
+              <section style={{ maxWidth: '312px' }}>
+                <p>
+                  <Span>INFO: </Span>
+                  {text[3]}
+                </p>
+              </section>
+            </div>
+          ) : (
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <p style={{ alignSelf: 'center', marginTop: '15%' }}>
+                <Span>Select a project to view</Span>
+              </p>
+            </div>
+          )}
+        </TextWrapper>
+      </MediaQuery>
+      <MediaQuery maxWidth={1059}>
+        <TextWrapper>
+          {showProject ? (
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'flex-start',
+              }}
+            >
+              <section style={{ display: 'flex' }}>
+                <section
+                  style={{
+                    display: 'inline-block',
+                    marginRight: '16px',
+                    minWidth: '208px',
+                  }}
+                >
+                  <P>
+                    <Span>Role: </Span> {text[0]}
+                  </P>
+                  <P>
+                    <Span>Year: </Span> {text[2]}
+                  </P>
+                </section>
+                <section style={{ display: 'inline-block' }}>
+                  <P>
+                    <Span>Studio: </Span> {text[1]}
+                  </P>
+                  {/* Does this project have a URL? */}
+                  {text[4] ? (
+                    <p style={{ marginTop: '16px' }}>
+                      <Span>See here: </Span>
+                      <a
+                        target="_blank"
+                        style={{ textDecoration: 'none' }}
+                        href={text[4]}
+                      >
+                        {text[5]}
+                      </a>
+                    </p>
+                  ) : null}
+                  {text[6] ? (
+                    <p>
+                      <Span>Images: </Span>
+                      <Button onClick={openGallery} type="button">
+                        Click here
+                      </Button>
+                    </p>
+                  ) : null}
+                </section>
+              </section>
+              <section style={{ display: 'block' }}>
+                <p>
+                  <Span>INFO: </Span>
+                  {text[3]}
+                </p>
+              </section>
+            </div>
+          ) : (
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <p style={{ alignSelf: 'center', marginTop: '15%' }}>
+                <Span>Select a project to view</Span>
+              </p>
+            </div>
+          )}
+        </TextWrapper>
+      </MediaQuery>
       <ColourLayer />
     </Wrapper>
   );
 }
 
-const Wrapper = styled.div`
-  grid-column: 2;
-  padding: 16px 48px 48px 48px;
-  position: relative;
-  @media (min-width: 1280px) {
-    padding: 16px 48px 48px 96px;
-  }
-  @media (min-width: 1920px) {
-  }
-`;
-
 const TextWrapper = styled.div`
   background-color: rgba(271, 59, 255, 0.35);
+  text-align: left;
   padding: 16px 40px 32px 24px;
   width: 100%;
   height: 100%;
   position: relative;
   z-index: 10;
-  @media (min-width: 1280px) {
-    padding: 24px 64px 40px 32px;
-  }
-  @media (min-width: 1920px) {
-  }
+  margin-bottom: auto;
 `;
 const ColourLayer = styled.div`
   background-color: rgba(249, 56, 35, 0.35);
-  width: calc(100% - 106px);
-  height: calc(100% - 64px);
-  position: absolute;
-  bottom: 80px;
-  right: 88px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  bottom: calc(100% + 24px);
+  right: 24px;
   z-index: 1;
-  @media (min-width: 1280px) {
-    width: calc(100% - 154px);
-  }
-  @media (min-width: 1920px) {
+`;
+const Wrapper = styled.div`
+  width: 672px;
+  height: 344px;
+  margin-top: -64px;
+
+  @media (max-width: 1059px) {
+    width: 544px;
+    height: 320px;
   }
 `;
 
@@ -121,29 +185,6 @@ const Span = styled.span`
 const P = styled.p`
   margin-bottom: 16px;
 `;
-
-const ContentContainer = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-`;
-
-const TopSection = styled.section`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-`;
-
-const Col01 = styled.div`
-  grid-column: 1;
-  padding-right: 16px;
-`;
-
-const Col02 = styled.div`
-  grid-column: 2;
-  padding-left: 16px;
-`;
-
-const BottomSection = styled.section``;
 
 const Button = styled.button`
   padding: 0px;

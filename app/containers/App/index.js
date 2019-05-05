@@ -68,16 +68,9 @@ const AppContainer = styled.div`
   width: 100%;
   @media (min-width: 768px) {
     grid-template-rows: 204px 7fr 102px;
-    height: 100vh;
   }
 
-  @media (min-width: 1280px) {
-    padding: 16px 40px;
-  }
-
-  @media (min-width: 1920px) {
-    grid-template-rows: 240px 7fr 120px;
-    padding: 32px 64px;
+  @media (min-width: 1024px) {
   }
 `;
 

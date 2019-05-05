@@ -17,14 +17,6 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   height: 100%;
-  @media (min-width: 768px) {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 40px 120px;
-  }
-  @media (min-width: 1024px) {
-    padding: 40px 20vw;
-  }
 `;
 
 const H2 = styled.h2`
@@ -40,12 +32,6 @@ const Link = styled(NavLink)`
   letter-spacing: 0.05rem;
   display: inline-block;
   margin-bottom: 20%;
-  @media (min-width: 768px) {
-    font-size: 3.2rem;
-  }
-  @media (min-width: 1920px) {
-    font-size: 4rem;
-  }
 `;
 
 export default LargeNavigation;

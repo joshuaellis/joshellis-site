@@ -49,7 +49,7 @@ export class Work extends React.PureComponent {
           <title>Josh Ellis – Work</title>
         </Helmet>
         {/* this is for regular mobiles & tablets */}
-        <MediaQuery maxWidth={1023}>
+        <MediaQuery maxDeviceWidth={800}>
           <MobileWrapper>
             <MobileInfoPanel
               updateProject={updateProject}
@@ -61,7 +61,7 @@ export class Work extends React.PureComponent {
           </MobileWrapper>
         </MediaQuery>
         {/* this is for desktop++ */}
-        <MediaQuery orientation="landscape" minWidth={1024}>
+        <MediaQuery orientation="landscape" minDeviceWidth={900}>
           <Wrapper>
             <WorkMenu updateProject={updateProject} projects={PROJECTS} />
             <InfoPanel
@@ -96,14 +96,25 @@ const MobileWrapper = styled.div`
 `;
 
 const Wrapper = styled.div`
-  height: 100%;
-  display: grid;
-  grid-template-columns: 3fr 4fr;
-  @media (min-width: 1280px) {
-    padding: 12px 0px;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 72px;
+  padding-left: 34px;
+  z-index: 5;
+  align-items: center;
+  @media (min-height: 1440px) {
+    height: calc(100vh - 680px);
   }
-  @media (min-width: 1920px) {
-    padding: 24px 0px;
+  @media (max-width: 1059px) {
+    padding-top: 64px;
+    padding-right: 56px;
+  }
+
+  @media (max-width: 640px) {
+    height: 100%;
+    width: 100%;
+    display: block;
+    padding: 0px 32px 0px 16px;
   }
 `;
 

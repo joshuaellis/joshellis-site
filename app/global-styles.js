@@ -209,25 +209,6 @@ const GlobalStyle = createGlobalStyle`
       line-height:2.4rem;
     }
   }
-
-  @media only screen and (min-width: 1920px){
-    h1{
-      font-size:6.4rem;
-    }
-    h2{
-      font-size:4.0rem;
-    }
-    h4{
-      font-size:2.4rem;
-    }
-    h6{
-      font-size:2.2rem;
-    }
-    p{
-      font-size:1.8rem;
-      line-height:2.6rem;
-    }
-  }
 `;
 
 export default GlobalStyle;

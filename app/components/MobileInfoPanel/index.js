@@ -203,7 +203,6 @@ const Wrapper = styled.div`
   grid-row: 2;
   padding: 0px 16px;
   margin: 24px 0px;
-  position: relative;
   @media (min-width: 544px) {
     margin: 32px 0px;
   }
@@ -211,21 +210,21 @@ const Wrapper = styled.div`
 const TextWrapper = styled.div`
   background-color: rgba(271, 59, 255, 0.35);
   padding: 8px 32px 24px 16px;
+  position: relative;
   height: 100%;
   z-index: 10;
   margin-left: 16px;
-  margin-right: 16px;
   @media (min-width: 544px) {
     padding: 12px 40px 32px 24px;
   }
 `;
 const ColourLayer = styled.div`
   background-color: rgba(249, 56, 35, 0.35);
-  width: calc(100% - 64px);
-  position: absolute;
+  width: calc(100% - 16px);
   height: 100%;
-  bottom: 16px;
-  z-index: -10;
+  position: relative;
+  bottom: calc(100% + 16px);
+  z-index: 1;
 `;
 const Span = styled.span`
   font-family: 'FRAC-Regular';
