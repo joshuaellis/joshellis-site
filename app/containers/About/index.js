@@ -22,6 +22,47 @@ import { closeWindow, openWindow } from './actions';
 
 import { messages } from '../../content/about.content';
 
+const Wrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 72px;
+  @media (min-height: 1440px) {
+    padding-top: 176px;
+  }
+  @media (max-height: 780px) {
+    padding-top: 32px;
+  }
+  @media (max-width: 640px) {
+    display: block;
+    padding: 0px 32px 0px 16px;
+  }
+`;
+
+const Img = styled.img`
+  position: fixed;
+  z-index: 0;
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+const P = styled.h6`
+  display: inline;
+  font-size: 1.6rem;
+`;
+
+const A = styled.a`
+  font-family: 'Relevant';
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  letter-spacing: 0.1rem;
+  margin-right: 8px;
+`;
+
 /* eslint-disable react/prefer-stateless-function */
 export class About extends React.Component {
   componentWillUnmount() {
@@ -34,9 +75,13 @@ export class About extends React.Component {
     const { dispatchClose, about, location } = this.props;
     const messageKeys = Object.keys(messages.windowCopy);
     return (
-      <React.Fragment>
+      <div>
         <Helmet>
           <title>Josh Ellis – About</title>
+          <meta
+            name="description"
+            content={messages.windowCopy['Background information:']}
+          />
         </Helmet>
         <MediaQuery maxDeviceWidth={696}>
           <Wrapper>
@@ -97,7 +142,7 @@ export class About extends React.Component {
           </Wrapper>
           <Img src={Ralph} width="240px" alt="little ralphie wiggum" />
         </MediaQuery>
-      </React.Fragment>
+      </div>
     );
   }
 }
@@ -108,35 +153,6 @@ About.propTypes = {
   about: PropTypes.object.isRequired,
   dispatchOpen: PropTypes.func.isRequired,
 };
-
-const Wrapper = styled.div`
-  height: 100%;
-  display: grid;
-  grid-template-rows: 71px 4fr;
-`;
-
-const Img = styled.img`
-  position: fixed;
-  z-index: 0;
-  background-color: white;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
-
-const P = styled.h6`
-  display: inline;
-  font-size: 1.6rem;
-`;
-
-const A = styled.a`
-  font-family: 'Relevant';
-  font-weight: 400;
-  font-size: 1.6rem;
-  line-height: 2.4rem;
-  letter-spacing: 0.1rem;
-  margin-right: 8px;
-`;
 
 const mapStateToProps = createStructuredSelector({
   about: makeSelectAbout(),

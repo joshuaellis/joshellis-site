@@ -14,7 +14,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import MediaQuery from 'react-responsive';
-import styled from 'styled-components';
 
 import HomePage from 'containers/HomePage';
 import NotFoundPage from 'containers/NotFoundPage';
@@ -37,7 +36,14 @@ export class App extends React.Component {
 
   render() {
     return (
-      <AppContainer>
+      <div
+        style={{
+          maxWidth: '1440px',
+          margin: 'auto',
+          overflowY: 'hidden',
+          overflowX: 'hidden',
+        }}
+      >
         <ThreeBackground />
         <Header />
         <Switch>
@@ -55,22 +61,9 @@ export class App extends React.Component {
         </MediaQuery>
         <Footer />
         <GlobalStyle />
-      </AppContainer>
+      </div>
     );
   }
 }
-
-const AppContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 142px 5fr 71px;
-  min-height: 100vh;
-  width: 100%;
-  @media (min-width: 768px) {
-  }
-
-  @media (min-width: 1024px) {
-  }
-`;
 
 export default App;

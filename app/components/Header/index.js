@@ -1,44 +1,46 @@
 /* eslint-disable react/prefer-stateless-function */
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
 import { Route, Switch } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import MediaQuery from 'react-responsive';
 import Title from '../Title';
 import Navigation from '../Navigation';
 import DumbNavigation from '../DumbNav';
 
 const Wrapper = styled.div`
-  grid-column: 1;
-  grid-row: 1 / 2;
-  padding: 24px 16px 22px 16px;
-  @media (min-width: 768px) {
+  display: flex;
+  justify-content: space-between;
+  padding: 32px 56px 32px 56px;
+  @media (min-height: 1440px) {
+    margin-top: 192px;
   }
-  @media (min-width: 1024px) {
+  @media (max-width: 696px) {
+    padding: 24px 32px 56px 16px;
   }
-`;
-
-const NavigationSpan = styled.span`
-  display: none;
-  @media (min-width: 768px) {
-    display: block;
+  @media (max-width: 600px) {
+    padding-bottom: 40px;
   }
 `;
 
 const Header = props => (
-  <Wrapper>
-    <Title standfirst="Creative Technologist">Josh Ellis</Title>
-    <NavigationSpan>
-      <Switch>
-        <Route path="/about" render={() => <Navigation />} />
-        <Route path="/work" render={() => <Navigation />} />
-        {props.lost ? <DumbNavigation /> : null}
-      </Switch>
-    </NavigationSpan>
-  </Wrapper>
+  <React.Fragment>
+    <MediaQuery maxDeviceWidth={696}>
+      <Wrapper>
+        <Title standfirst="Creative Technologist">Josh Ellis</Title>
+      </Wrapper>
+    </MediaQuery>
+    <MediaQuery minDeviceWidth={697}>
+      <Wrapper>
+        <Title standfirst="Creative Technologist">Josh Ellis</Title>
+        <Switch>
+          <Route path="/about" render={() => <Navigation />} />
+          <Route path="/work" render={() => <Navigation />} />
+          {props.lost ? <DumbNavigation /> : null}
+        </Switch>
+      </Wrapper>
+    </MediaQuery>
+  </React.Fragment>
 );
-
-Header.propTypes = {
-  lost: PropTypes.bool,
-};
 
 export default Header;

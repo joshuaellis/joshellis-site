@@ -100,11 +100,10 @@ const GlobalStyle = createGlobalStyle`
 
   html,
   body {
-    overflow-x: hidden;
-    height: 100vh;
+    height: 100%;
+    width: 100%;
     font-size: 62.5%;
     background-color: transparent;
-    box-sizing: border-box;
   }
   h1,h2,h3,h4,h5,h6,p,b,a,label{
     margin:0;
@@ -112,44 +111,43 @@ const GlobalStyle = createGlobalStyle`
   }
   #app {
     background-color: transparent;
-    min-height: 100vh;
-    width: 100vw;
-    overflow-y:hidden;
+    min-height: 100%;
+    min-width: 100%;
   }
+
   h1{
     font-family:'Relevant-Medium', Helvetica, sans-serif;
     font-weight: 500;
-    font-size:3.2rem;
+    font-size:4.8rem;
     letter-spacing:0.15rem;
   }
 
   h2{
     font-family:'Relevant', Helvetica, sans-serif;
     font-weight: 400;
-    font-size:2.4rem;
+    font-size:3.2rem;
   }
 
   h4{
     font-family:'Relevant-Thin', Helvetica, sans-serif;
     font-weight: 200;
-    font-size:1.4rem;
+    font-size:1.6rem;
     letter-spacing:0.1rem;
   }
 
   h6{
     font-family:'FRAC-Regular', Helvetica, sans-serif;
-      font-weight:400;
+    font-weight:400;
     font-size:1.8rem;
-
     display:inline;
   }
 
   p{
     font-family:'Relevant', Helvetica, sans-serif;
-      font-weight: 400;
-    font-size:1.4rem;
+    font-weight: 400;
+    font-size:1.6rem;
     line-height:2.4rem;
-      letter-spacing:0.1rem;
+    letter-spacing:0.1rem;
   }
   label{
     font-family:'FRAC-Medium', Helvetica, sans-serif;
@@ -172,40 +170,25 @@ const GlobalStyle = createGlobalStyle`
     opacity:0.5;
     pointer-events:none;
   }
-
-  @media only screen and (min-width: 544px) {
+  @media only screen and (max-width: 696px){
     h1{
-      font-size:4rem;
-    }
-    h2{
-      font-size:2.8rem;
-    }
-    h4{
-      font-size:1.5rem;
-    }
-    h6{
-      font-size:1.8rem;
-    }
-    p{
-      font-size:1.5rem;
-    }
-  }
-
-  @media only screen and (min-width: 768px){
-    h1{
-      font-size:4.8rem;
-    }
-    h2{
       font-size:3.2rem;
     }
-    h4{
-      font-size:1.6rem;
+  
+    h2{
+      font-size:2.4rem;
     }
+  
+    h4{
+      font-size:1.4rem;
+    }
+  
     h6{
       font-size:1.8rem;
     }
+  
     p{
-      font-size:1.6rem;
+      font-size:1.4rem;
     }
   }
 `;

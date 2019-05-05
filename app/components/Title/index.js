@@ -3,19 +3,21 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-const Title = props => (
-  <Wrapper>
-    <TextWrapper>
-      <h1>
-        <Link exact to="/" activeStyle={{ pointerEvents: 'none' }}>
-          {props.children}
-        </Link>
-      </h1>
-      <h4>{props.standfirst}</h4>
-    </TextWrapper>
-    <ColourLayer />
-  </Wrapper>
-);
+function Title(props) {
+  return (
+    <Wrapper>
+      <TextWrapper>
+        <h1>
+          <Link exact to="/" activeStyle={{ pointerEvents: 'none' }}>
+            {props.children}
+          </Link>
+        </h1>
+        <h4>{props.standfirst}</h4>
+      </TextWrapper>
+      <ColourLayer />
+    </Wrapper>
+  );
+}
 
 const Link = styled(NavLink)`
   font-family: inherit;
@@ -25,45 +27,44 @@ const Link = styled(NavLink)`
   text-decoration: none;
   letter-spacing: inherit;
 `;
-const Wrapper = styled.div`
-  height: 96px;
-  width: 100%;
-  @media (min-width: 544px) {
-    height: 120px;
-  }
-  @media (min-width: 768px) {
-  }
-  @media (min-width: 1024px) {
-  }
-`;
 const TextWrapper = styled.div`
   background-color: rgba(74, 148, 255, 0.2);
   text-align: left;
-  z-index: 10;
-  padding: 12px 24px 0px 24px;
-  margin-right: 16px;
-  margin-bottom: 16px;
+  padding: 16px 24px 24px 32px;
+  width: 100%;
   position: relative;
-  height: calc(100% - 16px);
-  @media (min-width: 544px) {
-    padding: 12px 32px 0px 32px;
-  }
-  @media (min-width: 768px) {
-  }
-  @media (min-width: 1024px) {
+  z-index: 10;
+  height: 100%;
+
+  @media (max-width: 400px) {
+    padding: 12px 24px 0px 24px;
   }
 `;
 const ColourLayer = styled.div`
   background-color: rgba(49, 255, 123, 0.2);
-  width: calc(100% - 16px);
-  height: calc(100% - 16px);
-  z-index: 1;
+  width: 100%;
+  height: 100%;
   position: relative;
   bottom: calc(100% - 16px);
   left: 16px;
-  @media (min-width: 768px) {
+  z-index: 1;
+
+  @media (max-width: 400px) {
+    bottom: 64px;
   }
-  @media (min-width: 1024px) {
+`;
+const Wrapper = styled.div`
+  width: 360px;
+  float: left;
+  height: 128px;
+  @media (max-width: 1059px) {
+  }
+  @media (max-width: 696px) {
+    width: 100%;
+    height: 96px;
+  }
+  @media (max-width: 400px) {
+    height: 80px;
   }
 `;
 
