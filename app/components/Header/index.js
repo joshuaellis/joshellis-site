@@ -12,7 +12,6 @@ const Wrapper = styled.div`
   grid-row: 1 / 2;
   padding: 24px 16px 22px 16px;
   @media (min-width: 768px) {
-    padding: 24px 32px 24px 48px;
   }
   @media (min-width: 1024px) {
   }
@@ -22,8 +21,6 @@ const NavigationSpan = styled.span`
   display: none;
   @media (min-width: 768px) {
     display: block;
-    float: right;
-    padding: 16px 16px;
   }
 `;
 

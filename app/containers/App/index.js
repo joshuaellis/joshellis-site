@@ -67,7 +67,6 @@ const AppContainer = styled.div`
   min-height: 100vh;
   width: 100%;
   @media (min-width: 768px) {
-    grid-template-rows: 204px 7fr 102px;
   }
 
   @media (min-width: 1024px) {

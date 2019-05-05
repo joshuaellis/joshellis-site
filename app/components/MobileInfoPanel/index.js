@@ -13,7 +13,7 @@ class MobileInfoPanel extends React.Component {
     super(props);
     this.location = props.location.pathname.replace(/\//gi, '');
     this.swipeDirection = null;
-    props.updateProject ? props.updateProject('Giles Revell') : null;
+    props.updateProject ? props.updateProject('Blackshaw') : null;
   }
 
   handleForwardClick = () => {
@@ -44,9 +44,14 @@ class MobileInfoPanel extends React.Component {
       const text =
         this.location === 'about'
           ? this.props.message
-          : this.location === 'work' && this.props.message[this.props.project]
+          : this.location === 'work'
             ? this.props.message[this.props.project]
-            : this.props.message['Giles Revell'];
+            : [
+                'loading error',
+                'loading error',
+                'loading error',
+                'loading error',
+              ];
       return (
         <React.Fragment>
           <HeadingWrapper>
@@ -90,53 +95,49 @@ class MobileInfoPanel extends React.Component {
             <TextWrapper>
               {this.location === 'about' ? (
                 <React.Fragment>
-                  <P>
+                  <p>
                     <Span>{text[0]}</Span>
                     {text[1]}
-                  </P>
-                  <P>
+                  </p>
+                  <p style={{ marginBottom: '8px' }}>
                     <Span>{text[2]}</Span>
                     {text[3]}
-                  </P>
-                  <P>
+                  </p>
+                  <p>
                     <Span>{text[4]}</Span>
-                    {text[5].map(x => (
-                      <A key={x[0]} rel="noopener" target="_blank" href={x[1]}>
-                        {x[0]}
-                      </A>
-                    ))}
-                  </P>
-                  <P style={{ marginTop: '16px' }}>
-                    <Span>{text[6]}</Span>
-                    {text[7]}
-                  </P>
+                    {text[5]}
+                  </p>
                 </React.Fragment>
               ) : this.location === 'work' ? (
                 <React.Fragment>
-                  <P>
+                  <p>
                     <Span>Role: </Span>
                     {text[0]}
-                  </P>
-                  <P>
+                  </p>
+                  <p>
                     <Span>Studio: </Span>
                     {text[1]}
-                  </P>
-                  <P>
+                  </p>
+                  <p>
                     <Span>Year: </Span>
                     {text[2]}
-                  </P>
+                  </p>
                   {text[4] ? (
-                    <P>
+                    <p>
                       <Span>See Here: </Span>
-                      <A target="_blank" rel="noopener" href={text[4]}>
+                      <a
+                        target="_blank"
+                        style={{ textDecoration: 'none' }}
+                        href={text[4]}
+                      >
                         {text[5]}
-                      </A>
-                    </P>
+                      </a>
+                    </p>
                   ) : null}
-                  <P style={{ marginTop: '16px' }}>
+                  <p style={{ marginTop: '16px' }}>
                     <Span>Info: </Span>
                     {text[3]}
-                  </P>
+                  </p>
                 </React.Fragment>
               ) : (
                 <p>Something went wrong...</p>
@@ -230,14 +231,6 @@ const Span = styled.span`
   font-family: 'FRAC-Regular';
   font-weight: 400;
   letter-spacing: -0.01em;
-`;
-
-const P = styled.p`
-  margin: 4px 0px;
-`;
-
-const A = styled.a`
-  margin-right: 12px;
 `;
 
 MobileInfoPanel.propTypes = {

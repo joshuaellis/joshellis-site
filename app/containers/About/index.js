@@ -38,7 +38,7 @@ export class About extends React.Component {
         <Helmet>
           <title>Josh Ellis – About</title>
         </Helmet>
-        <MediaQuery maxDeviceWidth={768}>
+        <MediaQuery maxDeviceWidth={696}>
           <Wrapper>
             <MobileInfoPanel
               location={location}
@@ -46,7 +46,7 @@ export class About extends React.Component {
             />
           </Wrapper>
         </MediaQuery>
-        <MediaQuery minDeviceWidth={769}>
+        <MediaQuery minDeviceWidth={697}>
           <Wrapper>
             {about.windowShowing === true ? (
               <Window
@@ -113,12 +113,6 @@ const Wrapper = styled.div`
   height: 100%;
   display: grid;
   grid-template-rows: 71px 4fr;
-  @media (min-width: 544px) {
-    padding: 10%;
-  }
-  @media (min-width: 768px) {
-    padding: 0px 15% 15% 15%;
-  }
 `;
 
 const Img = styled.img`

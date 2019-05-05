@@ -47,17 +47,13 @@ const Wrapper = styled.div`
   grid-column: 1;
   grid-row: 3;
   padding: 19px 16px 24px 16px;
-  @media (min-width: 768px) {
-    padding: 24px 48px;
-  }
 `;
 
-const Label = styled.label`
+const Label = styled.div`
   display: none;
   @media (min-width: 768px) {
-    display: block;
+    margin-top: 8px;
+    width: 100%;
     cursor: pointer;
-    float: left;
-    padding-top: 8px;
   }
 `;
