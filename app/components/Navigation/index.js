@@ -15,29 +15,27 @@ const Link = styled(NavLink)`
   }
 `;
 
-function Navigation() {
-  return (
-    <div>
-      <Link exact to="/about" activeStyle={{ fontFamily: 'Relevant-Bold' }}>
-        About
-      </Link>
-      <p
-        style={{
-          fontFamily: 'Relevant-Thin',
-          fontWeight: 200,
-          display: 'inline',
-          marginLeft: '32px',
-          opacity: 0.5,
-          letterSpacing: '0.05rem',
-        }}
-      >
-        Experiments
-      </p>
-      <Link exact to="/work" activeStyle={{ fontFamily: 'Relevant-Bold' }}>
-        Work
-      </Link>
-    </div>
-  );
-}
+const Navigation = () => (
+  <div>
+    <Link exact to="/about" activeStyle={{ fontFamily: 'Relevant-Bold' }}>
+      About
+    </Link>
+    <p
+      style={{
+        fontFamily: 'Relevant-Thin',
+        fontWeight: 200,
+        display: 'inline',
+        marginLeft: '32px',
+        opacity: 0.5,
+        letterSpacing: '0.05rem',
+      }}
+    >
+      Experiments
+    </p>
+    <Link exact to="/work" activeStyle={{ fontFamily: 'Relevant-Bold' }}>
+      Work
+    </Link>
+  </div>
+);
 
 export default Navigation;

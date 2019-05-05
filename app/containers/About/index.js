@@ -95,7 +95,12 @@ export class About extends React.Component {
               </Window>
             ) : null}
           </Wrapper>
-          <Img src={Ralph} width="240px" alt="little ralphie wiggum" />
+          <img
+            className="ralphImg"
+            src={Ralph}
+            width="240px"
+            alt="little ralphie wiggum"
+          />
         </MediaQuery>
       </React.Fragment>
     );
@@ -127,14 +132,21 @@ const Wrapper = styled.div`
   }
 `;
 
-const Img = styled.img`
-  position: fixed;
-  z-index: 0;
-  background-color: white;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
+// const imgStyle = {
+//   position: 'fixed',
+//   top: '50%',
+//   left: '50%',
+//   transform: 'translate(-50%,-50%)',
+// };
+
+// const Img = styled.img`
+// position: fixed;
+// z-index: 0;
+// background-color: white;
+// top: 50%;
+// left: 50%;
+// transform: translate(-50%, -50%);
+// `;
 
 const P = styled.h6`
   display: inline;

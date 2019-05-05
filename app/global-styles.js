@@ -173,6 +173,15 @@ const GlobalStyle = createGlobalStyle`
     pointer-events:none;
   }
 
+  .ralphImage{
+    position: fixed;
+    z-index: 0;
+    background-color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
   @media only screen and (min-width: 544px) {
     h1{
       font-size:4rem;
