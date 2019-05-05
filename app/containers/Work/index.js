@@ -47,14 +47,10 @@ export class Work extends React.PureComponent {
       <React.Fragment>
         <Helmet>
           <title>Josh Ellis – Work</title>
-          <meta
-            name="description"
-            content="Josh Ellis is a creative technologist based in London, he is a professional designer and freelance web developer. This page displays a small collection of works that he has had the opportunity to be part of."
-          />
         </Helmet>
         {/* this is for regular mobiles & tablets */}
-        <MediaQuery maxDeviceWidth={696}>
-          <Wrapper>
+        <MediaQuery maxDeviceWidth={768}>
+          <MobileWrapper>
             <MobileInfoPanel
               updateProject={updateProject}
               location={location}
@@ -62,10 +58,10 @@ export class Work extends React.PureComponent {
               projectList={PROJECTS}
               message={TEXT}
             />
-          </Wrapper>
+          </MobileWrapper>
         </MediaQuery>
         {/* this is for desktop++ */}
-        <MediaQuery orientation="landscape" minDeviceWidth={697}>
+        <MediaQuery orientation="landscape" minDeviceWidth={768}>
           <Wrapper>
             <WorkMenu updateProject={updateProject} projects={PROJECTS} />
             <InfoPanel
@@ -73,18 +69,6 @@ export class Work extends React.PureComponent {
               project={work.project}
               showProject={work.showProject}
               openGallery={openGallery}
-            />
-          </Wrapper>
-        </MediaQuery>
-        {/* this is for landscape tablets */}
-        <MediaQuery orientation="portrait" minDeviceWidth={697}>
-          <Wrapper style={{ position: 'relative', bottom: '32px' }}>
-            <MobileInfoPanel
-              updateProject={updateProject}
-              location={location}
-              project={work.project}
-              projectList={PROJECTS}
-              message={TEXT}
             />
           </Wrapper>
         </MediaQuery>
@@ -99,9 +83,13 @@ export class Work extends React.PureComponent {
   }
 }
 
+const MobileWrapper = styled.div`
+  height: 100%;
+  display: grid;
+  grid-template-rows: 71px 4fr;
+`;
+
 const Wrapper = styled.div`
-  height: calc(100vh - 200px - 124px);
-  width: 100%;
   display: flex;
   justify-content: space-between;
   padding-right: 72px;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import * as THREE from 'three-full';
 import particle from './particles';
 
@@ -88,15 +89,7 @@ export default class ThreeScene extends Component {
 
   render() {
     return (
-      <div
-        style={{
-          width: '100vw',
-          height: '100vh',
-          position: 'absolute',
-          left: '0',
-          top: '0',
-          zIndex: '-1',
-        }}
+      <ThreeWrapper
         ref={mount => {
           this.mount = mount;
         }}
@@ -104,3 +97,13 @@ export default class ThreeScene extends Component {
     );
   }
 }
+
+const ThreeWrapper = styled.div`
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -10;
+`;
