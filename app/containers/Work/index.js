@@ -69,6 +69,7 @@ export class Work extends React.PureComponent {
             <InfoPanel
               text={TEXT}
               project={work.project}
+              hasImages={IMAGES[work.project]}
               showProject={work.showProject}
               openGallery={openGallery}
             />

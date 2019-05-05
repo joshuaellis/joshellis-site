@@ -89,6 +89,12 @@ const Div = styled.div`
   overflow-x: hidden;
   grid-column: 1;
   height: calc((100vh / 9) * 4.5);
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const List = styled.ul`

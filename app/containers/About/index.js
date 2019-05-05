@@ -123,7 +123,7 @@ const Wrapper = styled.div`
   }
   @media (min-width: 768px) {
     padding: 0%;
-    padding-bottom: 15%;
+    padding-bottom: 10%;
     display: flex;
     align-items: center;
     justify-content: center;

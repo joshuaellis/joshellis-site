@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 function InfoPanel(props) {
-  const { project, showProject, openGallery } = props;
+  const { project, showProject, openGallery, hasImages } = props;
   const text = props.text[project];
   return (
     <Wrapper>
@@ -20,21 +20,25 @@ function InfoPanel(props) {
                 <P>
                   <Span>Studio: </Span> {text[1]}
                 </P>
-              </Col01>
-              <Col02>
                 <P>
                   <Span>Year: </Span> {text[2]}
                 </P>
+              </Col01>
+              <Col02>
                 {text[4] ? (
                   <P>
                     <Span>See here: </Span>
-                    <a
-                      target="_blank"
-                      style={{ textDecoration: 'none' }}
-                      href={text[4]}
-                    >
+                    <a target="_blank" href={text[4]}>
                       {text[5]}
                     </a>
+                  </P>
+                ) : null}
+                {text[6] && hasImages ? (
+                  <P>
+                    <Span>Images: </Span>
+                    <Button onClick={openGallery} type="button">
+                      Click here
+                    </Button>
                   </P>
                 ) : null}
               </Col02>
@@ -44,14 +48,6 @@ function InfoPanel(props) {
                 <Span>INFO: </Span>
                 {text[3]}
               </P>
-              {text[6] ? (
-                <P>
-                  <Span>Images: </Span>
-                  <Button onClick={openGallery} type="button">
-                    Click here
-                  </Button>
-                </P>
-              ) : null}
             </BottomSection>
           </ContentContainer>
         ) : (
@@ -77,6 +73,8 @@ const Wrapper = styled.div`
   grid-column: 2;
   padding: 16px 48px 48px 48px;
   position: relative;
+  max-height: 100%;
+  overflow: scroll;
   @media (min-width: 1280px) {
     padding: 16px 48px 48px 96px;
   }
@@ -86,11 +84,13 @@ const Wrapper = styled.div`
 
 const TextWrapper = styled.div`
   background-color: rgba(271, 59, 255, 0.35);
-  padding: 16px 40px 32px 24px;
+  padding: 16px 64px 32px 24px;
   width: 100%;
   height: 100%;
   position: relative;
   z-index: 10;
+  max-height: 100%;
+  overflow: scroll;
   @media (min-width: 1280px) {
     padding: 24px 64px 40px 32px;
   }
@@ -120,12 +120,14 @@ const Span = styled.span`
 
 const P = styled.p`
   margin-bottom: 16px;
+  white-space: pre-line;
 `;
 
 const ContentContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
+  margin-bottom: 24px;
 `;
 
 const TopSection = styled.section`
@@ -143,7 +145,9 @@ const Col02 = styled.div`
   padding-left: 16px;
 `;
 
-const BottomSection = styled.section``;
+const BottomSection = styled.section`
+  margin-top: 16px;
+`;
 
 const Button = styled.button`
   padding: 0px;
@@ -159,6 +163,7 @@ InfoPanel.propTypes = {
   project: PropTypes.string,
   showProject: PropTypes.bool,
   openGallery: PropTypes.func,
+  hasImages: PropTypes.array,
 };
 
 export default InfoPanel;

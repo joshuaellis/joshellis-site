@@ -176,7 +176,7 @@ const GlobalStyle = createGlobalStyle`
     pointer-events:none;
   }
 
-  .ralphImage{
+  .ralphImg{
     position: fixed;
     z-index: 0;
     background-color: white;

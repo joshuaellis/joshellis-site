@@ -137,14 +137,14 @@ class MobileInfoPanel extends React.Component {
                   </P>
                   {text[6] ? (
                     <React.Fragment>
-                      <P>
+                      <P style={{marginBottom:'24px'}}>
                         <Span>Images: </Span>
                         <Button onClick={this.props.openGallery} type="button">
                           Click here
                         </Button>
                       </P>
                       <ImagesContainer>
-                        {this.props.imgArr.map(x => (
+                        {this.props.imgArr ? this.props.imgArr.map(x => (
                           <React.Fragment>
                             <IMG src={x.src} alt={x.alt} id={x.id} />
                             <p
@@ -156,7 +156,7 @@ class MobileInfoPanel extends React.Component {
                               {x.caption}
                             </p>
                           </React.Fragment>
-                        ))}
+                        )) : null}
                       </ImagesContainer>
                     </React.Fragment>
                   ) : null}
@@ -230,6 +230,9 @@ const Wrapper = styled.div`
   @media (min-width: 544px) {
     margin: 32px 0px;
   }
+  @media(min-width: 768px){
+    max-height:100%;
+  }
 `;
 const TextWrapper = styled.div`
   background-color: rgba(271, 59, 255, 0.35);
@@ -239,6 +242,10 @@ const TextWrapper = styled.div`
   margin-left: 16px;
   @media (min-width: 544px) {
     padding: 12px 40px 32px 24px;
+  }
+  @media(min-width: 768px){
+    max-height:100%;
+    overflow:scroll;
   }
 `;
 const ColourLayer = styled.div`
@@ -257,6 +264,7 @@ const Span = styled.span`
 
 const P = styled.p`
   margin: 4px 0px;
+  white-space: pre-line;
 `;
 
 const A = styled.a`
@@ -269,7 +277,7 @@ const Button = styled.button`
   display: none;
   text-decoration: underline;
   @media (min-width: 768px) {
-    display: block;
+    display: inline;
   }
 `;
 
