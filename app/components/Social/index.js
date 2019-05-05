@@ -47,6 +47,11 @@ const Wrapper = styled.div`
   @media (min-width: 544px) {
     height: 32px;
   }
+
+  @media (min-width: 768px) {
+    float: right;
+    width: 400px;
+  }
 `;
 
 const TextWrapper = styled.div`

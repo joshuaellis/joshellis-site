@@ -148,7 +148,7 @@ const GlobalStyle = createGlobalStyle`
     font-family:'Relevant', Helvetica, sans-serif;
       font-weight: 400;
     font-size:1.4rem;
-    line-height:2.4rem;
+    line-height:2.0rem;
       letter-spacing:0.1rem;
   }
   label{
@@ -206,6 +206,7 @@ const GlobalStyle = createGlobalStyle`
     }
     p{
       font-size:1.6rem;
+      line-height:2.4rem;
     }
   }
 `;

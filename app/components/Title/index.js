@@ -32,6 +32,9 @@ const Wrapper = styled.div`
     height: 120px;
   }
   @media (min-width: 768px) {
+    height: 140px;
+    width: 360px;
+    float: left;
   }
   @media (min-width: 1024px) {
   }

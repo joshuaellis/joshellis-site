@@ -49,7 +49,7 @@ export class Work extends React.PureComponent {
           <title>Josh Ellis – Work</title>
         </Helmet>
         {/* this is for regular mobiles & tablets */}
-        <MediaQuery maxDeviceWidth={768}>
+        <MediaQuery maxDeviceWidth={800}>
           <MobileWrapper>
             <MobileInfoPanel
               updateProject={updateProject}
@@ -61,7 +61,7 @@ export class Work extends React.PureComponent {
           </MobileWrapper>
         </MediaQuery>
         {/* this is for desktop++ */}
-        <MediaQuery orientation="landscape" minDeviceWidth={768}>
+        <MediaQuery orientation="landscape" minDeviceWidth={900}>
           <Wrapper>
             <WorkMenu updateProject={updateProject} projects={PROJECTS} />
             <InfoPanel
@@ -87,6 +87,12 @@ const MobileWrapper = styled.div`
   height: 100%;
   display: grid;
   grid-template-rows: 71px 4fr;
+  @media (min-width: 544px) {
+    padding: 10%;
+  }
+  @media (min-width: 768px) {
+    padding: 0px 15% 15% 15%;
+  }
 `;
 
 const Wrapper = styled.div`
