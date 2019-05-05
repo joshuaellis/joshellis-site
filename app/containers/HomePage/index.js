@@ -11,7 +11,6 @@ import { compose } from 'redux';
 
 import injectReducer from 'utils/injectReducer';
 import styled from 'styled-components';
-// import { CSSTransition } from 'react-transition-group';
 
 import Navigation from 'components/LargeNavigation';
 import reducer from './reducer';
