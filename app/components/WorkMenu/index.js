@@ -70,7 +70,6 @@ function WorkMenu(props) {
             </a>
           </li>
         ))}
-        )}
       </List>
     </Div>
   );
