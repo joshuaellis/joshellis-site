@@ -49,4 +49,9 @@
     Header set Cache-Control "private, no-cache, no-store, proxy-revalidate, no-transform"
     Header set Pragma "no-cache"
   </FilesMatch>
+  <filesMatch ".(ttf|woff|woff2)$">
+    Header set Cache-Control "max-age=2592000, public"
+  </filesMatch>
 </IfModule>
+
+

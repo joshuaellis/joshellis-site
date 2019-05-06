@@ -130,7 +130,7 @@ class PhotoGallery extends React.PureComponent {
       hide,
     } = this.state;
     return (
-      <GalleryContainer>
+      <GalleryContainer imgLength={imgArr.length}>
         <CloseBox
           onMouseEnter={this.handleMouseEnterClose}
           onMouseLeave={this.handleMouseLeaveClose}
@@ -161,12 +161,14 @@ class PhotoGallery extends React.PureComponent {
           />
         </NavContainers>
         <MediaQuery minDeviceWidth={1110}>
-          <Cursor
-            left={leftHandSide}
-            x={horizontalPos}
-            y={verticalPos}
-            hide={hide}
-          />
+          {imgArr.length > 1 ? (
+            <Cursor
+              left={leftHandSide}
+              x={horizontalPos}
+              y={verticalPos}
+              hide={hide}
+            />
+          ) : null}
         </MediaQuery>
       </GalleryContainer>
     );
@@ -183,7 +185,7 @@ const GalleryContainer = styled.div`
   z-index: 9999;
 
   @media screen and (min-device-width: 1100px) and (-webkit-min-device-pixel-ratio: 2) {
-    cursor: none;
+    cursor: ${props => (props.imgLength > 1 ? 'none' : 'default')};
   }
 `;
 
