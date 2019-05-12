@@ -9,6 +9,10 @@ import IMG_SAN_JUNIPERO from '../assets/images/work-images/black-mirror/San-Juni
 
 import RAY_ORANGES from '../assets/images/work-images/wef/ray_oranges.png';
 
+import FIG1A from '../assets/images/work-images/hoffmann-centre/FIG1A.png';
+import FIG1B from '../assets/images/work-images/hoffmann-centre/FIG1B.png';
+import FIG1C from '../assets/images/work-images/hoffmann-centre/FIG1C.png';
+
 export const PROJECTS = [
   'Giles Revell',
   'Blackshaw Interior',
@@ -86,7 +90,27 @@ export const TEXT = {
 };
 
 export const IMAGES = {
-  // 'Hoffmann Centre':[],
+  'Hoffmann Centre': [
+    {
+      src: FIG1A,
+      alt:
+        'Hoffmann Indonesia Report fig1a Economic and demographic transition',
+      id: 'hoffmann-fig1a',
+      caption: 'Fig 1a. Economic and demographic transition',
+    },
+    {
+      src: FIG1B,
+      alt: 'Hoffmann Indonesia Report fig1b Structural transition',
+      id: 'hoffmann-fig1b',
+      caption: 'Fig 1b. Structural transition',
+    },
+    {
+      src: FIG1C,
+      alt: 'Hoffmann Indonesia Report fig1c Dietary transition',
+      id: 'hoffmann-fig1c',
+      caption: 'Fig 1c. Dietary transition',
+    },
+  ],
   'World Forum': [
     {
       src: RAY_ORANGES,

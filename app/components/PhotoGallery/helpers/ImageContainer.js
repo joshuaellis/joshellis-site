@@ -62,7 +62,6 @@ const Container = styled.div`
 
 const Wrapper = styled.div`
   overflow: hidden;
-  margin: 10% 15% 15% 15%;
   width: 70%;
 `;
 
@@ -95,7 +94,6 @@ const ImageSlide = styled.div`
 
 const IMG = styled.img`
   width: 100%;
-  height: 100%;
   object-fit: cover;
 `;
 
