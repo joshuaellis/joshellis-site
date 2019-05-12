@@ -4,47 +4,26 @@
 <head>
   <!-- The first thing in any HTML file should be the charset -->
   <meta charset="utf-8">
+
   <!-- Make the page mobile compatible -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="mobile-web-app-capable" content="yes">
-  <!-- Extra bits added by me -->
-  <style>
-    #loadingGIF {
-      background-color: #010d63;
-      display: flex;
-      height: 100vh;
-      width: 100vw;
-      justify-content: center;
-      align-content: center;
-      visibility: visible;
-      opacity: 1;
-    }
 
-  </style>
-  <title>Josh Ellis</title>
-  <meta name="description"
-    content="Josh Ellis is a creative technologist based in London, he is a professional designer and freelance web developer. He is always interested in a new challenge and enjoys utilising new technologies despite the learning curves.">
-  <meta property="og:title" content="Josh Ellis – Creative Technologist">
-  <meta property="og:description"
-    content="Josh Ellis is a creative technologist based in London with professional experience in design and development.">
-  <meta property="og:image" content="https://www.joshellis.co.uk/galaxy.png">
-  <meta property="og:url" content="https://joshellis.co.uk">
-  <meta name="twitter:card" content="summary">
-  <meta property="og:site_name" content="Josh Ellis">
-  <meta name="twitter:image:alt" content="Josh Ellis designer / developer">
+  <!-- Allow installing the app to the homescreen -->
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <link rel="icon" href="/favicon.ico" />
+  <title>React.js Boilerplate</title>
 </head>
 
-<body style="margin:0px;">
+<body>
   <!-- Display a message if JS has been disabled on the browser. -->
-  <noscript>If you're seeing this message, that means <strong>JavaScript has been disabled on your browser</strong>,
-    please <strong>enable JS</strong> to be able to see my site.</noscript>
-  <div id="loadingGIF">
-    <img src="assets/images/loader.gif" style='width:56px;height:56px;margin:auto'>
-  </div>
+  <noscript>If you're seeing this message, that means
+    <strong>JavaScript has been disabled on your browser</strong>, please
+    <strong>enable JS</strong> to make this app work.</noscript>
+
   <!-- The app hooks into this div -->
   <div id="app"></div>
-  <div id="modal"></div>
-  <!-- A lot of magic happens in this file. HtmlWebpackPlugin automatically includes all assets (e.g. bundle.js, main.css) with the correct HTML tags, which is why they are missing in this HTML file. Don't add any assets here! (Check out webpackconfig.js if you want to know more) -->
+  <!-- A lot of magic happens in this file. HtmlWebpackPlugin automatically injects all assets (e.g. bundle.js, main.css) with the correct HTML tags, which is why they are missing in this file. Don't add any assets here! (Check out webpack.dev.babel.js and webpack.prod.babel.js if you want to know more) -->
 </body>
 
 </html>
