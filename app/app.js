@@ -26,6 +26,7 @@ import LanguageProvider from 'containers/LanguageProvider';
 /* eslint-disable import/no-unresolved, import/extensions */
 import '!file-loader?name=[name].[ext]!./images/favicon.ico';
 import 'file-loader?name=.htaccess!./.htaccess';
+// import 'file?name=[name].[ext]!./images/colours.png';
 /* eslint-enable import/no-unresolved, import/extensions */
 
 import configureStore from './configureStore';

@@ -42,7 +42,9 @@
     "test": "cross-env NODE_ENV=test jest --coverage",
     "test:watch": "cross-env NODE_ENV=test jest --watchAll",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "prettify": "prettier --write"
+    "prettify": "prettier --write",
+    "deploy": "node deploy.js",
+    "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "browserslist": [
     "last 2 versions",
@@ -82,6 +84,7 @@
     "prop-types": "15.7.2",
     "react": "16.8.6",
     "react-dom": "16.8.6",
+    "react-ga": "^2.5.7",
     "react-helmet": "6.0.0-beta",
     "react-intl": "2.8.0",
     "react-redux": "7.0.2",
@@ -156,6 +159,7 @@
     "react-testing-library": "6.1.2",
     "rimraf": "2.6.3",
     "shelljs": "^0.8.3",
+    "storybook-addon-styled-component-theme": "^1.2.3",
     "style-loader": "0.23.1",
     "stylelint": "10.0.1",
     "stylelint-config-recommended": "2.2.0",
