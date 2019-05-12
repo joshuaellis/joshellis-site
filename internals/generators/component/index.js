@@ -44,6 +44,12 @@ module.exports = {
       default: false,
       message: 'Do you want to load the component asynchronously?',
     },
+    {
+      type: 'confirm',
+      name: 'wantStory',
+      default: false,
+      message: 'Do you want a storybook story for this component?',
+    },
   ],
   actions: data => {
     // Generate index.js and index.test.js
@@ -78,6 +84,15 @@ module.exports = {
         type: 'add',
         path: '../../app/components/{{properCase name}}/Loadable.js',
         templateFile: './component/loadable.js.hbs',
+        abortOnFail: true,
+      });
+    }
+
+    if (data.wantStory) {
+      actions.push({
+        type: 'add',
+        path: '../../stories/{{properCase name}}.stories.js',
+        templateFile: './component/stories.js.hbs',
         abortOnFail: true,
       });
     }
