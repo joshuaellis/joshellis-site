@@ -5,40 +5,46 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { Helmet } from 'react-helmet';
 import { compose } from 'redux';
 import styled from 'styled-components';
 
 import { useInjectReducer } from 'utils/injectReducer';
 import SiteHeader from 'components/SiteHeader';
-import makeSelectHomePage from './selectors';
+import Footer from 'components/Footer';
+import makeSelectHomePage, { makeSelectProjectPage } from './selectors';
 import reducer from './reducer';
-import { SET_PROJECT_ACTION } from './actions';
 
 import Standfirst from '../../components/Standfirst';
 import NavMenu from '../../components/NavMenu';
 
 import { PROJECTS } from '../../constants';
 
-export function HomePage(props) {
+export function HomePage() {
   useInjectReducer({ key: 'homePage', reducer });
-  const { dispatchSetProject } = props;
   return (
     <React.Fragment>
+      <Helmet>
+        <title>Josh Ellis</title>
+        <meta
+          name="description"
+          content="Josh Ellis is a creative technologist based in London, he is a professional designer and freelance web developer. He is always interested in a new challenge and enjoys utilising new technologies despite the learning curves."
+        />
+      </Helmet>
       <SiteHeader />
       <HomepageWrapper>
         <Standfirst />
-        <NavMenu projects={PROJECTS} onClick={dispatchSetProject} />
+        <NavMenu projects={PROJECTS} />
       </HomepageWrapper>
+      <Footer />
     </React.Fragment>
   );
 }
 
-HomePage.propTypes = {
-  dispatchSetProject: PropTypes.func,
-};
+HomePage.propTypes = {};
 
 const HomepageWrapper = styled.div`
   padding-top: 144px;
@@ -51,11 +57,12 @@ const HomepageWrapper = styled.div`
 `;
 const mapStateToProps = createStructuredSelector({
   homePage: makeSelectHomePage(),
+  projectPage: makeSelectProjectPage(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatchSetProject: () => dispatch(SET_PROJECT_ACTION),
+    dispatch,
   };
 }
 

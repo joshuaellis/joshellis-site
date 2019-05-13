@@ -161,6 +161,8 @@ const GlobalStyle = createGlobalStyle`
       font-size: 1.2rem;
       font-weight: 200;
       color: inherit;
+      position: relative;
+      top:2px;
     }
   }
 

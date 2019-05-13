@@ -16,7 +16,6 @@ import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import ProjectPage from 'containers/ProjectPage/Loadable';
 
-import Footer from 'components/Footer';
 import GlobalStyle from '../../global-styles';
 
 import { PROJECTS } from '../../constants';
@@ -33,7 +32,7 @@ export default function App() {
     .reverse()
     .map(key =>
       PROJECTS[key].map(x =>
-        routes.push(x.split('<label>WIP</label>')[0].replace(/\s/g, '')),
+        routes.push(x.split('<label>WIP</label>')[0].replace(/\s/g, '-')),
       ),
     );
   return (
@@ -43,7 +42,6 @@ export default function App() {
         <Route path={`/(${routes.join('|')})/`} component={ProjectPage} />
         <Route component={NotFoundPage} />
       </Switch>
-      <Footer />
       <GlobalStyle />
     </div>
   );

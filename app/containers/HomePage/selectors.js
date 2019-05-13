@@ -7,9 +7,17 @@ import { initialState } from './reducer';
 
 const selectHomePageDomain = state => state.homePage || initialState;
 
+const selectProjectDomain = state => state.projectPage;
+
 /**
  * Other specific selectors
  */
+
+const makeSelectProjectPage = () =>
+  createSelector(
+    selectProjectDomain,
+    substate => substate,
+  );
 
 /**
  * Default selector used by HomePage
@@ -22,4 +30,4 @@ const makeSelectHomePage = () =>
   );
 
 export default makeSelectHomePage;
-export { selectHomePageDomain };
+export { selectHomePageDomain, makeSelectProjectPage };

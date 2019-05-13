@@ -1,6 +1,6 @@
 /**
  *
- * Asynchronously loads the component for Project
+ * Asynchronously loads the component for ProjectPage
  *
  */
 

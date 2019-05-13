@@ -1,6 +1,6 @@
 /**
  *
- * Tests for Project
+ * Tests for ProjectPage
  *
  * @see https://github.com/react-boilerplate/react-boilerplate/tree/master/docs/testing
  *
@@ -12,7 +12,7 @@ import { render } from 'react-testing-library';
 
 import { ProjectPage } from '../index';
 
-describe('<Project />', () => {
+describe('<ProjectPage />', () => {
   it('Expect to not log errors in console', () => {
     const spy = jest.spyOn(global.console, 'error');
     const dispatch = jest.fn();

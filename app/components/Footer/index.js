@@ -5,14 +5,14 @@
  */
 
 import React, { memo } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { PALETTE } from '../../constants';
 
-function Footer() {
+function Footer(props) {
   return (
-    <Wrapper>
+    <Wrapper project={props.project}>
       <SocialAnchor
         className="blue"
         rel="noopener"
@@ -54,7 +54,7 @@ const Wrapper = styled.footer`
     margin-top: 40px;
   }
   @media (min-width: 1280px) {
-    padding-left: 56px;
+    padding-left: ${props => (props.project ? '111px' : ' 56px')};
     padding-right: 56px;
     margin-top: 80px;
   }
@@ -81,6 +81,8 @@ const SocialAnchor = styled.a`
   }
 `;
 
-Footer.propTypes = {};
+Footer.propTypes = {
+  project: PropTypes.bool,
+};
 
 export default memo(Footer);

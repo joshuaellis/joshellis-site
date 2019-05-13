@@ -32,7 +32,7 @@ function NavMenu(props) {
                     index={Math.floor(Math.random() * (3 - 0 + 1)) + 0}
                     to={`/${name
                       .split('<label>WIP</label>')[0]
-                      .replace(/\s/g, '')}`}
+                      .replace(/\s/g, '-')}`}
                   >
                     {name.match(regex)
                       ? [
