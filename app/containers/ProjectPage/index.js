@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 /* eslint-disable prettier/prettier */
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
@@ -89,6 +90,21 @@ export function ProjectPage(props) {
                     {item.content}
                   </a>
                 </Url>
+              );
+            }
+            if (item.type === 'video') {
+              return (
+                <IFrameSection>
+                  <IFrameContainer>
+                    <IFrame
+                      title={item.title || 'video'}
+                      src={item.url}
+                      frameBorder="0"
+                      allow={item.options.allow}
+                      allowFullScreen
+                    />
+                  </IFrameContainer>
+                </IFrameSection>
               );
             }
           })
@@ -194,6 +210,34 @@ const Url = styled.h3`
   }
   @media (min-width: 1280px) {
     font-size: 2.6rem;
+    a {
+      border-left: solid 4px ${PALETTE.green};
+    }
+  }
+`;
+
+const IFrameSection = styled(ImageContainer)`
+  @media (min-width: 1280px) {
+    padding: 0px;
+    padding-left: 111px;
+  }
+`;
+
+const IFrameContainer = styled.div`
+  overflow: hidden;
+  padding-top: 56.25%;
+  position: relative;
+`;
+
+const IFrame = styled.iframe`
+  border: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  @media (min-width: 1280px) {
+    max-width: calc(((100% - (13 * 16px)) / 14) * 13);
   }
 `;
 

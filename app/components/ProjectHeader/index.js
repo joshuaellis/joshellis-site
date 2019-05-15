@@ -39,6 +39,7 @@ const Wrapper = styled.div`
   position: fixed;
   top: 0px;
   height: 64px;
+  z-index: 10;
   @media (min-width: 768px) {
     height: 72px;
     padding: 16px 32px;

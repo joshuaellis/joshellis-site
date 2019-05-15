@@ -15,6 +15,18 @@ import FIG1A from './images/work/hoffmanncentre/FIG1A.png';
 import FIG1B from './images/work/hoffmanncentre/FIG1B.png';
 import FIG1C from './images/work/hoffmanncentre/FIG1C.png';
 
+import SLIDE_ONE from './images/work/designskills/design-skills-01.png';
+import SLIDE_TWO from './images/work/designskills/design-skills-02.png';
+import SLIDE_THREE from './images/work/designskills/design-skills-03.png';
+
+import CARTO_DESKTOP from './images/work/cartographic/cartographic-desktop.png';
+import CARTO_MOBILE from './images/work/cartographic/cartographic-mobile.png';
+
+import BLACK_DESKTOP from './images/work/blackshaw/blackshaw-desktop.png';
+import BLACK_MOBILE from './images/work/blackshaw/blackshaw-mobile.png';
+
+import ALGO_IMG from './images/work/algorhythm/algo.jpg';
+
 const PALETTE = {
   black: '#1a1a1a',
   white: '#fdfdfd',
@@ -40,10 +52,7 @@ const PROJECTS = {
     'Global Competitive Index 2018',
     'Design Skills',
   ],
-  '2017': [
-    'Genesys UX',
-    // 'Algo~rhythm',
-  ],
+  '2017': ['Genesys UX', 'algo~rhythm'],
 };
 
 const MOBILE_TITLES = {
@@ -72,10 +81,30 @@ const CONTENT = {
       id: 'cc-02',
     },
     {
+      type: 'img-carousel',
+      content: [
+        {
+          type: 'image',
+          content: CARTO_DESKTOP,
+          alt: 'Cartographic Colour desktop site screenshot',
+          caption: 'Cartographic Colour desktop site',
+          id: 'cc-03.1',
+        },
+        {
+          type: 'image',
+          content: CARTO_MOBILE,
+          alt: 'Cartographic Colour mobile site screenshot series',
+          caption: 'Cartographic Colour mobile site',
+          id: 'cc-03.2',
+        },
+      ],
+      id: 'cc-03',
+    },
+    {
       type: 'url',
       content: 'cartographiccolour.com',
       url: 'https://www.cartographiccolour.com/',
-      id: 'cc-03',
+      id: 'cc-04',
     },
   ],
   'Blackshaw Interior Site': [
@@ -86,22 +115,38 @@ const CONTENT = {
       id: 'bsi-01',
     },
     {
-      type: 'paragraph',
-      content:
-        "The client expressed the importance of flexibility whilst building their page's content. To fulfill this I created flexible content blocks for specific wordpress post and page types. The end result was a light weight theme with minimal libraries and image optimizing.",
+      type: 'image',
+      content: BLACK_DESKTOP,
+      alt: "Desktop homepage of Blackshaw Interior Design's website",
+      caption: 'Desktop homepage view of the site.',
       id: 'bsi-02',
     },
     {
       type: 'paragraph',
       content:
-        'Other features for the site include an image carousel on the homepage and an instagram image scraper to include their profile feed on their news page.',
+        "The client expressed the importance of flexibility whilst building their page's content. To fulfill this I created flexible content blocks for specific wordpress post and page types. The end result was a light weight theme with minimal libraries and image optimizing.",
       id: 'bsi-03',
+    },
+    {
+      type: 'image',
+      content: BLACK_MOBILE,
+      alt:
+        "Selection of mobile screenshots from Blackshaw Interior Design's website",
+      caption:
+        'Mobile view of the site, from left to right –  Homepage, Portfolio, Single project.',
+      id: 'bsi-04',
+    },
+    {
+      type: 'paragraph',
+      content:
+        'Other features for the site include an image carousel on the homepage and an instagram image scraper to include their profile feed on their news page.',
+      id: 'bsi-05',
     },
     {
       type: 'url',
       content: 'blackshawinterior.com',
       url: 'https://blackshawinteriordesign.com/',
-      id: 'bsi-04',
+      id: 'bsi-06',
     },
   ],
   'Inside Black Mirror': [
@@ -292,10 +337,37 @@ const CONTENT = {
       id: 'des-02',
     },
     {
+      type: 'img-carousel',
+      content: [
+        {
+          type: 'image',
+          content: SLIDE_ONE,
+          alt: 'Slide one of design skills',
+          caption: 'Slide one',
+          id: 'des-03.1',
+        },
+        {
+          type: 'image',
+          content: SLIDE_TWO,
+          alt: 'Slide two of design skills',
+          caption: 'Slide two',
+          id: 'des-03.2',
+        },
+        {
+          type: 'image',
+          content: SLIDE_THREE,
+          alt: 'Slide three of design skills',
+          caption: 'Slide three',
+          id: 'des-03.3',
+        },
+      ],
+      id: 'des-03',
+    },
+    {
       type: 'url',
       content: 'designskills.org',
       url: 'http://designskills.designcouncil.org.uk/?src=home',
-      id: 'des-03',
+      id: 'des-04',
     },
   ],
   'Genesys UX': [
@@ -312,7 +384,50 @@ const CONTENT = {
       id: 'gen-02',
     },
   ],
-  // 'Algo~rhythm': [],
+  'algo~rhythm': [
+    {
+      type: 'standfirst',
+      content:
+        "Made in response to D&AD's New Blood 2017 Arjowiggin's brief algo~rhythm is a promotional service that takes your favourite Sony music song and generates a unique pattern online",
+      id: 'ar-01',
+    },
+    {
+      type: 'paragraph',
+      content:
+        "It is then printed and perforated on a 12” by 12” sheet of Arjowiggin's Pop'Set paper with the colour of both the stock and pattern determined by the user to become a bespoke slip-mat. They are then sent out to customers in a gate folded vinyl cover. Made using Arjowiggins' conqueror CX22 brilliant white paper, and once opened reveals all the present Sony music artists.",
+      id: 'ar-02',
+    },
+    {
+      type: 'image',
+      content: ALGO_IMG,
+      alt:
+        'Example of a bespoke slipmat and the gatefold vinyl cover the product is delivered in.',
+      caption:
+        'Example of a bespoke slipmat and the gatefold vinyl cover the product is delivered in.',
+      id: 'ar-03',
+    },
+    {
+      type: 'paragraph',
+      content: [
+        "algo~rhythm gets its name from the algorithm used on the website, taking data directly from Spotify's song data and converting it into the end visuals. The variables in this algorithm are:",
+        <ul>
+          <li>Popularity — shown by the thickness of the line</li>
+          <li>BPM — shown by the frequency of the line</li>
+          <li>Length — shown by the length of line</li>
+        </ul>,
+      ],
+      id: 'ar-04',
+    },
+    {
+      type: 'video',
+      url: 'https://player.vimeo.com/video/213445995',
+      title: 'algo~rhythm',
+      options: {
+        allow: 'autoplay; fullscreen',
+      },
+      id: 'ar-05',
+    },
+  ],
 };
 
 export { CONTENT };
