@@ -27,7 +27,7 @@ function ProjectHeader(props) {
           </g>
         </svg>
       </SVGButton>
-      <Dropdown title={props.projectTitle} />
+      <Dropdown projects={props.projectList} title={props.projectTitle} />
     </Wrapper>
   );
 }
@@ -40,6 +40,7 @@ const Wrapper = styled.div`
   top: 0px;
   height: 64px;
   z-index: 10;
+  display: block;
   @media (min-width: 768px) {
     height: 72px;
     padding: 16px 32px;
@@ -48,6 +49,9 @@ const Wrapper = styled.div`
   @media (min-width: 1280px) {
     height: 88px;
     padding: 22px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 `;
 
@@ -69,6 +73,7 @@ const SVGButton = styled(Link)`
 
 ProjectHeader.propTypes = {
   projectTitle: PropTypes.string,
+  projectList: PropTypes.object,
 };
 
 export default ProjectHeader;

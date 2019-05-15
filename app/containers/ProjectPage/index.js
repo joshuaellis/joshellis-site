@@ -24,7 +24,7 @@ import makeSelectProjectPage from './selectors';
 import reducer from './reducer';
 import { SET_PROJECT_ACTION } from './actions';
 
-import { CONTENT, PALETTE, MOBILE_TITLES } from '../../constants';
+import { CONTENT, PALETTE, MOBILE_TITLES, PROJECTS } from '../../constants';
 
 export function ProjectPage(props) {
   useInjectReducer({ key: 'projectPage', reducer });
@@ -49,7 +49,7 @@ export function ProjectPage(props) {
           }`}
         />
       </Helmet>
-      <ProjectHeader projectTitle={title} />
+      <ProjectHeader projectList={PROJECTS} projectTitle={title} />
       <ArticleGrid>
         {CONTENT[project].length !== 0
           ? CONTENT[project].map(item => {

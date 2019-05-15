@@ -63,6 +63,7 @@ const MOBILE_TITLES = {
   'Global Competitive Index 2018': 'GCI 2018',
   'Design Skills': 'Design Skills',
   'Genesys UX': 'Genesys UX',
+  'algo~rhythm': 'algo~rhythm',
 };
 
 const CONTENT = {
@@ -410,11 +411,15 @@ const CONTENT = {
       type: 'paragraph',
       content: [
         "algo~rhythm gets its name from the algorithm used on the website, taking data directly from Spotify's song data and converting it into the end visuals. The variables in this algorithm are:",
-        <ul>
-          <li>Popularity — shown by the thickness of the line</li>
-          <li>BPM — shown by the frequency of the line</li>
-          <li>Length — shown by the length of line</li>
-        </ul>,
+        <br />,
+        <label>Popularity</label>,
+        ' — shown by the thickness of the line',
+        <br />,
+        <label>BPM</label>,
+        ' — shown by the frequency of the line',
+        <br />,
+        <label>Length</label>,
+        ' — shown by the length of line',
       ],
       id: 'ar-04',
     },
