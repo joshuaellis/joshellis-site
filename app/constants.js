@@ -42,7 +42,7 @@ const COLORARR = ['blue', 'red', 'orange', 'green'];
 
 const PROJECTS = {
   '2019': [
-    // 'Applied Charts <label>WIP</label>',
+    'Applied Charts <label>WIP</label>',
     'Cartographic Colour',
     'Blackshaw Interior Site',
   ],
@@ -67,7 +67,25 @@ const MOBILE_TITLES = {
 };
 
 const CONTENT = {
-  // 'Applied Charts': [],
+  'Applied Charts ': [
+    {
+      type: 'standfirst',
+      content: [
+        'Applied Charts is an R&D project lead by myself and ',
+        <a rel="noopener" target="_blank" href="http://callumstrachan.co.uk/">
+          Callum Strachan
+        </a>,
+        '. The aim is to design and build a user centred chart builder to improve workflows and bring the ease of handling data to everyone.',
+      ],
+      id: 'ac-01',
+    },
+    {
+      type: 'paragraph',
+      content:
+        "The project began by building a prototype with Chart.js at it's core, but quickly found the application unscalable and adding features was complex. In the summer of 2018 we began designing the MVP version of the app to be ready for development in 2019 using React and Google Firestore. The current status of the application is in build.",
+      id: 'ac-02',
+    },
+  ],
   'Cartographic Colour': [
     {
       type: 'standfirst',
