@@ -10,7 +10,7 @@
 import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-// import ReactGA from 'react-ga';
+import ReactGA from 'react-ga';
 
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
@@ -23,8 +23,8 @@ import { PROJECTS } from '../../constants';
 export default function App() {
   useEffect(() => {
     document.getElementById('loadingGIF').style.display = 'none';
-    // ReactGA.initialize('UA-126238995-2');
-    // ReactGA.pageview('/homepage');
+    ReactGA.initialize('UA-126238995-2');
+    ReactGA.pageview('/homepage');
   }, []);
   const routes = [];
   Object.keys(PROJECTS)

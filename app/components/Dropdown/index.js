@@ -14,14 +14,19 @@ function Dropdown(props) {
   const { title, dropdownStyle, projects } = props;
   const [active, setActive] = useState(false);
   const wrapper = React.createRef();
-  // eslint-disable-next-line func-names
-  const handleClickOutside = function(event) {
+  function handleClickOutside(event) {
     if (wrapper.current && !wrapper.current.contains(event.target)) {
       if (active) {
         setActive(false);
       }
     }
-  };
+  }
+  function handleClick() {
+    if (props.onclick) {
+      props.onclick(!active);
+    }
+    setActive(!active);
+  }
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
@@ -30,7 +35,7 @@ function Dropdown(props) {
   });
   return (
     <Wrapper ref={wrapper} style={dropdownStyle}>
-      <DropdownWrapper onClick={() => setActive(!active)}>
+      <DropdownWrapper onClick={() => handleClick()}>
         <h2>{title}</h2>
         <SVGButton active={active} type="button">
           <svg width="24" height="24" viewBox="0 0 24 24">
@@ -85,6 +90,7 @@ Dropdown.propTypes = {
   title: PropTypes.string.isRequired,
   dropdownStyle: PropTypes.object,
   projects: PropTypes.object,
+  onclick: PropTypes.func,
 };
 
 export default Dropdown;

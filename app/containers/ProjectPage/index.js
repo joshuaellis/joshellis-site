@@ -18,25 +18,43 @@ import styled from 'styled-components';
 
 import ProjectHeader from 'components/ProjectHeader';
 import Footer from 'components/Footer';
+import ImageModal from 'components/ImageModal';
 
 import { useInjectReducer } from 'utils/injectReducer';
-import makeSelectProjectPage from './selectors';
+import makeSelectProjectPage, { makeSelectHomePage } from './selectors';
 import reducer from './reducer';
-import { SET_PROJECT_ACTION } from './actions';
+import { SET_PROJECT_ACTION, OPEN_MODAL_ACTION } from './actions';
+import { IS_MOBILE_ACTION } from '../HomePage/actions';
 
 import { CONTENT, PALETTE, MOBILE_TITLES, PROJECTS } from '../../constants';
 
 export function ProjectPage(props) {
   useInjectReducer({ key: 'projectPage', reducer });
-  const { location, dispatchSetProjectAction } = props;
+  const {
+    location,
+    dispatchSetProjectAction,
+    dispatchOpenModalAction,
+    projectPage,
+  } = props;
   const project = location.pathname.replace('/', '').replace(/-/g, ' ');
   let title = project;
   if (window.innerWidth < 480) {
     title = MOBILE_TITLES[title];
   }
+  function widthChecker() {
+    if (window.innerWidth <= 768) {
+      props.dispatchIsMobileAction(true);
+    } else {
+      props.dispatchIsMobileAction(false);
+    }
+  }
   useEffect(() => {
     dispatchSetProjectAction(title);
     window.scrollTo(0, 0);
+    window.addEventListener('resize', widthChecker);
+    return () => {
+      window.removeEventListener('resize', widthChecker, true);
+    };
   }, []);
   return (
     <React.Fragment>
@@ -50,7 +68,7 @@ export function ProjectPage(props) {
         />
       </Helmet>
       <ProjectHeader projectList={PROJECTS} projectTitle={title} />
-      <ArticleGrid>
+      <ArticleGrid isMobile={projectPage.isMobile}>
         {CONTENT[project].length !== 0
           ? CONTENT[project].map(item => {
             if (item.type === 'standfirst') {
@@ -66,7 +84,12 @@ export function ProjectPage(props) {
             if (item.type === 'image') {
               return (
                 <ImageContainer key={item.id}>
-                  <Image id={item.id} src={item.content} alt={item.alt} />
+                  <Image
+                    onClick={() => dispatchOpenModalAction(true, item)}
+                    id={item.id}
+                    src={item.content}
+                    alt={item.alt}
+                  />
                   <label className="imageCaption">{item.caption}</label>
                 </ImageContainer>
               );
@@ -76,7 +99,12 @@ export function ProjectPage(props) {
                 <ImageContainer key={item.id}>
                   {item.content.map(x => (
                     <CarouselContainer>
-                      <Image id={x.id} src={x.content} alt={x.alt} />
+                      <Image
+                        onClick={() => dispatchOpenModalAction(true)}
+                        id={x.id}
+                        src={x.content}
+                        alt={x.alt}
+                      />
                       <label className="imageCaption">{x.caption}</label>
                     </CarouselContainer>
                   ))}
@@ -111,6 +139,12 @@ export function ProjectPage(props) {
           : null}
       </ArticleGrid>
       <Footer project />
+      {projectPage.isMobile && projectPage.modalOpen ? (
+        <ImageModal
+          image={projectPage.imageModalObject}
+          onClose={dispatchOpenModalAction}
+        />
+      ) : null}
     </React.Fragment>
   );
 }
@@ -244,15 +278,22 @@ const IFrame = styled.iframe`
 ProjectPage.propTypes = {
   location: PropTypes.object,
   dispatchSetProjectAction: PropTypes.func,
+  dispatchIsMobileAction: PropTypes.func,
+  dispatchOpenModalAction: PropTypes.func,
+  projectPage: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
   projectPage: makeSelectProjectPage(),
+  homePage: makeSelectHomePage(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatchSetProjectAction: project => dispatch(SET_PROJECT_ACTION(project)),
+    dispatchIsMobileAction: bool => dispatch(IS_MOBILE_ACTION(bool)),
+    dispatchOpenModalAction: (bool, item) =>
+      dispatch(OPEN_MODAL_ACTION(bool, item)),
   };
 }
 

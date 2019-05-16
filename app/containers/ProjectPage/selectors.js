@@ -11,6 +11,14 @@ const selectProjectPageDomain = state => state.projectPage || initialState;
  * Other specific selectors
  */
 
+const selectHomePageDomain = state => state.homePage;
+
+const makeSelectHomePage = () =>
+  createSelector(
+    selectHomePageDomain,
+    substate => substate,
+  );
+
 /**
  * Default selector used by ProjectPage
  */
@@ -22,4 +30,4 @@ const makeSelectProjectPage = () =>
   );
 
 export default makeSelectProjectPage;
-export { selectProjectPageDomain };
+export { selectProjectPageDomain, makeSelectHomePage };

@@ -68,7 +68,7 @@ const Wrapper = styled.div`
     padding: 8px 32px 18px 32px;
     max-height: 528px;
   }
-  @media (min-width: 780px) {
+  @media (min-width: 1280px) {
     position: relative;
     top: 24px;
     left: -32px;

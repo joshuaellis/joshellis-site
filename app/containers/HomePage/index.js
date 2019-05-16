@@ -4,8 +4,8 @@
  *
  */
 
-import React from 'react';
-// import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { Helmet } from 'react-helmet';
@@ -15,6 +15,7 @@ import styled from 'styled-components';
 import { useInjectReducer } from 'utils/injectReducer';
 import SiteHeader from 'components/SiteHeader';
 import Footer from 'components/Footer';
+import { IS_MOBILE_ACTION } from './actions';
 import makeSelectHomePage, { makeSelectProjectPage } from './selectors';
 import reducer from './reducer';
 
@@ -23,8 +24,21 @@ import NavMenu from '../../components/NavMenu';
 
 import { PROJECTS } from '../../constants';
 
-export function HomePage() {
+export function HomePage(props) {
   useInjectReducer({ key: 'homePage', reducer });
+  function widthChecker() {
+    if (window.innerWidth <= 768) {
+      props.dispatchIsMobile(true);
+    } else {
+      props.dispatchIsMobile(false);
+    }
+  }
+  useEffect(() => {
+    window.addEventListener('resize', widthChecker);
+    return () => {
+      window.removeEventListener('resize', widthChecker, true);
+    };
+  }, []);
   return (
     <React.Fragment>
       <Helmet>
@@ -44,7 +58,9 @@ export function HomePage() {
   );
 }
 
-HomePage.propTypes = {};
+HomePage.propTypes = {
+  dispatchIsMobile: PropTypes.func,
+};
 
 const HomepageWrapper = styled.div`
   padding-top: 144px;
@@ -62,7 +78,7 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    dispatchIsMobile: bool => dispatch(IS_MOBILE_ACTION(bool)),
   };
 }
 

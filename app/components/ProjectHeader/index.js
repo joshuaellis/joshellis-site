@@ -27,7 +27,11 @@ function ProjectHeader(props) {
           </g>
         </svg>
       </SVGButton>
-      <Dropdown projects={props.projectList} title={props.projectTitle} />
+      <Dropdown
+        onclick={props.dispatchOpenMenu}
+        projects={props.projectList}
+        title={props.projectTitle}
+      />
     </Wrapper>
   );
 }
@@ -74,6 +78,7 @@ const SVGButton = styled(Link)`
 ProjectHeader.propTypes = {
   projectTitle: PropTypes.string,
   projectList: PropTypes.object,
+  dispatchOpenMenu: PropTypes.func,
 };
 
 export default ProjectHeader;
