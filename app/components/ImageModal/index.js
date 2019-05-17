@@ -4,31 +4,35 @@
  *
  */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import ReactDOM from 'react-dom';
+import ReactSwipe from 'react-swipe';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { PALETTE } from '../../constants';
 
 function ImageModal(props) {
-  const { onClose, image } = props;
-  let [img, setImg] = useState(image);
-  if (Array.isArray(image)) {
-    [img, setImg] = useState(image[0]);
+  const { onClose, image, selectedID } = props;
+  const reactSwipeRef = React.createRef();
+  let val = 0;
+  if (image.type === 'img-carousel') {
+    val = image.content.findIndex(x => x.id === selectedID);
   }
   useEffect(() => {
     document.getElementById('body').style.overflow = 'hidden';
     return () => {
       document.getElementById('body').style.overflow = 'auto';
+      onClose(false);
     };
   }, []);
-  function handleClick() {
-    setImg(null);
-    onClose(false);
-  }
-  return (
-    <ModalContainer>
-      <SVGButton onClick={handleClick}>
+  const swipeOptions = {
+    startSlide: val,
+    continuous: false,
+  };
+  const JSX_MODAL = (
+    <ModalContainer height={window.scrollY}>
+      <SVGButton onClick={() => onClose(false)}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 46">
           <g>
             <polygon
@@ -39,9 +43,25 @@ function ImageModal(props) {
           </g>
         </svg>
       </SVGButton>
-      <Image alt={img.alt} id={img.id} src={img.content} />
+      {image.type === 'img-carousel' ? (
+        <ReactSwipe
+          className="carousel"
+          swipeOptions={swipeOptions}
+          ref={reactSwipeRef}
+        >
+          {image.content.map(x => (
+            <div>
+              <Image id={x.id} src={x.content} alt={x.alt} />
+            </div>
+          ))}
+        </ReactSwipe>
+      ) : (
+        <Image alt={image.alt} id={image.id} src={image.content} />
+      )}
     </ModalContainer>
   );
+
+  return ReactDOM.createPortal(JSX_MODAL, document.querySelector('#modal'));
 }
 
 const ModalContainer = styled.div`
@@ -49,7 +69,7 @@ const ModalContainer = styled.div`
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.9);
   position: absolute;
-  top: 0;
+  top: ${props => (props.height ? `${props.height}px` : '0px')};
   left: 0;
   z-index: 100;
   display: flex;
@@ -78,6 +98,7 @@ const SVGButton = styled.button`
 ImageModal.propTypes = {
   onClose: PropTypes.func,
   image: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+  selectedID: PropTypes.string,
 };
 
 export default ImageModal;

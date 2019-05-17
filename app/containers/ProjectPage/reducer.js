@@ -12,6 +12,7 @@ export const initialState = {
   isMobile: false,
   modalOpen: false,
   imageModalObject: null,
+  carouselId: null,
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -24,6 +25,7 @@ const projectPageReducer = (state = initialState, action) =>
       case OPEN_MODAL:
         draft.modalOpen = action.modalOpen;
         draft.imageModalObject = action.imageObj;
+        draft.carouselId = action.carouselId;
         break;
       case IS_MOBILE:
         draft.isMobile = action.mobile;

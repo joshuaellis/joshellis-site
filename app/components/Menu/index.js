@@ -25,10 +25,9 @@ function Menu(props) {
           <YearWrapper index={index} key={key}>
             <label className="year white">{key}</label>
             {projects[key].map(name => (
-              <React.Fragment>
+              <React.Fragment key={name.split('<label>WIP</label>')}>
                 <StyledLink
                   className="white"
-                  key={name.split('<label>WIP</label>')}
                   to={`/${name
                     .split('<label>WIP</label>')[0]
                     .replace(/\s/g, '-')}`}
@@ -72,7 +71,7 @@ const Wrapper = styled.div`
     position: relative;
     top: 24px;
     left: -32px;
-    max-width: 464px;
+    width: calc(100% + 64px);
   }
 `;
 

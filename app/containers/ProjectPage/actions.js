@@ -13,11 +13,12 @@ export function SET_PROJECT_ACTION(projectTitle) {
   };
 }
 
-export function OPEN_MODAL_ACTION(bool, object) {
+export function OPEN_MODAL_ACTION(bool, object, id) {
   return {
     type: OPEN_MODAL,
     modalOpen: bool,
     imageObj: object,
+    carouselId: id,
   };
 }
 

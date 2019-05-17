@@ -34,6 +34,7 @@ export function HomePage(props) {
     }
   }
   useEffect(() => {
+    widthChecker();
     window.addEventListener('resize', widthChecker);
     return () => {
       window.removeEventListener('resize', widthChecker, true);

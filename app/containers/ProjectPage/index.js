@@ -51,6 +51,7 @@ export function ProjectPage(props) {
   useEffect(() => {
     dispatchSetProjectAction(title);
     window.scrollTo(0, 0);
+    widthChecker();
     window.addEventListener('resize', widthChecker);
     return () => {
       window.removeEventListener('resize', widthChecker, true);
@@ -98,9 +99,15 @@ export function ProjectPage(props) {
               return (
                 <ImageContainer key={item.id}>
                   {item.content.map(x => (
-                    <CarouselContainer>
+                    <CarouselContainer key={x.id}>
                       <Image
-                        onClick={() => dispatchOpenModalAction(true)}
+                        onClick={e =>
+                          dispatchOpenModalAction(
+                            true,
+                            item,
+                            e.currentTarget.id,
+                          )
+                        }
                         id={x.id}
                         src={x.content}
                         alt={x.alt}
@@ -122,7 +129,7 @@ export function ProjectPage(props) {
             }
             if (item.type === 'video') {
               return (
-                <IFrameSection>
+                <IFrameSection key={item.id}>
                   <IFrameContainer>
                     <IFrame
                       title={item.title || 'video'}
@@ -142,6 +149,7 @@ export function ProjectPage(props) {
       {projectPage.isMobile && projectPage.modalOpen ? (
         <ImageModal
           image={projectPage.imageModalObject}
+          selectedID={projectPage.carouselId}
           onClose={dispatchOpenModalAction}
         />
       ) : null}
@@ -292,8 +300,8 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatchSetProjectAction: project => dispatch(SET_PROJECT_ACTION(project)),
     dispatchIsMobileAction: bool => dispatch(IS_MOBILE_ACTION(bool)),
-    dispatchOpenModalAction: (bool, item) =>
-      dispatch(OPEN_MODAL_ACTION(bool, item)),
+    dispatchOpenModalAction: (bool, item, id) =>
+      dispatch(OPEN_MODAL_ACTION(bool, item, id)),
   };
 }
 

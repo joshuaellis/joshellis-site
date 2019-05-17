@@ -56,6 +56,7 @@ const PROJECTS = {
 };
 
 const MOBILE_TITLES = {
+  'Applied Charts ': 'Applied Charts',
   'Cartographic Colour': 'Cartographic',
   'Blackshaw Interior Site': 'Blackshaw',
   'Inside Black Mirror': 'Black Mirror',
