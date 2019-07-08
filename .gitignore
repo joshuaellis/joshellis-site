@@ -11,3 +11,4 @@ npm-debug.log
 
 #Deploy file
 deploy.js
+.DS_Store

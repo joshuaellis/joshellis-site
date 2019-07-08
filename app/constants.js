@@ -97,7 +97,7 @@ const CONTENT = {
     {
       type: 'paragraph',
       content:
-        'Completed within a short timeframe, the site was designed and built within ten days to advertise the sales of his artworks and book alongside his exhibition. To ensure the site is responsive, the dot background on the mobile copy is repsonsive to the height of the text block to generate the correct amount of dots needed everytime the webpage loads.',
+        'Completed within a short timeframe, the site was designed and built within ten days to advertise the sales of his artworks and book alongside his exhibition. To ensure the site is responsive, the dot background on the mobile copy is responsive to the height of the text block to generate the correct amount of dots needed everytime the webpage loads.',
       id: 'cc-02',
     },
     {
