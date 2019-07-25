@@ -232,6 +232,7 @@ const Image = styled.img`
 const Paragraph = styled.p`
   margin: 12px 0px;
   &.standfirst {
+    color: #333333;
     font-weight:200;
     font-size:20px;
     line-height:36px;
