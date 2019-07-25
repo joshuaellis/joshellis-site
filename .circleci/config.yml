@@ -1,22 +1,40 @@
-version: 2.0
+version: 2
 jobs:
   build:
-    # pre-built images: https://circleci.com/docs/2.0/circleci-images/
+    # The primary container is an instance of the first image listed. The job's commands run in this container.
     docker:
-      - image: circleci/node:10-browsers
+      - image: circleci/node:4.8.2
     steps:
       - checkout
       - run:
-          name: The First Step
-          command: |
-            echo 'Hello World!'
-            echo 'This is the delivery pipeline'
+          name: update-npm
+          command: 'sudo npm install -g npm@5'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
       - run:
-          name: Code Has Arrived
-          command: |
-            ls -al
-            echo '^^^That should look familiar^^^'
+          name: install-npm-wee
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+  deploy:
+    machine:
+      enabled: true
+    steps:
       - run:
-          name: Running in a Unique Container
+          name: Deploy Over SSH
           command: |
-            node -v
+            ssh $SSH_USER@$SSH_HOST "<remote deploy command>"
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
