@@ -25,7 +25,7 @@ jobs:
       - run:
           name: Deploy Over SSH
           command: |
-            ssh -p 2222 $SSH_USER@$SSH_HOST mkdir cd public_html
+            ssh -p 2222 $SSH_USER@$SSH_HOST cd public_html
 
 workflows:
   version: 2
