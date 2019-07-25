@@ -19,6 +19,7 @@ import styled from 'styled-components';
 import ProjectHeader from 'components/ProjectHeader';
 import Footer from 'components/Footer';
 import ImageModal from 'components/ImageModal';
+import ArticleMetaBlock from 'components/ArticleMetaBlock';
 
 import { useInjectReducer } from 'utils/injectReducer';
 import makeSelectProjectPage, { makeSelectHomePage } from './selectors';
@@ -142,6 +143,9 @@ export function ProjectPage(props) {
                 </IFrameSection>
               );
             }
+            if(item.type === 'meta-data'){
+              return <ArticleMetaBlock>{item.content}</ArticleMetaBlock>
+            }
           })
           : null}
       </ArticleGrid>
@@ -161,19 +165,28 @@ const ArticleGrid = styled.div`
   display: grid;
   grid-template-columns: [full-start] 16px [main-start] auto [main-end] 16px [full-end];
   padding-top: 64px;
-  p {
+  p, ul {
     grid-column: main;
   }
   section {
     grid-column: full;
   }
+  .article__meta{
+    margin-top:16px;
+  }
   @media (min-width: 768px) {
     padding-top: 72px;
     grid-template-columns: [full-start] 66px [main-start] auto [main-end] 66px [full-end];
+    .article__meta{
+      margin-top:24px;
+    }
   }
   @media (min-width: 1280px) {
     grid-template-columns: [full-start] 111px [main-start] auto [main-end] 111px [full-end];
     padding-top: 88px;
+    .article__meta{
+      margin-top:32px;
+    }
   }
 `;
 
@@ -219,20 +232,25 @@ const Image = styled.img`
 const Paragraph = styled.p`
   margin: 12px 0px;
   &.standfirst {
-    margin-top: 16px;
+    font-weight:200;
+    font-size:20px;
+    line-height:36px;
+    margin-top: 20px;
+    margin-bottom: 24px;
   }
   @media (min-width: 768px) {
     margin: 16px 0px;
     &.standfirst {
-      margin-top: 32px;
+      /* margin-top: 32px; */
     }
   }
   @media (min-width: 1280px) {
     max-width: 576px;
     &.standfirst {
-      margin-top: 40px;
-      font-size: 1.8rem;
-      line-height: 26px;
+      font-size:28px;
+      line-height:44px;
+      margin-top: 32px;
+    margin-bottom: 40px;
     }
   }
 `;
