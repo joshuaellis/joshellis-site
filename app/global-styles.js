@@ -48,7 +48,7 @@ const GlobalStyle = createGlobalStyle`
 
   @font-face {
     font-family: 'Surt';
-    src: url('${SurtMediumEOT}') format('embedded-opentype'), 
+    src: url('${SurtMediumEOT}') format('embedded-opentype'),
         url('${SurtMediumWOFF2}') format('woff2'),
         url('${SurtMediumWOFF}') format('woff'),
         url('${SurtMediumTTF}') format('truetype');
@@ -58,7 +58,7 @@ const GlobalStyle = createGlobalStyle`
 
   @font-face {
     font-family: 'Surt';
-    src: url('${SurtLightEOT}') format('embedded-opentype'), 
+    src: url('${SurtLightEOT}') format('embedded-opentype'),
         url('${SurtLightWOFF2}') format('woff2'),
         url('${SurtLightWOFF}') format('woff'),
         url('${SurtLightTTF}') format('truetype');
@@ -135,10 +135,10 @@ const GlobalStyle = createGlobalStyle`
       margin:0px;
     }
   }
-  p{
+  p,ul{
     font-family: 'Surt','Helvetica Neue', Helvetica, sans-serif;
     font-size: 1.4rem;
-    line-height: 20px;
+    line-height: 24px;
     font-weight: 400;
     color: ${PALETTE.black};
     margin:0px;
@@ -199,9 +199,9 @@ const GlobalStyle = createGlobalStyle`
         font-size: 1.6rem;
       }
     }
-    p{
+    p,ul{
       font-size: 1.6rem;
-      line-height: 24px;
+      line-height: 28px;
     }
     label{
       font-size: 1.6rem;
@@ -225,10 +225,10 @@ const GlobalStyle = createGlobalStyle`
       font-size: 3.2rem;
       line-height: 48px;
     }
-    p{
+    p,ul{
       .standfirst{
         font-size:1.8rem;
-        line-height: 26px;
+        line-height: 32px;
       }
     }
   }

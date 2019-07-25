@@ -27,6 +27,8 @@ import BLACK_MOBILE from './images/work/blackshaw/blackshaw-mobile.png';
 
 import ALGO_IMG from './images/work/algorhythm/algo.jpg';
 
+import MYRIAD_IMG from './images/work/myriad/myriad_share.png';
+
 const PALETTE = {
   black: '#1a1a1a',
   white: '#fdfdfd',
@@ -42,6 +44,7 @@ const COLORARR = ['blue', 'red', 'orange', 'green'];
 
 const PROJECTS = {
   '2019': [
+    'Myriad Immersive',
     'Applied Charts <label>WIP</label>',
     'Cartographic Colour',
     'Blackshaw Interior Site',
@@ -56,6 +59,7 @@ const PROJECTS = {
 };
 
 const MOBILE_TITLES = {
+  'Myriad Immersive': 'Myriad',
   'Applied Charts ': 'Applied Charts',
   'Cartographic Colour': 'Cartographic',
   'Blackshaw Interior Site': 'Blackshaw',
@@ -68,7 +72,68 @@ const MOBILE_TITLES = {
 };
 
 const CONTENT = {
+  'Myriad Immersive': [
+    {
+      type: 'meta-data',
+      content: [
+        <span className="article__meta-label">Client</span>,
+        <a rel="noopener" target="_blank" href="http://nbstudio.co.uk/">
+          NB Studio
+        </a>,
+        <span className="article__meta-label">Studio</span>,
+        'Freelance',
+        <span className="article__meta-label">Role</span>,
+        'Developer',
+        <span className="article__meta-label">Tech Stack</span>,
+        'Couch CMS with Parcel.JS',
+      ],
+    },
+    {
+      type: 'standfirst',
+      content:
+        'A front-end rebuild with a lightweight CMS solution for immersive theatre and events company Myriad, designed by NB Studio.',
+      id: 'myr-01',
+    },
+    {
+      type: 'paragraph',
+      content: `A combination of CSS animation & JQuery animations bring this site an immersive feel with a mobile navigation that guides you as you progress deeper into the site. Using CSS animations was more desirable as it is cheaper to run in browser and compared to JQuery's animation, you have a lot more control by using keyframes, should the animation require it.`,
+      id: 'myr-02',
+    },
+    {
+      type: 'image',
+      content: MYRIAD_IMG,
+      alt: 'myriad share image',
+      caption: 'the Myriad Immersive Logo',
+      id: 'myr-03',
+    },
+    {
+      type: 'paragraph',
+      content: `Couch CMS is lightweight but for the simplicity of the client's site it was perfect. With the ability to set up in a  matter of hours the Myriad site was able to be easily migrated to ensure all the content was preserved.`,
+      id: 'myr-04',
+    },
+    {
+      type: 'url',
+      content: 'myriadimmersive.com',
+      url: 'http://www.myriadimmersive.com/',
+      id: 'myr-05',
+    },
+  ],
   'Applied Charts ': [
+    {
+      type: 'meta-data',
+      content: [
+        <span className="article__meta-label">Client</span>,
+        'R&D at Applied Works',
+        <span className="article__meta-label">Studio</span>,
+        <a rel="noopener" target="_blank" href="http://appliedworks.co.uk/">
+          Applied Works
+        </a>,
+        <span className="article__meta-label">Role</span>,
+        'Designer // Developer',
+        <span className="article__meta-label">Tech Stack</span>,
+        'React & Redux with Firestore & Firebase functions',
+      ],
+    },
     {
       type: 'standfirst',
       content: [
@@ -88,6 +153,19 @@ const CONTENT = {
     },
   ],
   'Cartographic Colour': [
+    {
+      type: 'meta-data',
+      content: [
+        <span className="article__meta-label">Client</span>,
+        'Giles Revell',
+        <span className="article__meta-label">Studio</span>,
+        'Freelance',
+        <span className="article__meta-label">Role</span>,
+        'Designer // Developer',
+        <span className="article__meta-label">Tech Stack</span>,
+        'HTML, CSS, JS with Parcel.JS',
+      ],
+    },
     {
       type: 'standfirst',
       content:
@@ -128,6 +206,25 @@ const CONTENT = {
     },
   ],
   'Blackshaw Interior Site': [
+    {
+      type: 'meta-data',
+      content: [
+        <span className="article__meta-label">Client</span>,
+        <a
+          rel="noopener"
+          target="_blank"
+          href="https://blackshawinteriordesign.com/"
+        >
+          Blackshaw Interior Design
+        </a>,
+        <span className="article__meta-label">Studio</span>,
+        'Freelance',
+        <span className="article__meta-label">Role</span>,
+        'Designer // Developer',
+        <span className="article__meta-label">Tech Stack</span>,
+        'Wordpress with Parcel.JS & Composer',
+      ],
+    },
     {
       type: 'standfirst',
       content:
@@ -170,6 +267,21 @@ const CONTENT = {
     },
   ],
   'Inside Black Mirror': [
+    {
+      type: 'meta-data',
+      content: [
+        <span className="article__meta-label">Client</span>,
+        'Black Mirror',
+        <span className="article__meta-label">Studio</span>,
+        <a rel="noopener" target="_blank" href="http://appliedworks.co.uk/">
+          Applied Works
+        </a>,
+        <span className="article__meta-label">Role</span>,
+        'Designer // Developer',
+        <span className="article__meta-label">Tech Stack</span>,
+        'P5.js',
+      ],
+    },
     {
       type: 'standfirst',
       content:
@@ -250,6 +362,27 @@ const CONTENT = {
   ],
   'Hoffmann Centre Reports': [
     {
+      type: 'meta-data',
+      content: [
+        <span className="article__meta-label">Client</span>,
+        <a
+          rel="noopener"
+          target="_blank"
+          href="https://hoffmanncentre.chathamhouse.org/"
+        >
+          Hoffmann Centre for Sustainable Resource Economy
+        </a>,
+        <span className="article__meta-label">Studio</span>,
+        <a rel="noopener" target="_blank" href="http://appliedworks.co.uk/">
+          Applied Works
+        </a>,
+        <span className="article__meta-label">Role</span>,
+        'Designer // Developer',
+        <span className="article__meta-label">Tech Stack</span>,
+        'C3.js',
+      ],
+    },
+    {
       type: 'standfirst',
       content:
         'Applied Works and the Hoffmann Centre for sustainable resource economy have a lasting relationship which has seen us collaborate with them to brand their organisation and build their entire site.',
@@ -304,6 +437,19 @@ const CONTENT = {
   ],
   'Global Competitive Index 2018': [
     {
+      type: 'meta-data',
+      content: [
+        <span className="article__meta-label">Client</span>,
+        'World Economic Forum',
+        <span className="article__meta-label">Studio</span>,
+        <a rel="noopener" target="_blank" href="http://appliedworks.co.uk/">
+          Applied Works
+        </a>,
+        <span className="article__meta-label">Role</span>,
+        'Designer',
+      ],
+    },
+    {
       type: 'standfirst',
       content:
         'The Global Competitive Index (GCI) is produced by World Economic Forum every year and is used by millions of policy-makers and industries across the world.',
@@ -344,6 +490,19 @@ const CONTENT = {
     },
   ],
   'Design Skills': [
+    {
+      type: 'meta-data',
+      content: [
+        <span className="article__meta-label">Client</span>,
+        'Design Council',
+        <span className="article__meta-label">Studio</span>,
+        <a rel="noopener" target="_blank" href="http://appliedworks.co.uk/">
+          Applied Works
+        </a>,
+        <span className="article__meta-label">Role</span>,
+        'Designer',
+      ],
+    },
     {
       type: 'standfirst',
       content:
@@ -392,6 +551,19 @@ const CONTENT = {
   ],
   'Genesys UX': [
     {
+      type: 'meta-data',
+      content: [
+        <span className="article__meta-label">Client</span>,
+        'Genesys',
+        <span className="article__meta-label">Studio</span>,
+        <a rel="noopener" target="_blank" href="http://appliedworks.co.uk/">
+          Applied Works
+        </a>,
+        <span className="article__meta-label">Role</span>,
+        'Designer',
+      ],
+    },
+    {
       type: 'standfirst',
       content:
         "Through design strategy to UX/UI design, every Genesys brief brings new challenges that require a rigourous process of interegation and investigation to ensure the end result satisfys the audience's, stakeholder's and client's needs.",
@@ -405,6 +577,17 @@ const CONTENT = {
     },
   ],
   'algo~rhythm': [
+    {
+      type: 'meta-data',
+      content: [
+        <span className="article__meta-label">Client</span>,
+        'Arjowiggins & Sony Music',
+        <span className="article__meta-label">Studio</span>,
+        'Freelance',
+        <span className="article__meta-label">Role</span>,
+        'Designer',
+      ],
+    },
     {
       type: 'standfirst',
       content:
