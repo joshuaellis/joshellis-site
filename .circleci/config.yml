@@ -19,16 +19,16 @@ jobs:
           paths:
             - ./node_modules
   deploy:
-      machine:
-        enabled: true
-      steps:
-        - run:
-            name: Build
-            command: npm run build
-        - run:
-            name: Deploy
-            command: |
-              scp -P 2222 -r build/* $SSH_USER@$SSH_HOST:/public_html
+    machine:
+      enabled: true
+    steps:
+      - run:
+          name: Build
+          command: npm run build
+      - run:
+          name: Deploy
+          command: |
+            scp -P 2222 -r build/* $SSH_USER@$SSH_HOST:/public_html
 
 workflows:
   version: 2
@@ -36,9 +36,8 @@ workflows:
     jobs:
       - build
       - deploy:
-        requires:
+          requires:
             - build
           filters:
             branches:
               only: master
-
