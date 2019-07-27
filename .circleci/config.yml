@@ -18,10 +18,6 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
-  deploy:
-    machine:
-      enabled: true
-    steps:
       - run:
           name: Build
           command: npm run build
@@ -34,10 +30,7 @@ workflows:
   version: 2
   build-and-deploy:
     jobs:
-      - build
-      - deploy:
-          requires:
-            - build
+      - build:
           filters:
             branches:
               only: master
