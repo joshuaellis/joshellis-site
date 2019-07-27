@@ -18,21 +18,25 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
-
-workflows:
-  version: 2
-  build-and-deploy:
-    jobs:
-      - build
-    deploy:
+  deploy:
       machine:
         enabled: true
-      branches:
-        only:
-          - master
       steps:
         - run:
             name: Deploy Over SSH
             commands:
               - npm run build
               - scp -P 2222 -r build/* $SSH_USER@$SSH_HOST:/public_html
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+        requires:
+            - build
+          filters:
+            branches:
+              only: master
+
