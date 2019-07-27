@@ -25,7 +25,7 @@ jobs:
         - run:
             name: Build
             command: npm run build
-        -run:
+        - run:
             name: Deploy
             command: |
               scp -P 2222 -r build/* $SSH_USER@$SSH_HOST:/public_html
