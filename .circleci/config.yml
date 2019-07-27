@@ -19,6 +19,8 @@ jobs:
           paths:
             - ./node_modules
   deploy:
+    machine:
+      enabled: true
     branches:
       only:
         - master
