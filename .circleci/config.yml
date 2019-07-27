@@ -23,10 +23,12 @@ jobs:
         enabled: true
       steps:
         - run:
-            name: Deploy Over SSH
-            commands:
-              - npm run build
-              - scp -P 2222 -r build/* $SSH_USER@$SSH_HOST:/public_html
+            name: Build
+            command: npm run build
+        -run:
+            name: Deploy
+            command: |
+              scp -P 2222 -r build/* $SSH_USER@$SSH_HOST:/public_html
 
 workflows:
   version: 2
