@@ -26,9 +26,8 @@ function NavMenu(props) {
             <label className="year">{key}</label>
             <h3>
               {projects[key].map(name => (
-                <React.Fragment>
+                <React.Fragment key={name.split('<label>WIP</label>')}>
                   <StyledLink
-                    key={name.split('<label>WIP</label>')}
                     index={Math.floor(Math.random() * (3 - 0 + 1)) + 0}
                     to={`/${name
                       .split('<label>WIP</label>')[0]
@@ -37,12 +36,7 @@ function NavMenu(props) {
                     {name.match(regex)
                       ? [
                           name.split('<label>WIP</label>'),
-                          <label
-                            className="label"
-                            key={key.split('<label>WIP</label>')}
-                          >
-                            WIP
-                          </label>,
+                          <label className="label">WIP</label>,
                         ]
                       : name}
                   </StyledLink>
