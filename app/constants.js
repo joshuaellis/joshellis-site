@@ -131,7 +131,7 @@ const CONTENT = {
         <span className="article__meta-label">Role</span>,
         'Designer // Developer',
         <span className="article__meta-label">Tech Stack</span>,
-        'React & Redux with Firestore & Firebase functions',
+        'React & Redux with Google Firestore & Firebase functions',
       ],
     },
     {
