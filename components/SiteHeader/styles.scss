@@ -1,18 +1,19 @@
+@import 'styles/functions';
 @import 'styles/variables';
 
 .site__header {
   width: 100%;
   background-color: $c-black;
-  padding: 16px;
+  padding: u(2);
   position: fixed;
   top: 0px;
   z-index: 20;
 
   @include media('>=tablet') {
-    padding: 24px 32px;
+    padding: u(3) u(4);
   }
 
   @include media('>=desktop') {
-    padding: 32px 56px;
+    padding: u(4) u(7);
   }
 }

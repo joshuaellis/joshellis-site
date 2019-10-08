@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /**
  *
  * Menu
@@ -5,25 +6,30 @@
  */
 
 import React, { memo } from 'react';
+import clsx from 'clsx';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 
-function Menu({ data, onClick, projects }) {
+import { COLOR_ARRAY } from 'lib/constants';
+
+import './styles.scss';
+
+function Menu({ data }) {
   return (
     <ul className="menu">
       {data.map((datum, index) => (
-        <li className="menu__year" index={index} key={datum}>
-          {datum}
-          <ul>
-            {projects[datum].map(name => (
-              <li>
-                <Link
-                  className="menu__link"
-                  to={`/${name
-                    .split('<label>WIP</label>')[0]
-                    .replace(/\s/g, '-')}`}
-                  onClick={onClick}
-                />
+        <li
+          className={clsx('menu__year', `menu__year--${COLOR_ARRAY[index]}`)}
+          index={index}
+          key={datum}
+        >
+          {datum.year}
+          <ul className="menu__year__list">
+            {datum.projects.map(proj => (
+              <li className="menu__year__item">
+                <Link href={proj.slug}>
+                  <a className="menu__year__link">{proj.title}</a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -35,8 +41,6 @@ function Menu({ data, onClick, projects }) {
 
 Menu.propTypes = {
   data: PropTypes.array,
-  projects: PropTypes.object,
-  onClick: PropTypes.func,
 };
 
 export default memo(Menu);
