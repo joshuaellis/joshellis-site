@@ -6,9 +6,11 @@
 
 import React, { memo } from 'react';
 
+import './styles.scss';
+
 function SiteHeader() {
   return (
-    <div>
+    <div className="site__header">
       <h1>
         Hello,
         <br />
@@ -17,23 +19,5 @@ function SiteHeader() {
     </div>
   );
 }
-
-// const TitleWrapper = styled.div`
-//   width: 100%;
-//   background-color: ${PALETTE.black};
-//   padding: 16px;
-//   position: fixed;
-//   top: 0px;
-//   z-index: 20;
-//   @media (min-width: 768px) {
-//     padding: 24px 32px;
-//   }
-
-//   @media (min-width: 1280px) {
-//     padding: 32px 56px;
-//   }
-// `;
-
-SiteHeader.propTypes = {};
 
 export default memo(SiteHeader);

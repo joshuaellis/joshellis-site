@@ -7,6 +7,8 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
+import t from 'lib/strings';
+
 import './styles.scss';
 
 function Footer({ project }) {
@@ -23,7 +25,7 @@ function Footer({ project }) {
             target="_blank"
             href="mailto:joshua.ellis18@gmail.com?Subject=Hello%20there"
           >
-            Contact me
+            {t('contact-title')}
           </a>
         </li>
         <li className="foot__item">
@@ -33,7 +35,7 @@ function Footer({ project }) {
             target="_blank"
             href="https://www.instagram.com/planet_josh"
           >
-            Stalk me
+            {t('instagram-title')}
           </a>
         </li>
         <li className="foot__item">
@@ -43,7 +45,17 @@ function Footer({ project }) {
             target="_blank"
             href="https://github.com/joshuaellis"
           >
-            Judge my code
+            {t('github-title')}
+          </a>
+        </li>
+        <li className="foot__item">
+          <a
+            className="foot__anchor foot__anchor--green"
+            rel="noopener"
+            target="_blank"
+            href="https://www.linkedin.com/in/joshua-ellis-66b362114/"
+          >
+            {t('linkedin-title')}
           </a>
         </li>
       </ul>

@@ -69,4 +69,10 @@
       background-color: $c-red;
     }
   }
+
+  &--green {
+    &:after {
+      background-color: $c-green;
+    }
+  }
 }

@@ -1,8 +1,8 @@
 /* eslint-disable global-require */
 const { IgnorePlugin } = require('webpack');
-const Dotenv = require('dotenv-webpack');
 const autoprefixer = require('autoprefixer');
 const withSass = require('@zeit/next-sass');
+const withCSS = require('@zeit/next-css');
 const path = require('path');
 
 const initExport = {
@@ -16,6 +16,8 @@ const initExport = {
       ...config.resolve.alias,
       components: path.resolve(__dirname, '../components/'),
       styles: path.resolve(__dirname, '../styles/'),
+      lib: path.resolve(__dirname, '../lib/'),
+      layouts: path.resolve(__dirname, '../layouts/'),
     };
 
     const iconsPath = path.resolve(__dirname, '.', 'static', 'icons');

@@ -10,6 +10,8 @@ module.exports = {
       components: path.resolve(__dirname, '../components/'),
       styles: path.resolve(__dirname, '../styles/'),
       static: path.resolve(__dirname, '../static/'),
+      lib: path.resolve(__dirname, '../lib/'),
+      layouts: path.resolve(__dirname, '../layouts/'),
     },
   },
   module: {

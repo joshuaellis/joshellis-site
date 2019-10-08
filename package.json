@@ -9,7 +9,8 @@
     "start": "cross-env NODE_ENV=production node ./server/server.js",
     "prestart": "npm run build",
     "heroku-postbuild": "npm run build",
-    "storybook": "start-storybook -p 9001 -s ./"
+    "storybook": "start-storybook -p 9001 -s ./",
+    "fetch:strings": "node ./lib/fetchStrings.js"
   },
   "repository": {
     "type": "git",
@@ -86,6 +87,7 @@
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
     "eslint-watch": "^6.0.0",
+    "markdown-it": "^10.0.0",
     "prettier": "^1.18.2",
     "webpack-bundle-analyzer": "^3.4.1"
   }
