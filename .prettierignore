@@ -1,7 +1,7 @@
 build/
 node_modules/
-internals/generators/
-internals/scripts/
+./tools/
+tools/generators
 package-lock.json
 yarn.lock
 package.json

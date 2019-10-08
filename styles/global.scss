@@ -1,0 +1,45 @@
+@import "./variables.scss";
+@import "./type.scss";
+@import "./reset.scss";
+
+html,
+body {
+  font-family: "Surt", Arial, sans-serif;
+  height: 100%;
+  width: 100%;
+  font-size: 62.5%;
+  margin: 0px;
+  color: $c-white;
+}
+
+body * {
+  box-sizing: border-box;
+}
+
+h1,
+.t-h1 {
+  @include t-h1;
+}
+
+h2,
+.t-h2 {
+  @include t-h2;
+}
+
+h3,
+.t-h3 {
+  @include t-h3;
+}
+
+.t-body {
+  @include t-body;
+}
+
+.t-foot {
+  @include t-footer;
+  color: $c-black;
+}
+
+a {
+  @include t-a;
+}

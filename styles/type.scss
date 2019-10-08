@@ -1,0 +1,82 @@
+@import './fonts.scss';
+
+@mixin font-surt($size, $line-height, $weight: 400, $style: normal, $text-transform: none) {
+  font-family: 'Surt', Arial, san-serif;
+  font-size: $size * 1px;
+  font-weight: $weight;
+  line-height: $line-height * 1px;
+  font-style: $style;
+  text-transform: $text-transform;
+}
+
+@mixin t-h1 {
+  @include font-surt(44, 56, 500);
+
+  @include media('>=tablet') {
+    font-size: 64px;
+    line-height: 80px;
+  }
+
+  @include media('>=desktop') {
+    font-size: 80px;
+    line-height: 96px;
+  }
+}
+
+@mixin t-h2 {
+  @include font-surt(26, 36, 500);
+
+  @include media('>=tablet') {
+    font-size: 36px;
+    line-height: 46px;
+  }
+
+  @include media('>=desktop') {
+    font-size: 40px;
+    line-height: 50px;
+  }
+}
+
+@mixin t-h3 {
+  @include font-surt(18, 36, 400);
+
+  @include media('>=tablet') {
+    font-size: 26px;
+    line-height: 40px;
+  }
+
+  @include media('>=desktop') {
+    font-size: 32px;
+    line-height: 48px;
+  }
+}
+
+@mixin t-body {
+  @include font-surt(14, 24, 400);
+
+  @include media('>=tablet') {
+    font-size: 16px;
+    line-height: 28px;
+  }
+}
+
+@mixin t-label {
+  @include font-surt(14, 20, 900);
+
+  @include media('>=tablet') {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@mixin t-footer {
+  @include font-surt(18, 36, 500);
+}
+
+@mixin t-a {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+  color: inherit;
+}

@@ -1,0 +1,72 @@
+@import 'styles/variables';
+@import 'styles/functions';
+
+.foot {
+  background-color: $c-foot-bg;
+  padding: u(2) 0 u(3) u(2);
+  width: 100%;
+
+  @include media('>=tablet') {
+    padding: u(4);
+    padding-top: u(3)
+  }
+}
+
+.foot__list {
+  @include media('>=tablet') {
+    display: flex;
+  }
+}
+
+.foot__item+.foot__item {
+  @include media('>=tablet') {
+    margin-left: u(5);
+  }
+}
+
+.foot__anchor {
+  text-decoration: none;
+  position: relative;
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    transition: width 300ms ease-out;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover,
+  &:focus {
+    bottom: 2px;
+
+    &:after {
+      width: 0;
+    }
+  }
+
+  &--orange {
+    &:after {
+      background-color: $c-orange;
+    }
+  }
+
+  &--blue {
+    &:after {
+      background-color: $c-blue;
+    }
+  }
+
+  &--red {
+    &:after {
+      background-color: $c-red;
+    }
+  }
+}

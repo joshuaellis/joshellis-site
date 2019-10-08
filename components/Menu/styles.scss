@@ -1,0 +1,70 @@
+@import 'styles/variables';
+
+.menu {
+  padding: 8px 16px 16px 16px;
+  background-color: $c-black;
+  width: 100%;
+  max-height: 440px;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  overflow: scroll;
+  z-index: 5;
+
+  @include media('>=tablet') {
+    padding: 8px 32px 18px 32px;
+    max-height: 528px;
+  }
+
+  @include media('>=desktop') {
+    position: relative;
+    top: 24px;
+    left: -32px;
+    width: calc(100% + 64px);
+  }
+}
+
+.menu__year {
+  margin: 12px 0px;
+
+  @media (min-width: 768px) {
+    margin: 32px 0px;
+
+    &:last-child {
+      margin-bottom: 80px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    margin: 32px 0px;
+
+    &:first-child {
+      margin-top: 16px;
+    }
+
+    &:last-child {
+      margin-bottom: 16px;
+    }
+  }
+
+  .year {
+    position: relative;
+    top: 4px;
+
+    @media (min-width: 1280px) {
+      padding: 0px;
+    }
+  }
+}
+
+.menu__link {
+  text-decoration: none;
+  color: $c-white;
+  display: block;
+  font-size: 1.8rem;
+  line-height: 36px;
+
+  @include media('>=tablet') {
+    font-size: 2.6rem;
+  }
+}

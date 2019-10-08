@@ -1,15 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs } from '@storybook/addon-knobs';
-// import { action } from '@storybook/addon-actions';
 
-import ArticleMetaBlock from '../app/components/ArticleMetaBlock';
+import ArticleMetaBlock from 'components/ArticleMetaBlock';
 
-const stories = storiesOf('ArticleMetaBlock', module);
-
-stories.addDecorator(withKnobs);
-
-stories.add('default', () => (
+storiesOf('Article Meta Block', module).add('default', () => (
   <ArticleMetaBlock>
     {[
       <span className="article__meta-label">Client</span>,

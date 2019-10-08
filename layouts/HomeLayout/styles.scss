@@ -1,0 +1,13 @@
+@import 'styles/variables';
+
+.home {
+  padding-top: 144px;
+
+  @include media('>=tablet') {
+    padding-top: 208px;
+  }
+
+  @include media('>=desktop') {
+    padding-top: 256px;
+  }
+}
