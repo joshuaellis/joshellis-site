@@ -11,6 +11,18 @@ export default {
         collapsed: true,
       },
     },
+    {
+      name: 'info',
+      title: 'Project info',
+    },
+    {
+      name: 'project-links',
+      title: 'Project URLs',
+      options: {
+        collapsible: true,
+        collapsed: true,
+      },
+    },
   ],
   fields: [
     {
@@ -22,24 +34,6 @@ export default {
       title: 'Year',
       name: 'year',
       type: 'year',
-      fieldset: 'meta-data',
-    },
-    {
-      title: 'Client',
-      name: 'client',
-      type: 'client',
-      fieldset: 'meta-data',
-    },
-    {
-      title: 'Studio',
-      name: 'studio',
-      type: 'studio',
-      fieldset: 'meta-data',
-    },
-    {
-      title: 'Role',
-      name: 'role',
-      type: 'role',
       fieldset: 'meta-data',
     },
     {
@@ -55,24 +49,46 @@ export default {
       fieldset: 'meta-data',
     },
     {
+      title: 'Client',
+      name: 'client',
+      type: 'client',
+      fieldset: 'info',
+    },
+    {
+      title: 'Studio',
+      name: 'studio',
+      type: 'studio',
+      fieldset: 'info',
+    },
+    {
+      title: 'Role',
+      name: 'role',
+      type: 'role',
+      fieldset: 'info',
+    },
+    {
+      title: 'Text stack',
+      name: 'tech',
+      type: 'string',
+      description: 'seperate each tech with a comma',
+      fieldset: 'info',
+    },
+    {
       name: 'body',
-      type: 'custom-block',
+      type: 'project-block',
       title: 'Project text',
     },
     {
       name: 'url',
       type: 'custom-url',
       title: 'URL to project',
+      fieldset: 'project-links',
     },
     {
       name: 'iframe',
-      type: 'custom-url',
+      type: 'url',
       title: 'iFrame URL for video',
-    },
-    {
-      name: 'tech_stack',
-      type: 'tech_stack',
-      title: 'Tech stack of project',
+      fieldset: 'project-links',
     },
   ],
   preview: {

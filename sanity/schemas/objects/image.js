@@ -7,6 +7,15 @@ export default {
   },
   fields: [
     {
+      name: 'fullWidth',
+      type: 'boolean',
+      title: 'Full width image',
+      layout: 'checkbox',
+      options: {
+        isHighlighted: true,
+      },
+    },
+    {
       name: 'caption',
       type: 'string',
       title: 'Caption',
@@ -21,6 +30,14 @@ export default {
       description: 'Important for SEO and accessiblity.',
       validation: Rule =>
         Rule.error('You have to fill out the alternative text.').required(),
+      options: {
+        isHighlighted: true,
+      },
+    },
+    {
+      name: 'color',
+      title: 'Background color',
+      type: 'color',
       options: {
         isHighlighted: true,
       },

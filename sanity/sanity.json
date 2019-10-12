@@ -14,9 +14,11 @@
     "@sanity/default-login",
     "@sanity/desk-tool",
     "@sanity/vision",
-    "markdown"
+    "markdown",
+    "@sanity/color-input"
   ],
-  "parts": [{
+  "parts": [
+    {
       "name": "part:@sanity/base/schema",
       "path": "./schemas/schema.js"
     },

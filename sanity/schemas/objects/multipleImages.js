@@ -1,10 +1,10 @@
 export default {
-  name: 'carousel',
-  title: 'Carousel',
+  name: 'multiple_images',
+  title: 'Multiple Images',
   type: 'object',
   fields: [
     {
-      name: 'carousel_child',
+      name: 'single_image',
       title: 'Images',
       type: 'array',
       of: [

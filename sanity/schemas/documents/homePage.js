@@ -5,7 +5,7 @@ export default {
   fields: [
     {
       name: 'standfirst',
-      type: 'custom-block',
+      type: 'simple-block',
       title: 'Homepage Standfirst',
     },
   ],

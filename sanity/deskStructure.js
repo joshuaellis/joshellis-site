@@ -22,6 +22,15 @@ export default () =>
                     .schemaType('homepage')
                     .documentId('home-page'),
                 ),
+              S.listItem()
+                .title('About page')
+                .child(
+                  S.editor()
+                    .title('About')
+                    .id('about-page')
+                    .schemaType('aboutpage')
+                    .documentId('about-page'),
+                ),
             ]),
         ),
     ]);
