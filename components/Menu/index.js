@@ -14,32 +14,35 @@ import { COLOR_ARRAY } from 'lib/constants';
 
 import './styles.scss';
 
-function Menu({ data }) {
+function Menu({ className, data }) {
   return (
-    <ul className="menu">
-      {data.map((datum, index) => (
-        <li
-          className={clsx('menu__year', `menu__year--${COLOR_ARRAY[index]}`)}
-          index={index}
-          key={datum}
-        >
-          {datum.year}
-          <ul className="menu__year__list">
-            {datum.projects.map(proj => (
-              <li className="menu__year__item">
-                <Link href={proj.slug}>
-                  <a className="menu__year__link">{proj.title}</a>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </li>
-      ))}
-    </ul>
+    <div className={clsx('menu', className)}>
+      <ul className="menu__list">
+        {data.map((datum, index) => (
+          <li
+            className={clsx('menu__year', `menu__year--${COLOR_ARRAY[index]}`)}
+            index={index}
+            key={datum}
+          >
+            {datum.year}
+            <ul className="menu__year__list">
+              {datum.projects.map(proj => (
+                <li className="menu__year__item">
+                  <Link href={proj.slug}>
+                    <a className="menu__year__link">{proj.title}</a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
 Menu.propTypes = {
+  className: PropTypes.string,
   data: PropTypes.array,
 };
 

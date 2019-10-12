@@ -1,18 +1,26 @@
+@import 'styles/mixins';
 @import 'styles/variables';
 @import 'styles/functions';
 
 .foot {
   background-color: $c-foot-bg;
-  padding: u(2) 0 u(3) u(2);
+  padding-bottom: u(4);
+  padding-top: u(2);
   width: 100%;
 
   @include media('>=tablet') {
-    padding: u(4);
-    padding-top: u(3)
+    padding: u(3) u(3) u(4) u(3);
+  }
+
+  @include media('>=desktop') {
+    padding-left: u(10);
+    padding-right: u(10);
   }
 }
 
 .foot__list {
+  @include max-width;
+
   @include media('>=tablet') {
     display: flex;
   }

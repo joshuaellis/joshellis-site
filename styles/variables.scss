@@ -1,4 +1,4 @@
-@import '~include-media/dist/include-media';
+@import "~include-media/dist/include-media";
 
 $c-black: #1a1a1a;
 $c-white: #fdfdfd;
@@ -7,4 +7,7 @@ $c-red: #ff6f85;
 $c-orange: #f8a22d;
 $c-green: #5fd16d;
 $c-foot-bg: #e8e8e8;
-$c-photo-bg: #f4f4f4;
+$c-type: #423F4A;
+
+$max-width: 1372px;
+$d-page-gutter: 16px;

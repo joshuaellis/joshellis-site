@@ -2,6 +2,8 @@ import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 
+import './styles.scss';
+
 function IconButton({ children, className, ...restProps }) {
   return (
     <button

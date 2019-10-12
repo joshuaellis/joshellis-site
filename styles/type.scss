@@ -28,21 +28,21 @@
 
   @include media('>=tablet') {
     font-size: 36px;
-    line-height: 46px;
+    line-height: 64px;
   }
 
   @include media('>=desktop') {
     font-size: 40px;
-    line-height: 50px;
+    line-height: 64px;
   }
 }
 
 @mixin t-h3 {
-  @include font-surt(18, 36, 400);
+  @include font-surt(20, 32, 400);
 
   @include media('>=tablet') {
-    font-size: 26px;
-    line-height: 40px;
+    font-size: 28px;
+    line-height: 44px;
   }
 
   @include media('>=desktop') {
@@ -51,17 +51,8 @@
   }
 }
 
-@mixin t-body {
-  @include font-surt(14, 24, 400);
-
-  @include media('>=tablet') {
-    font-size: 16px;
-    line-height: 28px;
-  }
-}
-
-@mixin t-label {
-  @include font-surt(14, 20, 900);
+@mixin t-h4 {
+  @include font-surt(14, 24, 800);
 
   @include media('>=tablet') {
     font-size: 16px;
@@ -69,8 +60,69 @@
   }
 }
 
+@mixin t-body {
+  @include font-surt(16, 24, 400);
+
+  @include media('>=tablet') {
+    font-size: 20px;
+    line-height: 32px;
+  }
+}
+
+@mixin t-small-body {
+  @include font-surt(14, 20, 400);
+
+  @include media('>=tablet') {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@mixin t-menu-head {
+  @include font-surt(14, 14, 900);
+
+  @include media('>=tablet') {
+    font-size: 16px;
+    line-height: 16px;
+  }
+}
+
+@mixin t-menu-item {
+  @include font-surt(18, 36, 400);
+
+  @include media('>=tablet') {
+    font-size: 24px;
+    line-height: 40px;
+  }
+}
+
 @mixin t-footer {
   @include font-surt(18, 36, 500);
+}
+
+@mixin t-captions {
+  @include font-surt(21, 20, 500);
+
+  @include media('>=tablet') {
+    font-size: 14px;
+    line-height: 26px;
+  }
+}
+
+@mixin t-site-header {
+  @include font-surt(26, 36, 500);
+
+  @include media('>=tablet') {
+    font-size: 40px;
+  }
+}
+
+@mixin t-site-nav {
+  @include font-surt(18, 24, 500);
+
+  @include media('>=tablet') {
+    font-size: 20px;
+  }
 }
 
 @mixin t-a {

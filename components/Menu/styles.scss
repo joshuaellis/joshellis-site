@@ -2,36 +2,32 @@
 @import 'styles/type';
 @import 'styles/variables';
 
+$d-max-height: 440px;
+$d-desk-width: 464px;
+
 .menu {
-  @include t-label;
-  padding: u(2);
-  padding-top: u(1);
   background-color: $c-black;
-  width: 100%;
-  // does this need a max-height?
-  max-height: 440px;
-  position: fixed;
-  bottom: 0px;
-  left: 0px;
-  overflow: scroll;
-  z-index: 40;
+  max-height: $d-max-height;
+  padding: u(3) u(2);
 
   @include media('>=tablet') {
-    padding: u(1) u(4) u(2.25) u(4);
-    max-height: 528px;
+    width: $d-desk-width;
+    padding: u(3) u(4);
   }
+}
 
-  @include media('>=desktop') {
-    padding: u(1);
-    position: relative;
-    top: 0;
-    width: calc(100% + 64px);
+.menu__list {
+  max-height: $d-max-height - u(6);
+  overflow: scroll;
+
+  >li:last-child {
+    margin-bottom: u(-2);
   }
 }
 
 .menu__year {
-  margin: u(1.5) 0px;
-  padding: u(1) 0;
+  @include t-menu-head;
+  padding-top: u(1);
 
   &--blue {
     border-top: solid 2px $c-blue;
@@ -48,26 +44,13 @@
   &--green {
     border-top: solid 2px $c-green;
   }
-
-  @include media('>=tablet') {
-    margin: u(4) 0px;
-  }
-
-  @include media('>=desktop') {
-    margin: u(2)
-  }
 }
 
 .menu__year__list {
-  @include t-footer;
+  margin-bottom: u(2);
 }
 
 .menu__year__link {
+  @include t-menu-item;
   text-decoration: none;
-  color: $c-white;
-  display: block;
-
-  @include media('>=tablet') {
-    font-size: 26px;
-  }
 }

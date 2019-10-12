@@ -27,9 +27,18 @@
 
 @font-face {
   font-family: 'Surt';
-  src: url('/static/fonts/Surt-UltraBold.eot') format('embedded-opentype'),
-    url('/static/fonts/Surt-UltraBold.woff') format('woff'),
-    url('/static/fonts/Surt-UltraBold.woff2') format('woff2');
+  src: url('/static/fonts/Surt-Bold.eot') format('embedded-opentype'),
+    url('/static/fonts/Surt-Bold.woff') format('woff'),
+    url('/static/fonts/Surt-Bold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Surt';
+  src: url('/static/fonts/Surt-Black.eot') format('embedded-opentype'),
+    url('/static/fonts/Surt-Black.woff') format('woff'),
+    url('/static/fonts/Surt-Black.woff2') format('woff2');
   font-weight: 900;
   font-style: normal;
 }

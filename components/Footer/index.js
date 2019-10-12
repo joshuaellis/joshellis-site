@@ -5,18 +5,14 @@
  */
 
 import React, { memo } from 'react';
-import PropTypes from 'prop-types';
 
 import t from 'lib/strings';
 
 import './styles.scss';
 
-function Footer({ project }) {
+function Footer() {
   return (
-    <footer
-      className="foot t-foot"
-      style={{ paddingLeft: project ? '111px' : ' 56px' }}
-    >
+    <footer className="foot t-foot">
       <ul className="foot__list">
         <li className="foot__item">
           <a
@@ -62,9 +58,5 @@ function Footer({ project }) {
     </footer>
   );
 }
-
-Footer.propTypes = {
-  project: PropTypes.bool,
-};
 
 export default memo(Footer);

@@ -32,3 +32,17 @@
   text-align: inherit;
   appearance: none;
 }
+
+@mixin max-width {
+  margin: 0 auto;
+  padding: 0 $d-page-gutter;
+
+  @include media('>=desktop') {
+    max-width: $max-width + ($d-page-gutter * 2);
+  }
+}
+
+@mixin max-width-reset() {
+  padding: 0;
+  max-width: none;
+}
