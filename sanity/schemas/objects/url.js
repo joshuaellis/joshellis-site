@@ -1,5 +1,8 @@
 export default {
   name: 'custom-url',
   title: 'URL',
-  type: 'url',
+  type: 'markdown',
+  options: {
+    minRows: 1,
+  },
 };

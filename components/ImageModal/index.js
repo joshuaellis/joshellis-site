@@ -8,6 +8,10 @@ import React, { useEffect, useRef } from 'react';
 import ReactSwipe from 'react-swipe';
 import PropTypes from 'prop-types';
 
+import Close from 'icons/close.svg';
+
+import IconButton from '../IconButton';
+
 function ImageModal({ onClose, image, selectedID }) {
   const reactSwipeRef = useRef();
   let val = 0;
@@ -35,18 +39,9 @@ function ImageModal({ onClose, image, selectedID }) {
       style={{ top: window.scrollY ? `${window.scrollY}px` : '0px' }}
     >
       {/* to do – move to icon-button */}
-      <button
-        type="button"
-        className="modal__button"
-        onClick={() => onClose(false)}
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 46">
-          <g>
-            <polygon points="28.71 16.71 27.29 15.29 22 20.59 16.71 15.29 15.29 16.71 20.59 22 15.29 27.29 16.71 28.71 22 23.41 27.29 28.71 28.71 27.29 23.41 22 28.71 16.71" />
-            <rect width="44" height="46" />
-          </g>
-        </svg>
-      </button>
+      <IconButton className="modal__button" onClick={() => onClose(false)}>
+        <Close height={24} width={24} />
+      </IconButton>
       {image.type === 'img-carousel' ? (
         <ReactSwipe
           className="carousel"

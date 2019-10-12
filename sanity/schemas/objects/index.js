@@ -7,3 +7,6 @@ export { default as image } from './image';
 export { default as url } from './url';
 export { default as title } from './title';
 export { default as date } from './date';
+export { default as role } from './role';
+export { default as stack } from './stack';
+export { default as carousel } from './carousel';

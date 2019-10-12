@@ -18,6 +18,7 @@ const initExport = {
       styles: path.resolve(__dirname, '../styles/'),
       lib: path.resolve(__dirname, '../lib/'),
       layouts: path.resolve(__dirname, '../layouts/'),
+      icons: path.resolve(__dirname, '../static/icons/'),
     };
 
     const iconsPath = path.resolve(__dirname, '.', 'static', 'icons');

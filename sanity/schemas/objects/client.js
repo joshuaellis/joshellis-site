@@ -1,6 +1,9 @@
 export default {
   name: 'client',
-  type: 'string',
+  type: 'markdown',
   title: 'Client',
   validation: Rule => Rule.required(),
+  options: {
+    minRows: 1,
+  },
 };

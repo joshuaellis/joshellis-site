@@ -37,6 +37,12 @@ export default {
       fieldset: 'meta-data',
     },
     {
+      title: 'Role',
+      name: 'role',
+      type: 'role',
+      fieldset: 'meta-data',
+    },
+    {
       title: 'Excerpt',
       name: 'excerpt',
       type: 'excerpt',
@@ -62,6 +68,11 @@ export default {
       name: 'iframe',
       type: 'custom-url',
       title: 'iFrame URL for video',
+    },
+    {
+      name: 'tech_stack',
+      type: 'tech_stack',
+      title: 'Tech stack of project',
     },
   ],
   preview: {

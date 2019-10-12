@@ -12,6 +12,7 @@ module.exports = {
       static: path.resolve(__dirname, '../static/'),
       lib: path.resolve(__dirname, '../lib/'),
       layouts: path.resolve(__dirname, '../layouts/'),
+      icons: path.resolve(__dirname, '../static/icons/'),
     },
   },
   module: {

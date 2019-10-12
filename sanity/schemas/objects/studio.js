@@ -1,6 +1,9 @@
 export default {
   name: 'studio',
-  type: 'string',
+  type: 'markdown',
   title: 'Studio',
   validation: Rule => Rule.required(),
+  options: {
+    minRows: 1,
+  },
 };
