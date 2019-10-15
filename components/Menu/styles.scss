@@ -2,13 +2,13 @@
 @import 'styles/type';
 @import 'styles/variables';
 
-$d-max-height: 440px;
 $d-desk-width: 464px;
 
 .menu {
   background-color: $c-black;
-  max-height: $d-max-height;
+  max-height: $d-menu-max-height;
   padding: u(3) u(2);
+  width: 100%;
 
   @include media('>=tablet') {
     width: $d-desk-width;
@@ -17,7 +17,7 @@ $d-desk-width: 464px;
 }
 
 .menu__list {
-  max-height: $d-max-height - u(6);
+  max-height: $d-menu-max-height - u(6);
   overflow: scroll;
 
   >li:last-child {

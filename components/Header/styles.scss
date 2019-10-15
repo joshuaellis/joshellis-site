@@ -1,0 +1,177 @@
+@import "styles/functions";
+@import "styles/mixins";
+@import "styles/type";
+@import "styles/variables";
+
+$d-project-nav-right: 26px;
+
+.head__container {
+  width: 100%;
+  background-color: $c-black;
+  position: fixed;
+  top: 0px;
+  z-index: 40;
+}
+
+.head {
+  position: relative;
+  z-index: 30;
+  background-color: $c-black;
+  @include max-width;
+  padding: u(2);
+
+  @include media(">=tablet") {
+    padding: u(3) u(4);
+  }
+
+  @include media(">=desktop") {
+    padding: u(4) u(7);
+  }
+}
+
+.head__title>span {
+  display: block;
+}
+
+.head--small {
+  padding: 0 u(2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: u(8);
+
+  @include media('>=tablet') {
+    height: u(11);
+    padding: 0 $d-tablet-page-gutter;
+  }
+
+  @include media('>=desktop') {
+    padding: 0 $d-desktop-page-gutter;
+  }
+}
+
+.head--small>h1 {
+  @include t-site-header;
+
+  span {
+    display: inline;
+
+    &:first-child {
+      display: none;
+
+      @include media('>=tablet') {
+        display: inline;
+      }
+    }
+  }
+}
+
+.head__nav {}
+
+.head__nav__link {
+  @include unbutton;
+  @include t-site-nav;
+  text-decoration: none;
+  position: relative;
+
+  &::after {
+    content: '';
+    width: 0;
+    height: u(0.5);
+    display: block;
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    background-color: $c-blue;
+    transition: width 150ms ease-out
+  }
+}
+
+.head__nav__link:hover::after,
+.head__nav__link:focus::after {
+  width: 100%;
+}
+
+.head__nav__link--active::after {
+  content: '';
+  width: 100%;
+  height: u(0.5);
+  display: block;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  background-color: $c-blue;
+  transition: width 150ms ease-out
+}
+
+.head__nav__link+.head__nav__link {
+  margin-left: u(3);
+}
+
+.head__menu--static {
+  position: absolute;
+  top: 100vh;
+  right: 0;
+  transition: top 800ms $easeInOutQuint;
+  display: none;
+
+  @include media('>=tablet') {
+    top: -$d-menu-max-height;
+    right: $d-tablet-page-gutter + $d-project-nav-right;
+    z-index: 20;
+  }
+
+  @include media('>=desktop') {
+    right: $d-desktop-page-gutter + $d-project-nav-right;
+  }
+}
+
+@include media("<tablet") {
+  .head__menu-enter {
+    top: 100vh;
+    display: block;
+  }
+
+  .head__menu-enter-active {
+    top: calc(100vh - 440px);
+  }
+
+  .head__menu-enter-done {
+    top: calc(100vh - 440px);
+    display: block;
+  }
+
+  .head__menu-exit {
+    top: calc(100vh - 440px);
+    display: block;
+  }
+
+  .head__menu-exit-active {
+    top: 100vh;
+  }
+}
+
+@include media(">=tablet") {
+  .head__menu-enter {
+    top: -$d-menu-max-height;
+    display: block;
+  }
+
+  .head__menu-enter-active {
+    top: u(11);
+  }
+
+  .head__menu-enter-done {
+    top: u(11);
+    display: block;
+  }
+
+  .head__menu-exit {
+    top: u(11);
+    display: block;
+  }
+
+  .head__menu-exit-active {
+    top: -$d-menu-max-height;
+  }
+}

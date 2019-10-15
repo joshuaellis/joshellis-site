@@ -14,9 +14,9 @@ import { COLOR_ARRAY } from 'lib/constants';
 
 import './styles.scss';
 
-function Menu({ className, data }) {
+function Menu({ className, data, ...restProps }) {
   return (
-    <div className={clsx('menu', className)}>
+    <div className={clsx('menu', className)} {...restProps}>
       <ul className="menu__list">
         {data.map((datum, index) => (
           <li
