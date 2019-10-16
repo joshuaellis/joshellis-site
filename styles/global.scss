@@ -9,7 +9,7 @@ body {
   width: 100%;
   font-size: 62.5%;
   margin: 0px;
-  color: $c-white;
+  color: $c-type;
 }
 
 body * {
@@ -31,13 +31,25 @@ h3,
   @include t-h3;
 }
 
+h3,
+.t-h4 {
+  @include t-h4;
+}
+
 .t-body {
   @include t-body;
 }
 
+.t-small-body {
+  @include t-small-body;
+}
+
 .t-foot {
   @include t-footer;
-  color: $c-black;
+}
+
+.t-captions {
+  @include t-captions;
 }
 
 a {

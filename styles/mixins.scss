@@ -46,3 +46,10 @@
   padding: 0;
   max-width: none;
 }
+
+@mixin ornament {
+  display: block;
+  background-color: $c-black;
+  height: u(0.5);
+  width: u(3);
+}
