@@ -52,6 +52,7 @@ $d-project-nav-right: 26px;
 
 .head--small>h1 {
   @include t-site-header;
+  color: $c-white;
 
   span {
     display: inline;
@@ -73,6 +74,7 @@ $d-project-nav-right: 26px;
   @include t-site-nav;
   text-decoration: none;
   position: relative;
+  color: $c-white;
 
   &::after {
     content: '';
@@ -83,7 +85,7 @@ $d-project-nav-right: 26px;
     bottom: -4px;
     left: 0;
     background-color: $c-blue;
-    transition: width 150ms ease-out
+    transition: width 150ms $easeOutQuad;
   }
 }
 
@@ -101,7 +103,7 @@ $d-project-nav-right: 26px;
   bottom: -4px;
   left: 0;
   background-color: $c-blue;
-  transition: width 150ms ease-out
+  transition: width 150ms $easeOutQuad;
 }
 
 .head__nav__link+.head__nav__link {

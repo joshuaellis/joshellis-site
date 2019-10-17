@@ -27,6 +27,7 @@ $d-desk-width: 464px;
 
 .menu__year {
   @include t-menu-head;
+  color: $c-white;
   padding-top: u(1);
 
   &--blue {
@@ -53,4 +54,21 @@ $d-desk-width: 464px;
 .menu__year__link {
   @include t-menu-item;
   text-decoration: none;
+
+  &:focus {
+    outline: 0;
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      height: u(0.5);
+      width: 100%;
+      background-color: $c-orange;
+      bottom: -2px;
+      left: 0;
+      transition: width 500ms $easeOutQuad;
+    }
+  }
 }

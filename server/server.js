@@ -1,5 +1,8 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-console */
+import { FILE_NAME_ROBOTS, sendRobots } from './robots';
+import { FILE_NAME_SITEMAP, sendSitemap } from './sitemap';
+
 const express = require('express');
 const next = require('next');
 const compression = require('compression');
@@ -143,6 +146,14 @@ app.prepare().then(() => {
   }
 
   server.get('*', (req, res) => handle(req, res));
+
+  server.get(`/${FILE_NAME_ROBOTS}`, (req, res) => {
+    sendRobots(req, res, handle);
+  });
+
+  server.get(`/${FILE_NAME_SITEMAP}`, (req, res) => {
+    sendSitemap(req, res, handle);
+  });
 
   server.listen(port, host, err => {
     if (err) {
