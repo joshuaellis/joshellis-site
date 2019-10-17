@@ -7,22 +7,13 @@ import HomeLayout from 'layouts/HomeLayout';
 import SiteHeader from 'components/SiteHeader';
 import Footer from 'components/Footer';
 
-import { isMobileAction } from '../store/actions/home-actions';
+const queries = {
+  getProjectList: `*[_type == 'project' && !(_id in path("drafts.**"))]{ title, client, year, slug }`,
+  getStandfirst: `*[_type == 'homepage' && !(_id in path("drafts.**"))]{ standfirst }`,
+  getAboutInfo: ``,
+};
 
-export function Home(props) {
-  const widthChecker = () =>
-    window.innerWidth <= 768
-      ? props.dispatchIsMobile(true)
-      : props.dispatchIsMobile(false);
-
-  useEffect(() => {
-    widthChecker();
-    window.addEventListener('resize', widthChecker);
-    return () => {
-      window.removeEventListener('resize', widthChecker, true);
-    };
-  }, []);
-
+export function Home() {
   return (
     <div className="app">
       <Head>
