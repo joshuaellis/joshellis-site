@@ -11,6 +11,7 @@ function Standfirst() {
   const [isFixed, setIsFixed] = useState(false);
   const container = useRef(null);
   const placeholder = useRef(null);
+
   const listenToScroll = useCallback(() => {
     let val = 144;
     if (window.innerWidth < 1280 && window.innerWidth >= 768) {
@@ -29,12 +30,14 @@ function Standfirst() {
       setIsFixed(false);
     }
   }, [isFixed]);
+
   useEffect(() => {
     document.addEventListener('scroll', listenToScroll);
     return () => {
       document.removeEventListener('scroll', listenToScroll);
     };
   }, [isFixed, listenToScroll]);
+
   return (
     <React.Fragment>
       <div>
