@@ -1,70 +1,69 @@
+/* eslint-disable react/jsx-curly-brace-presence */
 /**
  *
  * Standfirst
  *
  */
 
-import React, { memo, useEffect, useRef, useState, useCallback } from 'react';
-// import PropTypes from 'prop-types';
+import React, { memo, useRef, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import clsx from 'clsx';
 
-function Standfirst() {
-  const [isFixed, setIsFixed] = useState(false);
-  const container = useRef(null);
-  const placeholder = useRef(null);
+import { BREAKPOINTS, HEADER_HEIGHTS } from 'lib/constants';
 
-  const listenToScroll = useCallback(() => {
-    let val = 144;
-    if (window.innerWidth < 1280 && window.innerWidth >= 768) {
-      val = 208;
+import './styles.scss';
+
+function Standfirst({ className, children }) {
+  const [isStuck, setIsStuck] = useState(false);
+  const stickyRef = useRef(null);
+
+  const handleScroll = () => {
+    const windowWidth = window.innerWidth;
+    if (windowWidth >= BREAKPOINTS.desktop) {
+      setIsStuck(
+        stickyRef.current.getBoundingClientRect().top <= HEADER_HEIGHTS.desktop,
+      );
+    } else if (windowWidth >= BREAKPOINTS.tablet) {
+      setIsStuck(
+        stickyRef.current.getBoundingClientRect().top <= HEADER_HEIGHTS.tablet,
+      );
+    } else {
+      setIsStuck(
+        stickyRef.current.getBoundingClientRect().top <= HEADER_HEIGHTS.mobile,
+      );
     }
-    if (window.innerWidth >= 1280) {
-      val = 246;
-    }
-    const subHeaderPosition =
-      placeholder.current &&
-      placeholder.current.getBoundingClientRect().top + window.pageYOffset;
-    const rect = container.current.getBoundingClientRect();
-    if (rect.top <= val && !isFixed) {
-      setIsFixed(true);
-    } else if (window.pageYOffset < subHeaderPosition - val && isFixed) {
-      setIsFixed(false);
-    }
-  }, [isFixed]);
+  };
 
   useEffect(() => {
-    document.addEventListener('scroll', listenToScroll);
+    window.addEventListener('scroll', handleScroll);
+
     return () => {
-      document.removeEventListener('scroll', listenToScroll);
+      window.removeEventListener('scroll', () => handleScroll);
     };
-  }, [isFixed, listenToScroll]);
+  }, []);
 
   return (
-    <React.Fragment>
-      <div>
-        <h2>
-          I&apos;m a <span className="blue">designer</span> at Applied Works
-        </h2>
-        <h2>
-          I&apos;m a freelance <span className="red">developer</span>
-        </h2>
-        <h2>
-          I ran a project with <span className="orange">MA UX</span> design at
-          LCC
-        </h2>
-        <h2>
-          I&apos;ve been featured in{' '}
-          <span className="green">Creative Review</span>
-        </h2>
+    <div className={clsx('standfirst', className)}>
+      <div className="standfirst__container">
+        <div className="standfirst__titles">{children}</div>
+        <div
+          className={clsx(
+            'standfirst__sticky',
+            isStuck && 'standfirst__sticky--active',
+          )}
+          ref={stickyRef}
+        >
+          <h2>{"Here's my work –"}</h2>
+        </div>
       </div>
-      {isFixed && <div ref={placeholder} />}
-      <div isFixed={isFixed} ref={container}>
-        <h2>Here&apos;s my work –</h2>
-      </div>
-    </React.Fragment>
+    </div>
   );
 }
 
-Standfirst.propTypes = {};
+Standfirst.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.element,
+};
 
 // const StandfirstWrapper = styled.div`
 //   background-color: ${PALETTE.black};

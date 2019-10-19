@@ -21,8 +21,7 @@ function Header({ projectList }) {
   const INFO_HREF = '/info';
   const router = useRouter();
   const [openMenu, setOpenMenu] = useState(false);
-  // const small = router.pathname !== '/';
-  const small = true;
+  const small = router ? router.pathname !== '/' : true;
 
   const DURATION = 800;
 

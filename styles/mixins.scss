@@ -37,8 +37,13 @@
   margin: 0 auto;
   padding: 0 $d-page-gutter;
 
+  @include media('>=tablet') {
+    padding: 0 #{$d-page-gutter * 2.5};
+  }
+
   @include media('>=desktop') {
-    max-width: $max-width + ($d-page-gutter * 2);
+    padding: 0 #{$d-page-gutter * 5};
+    max-width: $max-width + ($d-page-gutter * 5);
   }
 }
 

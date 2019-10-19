@@ -19,13 +19,16 @@ $d-project-nav-right: 26px;
   background-color: $c-black;
   @include max-width;
   padding: u(2);
+  height: $mobile-header-height;
 
   @include media(">=tablet") {
     padding: u(3) u(4);
+    height: $tablet-header-height;
   }
 
   @include media(">=desktop") {
     padding: u(4) u(7);
+    height: $desktop-header-height;
   }
 }
 
