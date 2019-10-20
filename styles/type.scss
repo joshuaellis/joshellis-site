@@ -102,7 +102,7 @@
 }
 
 @mixin t-captions {
-  @include font-surt(21, 20, 500);
+  @include font-surt(12, 20, 500);
 
   @include media('>=tablet') {
     font-size: 14px;
