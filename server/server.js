@@ -1,8 +1,6 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-console */
-import { FILE_NAME_ROBOTS, sendRobots } from './robots';
-import { FILE_NAME_SITEMAP, sendSitemap } from './sitemap';
-
+// packages
 const express = require('express');
 const next = require('next');
 const compression = require('compression');
@@ -13,13 +11,16 @@ const cors = require('cors');
 const helmet = require('helmet');
 const dotenv = require('dotenv');
 
+// custom scripts
+const router = require('../routes/index.js');
+const logger = require('./logger.js');
+const sendSitemap = require('./sitemap');
+const sendRobots = require('./robots');
+
 dotenv.config();
 
 const isDev = process.env.NODE_ENV !== 'production';
 const isProd = !isDev;
-const ngrok = isDev && process.env.ENABLE_TUNNEL ? require('ngrok') : null;
-const router = require('../routes/index.js');
-const logger = require('./logger.js');
 
 const customHost = process.env.HOST;
 const host = customHost || null;
@@ -147,28 +148,17 @@ app.prepare().then(() => {
 
   server.get('*', (req, res) => handle(req, res));
 
-  server.get(`/${FILE_NAME_ROBOTS}`, (req, res) => {
+  server.get(`/robots.txt`, (req, res) => {
     sendRobots(req, res, handle);
   });
 
-  server.get(`/${FILE_NAME_SITEMAP}`, (req, res) => {
+  server.get(`/sitemap.xml`, (req, res) => {
     sendSitemap(req, res, handle);
   });
 
   server.listen(port, host, err => {
     if (err) {
       return logger.error(err.message);
-    }
-
-    if (ngrok) {
-      ngrok.connect(port, (innerErr, url) => {
-        if (innerErr) {
-          return logger.error(innerErr);
-        }
-        logger.appStarted(port, prettyHost, url);
-      });
-    } else {
-      logger.appStarted(port, prettyHost);
     }
   });
 });

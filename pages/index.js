@@ -1,14 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import HomeLayout from 'layouts/HomeLayout';
-import SiteHeader from 'components/SiteHeader';
-import Footer from 'components/Footer';
-
 const queries = {
-  getProjectList: `*[_type == 'project' && !(_id in path("drafts.**"))]{ title, client, year, slug }`,
   getStandfirst: `*[_type == 'homepage' && !(_id in path("drafts.**"))]{ standfirst }`,
   getAboutInfo: ``,
 };
@@ -19,16 +14,11 @@ export function Home() {
       <Head>
         <title>Josh Ellis</title>
       </Head>
-      <SiteHeader />
-      <HomeLayout />
-      <Footer />
     </div>
   );
 }
 
-Home.propTypes = {
-  dispatchIsMobile: PropTypes.func,
-};
+Home.propTypes = {};
 
 Home.getInitialProps = async () => {
   return {};
@@ -37,7 +27,7 @@ Home.getInitialProps = async () => {
 const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
-  dispatchIsMobile: bool => dispatch(isMobileAction(bool)),
+  dispatch,
 });
 
 export default connect(

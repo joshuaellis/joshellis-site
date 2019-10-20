@@ -1,16 +1,25 @@
 import App from 'next/app';
-import Router from 'next/router';
 import React from 'react';
 import { Provider } from 'react-redux';
 
-import withReduxStore from '../lib/with-redux-store';
-import * as gtag from '../lib/g-analytics';
+import withReduxStore from 'lib/with-redux-store';
+import sanity from 'lib/client';
+import buildProjectList from 'lib/buildProjectList';
+import Header from 'components/Header';
+import Footer from 'components/Footer';
 
 import '../styles/styles';
 
+const queries = {
+  getProjectList: `*[_type == 'project' && !(_id in path("drafts.**"))]{ title, year, slug }`,
+};
+
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
+    const data = await sanity.fetch(queries.getProjectList);
+    console.log(buildProjectList(data));
     return {
+      projectList: buildProjectList(data),
       pageProps: Component.getInitialProps
         ? await Component.getInitialProps(ctx)
         : {},
@@ -18,15 +27,17 @@ class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps, reduxStore } = this.props;
+    const { Component, pageProps, reduxStore, projectList } = this.props;
     return (
       <Provider store={reduxStore}>
-        <Component {...pageProps} />
+        <div className="main">
+          <Header projectList={projectList} />
+          <Component {...pageProps} />
+          <Footer />
+        </div>
       </Provider>
     );
   }
 }
-
-Router.events.on('routeChangeComplete', url => gtag.pageview(url));
 
 export default withReduxStore(MyApp);

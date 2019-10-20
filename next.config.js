@@ -14,11 +14,11 @@ const initExport = {
     // eslint-disable-next-line no-param-reassign
     config.resolve.alias = {
       ...config.resolve.alias,
-      components: path.resolve(__dirname, '../components/'),
-      styles: path.resolve(__dirname, '../styles/'),
-      lib: path.resolve(__dirname, '../lib/'),
-      layouts: path.resolve(__dirname, '../layouts/'),
-      icons: path.resolve(__dirname, '../static/icons/'),
+      components: path.resolve(__dirname, 'components/'),
+      styles: path.resolve(__dirname, 'styles/'),
+      lib: path.resolve(__dirname, 'lib/'),
+      layouts: path.resolve(__dirname, 'layouts/'),
+      icons: path.resolve(__dirname, 'static/icons/'),
     };
 
     const iconsPath = path.resolve(__dirname, '.', 'static', 'icons');
