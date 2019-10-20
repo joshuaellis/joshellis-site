@@ -1,0 +1,13 @@
+@import 'styles/variables';
+
+.home {
+  padding-top: $mobile-header-height;
+
+  @include media('>=tablet') {
+    padding-top: $tablet-header-height;
+  }
+
+  @include media('>=desktop') {
+    padding-top: $desktop-header-height;
+  }
+}

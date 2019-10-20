@@ -6,7 +6,12 @@ import './styles.scss';
 
 function LargeUrl({ children, className, href }) {
   return (
-    <a className={clsx('largeurl', className)} rel="no_opener" href={href}>
+    <a
+      className={clsx('largeurl', className)}
+      rel="no_opener"
+      target="_blank"
+      href={href}
+    >
       {children}
     </a>
   );

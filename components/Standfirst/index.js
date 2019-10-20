@@ -19,18 +19,23 @@ function Standfirst({ className, children }) {
 
   const handleScroll = () => {
     const windowWidth = window.innerWidth;
-    if (windowWidth >= BREAKPOINTS.desktop) {
-      setIsStuck(
-        stickyRef.current.getBoundingClientRect().top <= HEADER_HEIGHTS.desktop,
-      );
-    } else if (windowWidth >= BREAKPOINTS.tablet) {
-      setIsStuck(
-        stickyRef.current.getBoundingClientRect().top <= HEADER_HEIGHTS.tablet,
-      );
-    } else {
-      setIsStuck(
-        stickyRef.current.getBoundingClientRect().top <= HEADER_HEIGHTS.mobile,
-      );
+    if (stickyRef.current) {
+      if (windowWidth >= BREAKPOINTS.desktop) {
+        setIsStuck(
+          stickyRef.current.getBoundingClientRect().top <=
+            HEADER_HEIGHTS.desktop,
+        );
+      } else if (windowWidth >= BREAKPOINTS.tablet) {
+        setIsStuck(
+          stickyRef.current.getBoundingClientRect().top <=
+            HEADER_HEIGHTS.tablet,
+        );
+      } else {
+        setIsStuck(
+          stickyRef.current.getBoundingClientRect().top <=
+            HEADER_HEIGHTS.mobile,
+        );
+      }
     }
   };
 
@@ -47,13 +52,12 @@ function Standfirst({ className, children }) {
       <div className="standfirst__container">
         <div className="standfirst__titles">{children}</div>
         <div
-          className={clsx(
-            'standfirst__sticky',
-            isStuck && 'standfirst__sticky--active',
-          )}
+          className={clsx(isStuck && 'standfirst__sticky--active')}
           ref={stickyRef}
         >
-          <h2>{"Here's my work –"}</h2>
+          <h2>
+            <span>{"Here's my work –"}</span>
+          </h2>
         </div>
       </div>
     </div>

@@ -17,7 +17,6 @@ const queries = {
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     const data = await sanity.fetch(queries.getProjectList);
-    console.log(buildProjectList(data));
     return {
       projectList: buildProjectList(data),
       pageProps: Component.getInitialProps

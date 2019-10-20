@@ -1,36 +1,51 @@
 import React from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import BlockContent from '@sanity/block-content-to-react';
+
+import Standfirst from 'components/Standfirst';
+import ProjectList from 'components/ProjectList';
+
+import t from 'lib/strings';
+import sanity from 'lib/client';
+import buildProjectList from 'lib/buildProjectList';
+import { serializers } from 'lib/blocks';
 
 const queries = {
+  getProjectList: `*[_type == 'project' && !(_id in path("drafts.**"))]{ title, year, slug }`,
   getStandfirst: `*[_type == 'homepage' && !(_id in path("drafts.**"))]{ standfirst }`,
-  getAboutInfo: ``,
 };
 
-export function Home() {
+export function Home({ blocks, projects }) {
+  console.log(blocks);
   return (
-    <div className="app">
+    <>
       <Head>
         <title>Josh Ellis</title>
+        <meta name="description" content={t('meta-description')} />
       </Head>
-    </div>
+      <main className="home">
+        <Standfirst>
+          <BlockContent blocks={blocks} serializers={serializers('h2')} />
+        </Standfirst>
+        <ProjectList data={projects} />
+      </main>
+    </>
   );
 }
 
-Home.propTypes = {};
-
-Home.getInitialProps = async () => {
-  return {};
+Home.propTypes = {
+  projects: PropTypes.array,
+  blocks: PropTypes.array,
 };
 
-const mapStateToProps = state => ({});
+Home.getInitialProps = async () => {
+  const data = await sanity.fetch(queries.getProjectList);
+  const [{ standfirst }] = await sanity.fetch(queries.getStandfirst);
+  return {
+    projects: buildProjectList(data),
+    blocks: standfirst,
+  };
+};
 
-const mapDispatchToProps = dispatch => ({
-  dispatch,
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Home);
+export default Home;

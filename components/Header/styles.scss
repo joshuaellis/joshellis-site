@@ -13,7 +13,10 @@ $d-project-nav-right: 26px;
 }
 
 .head {
-  position: relative;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
   z-index: 10;
   background-color: $c-black;
   @include max-width;
@@ -21,18 +24,24 @@ $d-project-nav-right: 26px;
   height: $mobile-header-height;
 
   @include media(">=tablet") {
-    padding: u(3) u(4);
+    padding-top: u(3);
+    padding-bottom: u(3);
     height: $tablet-header-height;
   }
 
   @include media(">=desktop") {
-    padding: u(4) u(7);
+    padding-top: u(4);
+    padding-bottom: u(4);
     height: $desktop-header-height;
   }
 }
 
-.head__title>span {
-  display: block;
+.head__title {
+  color: $c-white;
+
+  >span {
+    display: block;
+  }
 }
 
 .head--small {
