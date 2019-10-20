@@ -1,0 +1,20 @@
+@import 'styles/mixins';
+@import 'styles/functions';
+@import 'styles/variables';
+
+.fullwidthimage {
+  width: 100%;
+  display: block;
+}
+
+.fullwidthimage__image {
+  @include aspect-ratio(3, 2) {
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+  }
+
+  max-height: 600px;
+  overflow: hidden;
+  background-color: $c-foot-bg;
+}

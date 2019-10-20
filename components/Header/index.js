@@ -6,13 +6,14 @@
  *
  */
 
-import React, { memo, useState } from 'react';
+import React, { memo, useState, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
 import t from 'lib/strings';
+import useClickOutside from 'lib/useClickOutside';
 import Menu from 'components/Menu';
 
 import './styles.scss';
@@ -21,9 +22,15 @@ function Header({ projectList }) {
   const INFO_HREF = '/info';
   const router = useRouter();
   const [openMenu, setOpenMenu] = useState(false);
+  const menuRef = useRef(null);
+  const menuListRef = useRef(null);
   const small = router ? router.pathname !== '/' : true;
 
   const DURATION = 800;
+
+  // event handlers
+
+  useClickOutside(menuRef, setOpenMenu);
 
   const handleInfoClick = e => {
     e.preventDefault();
@@ -32,6 +39,7 @@ function Header({ projectList }) {
 
   const handleProjectsClick = () => {
     setOpenMenu(!openMenu);
+    menuListRef.current.scrollTo({ top: 0 });
   };
 
   return (
@@ -69,7 +77,9 @@ function Header({ projectList }) {
           </nav>
         )}
         <CSSTransition in={openMenu} timeout={DURATION} classNames="head__menu">
-          <Menu data={projectList} className="head__menu--static" />
+          <div className="head__menu--static" ref={menuRef}>
+            <Menu data={projectList} ref={menuListRef} />
+          </div>
         </CSSTransition>
       </div>
     </header>
