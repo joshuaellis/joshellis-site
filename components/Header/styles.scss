@@ -15,7 +15,7 @@ $d-project-nav-right: 26px;
 
 .head {
   position: relative;
-  z-index: 30;
+  z-index: 10;
   background-color: $c-black;
   @include max-width;
   padding: u(2);
@@ -123,11 +123,15 @@ $d-project-nav-right: 26px;
   @include media('>=tablet') {
     top: -$d-menu-max-height;
     right: $d-tablet-page-gutter + $d-project-nav-right;
-    z-index: 20;
+    z-index: 0;
   }
 
   @include media('>=desktop') {
     right: $d-desktop-page-gutter + $d-project-nav-right;
+  }
+
+  @media(min-width: #{$max-width}) {
+    right: calc(#{($d-desktop-page-gutter / 2) + $d-project-nav-right} + ((100vw - #{$max-width}) / 2));
   }
 }
 

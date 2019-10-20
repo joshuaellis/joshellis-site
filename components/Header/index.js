@@ -76,12 +76,12 @@ function Header({ projectList }) {
             </a>
           </nav>
         )}
-        <CSSTransition in={openMenu} timeout={DURATION} classNames="head__menu">
-          <div className="head__menu--static" ref={menuRef}>
-            <Menu data={projectList} ref={menuListRef} />
-          </div>
-        </CSSTransition>
       </div>
+      <CSSTransition in={openMenu} timeout={DURATION} classNames="head__menu">
+        <div className="head__menu--static" ref={menuRef}>
+          <Menu data={projectList} ref={menuListRef} />
+        </div>
+      </CSSTransition>
     </header>
   );
 }
