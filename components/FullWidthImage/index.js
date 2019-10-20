@@ -24,7 +24,7 @@ function FullWidthImage({ children, caption, className, ...restProps }) {
   return (
     <div className={clsx('fullwidthimage', className)} {...restProps}>
       <div className="fullwidthimage__image">{children}</div>
-      <p className="fullwidthimage__caption">{caption}</p>
+      <p className="fullwidthimage__caption t-caption">{caption}</p>
     </div>
   );
 }

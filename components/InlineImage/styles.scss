@@ -44,9 +44,10 @@
 }
 
 .inlineimage__caption {
-  margin-top: u(1);
+  margin-top: u(0.5);
 
   @include media('>=tablet') {
     text-align: right;
+    margin-top: u(1);
   }
 }

@@ -18,3 +18,15 @@
   overflow: hidden;
   background-color: $c-foot-bg;
 }
+
+.fullwidthimage__caption {
+  margin: u(0.5) u(2) 0 u(2);
+
+  @include media('>=tablet') {
+    margin: u(1) u(5) 0 u(5);
+  }
+
+  @include media('>=desktop') {
+    margin: u(1) u(4) 0 u(4);
+  }
+}
