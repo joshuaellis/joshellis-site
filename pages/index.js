@@ -9,7 +9,7 @@ import ProjectList from 'components/ProjectList';
 import t from 'lib/strings';
 import sanity from 'lib/client';
 import buildProjectList from 'lib/buildProjectList';
-import { serializers } from 'lib/blocks';
+import { homeSerializers } from 'lib/blocks';
 
 const queries = {
   getProjectList: `*[_type == 'project' && !(_id in path("drafts.**"))]{ title, year, slug }`,
@@ -17,7 +17,6 @@ const queries = {
 };
 
 export function Home({ blocks, projects }) {
-  console.log(blocks);
   return (
     <>
       <Head>
@@ -26,7 +25,7 @@ export function Home({ blocks, projects }) {
       </Head>
       <main className="home">
         <Standfirst>
-          <BlockContent blocks={blocks} serializers={serializers('h2')} />
+          <BlockContent blocks={blocks} serializers={homeSerializers('h2')} />
         </Standfirst>
         <ProjectList data={projects} />
       </main>

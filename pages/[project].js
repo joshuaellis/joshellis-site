@@ -3,15 +3,60 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import sanity from 'lib/client';
+
+import MetaData from 'components/MetaData';
+import LargeUrl from 'components/LargeUrl';
+import Portal from 'components/Portal';
+import Modal from 'components/Modal';
+
 const queries = {
   getProject: id => `*[slug == '${id}' && !(_id in path("drafts.**"))]`,
 };
 
-export function ProjectPage() {
-  return <div></div>;
+const renderMeta = ({ client, studio, role, tech }) => [
+  { title: 'Client', copy: client },
+  { title: 'Studio', copy: studio },
+  { title: 'Role', copy: role },
+  { title: 'Tech', copy: tech },
+];
+
+export function ProjectPage({ body, excerpt, meta, title, url }) {
+  return (
+    <React.Fragment>
+      <Head>
+        <title>{`${title} | Josh Ellis`}</title>
+        <meta name="description" content={excerpt}></meta>
+      </Head>
+      <main className="project">
+        <h1 className="project__title">{title}</h1>
+        <MetaData className="project__meta">{renderMeta(meta)}</MetaData>
+      </main>
+    </React.Fragment>
+  );
 }
 
-ProjectPage.propTypes = {};
+ProjectPage.propTypes = {
+  body: PropTypes.array,
+  excerpt: PropTypes.string,
+  meta: PropTypes.object,
+  title: PropTypes.string,
+  url: PropTypes.string,
+};
+
+ProjectPage.getInitialProps = async ({ query, res }) => {
+  const { project } = query;
+  const [data] = await sanity.fetch(queries.getProject(project));
+  if (data.length === 0) {
+    res.writeHead(302, {
+      Location: '/',
+    });
+    res.end();
+  }
+  console.log(data);
+  const { body, client, excerpt, role, studio, tech, title, url } = data;
+  return { body, excerpt, title, url, meta: { client, role, studio, tech } };
+};
 
 const mapStateToProps = state => ({});
 

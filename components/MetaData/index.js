@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
+import { testMarkdownLink } from 'lib/blocks';
 
 import './styles.scss';
 
@@ -15,9 +16,11 @@ const MetaItem = ({ children, title }) => (
 function MetaData({ className, children }) {
   return (
     <div className={clsx('metadata', className)}>
-      {children.map(x => (
-        <MetaItem title={x.title}>{x.copy}</MetaItem>
-      ))}
+      {children.map(x =>
+        x.copy ? (
+          <MetaItem title={x.title}>{testMarkdownLink(x.copy)}</MetaItem>
+        ) : null,
+      )}
     </div>
   );
 }

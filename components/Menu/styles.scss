@@ -8,9 +8,10 @@ $d-desk-width: 464px;
   background-color: $c-black;
   max-height: $d-menu-max-height;
   padding: u(3) u(2);
-  width: 100%;
+  width: 100vw;
 
   @include media('>=tablet') {
+    width: 100%;
     width: $d-desk-width;
     padding: u(3) u(4);
   }

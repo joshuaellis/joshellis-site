@@ -18,6 +18,10 @@
 }
 
 .metadata__item {
+  >a {
+    text-decoration: underline;
+  }
+
   &:nth-child(1) {
     grid-area: client;
   }

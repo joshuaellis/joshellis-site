@@ -1,0 +1,17 @@
+@import 'styles/functions';
+@import 'styles/mixins';
+@import 'styles/variables';
+
+.project {
+  @include max-width;
+  width: 100%;
+  padding-top: u(8);
+
+  @include media('>=tablet') {
+    padding-top: u(11);
+  }
+}
+
+.project__title {
+  color: $c-black;
+}
