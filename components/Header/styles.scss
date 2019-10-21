@@ -6,6 +6,7 @@
 $d-project-nav-right: 26px;
 
 .head__container {
+  position: fixed;
   width: 100%;
   background-color: $c-black;
   top: 0px;
@@ -13,11 +14,11 @@ $d-project-nav-right: 26px;
 }
 
 .head {
-  position: fixed;
-  width: 100%;
+  position: relative;
   top: 0;
   left: 0;
   z-index: 10;
+  width: 100%;
   background-color: $c-black;
   @include max-width;
   padding: u(2);

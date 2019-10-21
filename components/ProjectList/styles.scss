@@ -1,9 +1,11 @@
 @import 'styles/functions';
+@import 'styles/mixins';
 @import 'styles/type';
 @import 'styles/variables';
 
 .project-list {
   color: $c-type;
+  @include max-width;
 }
 
 .project-list__year {

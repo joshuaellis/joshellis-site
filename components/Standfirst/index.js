@@ -40,6 +40,7 @@ function Standfirst({ className, children }) {
   };
 
   useEffect(() => {
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
 
     return () => {
@@ -51,14 +52,18 @@ function Standfirst({ className, children }) {
     <div className={clsx('standfirst', className)}>
       <div className="standfirst__container">
         <div className="standfirst__titles">{children}</div>
-        <div
-          className={clsx(isStuck && 'standfirst__sticky--active')}
-          ref={stickyRef}
-        >
+        <div ref={stickyRef}>
           <h2>
             <span>{"Here's my work –"}</span>
           </h2>
         </div>
+        {isStuck && (
+          <div className="standfirst__sticky--active">
+            <h2>
+              <span>{"Here's my work –"}</span>
+            </h2>
+          </div>
+        )}
       </div>
     </div>
   );

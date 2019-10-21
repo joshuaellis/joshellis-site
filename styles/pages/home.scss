@@ -1,13 +1,29 @@
+@import 'styles/functions';
 @import 'styles/variables';
 
 .home {
   padding-top: $mobile-header-height;
 
+  > .project-list {
+    margin-top: u(2.5);
+    margin-bottom: u(6);
+  }
+
   @include media('>=tablet') {
     padding-top: $tablet-header-height;
+
+    > .project-list {
+      margin-top: u(3);
+      margin-bottom: u(7);
+    }
   }
 
   @include media('>=desktop') {
     padding-top: $desktop-header-height;
+
+    > .project-list {
+      margin-top: u(5);
+      margin-bottom: u(8.5);
+    }
   }
 }
