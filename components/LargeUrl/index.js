@@ -4,7 +4,8 @@ import clsx from 'clsx';
 
 import './styles.scss';
 
-function LargeUrl({ children, className, href }) {
+function LargeUrl({ children, className }) {
+  const [title, href] = children;
   return (
     <a
       className={clsx('largeurl', className)}
@@ -12,15 +13,14 @@ function LargeUrl({ children, className, href }) {
       target="_blank"
       href={href}
     >
-      {children}
+      {title}
     </a>
   );
 }
 
 LargeUrl.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.array,
   className: PropTypes.string,
-  href: PropTypes.string,
 };
 
 export default memo(LargeUrl);

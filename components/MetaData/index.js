@@ -18,7 +18,9 @@ function MetaData({ className, children }) {
     <div className={clsx('metadata', className)}>
       {children.map(x =>
         x.copy ? (
-          <MetaItem title={x.title}>{testMarkdownLink(x.copy)}</MetaItem>
+          <MetaItem title={x.title} key={x.title}>
+            {testMarkdownLink(x.copy)}
+          </MetaItem>
         ) : null,
       )}
     </div>
@@ -31,7 +33,11 @@ MetaData.propTypes = {
 };
 
 MetaItem.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array,
+  ]),
   title: PropTypes.string,
 };
 

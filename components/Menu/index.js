@@ -21,12 +21,12 @@ const Menu = React.forwardRef(({ className, data, ...restProps }, ref) => (
         <li
           className={clsx('menu__year', `menu__year--${COLOR_ARRAY[index]}`)}
           index={index}
-          key={datum}
+          key={datum.year}
         >
           {datum.year}
           <ul className="menu__year__list">
             {datum.projects.map(proj => (
-              <li className="menu__year__item">
+              <li className="menu__year__item" key={proj.slug}>
                 <Link href={proj.slug}>
                   <a className="menu__year__link">{proj.title}</a>
                 </Link>

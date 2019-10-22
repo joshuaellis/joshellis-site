@@ -7,6 +7,7 @@
   padding-bottom: u(4);
   padding-top: u(2);
   width: 100%;
+  margin-top: u(6);
 
   @include media('>=tablet') {
     padding-top: u(3);

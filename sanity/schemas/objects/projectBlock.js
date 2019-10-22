@@ -7,7 +7,7 @@ export default {
       type: 'block',
       lists: [],
       styles: [
-        { title: 'Standfirst', value: 'normal' },
+        { title: 'Standfirst', value: 'standfirst' },
         { title: 'Normal', value: 'normal' },
         { title: 'Heading 2', value: 'h2' },
       ],

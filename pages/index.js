@@ -9,12 +9,25 @@ import ProjectList from 'components/ProjectList';
 import t from 'lib/strings';
 import sanity from 'lib/client';
 import buildProjectList from 'lib/buildProjectList';
-import { homeSerializers } from 'lib/blocks';
+import { testMarkdownLink } from 'lib/blocks';
 
 const queries = {
   getProjectList: `*[_type == 'project' && !(_id in path("drafts.**"))]{ title, year, slug }`,
   getStandfirst: `*[_type == 'homepage' && !(_id in path("drafts.**"))]{ standfirst }`,
 };
+
+const homeSerializers = (container = 'div') => ({
+  types: {},
+  marks: {
+    // eslint-disable-next-line react/prop-types
+    color: ({ mark, children }) => (
+      <span className="generic__colour-text" style={{ color: mark.hex }}>
+        {testMarkdownLink(children[0])}
+      </span>
+    ),
+  },
+  container,
+});
 
 export function Home({ blocks, projects }) {
   return (

@@ -3,9 +3,21 @@
 @import 'styles/variables';
 
 .project {
-  @include max-width;
   width: 100%;
   padding-top: u(8);
+
+  display: grid;
+  grid-template-columns: [left-col] u(2) [centered] auto u(2) [right-col];
+
+  >* {
+    grid-column: centered;
+  }
+
+  >.project__fullwidth,
+  .project__inline,
+  .project__multiple {
+    grid-column: left-col / right-col;
+  }
 
   @include media('>=tablet') {
     padding-top: u(11);
@@ -13,5 +25,27 @@
 }
 
 .project__title {
+  margin-top: u(2.5);
   color: $c-black;
+}
+
+.project__meta {
+  margin-top: u(4.5);
+}
+
+.project__standfirst {
+  margin: u(4) 0;
+}
+
+.project__text__head {
+  margin-top: u(4);
+}
+
+.project__text__body {
+  margin-bottom: u(4);
+}
+
+.project__url {
+  margin-top: u(0.5);
+  justify-self: flex-start;
 }

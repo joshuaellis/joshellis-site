@@ -16,6 +16,10 @@
 .inlineimage__container {
   @include max-width;
 
+  >div+div {
+    margin-top: u(5);
+  }
+
   @include media('>=tablet') {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -25,12 +29,18 @@
     >div {
       grid-area: image;
     }
+
+
   }
 
   @include media('>=desktop') {
     grid-template-columns: repeat(12, 1fr);
     grid-template-areas: '#{str-repeat(3,'.')} #{str-repeat(9 , 'image')}';
     grid-column-gap: u(4);
+
+    >div+div {
+      margin-top: u(7);
+    }
   }
 }
 

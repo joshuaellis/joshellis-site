@@ -1,4 +1,6 @@
 @import "./variables.scss";
+@import "./mixins.scss";
+@import "./functions.scss";
 @import "./type.scss";
 @import "./reset.scss";
 
@@ -54,4 +56,9 @@ h3,
 
 a {
   @include t-a;
+}
+
+.generic__text__ornament {
+  @include ornament;
+  margin: u(1) 0 u(2) 0;
 }

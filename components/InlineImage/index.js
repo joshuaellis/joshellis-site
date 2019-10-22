@@ -19,18 +19,28 @@ function InlineImage({
       {...restProps}
     >
       <div className="inlineimage__container">
-        <div>
-          <div className="inlineimage__image">{children}</div>
-          <p className="inlineimage__caption t-caption">{caption}</p>
-        </div>
+        {children && children.length > 1 ? (
+          // handles multiple images in the same container
+          children.map((x, i) => (
+            <div key={caption[i]}>
+              <div className="inlineimage__image">{x}</div>
+              <p className="inlineimage__caption t-caption">{caption[i]}</p>
+            </div>
+          ))
+        ) : (
+          <div>
+            <div className="inlineimage__image">{children}</div>
+            <p className="inlineimage__caption t-caption">{caption}</p>
+          </div>
+        )}
       </div>
     </div>
   );
 }
 
 InlineImage.propTypes = {
-  caption: PropTypes.string,
-  children: PropTypes.element,
+  caption: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
   className: PropTypes.string,
   color: PropTypes.string,
   style: PropTypes.object,
