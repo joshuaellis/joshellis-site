@@ -14,7 +14,11 @@ function InlineImage({
 }) {
   return (
     <div
-      className={clsx('inlineimage', className)}
+      className={clsx(
+        'inlineimage',
+        children && children.length > 1 && 'inlineimage--multiple',
+        className,
+      )}
       style={{ backgroundColor: color, ...style }}
       {...restProps}
     >

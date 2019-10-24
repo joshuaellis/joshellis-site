@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/jsx-curly-brace-presence */
 /**
  *
@@ -46,11 +45,13 @@ function Header({ projectList }) {
     <header className="head__container">
       <div className={clsx('head', small && 'head--small')}>
         <h1 className="head__title">
-          <span>{'Hello, '}</span>
-          <span>
-            <span>{"I'm "}</span>
-            {'Josh Ellis'}
-          </span>
+          <a href="/">
+            <span>{'Hello, '}</span>
+            <span>
+              <span>{"I'm "}</span>
+              {'Josh Ellis'}
+            </span>
+          </a>
         </h1>
         {small && (
           <nav className="head__nav">

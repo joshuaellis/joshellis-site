@@ -19,7 +19,35 @@
 
 .metadata__item {
   >a {
-    text-decoration: underline;
+    position: relative;
+    z-index: 0;
+
+    &::after {
+      content: '';
+      width: 100%;
+      display: block;
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      background-color: $c-blue;
+      height: 4px;
+      z-index: -10;
+      transition: width 500ms $easeOutQuad;
+    }
+
+    &:hover::after {
+      width: 0;
+    }
+
+    &:focus {
+      outline: none;
+      bottom: u(0.5);
+
+      &::after {
+        bottom: u(-0.75);
+        background-color: $c-orange;
+      }
+    }
   }
 
   &:nth-child(1) {
