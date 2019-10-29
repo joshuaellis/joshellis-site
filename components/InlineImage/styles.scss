@@ -16,29 +16,29 @@
 .inlineimage__container {
   @include max-width;
 
-  >div+div {
+  > div + div {
     margin-top: u(5);
   }
 
   @include media('>=tablet') {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    grid-template-areas: '#{str-repeat(2,'.')} #{str-repeat(4, 'image')}';
     grid-column-gap: u(4);
 
-    >div {
-      grid-area: image;
+    > div {
+      grid-column: 3 / 7;
     }
-
-
   }
 
   @include media('>=desktop') {
     grid-template-columns: repeat(12, 1fr);
-    grid-template-areas: '#{str-repeat(3,'.')} #{str-repeat(9 , 'image')}';
     grid-column-gap: u(4);
 
-    >div+div {
+    > div {
+      grid-column: 4 / 13;
+    }
+
+    > div + div {
       margin-top: u(7);
     }
   }

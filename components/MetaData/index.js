@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { testMarkdownLink } from 'lib/blocks';
+import { testMarkdownLink } from 'lib/utils';
 
 import './styles.scss';
 

@@ -37,8 +37,8 @@
   width: 100%;
 
   >h2 {
-    padding-bottom: u(2);
     @include max-width;
+    padding-bottom: u(2);
   }
 
   @include media('>=tablet') {

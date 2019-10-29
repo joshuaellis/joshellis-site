@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import sanity from 'lib/client';
 import { testMarkdownLink } from 'lib/utils';
 
-import Blocks from 'components/Block';
+import Blocks from 'components/Blocks';
 import MetaData from 'components/MetaData';
 import LargeUrl from 'components/LargeUrl';
 import Portal from 'components/Portal';
@@ -35,9 +35,9 @@ export function ProjectPage({ body, excerpt, meta, title, url }) {
         <MetaData className="project__meta">{renderMeta(meta)}</MetaData>
         <Blocks body={body} />
         {url ? (
-          <LargeUrl className="project__url">
-            {testMarkdownLink(url, false)}
-          </LargeUrl>
+          <div className="project__url">
+            <LargeUrl>{testMarkdownLink(url, false)}</LargeUrl>
+          </div>
         ) : null}
       </main>
     </React.Fragment>

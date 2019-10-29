@@ -9,7 +9,7 @@ import ProjectList from 'components/ProjectList';
 import t from 'lib/strings';
 import sanity from 'lib/client';
 import buildProjectList from 'lib/buildProjectList';
-import { testMarkdownLink } from 'lib/blocks';
+import { testMarkdownLink } from 'lib/utils';
 
 const queries = {
   getProjectList: `*[_type == 'project' && !(_id in path("drafts.**"))]{ title, year, slug }`,
