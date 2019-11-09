@@ -22,13 +22,15 @@
 
 .foot__list {
   @include max-width;
+  padding: 0 u(2);
 
   @include media('>=tablet') {
     display: flex;
+    padding: 0 u(5);
   }
 }
 
-.foot__item+.foot__item {
+.foot__item + .foot__item {
   @include media('>=tablet') {
     margin-left: u(5);
   }

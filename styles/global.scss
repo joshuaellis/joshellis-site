@@ -1,12 +1,12 @@
-@import "./variables.scss";
-@import "./mixins.scss";
-@import "./functions.scss";
-@import "./type.scss";
-@import "./reset.scss";
+@import './variables.scss';
+@import './mixins.scss';
+@import './functions.scss';
+@import './type.scss';
+@import './reset.scss';
 
 html,
 body {
-  font-family: "Surt", Arial, sans-serif;
+  font-family: 'Surt', Arial, sans-serif;
   height: 100%;
   width: 100%;
   font-size: 62.5%;
@@ -56,6 +56,21 @@ h3,
 
 a {
   @include t-a;
+}
+
+.generic__section {
+  @include max-width;
+  display: grid;
+
+  @include media('>=tablet') {
+    grid-template-columns: repeat(6, 1fr);
+    grid-column-gap: u(4);
+  }
+
+  @include media('>=desktop') {
+    grid-template-columns: repeat(12, 1fr);
+    grid-column-gap: u(4);
+  }
 }
 
 .generic__text__ornament {

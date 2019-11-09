@@ -34,15 +34,15 @@
 }
 
 @mixin max-width {
-  margin: 0 auto;
-  padding: 0 $d-page-gutter;
+  // padding: 0 $d-page-gutter;
 
   @include media('>=tablet') {
-    padding: 0 #{$d-page-gutter * 2.5};
+    // padding: 0 #{$d-page-gutter * 2.5};
   }
 
   @include media('>=desktop') {
-    padding: 0 #{$d-page-gutter * 5};
+    margin: 0 auto;
+    // padding: 0 u(10);
     max-width: $max-width + ($d-page-gutter * 5);
   }
 }
@@ -64,12 +64,12 @@
 
   &:before {
     display: block;
-    content: "";
+    content: '';
     width: 100%;
     padding-top: ($height / $width) * 100%;
   }
 
-  >.image {
+  > .image {
     position: absolute;
     top: 0;
     left: 0;

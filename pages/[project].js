@@ -24,6 +24,7 @@ const renderMeta = ({ client, studio, role, tech }) => [
 ];
 
 export function ProjectPage({ body, excerpt, meta, title, url }) {
+  console.log(body);
   return (
     <React.Fragment>
       <Head>
@@ -31,11 +32,19 @@ export function ProjectPage({ body, excerpt, meta, title, url }) {
         <meta name="description" content={excerpt}></meta>
       </Head>
       <main className="project">
-        <h1 className="project__title">{title}</h1>
-        <MetaData className="project__meta">{renderMeta(meta)}</MetaData>
+        <header className="generic__section project__head">
+          <h1 className="project__title">{title}</h1>
+          <div className="generic__section project__sub-head">
+            <Blocks body={body.slice(0, 1)} />
+            <div className="project__divider">
+              <div></div>
+            </div>
+            <MetaData className="project__meta">{renderMeta(meta)}</MetaData>
+          </div>
+        </header>
         <Blocks body={body} />
         {url ? (
-          <div className="project__url">
+          <div className="generic__section project__url">
             <LargeUrl>{testMarkdownLink(url, false)}</LargeUrl>
           </div>
         ) : null}
@@ -57,7 +66,7 @@ ProjectPage.getInitialProps = async ({ query, res }) => {
   return { body, excerpt, title, url, meta: { client, role, studio, tech } };
 };
 
-const mapStateToProps = state => ({});
+const mapStateToProps = () => ({});
 
 const mapDispatchToProps = dispatch => ({
   dispatch,

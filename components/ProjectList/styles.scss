@@ -25,8 +25,14 @@
 
 .project-list__year__link {
   @include t-menu-item;
+  font-size: 20px;
   text-decoration: none;
   position: relative;
+
+  @include media('>=tablet') {
+    font-size: u(4);
+    line-height: u(7);
+  }
 
   &:hover::after,
   &:focus::after {

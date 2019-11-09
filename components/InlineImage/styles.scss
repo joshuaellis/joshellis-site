@@ -15,6 +15,7 @@
 
 .inlineimage__container {
   @include max-width;
+  padding: 0 u(2);
 
   > div + div {
     margin-top: u(5);
@@ -24,6 +25,7 @@
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-column-gap: u(4);
+    padding: 0 u(5);
 
     > div {
       grid-column: 3 / 7;
@@ -33,6 +35,7 @@
   @include media('>=desktop') {
     grid-template-columns: repeat(12, 1fr);
     grid-column-gap: u(4);
+    padding: 0 u(10);
 
     > div {
       grid-column: 4 / 13;

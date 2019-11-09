@@ -1,4 +1,4 @@
-@import "~include-media/dist/include-media";
+@import '~include-media/dist/include-media';
 
 $c-black: #1a1a1a;
 $c-white: #fdfdfd;
@@ -7,13 +7,13 @@ $c-red: #ff6f85;
 $c-orange: #f8a22d;
 $c-green: #5fd16d;
 $c-foot-bg: #e8e8e8;
-$c-type: #423F4A;
+$c-type: #423f4a;
 
 $mobile-header-height: 144px;
 $tablet-header-height: 208px;
 $desktop-header-height: 256px;
 
-$max-width: 1372px;
+$max-width: 1600px;
 $d-page-gutter: 16px;
 $d-tablet-page-gutter: 40px;
 $d-desktop-page-gutter: 80px;
@@ -44,4 +44,4 @@ $easeInBack: cubic-bezier(0.6, -0.28, 0.735, 0.045);
 $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 $easeInOutBack: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 $easeInOutFast: cubic-bezier(1, 0, 0, 1);
-$authenticMotion: cubic-bezier(.4, 0, .2, 1);
+$authenticMotion: cubic-bezier(0.4, 0, 0.2, 1);

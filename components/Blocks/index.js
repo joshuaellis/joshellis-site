@@ -58,7 +58,7 @@ const CustomImageRenderer = (
         className="project__fullwidth__image"
         alt={alt}
         img={{ asset }}
-        threshold={200}
+        threshold={400}
         effect="opacity"
         sizes="100vw"
         scrollPosition={scrollPosition}
@@ -87,18 +87,28 @@ const BlockRenderer = ({ node, children }) => {
   const style = node.style || 'normal';
   if (/^h\d/.test(style)) {
     return (
-      <div className="project__text__head">
-        <h2 className="t-h4">{children}</h2>
-        <span className="generic__text__ornament" />
+      <div className="generic__section project__text__head">
+        <div>
+          <h2 className="t-h4">{children}</h2>
+          <span className="generic__text__ornament" />
+        </div>
       </div>
     );
   }
 
   if (style === 'standfirst') {
-    return <p className="project__standfirst t-h3">{children}</p>;
+    return (
+      <div className="generic__section project__standfirst">
+        <p className="t-h3">{children}</p>
+      </div>
+    );
   }
 
-  return <p className="project__text__body t-body">{children}</p>;
+  return (
+    <div className="generic__section project__text__body">
+      <p className="t-body">{children}</p>
+    </div>
+  );
 };
 
 export default trackWindowScroll(({ body, imgOnClick, scrollPosition }) => (
