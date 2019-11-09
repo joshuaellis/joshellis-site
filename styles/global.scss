@@ -77,3 +77,9 @@ a {
   @include ornament;
   margin: u(1) 0 u(2) 0;
 }
+
+.modal--active {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}

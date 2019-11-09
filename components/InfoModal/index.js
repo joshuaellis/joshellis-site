@@ -12,16 +12,12 @@ import BlockContent from '@sanity/block-content-to-react';
 
 import Text from 'components/Text';
 import { testMarkdownLink } from 'lib/utils';
+import handleModalScrollling from 'lib/handleModalScrollling';
 
 import './styles.scss';
 
-function InfoModal({ className, content }) {
-  useEffect(() => {
-    document.querySelector('.main').style.overflow = 'hidden';
-    return () => {
-      document.querySelector('.main').style.overflow = 'auto';
-    };
-  }, []);
+function InfoModal({ className, content, ...restProps }) {
+  useEffect(handleModalScrollling, []);
 
   const aboutSerializer = (container = 'div') => ({
     types: {
@@ -45,10 +41,7 @@ function InfoModal({ className, content }) {
   };
 
   return (
-    <div
-      className={clsx('info-modal', className)}
-      style={{ top: window.scrollY ? `${window.scrollY}px` : '0px' }}
-    >
+    <div className={clsx('info-modal', className)} {...restProps}>
       <div className="info-modal__inner">
         <div className="info-modal__titles">
           <BlockContent
@@ -69,6 +62,7 @@ function InfoModal({ className, content }) {
 InfoModal.propTypes = {
   className: PropTypes.string,
   content: PropTypes.object,
+  style: PropTypes.object,
 };
 
 export default InfoModal;

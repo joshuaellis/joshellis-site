@@ -146,6 +146,28 @@ $d-project-nav-right: 26px;
   }
 }
 
+.header__info {
+  left: 100%;
+  transition: transform 800ms $easeInOutQuint;
+}
+
+.header__info-appear-active,
+.header__info-enter-active {
+  transform: translateX(-100%);
+}
+
+.header__info-enter-done {
+  transform: translateX(-100%);
+}
+
+.header__info-exit-active {
+  transform: translateX(100%);
+}
+
+.header__info-exit-done {
+  transform: translateX(100%);
+}
+
 @include media('<tablet') {
   .head__menu-enter {
     display: block;

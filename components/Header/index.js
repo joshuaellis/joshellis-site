@@ -27,7 +27,8 @@ function Header({ infoContent, projectList }) {
   const menuListRef = useRef(null);
   const small = router ? router.pathname !== '/' : true;
 
-  const DURATION = 800;
+  const MENU_DURATION = 800;
+  const INFO_DURATION = 800;
 
   // event handlers
 
@@ -87,7 +88,11 @@ function Header({ infoContent, projectList }) {
           </nav>
         )}
       </div>
-      <CSSTransition in={openMenu} timeout={DURATION} classNames="head__menu">
+      <CSSTransition
+        in={openMenu}
+        timeout={MENU_DURATION}
+        classNames="head__menu"
+      >
         <div className="head__menu--static" ref={menuRef}>
           <Menu
             data={projectList}
@@ -97,7 +102,17 @@ function Header({ infoContent, projectList }) {
         </div>
       </CSSTransition>
       <Portal elementId="#modal">
-        {showInfo && infoContent ? <InfoModal content={infoContent} /> : null}
+        {infoContent ? (
+          <CSSTransition
+            in={showInfo}
+            timeout={INFO_DURATION}
+            classNames="header__info"
+            appear
+            unmountOnExit
+          >
+            <InfoModal className="header__info" content={infoContent} />
+          </CSSTransition>
+        ) : null}
       </Portal>
     </header>
   );
