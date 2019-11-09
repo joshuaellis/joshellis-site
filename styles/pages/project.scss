@@ -4,6 +4,7 @@
 
 .project {
   width: 100%;
+  z-index: 0;
   padding-top: u(8);
 
   display: grid;
@@ -193,6 +194,7 @@
 .project__text__head {
   margin-top: u(4);
   width: 100%;
+  pointer-events: none;
 
   @include media('>=tablet') {
     margin-top: u(8);
@@ -211,6 +213,7 @@
 
 .project__text__body {
   margin-bottom: u(4);
+  pointer-events: none;
 
   @include media('>=tablet') {
     margin-bottom: u(8);

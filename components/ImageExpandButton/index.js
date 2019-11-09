@@ -8,7 +8,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
-import ExpandIcon from '../../static/icons/expand.svg';
+import ExpandIcon from 'icons/expand.svg';
 
 import './styles.scss';
 

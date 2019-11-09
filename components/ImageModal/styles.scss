@@ -5,7 +5,10 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.9);
-  position: absolute;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
   z-index: 100;
   display: flex;
@@ -25,7 +28,7 @@
   top: 0;
 }
 
-.modal>*:first-child {
+.modal > *:first-child {
   animation: fall-in 250ms $easeOutSine;
 }
 

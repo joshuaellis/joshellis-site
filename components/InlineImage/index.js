@@ -1,6 +1,10 @@
 import React, { memo } from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
+
+import ImageExpandButton from 'components/ImageExpandButton';
+import { setImageModalStateAction } from 'store/actions/projectActions';
 
 import './styles.scss';
 
@@ -9,9 +13,20 @@ function InlineImage({
   children,
   className,
   color,
+  expandId,
+  keys,
   style,
   ...restProps
 }) {
+  const dispatch = useDispatch();
+  const handleExpandClick = e =>
+    dispatch(
+      setImageModalStateAction(
+        e.currentTarget.getAttribute('data-modal-id'),
+        true,
+      ),
+    );
+
   return (
     <div
       className={clsx(
@@ -26,13 +41,23 @@ function InlineImage({
         {children && children.length > 1 ? (
           // handles multiple images in the same container
           children.map((x, i) => (
-            <div key={caption[i]}>
+            <div className="inlineimage__container__inner" key={caption[i]}>
+              <ImageExpandButton
+                className="inlineimage__expand"
+                id={keys[i]}
+                onClick={handleExpandClick}
+              />
               <div className="inlineimage__image">{x}</div>
               <p className="inlineimage__caption t-caption">{caption[i]}</p>
             </div>
           ))
         ) : (
-          <div>
+          <div className="inlineimage__container__inner">
+            <ImageExpandButton
+              className="inlineimage__expand"
+              id={expandId}
+              onClick={handleExpandClick}
+            />
             <div className="inlineimage__image">{children}</div>
             <p className="inlineimage__caption t-caption">{caption}</p>
           </div>
@@ -47,6 +72,9 @@ InlineImage.propTypes = {
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
   className: PropTypes.string,
   color: PropTypes.string,
+  expandId: PropTypes.string,
+  expandClick: PropTypes.func,
+  keys: PropTypes.array,
   style: PropTypes.object,
 };
 

@@ -17,7 +17,7 @@
   @include max-width;
   padding: 0 u(2);
 
-  > div + div {
+  > .inlineimage__container__inner + .inlineimage__container__inner {
     margin-top: u(5);
   }
 
@@ -27,7 +27,7 @@
     grid-column-gap: u(4);
     padding: 0 u(5);
 
-    > div {
+    > .inlineimage__container__inner {
       grid-column: 3 / 7;
     }
   }
@@ -37,13 +37,26 @@
     grid-column-gap: u(4);
     padding: 0 u(10);
 
-    > div {
+    > .inlineimage__container__inner {
       grid-column: 4 / 13;
     }
 
-    > div + div {
+    > .inlineimage__container__inner + .inlineimage__container__inner {
       margin-top: u(7);
     }
+  }
+}
+
+.inlineimage__container__inner {
+  position: relative;
+}
+
+.inlineimage__expand {
+  position: absolute;
+  right: 0;
+
+  @include media('>=desktop') {
+    display: none;
   }
 }
 

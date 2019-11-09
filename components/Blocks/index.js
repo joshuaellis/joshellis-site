@@ -1,8 +1,7 @@
 /* eslint-disable camelcase */
 
-import React from 'react';
+import React, { memo } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
-import { trackWindowScroll } from 'react-lazy-load-image-component';
 import PropTypes from 'prop-types';
 
 import { generateColor } from 'lib/utils';
@@ -11,58 +10,53 @@ import InlineImage from 'components/InlineImage';
 import FullWidthImage from 'components/FullWidthImage';
 import Image from 'components/Image';
 
-const projectSerializers = (container = 'div', imgOnClick = null) => ({
+const projectSerializers = (container = 'div') => ({
   types: {
-    'custom-image': props => CustomImageRenderer(props, imgOnClick),
-    multiple_images: props => MultipleImageRenderer(props, imgOnClick),
+    'custom-image': props => CustomImageRenderer(props),
+    multiple_images: props => MultipleImageRenderer(props),
     block: BlockRenderer,
   },
   container,
 });
 
-const MultipleImageRenderer = (
-  { node: { single_image } },
-  imgOnClick,
-  scrollPosition,
-) => {
+const MultipleImageRenderer = ({ node: { single_image } }) => {
   const { color } = single_image[0];
   return (
     <InlineImage
       className="project__multiple"
       color={generateColor(color.rgb, color.alpha)}
       caption={single_image.map(x => x.caption)}
+      keys={single_image.map(x => x._key)}
     >
-      {single_image.map(({ alt, asset }) => (
+      {single_image.map(({ alt, asset, _key }) => (
         <Image
-          onClick={imgOnClick}
           className="project__fullwidth__image"
           alt={alt}
           img={{ asset }}
-          key={alt}
+          key={_key}
           threshold={200}
-          scrollPosition={scrollPosition}
         />
       ))}
     </InlineImage>
   );
 };
 
-const CustomImageRenderer = (
-  { node: { alt, asset, caption, fullWidth, color } },
-  imgOnClick,
-  scrollPosition,
-) =>
+const CustomImageRenderer = ({
+  node: { alt, asset, caption, fullWidth, color, _key },
+}) =>
   fullWidth ? (
-    <FullWidthImage className="project__fullwidth" caption={caption}>
+    <FullWidthImage
+      className="project__fullwidth"
+      caption={caption}
+      expandId={_key}
+    >
       <Image
-        onClick={imgOnClick}
         className="project__fullwidth__image"
         alt={alt}
         img={{ asset }}
         threshold={400}
         effect="opacity"
         sizes="100vw"
-        scrollPosition={scrollPosition}
       />
     </FullWidthImage>
   ) : (
@@ -70,16 +64,15 @@ const CustomImageRenderer = (
       className="project__inline"
       caption={caption}
       color={generateColor(color.rgb, color.alpha)}
+      expandId={_key}
     >
       <Image
-        onClick={imgOnClick}
         className="project__inline"
         alt={alt}
         img={{ asset }}
         threshold={200}
         effect="opacity"
         sizes="(max-width: 768px) 100vw, 75vw"
-        scrollPosition={scrollPosition}
       />
     </InlineImage>
   );
@@ -112,10 +105,10 @@ const BlockRenderer = ({ node, children }) => {
   );
 };
 
-export default trackWindowScroll(({ body, imgOnClick, scrollPosition }) => (
+export default memo(({ body }) => (
   <BlockContent
     blocks={body}
-    serializers={projectSerializers(React.Fragment, imgOnClick, scrollPosition)}
+    serializers={projectSerializers(React.Fragment)}
   />
 ));
 
@@ -139,6 +132,7 @@ CustomImageRenderer.propTypes = {
     caption: PropTypes.string,
     fullWidth: PropTypes.bool,
     color: PropTypes.object,
+    _key: PropTypes.string,
   }),
 };
 

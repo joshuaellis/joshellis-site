@@ -14,32 +14,51 @@ import { imageUrlFor } from 'lib/images';
 
 import './styles.scss';
 
-const Image = React.forwardRef(
-  ({ className, img, sizes, scrollPosition, ...restProps }, ref) => {
-    const [loading, setLoading] = useState(true);
-    return (
+const LazyImage = ({ className, img, sizes, scrollPosition, ...restProps }) => {
+  const [loading, setLoading] = useState(true);
+  return (
+    <div className={clsx(loading && 'image--loading')}>
       <LazyLoadImage
-        wrapperClassName={clsx('image', loading && 'image--loading', className)}
+        wrapperClassName={clsx('image', className)}
         src={getURL(img, WIDTH.mobileX1)}
         srcSet={`
-    ${getURL(img, WIDTH.deskX2)} ${WIDTH.deskX2}w,
-    ${getURL(img, WIDTH.deskX1)} ${WIDTH.deskX1}w,
-    ${getURL(img, WIDTH.tabletX2)} ${WIDTH.tabletX2}w,
-    ${getURL(img, WIDTH.tabletX1)} ${WIDTH.tabletX1}w,
-    ${getURL(img, WIDTH.largeMobileX2)} ${WIDTH.largeMobileX2}w,
-    ${getURL(img, WIDTH.largeMobileX1)} ${WIDTH.largeMobileX1}w,
-    ${getURL(img, WIDTH.mobileX2)} ${WIDTH.mobileX2}w,
-    ${getURL(img, WIDTH.mobileX1)} ${WIDTH.mobileX1}w,
-    `}
+  ${getURL(img, WIDTH.deskX2)} ${WIDTH.deskX2}w,
+  ${getURL(img, WIDTH.deskX1)} ${WIDTH.deskX1}w,
+  ${getURL(img, WIDTH.tabletX2)} ${WIDTH.tabletX2}w,
+  ${getURL(img, WIDTH.tabletX1)} ${WIDTH.tabletX1}w,
+  ${getURL(img, WIDTH.largeMobileX2)} ${WIDTH.largeMobileX2}w,
+  ${getURL(img, WIDTH.largeMobileX1)} ${WIDTH.largeMobileX1}w,
+  ${getURL(img, WIDTH.mobileX2)} ${WIDTH.mobileX2}w,
+  ${getURL(img, WIDTH.mobileX1)} ${WIDTH.mobileX1}w,
+  `}
         alt={img.alt}
-        ref={ref}
         sizes={sizes}
         afterLoad={() => setLoading(false)}
         scrollPosition={scrollPosition}
         {...restProps}
       />
-    );
-  },
+    </div>
+  );
+};
+
+export const Image = ({ className, img, sizes, ...restProps }) => (
+  <img
+    className={clsx('image', className)}
+    src={getURL(img, WIDTH.mobileX1)}
+    srcSet={`
+${getURL(img, WIDTH.deskX2)} ${WIDTH.deskX2}w,
+${getURL(img, WIDTH.deskX1)} ${WIDTH.deskX1}w,
+${getURL(img, WIDTH.tabletX2)} ${WIDTH.tabletX2}w,
+${getURL(img, WIDTH.tabletX1)} ${WIDTH.tabletX1}w,
+${getURL(img, WIDTH.largeMobileX2)} ${WIDTH.largeMobileX2}w,
+${getURL(img, WIDTH.largeMobileX1)} ${WIDTH.largeMobileX1}w,
+${getURL(img, WIDTH.mobileX2)} ${WIDTH.mobileX2}w,
+${getURL(img, WIDTH.mobileX1)} ${WIDTH.mobileX1}w,
+`}
+    alt={img.alt}
+    sizes={sizes}
+    {...restProps}
+  />
 );
 
 const WIDTH = {
@@ -59,11 +78,17 @@ const getURL = (img, size) =>
     .width(size)
     .url();
 
-Image.propTypes = {
+LazyImage.propTypes = {
   className: PropTypes.string,
   img: PropTypes.object,
   sizes: PropTypes.string,
   scrollPosition: PropTypes.object,
 };
 
-export default memo(Image);
+Image.propTypes = {
+  className: PropTypes.string,
+  img: PropTypes.object,
+  sizes: PropTypes.string,
+};
+
+export default memo(LazyImage);
