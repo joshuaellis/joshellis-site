@@ -38,6 +38,7 @@ const MultipleImageRenderer = (
           className="project__fullwidth__image"
           alt={alt}
           img={{ asset }}
+          key={alt}
           threshold={200}
           scrollPosition={scrollPosition}
         />

@@ -134,6 +134,10 @@ app.prepare().then(() => {
     app.serveStatic(req, res, path.resolve('./.next/manifest.appcache')),
   );
 
+  server.get('/work/:project', (req, res) =>
+    app.render(req, res, '/post', { project: req.params.slug }),
+  );
+
   if (isProd) {
     server.get('/_next/-/app.js', (req, res) =>
       app.serveStatic(req, res, path.resolve('./.next/app.js')),

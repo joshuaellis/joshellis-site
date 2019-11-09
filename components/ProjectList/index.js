@@ -17,12 +17,12 @@ function ProjectList({ className, data }) {
     <div className={clsx('project-list', className)}>
       <ul className="project-list__list">
         {data.map((datum, index) => (
-          <li className="project-list__year" index={index} key={datum}>
+          <li className="project-list__year" index={index} key={datum.year}>
             {datum.year}
             <ul className="project-list__year__list">
               {datum.projects.map(proj => (
-                <li className="project-list__year__item">
-                  <Link href={proj.slug}>
+                <li className="project-list__year__item" key={proj.slug}>
+                  <Link href="/work/[project]" as={`/work/${proj.slug}`}>
                     <a className="project-list__year__link">{proj.title}</a>
                   </Link>
                 </li>

@@ -17,7 +17,10 @@ const queries = {
 };
 
 const homeSerializers = (container = 'div') => ({
-  types: {},
+  types: {
+    // eslint-disable-next-line react/prop-types
+    block: ({ children }) => <span>{children}</span>,
+  },
   marks: {
     // eslint-disable-next-line react/prop-types
     color: ({ mark, children }) => (

@@ -14,13 +14,15 @@ import clsx from 'clsx';
 import t from 'lib/strings';
 import useClickOutside from 'lib/useClickOutside';
 import Menu from 'components/Menu';
+import Portal from 'components/Portal';
+import InfoModal from 'components/InfoModal';
 
 import './styles.scss';
 
-function Header({ projectList }) {
-  const INFO_HREF = '/info';
+function Header({ infoContent, projectList }) {
   const router = useRouter();
   const [openMenu, setOpenMenu] = useState(false);
+  const [showInfo, setShowInfo] = useState(false);
   const menuRef = useRef(null);
   const menuListRef = useRef(null);
   const small = router ? router.pathname !== '/' : true;
@@ -31,15 +33,22 @@ function Header({ projectList }) {
 
   useClickOutside(menuRef, setOpenMenu);
 
-  const handleInfoClick = e => {
-    e.preventDefault();
-    router.push(INFO_HREF);
+  const handleInfoClick = () => {
+    if (openMenu) {
+      setOpenMenu(false);
+    }
+    setShowInfo(!showInfo);
   };
 
   const handleProjectsClick = () => {
+    if (showInfo) {
+      setShowInfo(false);
+    }
     setOpenMenu(!openMenu);
     menuListRef.current.scrollTo({ top: 0 });
   };
+
+  const handleMenuClick = () => setOpenMenu(false);
 
   return (
     <header className="head__container">
@@ -65,30 +74,38 @@ function Header({ projectList }) {
             >
               {t('nav-projects')}
             </button>
-            <a
-              href={INFO_HREF}
+            <button
+              type="button"
               onClick={handleInfoClick}
               className={clsx(
                 'head__nav__link',
-                false && 'head__nav__link--active',
+                showInfo && 'head__nav__link--active',
               )}
             >
               {t('nav-about')}
-            </a>
+            </button>
           </nav>
         )}
       </div>
       <CSSTransition in={openMenu} timeout={DURATION} classNames="head__menu">
         <div className="head__menu--static" ref={menuRef}>
-          <Menu data={projectList} ref={menuListRef} />
+          <Menu
+            data={projectList}
+            ref={menuListRef}
+            onClick={handleMenuClick}
+          />
         </div>
       </CSSTransition>
+      <Portal elementId="#modal">
+        {showInfo && infoContent ? <InfoModal content={infoContent} /> : null}
+      </Portal>
     </header>
   );
 }
 
 Header.propTypes = {
   projectList: PropTypes.array,
+  infoContent: PropTypes.object,
 };
 
 export default memo(Header);

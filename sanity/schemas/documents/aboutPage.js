@@ -10,7 +10,7 @@ export default {
     },
     {
       name: 'collaboration_text',
-      type: 'text',
+      type: 'markdown',
       title: 'Collaboration text',
     },
   ],

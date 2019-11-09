@@ -6,6 +6,15 @@
 .project-list {
   color: $c-type;
   @include max-width;
+  padding: 0 u(2);
+
+  @include media('>=tablet') {
+    padding: 0 u(5);
+  }
+
+  @include media('>=desktop') {
+    padding: 0 u(10);
+  }
 }
 
 .project-list__year {

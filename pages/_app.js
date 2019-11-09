@@ -12,13 +12,16 @@ import '../styles/styles';
 
 const queries = {
   getProjectList: `*[_type == 'project' && !(_id in path("drafts.**"))]{ title, year, slug }`,
+  getInfoContent: `*[_type == 'aboutpage' && !(_id in path("drafts.**"))]`,
 };
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
-    const data = await sanity.fetch(queries.getProjectList);
+    const projectData = await sanity.fetch(queries.getProjectList);
+    const [infoData] = await sanity.fetch(queries.getInfoContent);
     return {
-      projectList: buildProjectList(data),
+      projectList: buildProjectList(projectData),
+      infoContent: infoData,
       pageProps: Component.getInitialProps
         ? await Component.getInitialProps(ctx)
         : {},
@@ -26,11 +29,17 @@ class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps, reduxStore, projectList } = this.props;
+    const {
+      Component,
+      pageProps,
+      reduxStore,
+      projectList,
+      infoContent,
+    } = this.props;
     return (
       <Provider store={reduxStore}>
         <div className="main">
-          <Header projectList={projectList} />
+          <Header projectList={projectList} infoContent={infoContent} />
           <Component {...pageProps} />
           <Footer />
         </div>

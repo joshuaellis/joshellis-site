@@ -13,7 +13,7 @@ import IconButton from '../IconButton';
 
 import './styles.scss';
 
-function Modal({ children, className, onCloseClick }) {
+function ImageModal({ children, className, onCloseClick }) {
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     return () => {
@@ -34,10 +34,10 @@ function Modal({ children, className, onCloseClick }) {
   );
 }
 
-Modal.propTypes = {
+ImageModal.propTypes = {
   children: PropTypes.element,
   className: PropTypes.string,
   onCloseClick: PropTypes.func,
 };
 
-export default Modal;
+export default ImageModal;

@@ -1,0 +1,42 @@
+@import 'styles/functions';
+@import 'styles/mixins';
+@import 'styles/type';
+@import 'styles/variables';
+
+.info-modal {
+  background-color: $c-black;
+  width: 100vw;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  color: $c-white;
+  padding-top: u(8);
+}
+
+.info-modal__inner {
+  margin: u(2) u(2) u(6) u(2);
+}
+
+.info-modal__titles > h2 {
+  @include t-h3;
+
+  > span {
+    display: block;
+  }
+}
+
+.info-modal__colab {
+  margin-top: u(5);
+
+  a {
+    font-weight: 600;
+  }
+}
+
+.info-modal__colab__title {
+  color: white !important;
+
+  & + * {
+    background-color: white !important;
+  }
+}

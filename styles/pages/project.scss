@@ -229,8 +229,11 @@
 
 .project__url {
   margin-top: u(0.5);
-  justify-self: flex-start;
   width: 100%;
+
+  > * {
+    justify-self: flex-start;
+  }
 
   .project__inline + &,
   .project__multiple + &,

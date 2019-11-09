@@ -9,8 +9,6 @@ import { testMarkdownLink } from 'lib/utils';
 import Blocks from 'components/Blocks';
 import MetaData from 'components/MetaData';
 import LargeUrl from 'components/LargeUrl';
-import Portal from 'components/Portal';
-import Modal from 'components/Modal';
 
 const queries = {
   getProject: id => `*[slug == '${id}' && !(_id in path("drafts.**"))]`,
@@ -24,7 +22,6 @@ const renderMeta = ({ client, studio, role, tech }) => [
 ];
 
 export function ProjectPage({ body, excerpt, meta, title, url }) {
-  console.log(body);
   return (
     <React.Fragment>
       <Head>
