@@ -1,0 +1,6 @@
+@import 'styles/mixins.scss';
+
+.image--loading {
+  display: block;
+  @include aspect-ratio(3, 2);
+}

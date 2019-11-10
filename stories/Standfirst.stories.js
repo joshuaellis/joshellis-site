@@ -1,12 +1,15 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs } from '@storybook/addon-knobs';
-// import { action } from '@storybook/addon-actions';
 
-import Standfirst from '../app/components/Standfirst';
+import Standfirst from 'components/Standfirst';
 
-const stories = storiesOf('Standfirst', module);
-
-stories.addDecorator(withKnobs);
-
-stories.add('default', () => <Standfirst />);
+storiesOf('Standfirst', module).add('default', () => (
+  <Standfirst>
+    <React.Fragment>
+      <h2>Apple</h2>
+      <h2>Banana</h2>
+      <h2>Orange</h2>
+      <h2>Cucumber</h2>
+    </React.Fragment>
+  </Standfirst>
+));

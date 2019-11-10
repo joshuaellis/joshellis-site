@@ -1,0 +1,17 @@
+@function u($n, $delta-pixels: 0, $unit-size: 8) {
+  @return (($n * $unit-size) + $delta-pixels) * 1px;
+}
+
+@function str-repeat($n, $str) {
+  $output: $str;
+
+  @if $n==1 {
+    @return $output;
+  }
+
+  @for $i from 2 through $n {
+    $output: $output + ' '+ $str;
+  }
+
+  @return $output;
+}

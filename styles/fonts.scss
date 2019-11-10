@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 'Surt';
+  src: url('/static/fonts/Surt-Light.eot') format('embedded-opentype'),
+    url('/static/fonts/Surt-Light.woff') format('woff'),
+    url('/static/fonts/Surt-Light.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Surt';
+  src: url('/static/fonts/Surt-Regular.eot') format('embedded-opentype'),
+    url('/static/fonts/Surt-Regular.woff') format('woff'),
+    url('/static/fonts/Surt-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Surt';
+  src: url('/static/fonts/Surt-Medium.eot') format('embedded-opentype'),
+    url('/static/fonts/Surt-Medium.woff') format('woff'),
+    url('/static/fonts/Surt-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Surt';
+  src: url('/static/fonts/Surt-Bold.eot') format('embedded-opentype'),
+    url('/static/fonts/Surt-Bold.woff') format('woff'),
+    url('/static/fonts/Surt-Bold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Surt';
+  src: url('/static/fonts/Surt-Black.eot') format('embedded-opentype'),
+    url('/static/fonts/Surt-Black.woff') format('woff'),
+    url('/static/fonts/Surt-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+}

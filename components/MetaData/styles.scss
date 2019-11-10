@@ -1,0 +1,77 @@
+@import 'styles/functions';
+@import 'styles/mixins';
+@import 'styles/type';
+@import 'styles/variables';
+
+.metadata {
+  @include t-small-body;
+  display: grid;
+  grid-template-areas: 'client client role role' 'studio studio tech tech';
+  grid-template-columns: repeat(4, 1fr);
+  grid-row-gap: u(4);
+  grid-column-gap: u(2);
+
+  @include media('>=tablet') {
+    grid-column-gap: u(4);
+    grid-row-gap: u(7);
+  }
+}
+
+.metadata__item {
+  > a {
+    position: relative;
+    z-index: 0;
+
+    &::after {
+      content: '';
+      width: 100%;
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: $c-blue;
+      height: 2px;
+      z-index: -10;
+      transition: width 500ms $easeOutQuad;
+    }
+
+    &:hover::after {
+      width: 0;
+    }
+
+    &:focus {
+      outline: none;
+      bottom: u(0.5);
+
+      &::after {
+        bottom: u(-0.75);
+        background-color: $c-orange;
+      }
+    }
+  }
+
+  &:nth-child(1) {
+    grid-area: client;
+  }
+
+  &:nth-child(2) {
+    grid-area: studio;
+  }
+
+  &:nth-child(3) {
+    grid-area: role;
+  }
+
+  &:nth-child(4) {
+    grid-area: tech;
+  }
+}
+
+.metadata__item__title {
+  @include t-h4;
+}
+
+.metadata__ornament {
+  @include ornament;
+  margin: u(1) 0 u(2) 0;
+}

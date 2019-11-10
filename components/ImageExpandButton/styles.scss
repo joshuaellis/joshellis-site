@@ -1,0 +1,13 @@
+@import 'styles/functions.scss';
+@import 'styles/variables.scss';
+
+.button--expand {
+  width: 32px;
+  height: 32px;
+  border-bottom-left-radius: u(0.75);
+  padding: 0;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(2px);
+  cursor: pointer;
+}
