@@ -12,6 +12,7 @@ import MetaData from 'components/MetaData';
 import LargeUrl from 'components/LargeUrl';
 import Portal from 'components/Portal';
 import ImageModal from 'components/ImageModal';
+import Iframe from 'components/Iframe';
 
 import { setImageModalStateAction } from 'store/actions/projectActions';
 
@@ -30,6 +31,7 @@ export function ProjectPage({
   body,
   dispatchSetImageModalState,
   excerpt,
+  iframe,
   imageModalId,
   meta,
   showImageModal,
@@ -84,6 +86,11 @@ export function ProjectPage({
             <LargeUrl>{testMarkdownLink(url, false)}</LargeUrl>
           </div>
         ) : null}
+        {iframe ? (
+          <div className="generic__section project__iframe">
+            <Iframe title={`${title} video`} src={iframe} />
+          </div>
+        ) : null}
       </main>
       <Portal elementId="#modal">
         {showImageModal && (
@@ -106,8 +113,25 @@ ProjectPage.getInitialProps = async ({ query, res }) => {
     });
     res.end();
   }
-  const { body, client, excerpt, role, studio, tech, title, url } = data;
-  return { body, excerpt, title, url, meta: { client, role, studio, tech } };
+  const {
+    body,
+    client,
+    excerpt,
+    iframe,
+    role,
+    studio,
+    tech,
+    title,
+    url,
+  } = data;
+  return {
+    body,
+    excerpt,
+    iframe,
+    title,
+    url,
+    meta: { client, role, studio, tech },
+  };
 };
 
 const mapStateToProps = ({ project: { imageModal } }) => ({
@@ -124,6 +148,7 @@ ProjectPage.propTypes = {
   body: PropTypes.array,
   dispatchSetImageModalState: PropTypes.func,
   excerpt: PropTypes.string,
+  iframe: PropTypes.string,
   imageModalId: PropTypes.string,
   meta: PropTypes.object,
   title: PropTypes.string,

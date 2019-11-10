@@ -262,3 +262,27 @@
     }
   }
 }
+
+.project__iframe {
+  width: 100%;
+
+  @include media('>=tablet') {
+    grid-template-columns: repeat(6, 1fr);
+    grid-column-gap: u(4);
+    margin-bottom: u(6);
+
+    > .iframe {
+      grid-column: 3 / 7;
+    }
+  }
+
+  @include media('>=desktop') {
+    grid-template-columns: repeat(12, 1fr);
+    grid-column-gap: u(4);
+    margin-bottom: u(9);
+
+    > .iframe {
+      grid-column: 4 / 13;
+    }
+  }
+}

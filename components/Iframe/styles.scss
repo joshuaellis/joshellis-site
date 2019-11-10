@@ -1,0 +1,19 @@
+@import 'styles/mixins';
+@import 'styles/variables';
+
+.iframe {
+  overflow: hidden;
+  background-color: $c-foot-bg;
+  @include aspect-ratio(16, 9) {
+    height: 100%;
+    width: 100%;
+    border: 0;
+  }
+}
+
+.iframe__loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
