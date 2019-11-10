@@ -1,0 +1,264 @@
+@import 'styles/functions';
+@import 'styles/mixins';
+@import 'styles/variables';
+
+.project {
+  width: 100%;
+  z-index: 0;
+  padding-top: u(8);
+
+  display: grid;
+  grid-template-columns: [left-col] u(2) [centered] auto u(2) [right-col];
+
+  > * {
+    grid-column: centered;
+  }
+
+  > .project__fullwidth,
+  .project__inline,
+  .project__multiple {
+    grid-column: left-col / right-col;
+  }
+
+  @include media('>=tablet') {
+    padding-top: u(11);
+    grid-template-columns: [left-col] u(1) [centered] auto u(1) [right-col];
+    grid-column-gap: u(4);
+  }
+
+  @include media('>=desktop') {
+    padding-top: u(7);
+    grid-template-columns: [left-col] u(6) [centered] auto u(6) [right-col];
+    grid-column-gap: u(4);
+  }
+}
+
+.project__inline {
+  .project__text__body + & {
+    position: relative;
+    z-index: -10;
+    margin-top: u(-7);
+  }
+
+  & + .project__text__head {
+    margin-top: u(-5);
+  }
+
+  @include media('>=tablet') {
+    .project__text__body + & {
+      margin-top: u(-16);
+    }
+
+    & + .project__text__head {
+      margin-top: u(-8);
+
+      & + .project__text__body {
+        margin-top: u(-1);
+      }
+    }
+  }
+
+  @include media('>=desktop') {
+    .project__text__body + & {
+      margin-top: u(-20);
+    }
+
+    & + .project__text__head {
+      margin-top: u(-10);
+
+      & + .project__text__body {
+        margin-top: u(-3);
+      }
+    }
+  }
+}
+
+.project__multiple {
+  .project__text__body + & {
+    position: relative;
+    z-index: -10;
+    margin-top: u(-7);
+
+    @include media('>=tablet') {
+      margin-top: u(-16);
+    }
+
+    @include media('>=desktop') {
+      margin-top: u(-20);
+    }
+  }
+}
+
+.project__head {
+  width: 100%;
+}
+
+.project__sub-head {
+  width: 100%;
+
+  > .project__standfirst {
+    display: none;
+  }
+
+  @include media('>=tablet') {
+    grid-column: 1 / 7;
+
+    > .project__standfirst {
+      display: grid;
+      grid-column: 1 / 7;
+      margin-top: u(8);
+      margin-bottom: u(9);
+      > * {
+        grid-column: 1 / 6;
+      }
+    }
+  }
+
+  @include media('>=desktop') {
+    margin-top: u(9);
+    margin-bottom: u(10);
+    grid-column: 1 / 13;
+
+    > .project__standfirst {
+      display: block;
+      margin-top: u(4);
+      margin-bottom: u(5);
+      grid-column: 1 / 7;
+    }
+  }
+}
+
+.project__divider {
+  display: none;
+
+  @include media('>=desktop') {
+    display: flex;
+    grid-column: 7 / 9;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+
+    > div {
+      width: 2px;
+      background-color: $c-foot-bg;
+      height: 100%;
+    }
+  }
+}
+
+.project__title {
+  margin-top: u(2.5);
+  color: $c-black;
+  width: 100%;
+
+  @include media('>=tablet') {
+    margin-top: u(5);
+    grid-column: 1 / 6;
+  }
+
+  @include media('>=desktop') {
+    margin-top: u(11);
+    grid-column: 1 / 9;
+  }
+}
+
+.project__meta {
+  margin-top: u(4.5);
+
+  @include media('>=tablet') {
+    margin-top: 0;
+    margin-bottom: u(8);
+    grid-column: 1 / 5;
+  }
+
+  @include media('>=desktop') {
+    margin-bottom: 0;
+    margin-top: u(4);
+    grid-column: 9 / 13;
+  }
+}
+
+.project__standfirst {
+  margin-top: u(4);
+  margin-bottom: u(4);
+
+  & + .project__text__head {
+    margin-top: 0;
+  }
+
+  @include media('>=tablet') {
+    display: none;
+  }
+}
+
+.project__text__head {
+  margin-top: u(4);
+  width: 100%;
+  pointer-events: none;
+
+  @include media('>=tablet') {
+    margin-top: u(8);
+    > * {
+      grid-column: 1 / 4;
+    }
+  }
+
+  @include media('>=desktop') {
+    margin-top: u(10);
+    > * {
+      grid-column: 1 / 5;
+    }
+  }
+}
+
+.project__text__body {
+  margin-bottom: u(4);
+  pointer-events: none;
+
+  @include media('>=tablet') {
+    margin-bottom: u(8);
+    > * {
+      grid-column: 1 / 4;
+    }
+  }
+
+  @include media('>=tablet') {
+    margin-bottom: u(9);
+    > * {
+      grid-column: 1 / 5;
+    }
+  }
+}
+
+.project__url {
+  margin-top: u(0.5);
+  width: 100%;
+
+  > * {
+    justify-self: flex-start;
+  }
+
+  .project__inline + &,
+  .project__multiple + &,
+  .project__fullwidth + & {
+    margin-top: u(4.5);
+  }
+
+  @include media('>=tablet') {
+    margin-bottom: u(6);
+
+    > * {
+      grid-column: 1 / 7;
+      justify-self: flex-end;
+    }
+  }
+
+  @include media('>=desktop') {
+    margin-bottom: u(9);
+
+    > * {
+      grid-column: 6 / 13;
+      justify-self: flex-end;
+    }
+  }
+}

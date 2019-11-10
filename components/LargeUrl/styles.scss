@@ -1,0 +1,35 @@
+@import "styles/functions";
+@import "styles/type";
+@import "styles/variables";
+
+.largeurl {
+  @include t-h3;
+  text-decoration: none;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: u(0.5);
+    width: 100%;
+    background-color: $c-blue;
+    bottom: -2px;
+    left: 0;
+    transition: width 500ms $easeOutQuad;
+  }
+
+  &:hover::after {
+    width: 0;
+  }
+
+  &:focus {
+    outline: none;
+    bottom: u(0.5);
+
+    &::after {
+      bottom: u(-0.75);
+      background-color: $c-orange;
+    }
+  }
+}

@@ -8,7 +8,7 @@ const prettierOptions = JSON.parse(
 module.exports = {
   parser: 'babel-eslint',
   extends: ['airbnb', 'prettier', 'prettier/react'],
-  plugins: ['prettier', 'redux-saga', 'react', 'jsx-a11y'],
+  plugins: ['prettier', 'react', 'jsx-a11y', 'react-hooks'],
   env: {
     jest: true,
     browser: true,
@@ -20,19 +20,31 @@ module.exports = {
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
+      legacyDecorators: true,
     },
+    parser: 'babel-eslint',
   },
   rules: {
     'prettier/prettier': ['error', prettierOptions],
     'arrow-body-style': [2, 'as-needed'],
     'class-methods-use-this': 0,
-    'comma-dangle': [2, 'always-multiline'],
+    'comma-dangle': [
+      2,
+      {
+        arrays: 'always-multiline',
+        objects: 'always-multiline',
+        imports: 'always-multiline',
+        exports: 'always-multiline',
+        functions: 'ignore',
+      },
+    ],
     'import/imports-first': 0,
     'import/newline-after-import': 0,
     'import/no-dynamic-require': 0,
     'import/no-extraneous-dependencies': 0,
     'import/no-named-as-default': 0,
-    'import/no-unresolved': 2,
+    'import/no-unresolved': 0,
+    'import/no-absolute-path': 0,
     'import/no-webpack-loader-syntax': 0,
     'import/prefer-default-export': 0,
     indent: [
@@ -66,23 +78,23 @@ module.exports = {
     'prefer-template': 2,
     'react/destructuring-assignment': 0,
     'react/jsx-closing-tag-location': 0,
+    'react/jsx-fragments': 0,
     'react/forbid-prop-types': 0,
     'react/jsx-first-prop-new-line': [2, 'multiline'],
     'react/jsx-filename-extension': 0,
     'react/jsx-no-target-blank': 0,
     'react/jsx-uses-vars': 2,
+    'react/jsx-props-no-spreading': 0,
     'react/require-default-props': 0,
     'react/require-extension': 0,
     'react/self-closing-comp': 0,
     'react/sort-comp': 0,
-    'redux-saga/no-yield-in-race': 2,
-    'redux-saga/yield-effects': 2,
     'require-yield': 0,
   },
   settings: {
     'import/resolver': {
-      webpack: {
-        config: './internals/webpack/webpack.prod.babel.js',
+      'babel-module': {
+        root: ['./'],
       },
     },
   },

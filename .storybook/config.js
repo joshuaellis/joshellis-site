@@ -1,30 +1,23 @@
-import { configure, addParameters, addDecorator } from '@storybook/react';
+import { configure, addDecorator, addParameters } from '@storybook/react';
 import { themes } from '@storybook/theming';
-import { withConsole } from '@storybook/addon-console';
+import { withA11y } from '@storybook/addon-a11y';
+
 import 'sanitize.css/sanitize.css';
+import 'sanitize.css/typography.css';
+import 'sanitize.css/forms.css';
+import './stories.css';
+import '../styles/styles';
 
-import React from 'react';
-import GlobalStyle from '../app/global-styles';
+addParameters({
+  options: {
+    theme: themes.normal,
+  },
+});
 
-//Inject storybook theme
-const theme = themes.dark
-addParameters({ options: { theme } });
+addDecorator(storyFn => storyFn());
 
-//Console logging injection
-addDecorator((storyFn, context) => withConsole()(storyFn)(context));
+addDecorator(withA11y);
 
-//Global Styles injection for components
-function withGlobalStyles(storyFn) {
-  return (
-    <React.Fragment>
-      <GlobalStyle />
-      {storyFn()}
-    </React.Fragment>
-  )
-}
-addDecorator(withGlobalStyles);
-
-//Get all the stories and load them
 const req = require.context('../stories', true, /\.stories\.js$/);
 function loadStories() {
   req.keys().forEach(filename => req(filename));

@@ -1,0 +1,78 @@
+@import './variables.scss';
+
+@mixin hide-text {
+  overflow: hidden;
+  text-indent: 101%;
+  white-space: nowrap;
+}
+
+@mixin hide-visually {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(100%);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+@mixin unbutton {
+  padding: 0;
+
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+  color: inherit;
+  text-align: inherit;
+  appearance: none;
+}
+
+@mixin max-width {
+  // padding: 0 $d-page-gutter;
+
+  @include media('>=tablet') {
+    // padding: 0 #{$d-page-gutter * 2.5};
+  }
+
+  @include media('>=desktop') {
+    margin: 0 auto;
+    // padding: 0 u(10);
+    max-width: $max-width + ($d-page-gutter * 5);
+  }
+}
+
+@mixin max-width-reset() {
+  padding: 0;
+  max-width: none;
+}
+
+@mixin ornament {
+  display: block;
+  background-color: $c-black;
+  height: u(0.5);
+  width: u(3);
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+
+  &:before {
+    display: block;
+    content: '';
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+
+  > .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    @content;
+  }
+}

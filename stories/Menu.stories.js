@@ -1,13 +1,33 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs } from '@storybook/addon-knobs';
-// import { action } from '@storybook/addon-actions';
-import { PROJECTS } from '../app/constants';
 
-import Menu from '../app/components/Menu';
+import Menu from 'components/Menu';
 
-const stories = storiesOf('Menu', module);
+const DATA = [
+  {
+    year: '2019',
+    projects: [
+      { title: 'x', slug: 'xx' },
+      { title: 'y', slug: 'yy' },
+      { title: 'z', slug: 'zz' },
+    ],
+  },
+  {
+    year: '2018',
+    projects: [
+      { title: 'a', slug: 'aa' },
+      { title: 'b', slug: 'bb' },
+      { title: 'c', slug: 'cc' },
+    ],
+  },
+  {
+    year: '2017',
+    projects: [
+      { title: 'black-mirror', slug: 'bm' },
+      { title: 'Cisco digital readiness', slug: 'cisco' },
+      { title: 'c', slug: 'cc' },
+    ],
+  },
+];
 
-stories.addDecorator(withKnobs);
-
-stories.add('default', () => <Menu projects={PROJECTS} />);
+storiesOf('Menu', module).add('default', () => <Menu data={DATA} />);

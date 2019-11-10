@@ -1,0 +1,16 @@
+@import 'styles/functions';
+@import 'styles/mixins';
+@import 'styles/type';
+@import 'styles/variables';
+
+.text {
+  >*:first-child {
+    @include t-h4;
+    color: $c-black;
+  }
+}
+
+.text__ornament {
+  @include ornament;
+  margin: u(1) 0 u(2) 0;
+}
