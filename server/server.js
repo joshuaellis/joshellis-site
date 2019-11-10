@@ -64,12 +64,7 @@ const getCacheKey = function getCacheKey(req) {
   return `${req.url}`;
 };
 
-const renderAndCache = function renderAndCache(
-  req,
-  res,
-  pagePath,
-  queryParams,
-) {
+const renderAndCache = (req, res, pagePath, queryParams) => {
   const key = getCacheKey(req);
 
   if (ssrCache.has(key) && !isDev) {
@@ -117,6 +112,30 @@ app.prepare().then(() => {
   );
   server.use(helmet());
   server.use(routerHandler);
+
+  if (isProd) {
+    server.use((req, res, nextServer) => {
+      const hostname =
+        req.hostname === 'www.joshellis.co.uk'
+          ? 'joshellis.co.uk'
+          : req.hostname;
+
+      if (
+        req.headers['x-forwarded-proto'] === 'http' ||
+        req.hostname === 'www.joshellis.co.uk'
+      ) {
+        res.redirect(301, `https://${hostname}${req.url}`);
+        return;
+      }
+
+      res.setHeader(
+        'strict-transport-security',
+        'max-age=31536000; includeSubDomains; preload',
+      );
+
+      nextServer();
+    });
+  }
 
   server.get(`/favicon.ico`, (req, res) =>
     app.serveStatic(req, res, path.resolve('./static/icons/favicon.ico')),
