@@ -20,7 +20,7 @@ const LazyImage = ({ className, img, sizes, scrollPosition, ...restProps }) => {
     <div className={clsx(loading && 'image--loading')}>
       <LazyLoadImage
         wrapperClassName={clsx('image', className)}
-        src={getURL(img, WIDTH.mobileX1)}
+        src={getURL(img, WIDTH.deskX2)}
         srcSet={`
   ${getURL(img, WIDTH.deskX2)} ${WIDTH.deskX2}w,
   ${getURL(img, WIDTH.deskX1)} ${WIDTH.deskX1}w,
@@ -44,7 +44,7 @@ const LazyImage = ({ className, img, sizes, scrollPosition, ...restProps }) => {
 export const Image = ({ className, img, sizes, ...restProps }) => (
   <img
     className={clsx('image', className)}
-    src={getURL(img, WIDTH.mobileX1)}
+    src={getURL(img, WIDTH.deskX2)}
     srcSet={`
 ${getURL(img, WIDTH.deskX2)} ${WIDTH.deskX2}w,
 ${getURL(img, WIDTH.deskX1)} ${WIDTH.deskX1}w,
