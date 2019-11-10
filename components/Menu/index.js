@@ -18,7 +18,6 @@ const Menu = React.forwardRef(
   ({ className, data, onClick, ...restProps }, ref) => {
     const handleClick = () => onClick && onClick();
     const handleKeyDown = e => e.keyCode === 17 && onClick && onClick();
-
     return (
       <div className={clsx('menu', className)} {...restProps}>
         <ul className="menu__list" ref={ref}>
