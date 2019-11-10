@@ -13,11 +13,13 @@ import 'react-lazy-load-image-component/src/effects/opacity.css';
 import { imageUrlFor } from 'lib/images';
 
 import './styles.scss';
+import Loader from '../Loader';
 
 const LazyImage = ({ className, img, sizes, scrollPosition, ...restProps }) => {
   const [loading, setLoading] = useState(true);
   return (
     <div className={clsx(loading && 'image--loading')}>
+      {loading && <Loader className="image__loader" size="32px" />}
       <LazyLoadImage
         wrapperClassName={clsx('image', className)}
         src={getURL(img, WIDTH.deskX2)}
