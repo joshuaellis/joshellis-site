@@ -1,6 +1,22 @@
-# Josh Ellis - Site
+# Josh Ellis Site
 
-TO DO – write up what external packages do what e.g. lazy loading, parallax scrolling,
-probably help write up some stuff to do with development, staging and then production deployment
+## Requirements
 
-could also write a road map? i dunno.
+- Node, version `>=8.15.1`
+- NPM, version `>=5`
+- Heroku CLI (for deployment)
+
+## Get started
+
+```shell
+$ nvm use
+$ npm install
+$ npm run dev
+```
+
+## Hosting
+
+Both hosting environments are managed on Heroku, the domain is registered with GoDaddy.
+
+- Staging is found at [joshellis-staging](https://joshellis-staging.herokuapp.com/)
+- Production is found at [joshellis.co.uk](https://joshellis.co.uk)
