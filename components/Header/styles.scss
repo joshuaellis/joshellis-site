@@ -194,25 +194,24 @@ $d-project-nav-right: 26px;
 
 @include media('>=tablet') {
   .head__menu-enter {
-    top: -$d-menu-max-height;
     display: block;
   }
 
   .head__menu-enter-active {
-    top: u(11);
+    transform: translateY(#{$d-menu-max-height + u(11)});
   }
 
   .head__menu-enter-done {
-    top: u(11);
+    transform: translateY(#{$d-menu-max-height + u(11)});
     display: block;
   }
 
   .head__menu-exit {
-    top: u(11);
+    transform: translateY(0);
     display: block;
   }
 
   .head__menu-exit-active {
-    top: -$d-menu-max-height;
+    transform: translateY(0);
   }
 }

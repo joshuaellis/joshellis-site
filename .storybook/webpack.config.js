@@ -13,6 +13,7 @@ module.exports = {
       lib: path.resolve(__dirname, '../lib/'),
       layouts: path.resolve(__dirname, '../layouts/'),
       icons: path.resolve(__dirname, '../static/icons/'),
+      store: path.resolve(__dirname, '../store/'),
     },
   },
   module: {

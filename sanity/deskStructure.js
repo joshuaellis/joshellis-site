@@ -33,4 +33,16 @@ export default () =>
                 ),
             ]),
         ),
+      S.listItem()
+        .title('Structures')
+        .child(
+          S.list()
+            .title('All structures')
+            .items([
+              S.documentListItem()
+                .id('project-structure')
+                .title('Project structure')
+                .schemaType('projectStructure'),
+            ]),
+        ),
     ]);

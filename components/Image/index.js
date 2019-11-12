@@ -13,14 +13,16 @@ import 'react-lazy-load-image-component/src/effects/opacity.css';
 import { imageUrlFor } from 'lib/images';
 
 import './styles.scss';
+import Loader from '../Loader';
 
 const LazyImage = ({ className, img, sizes, scrollPosition, ...restProps }) => {
   const [loading, setLoading] = useState(true);
   return (
     <div className={clsx(loading && 'image--loading')}>
+      {loading && <Loader className="image__loader" size="32px" />}
       <LazyLoadImage
         wrapperClassName={clsx('image', className)}
-        src={getURL(img, WIDTH.mobileX1)}
+        src={getURL(img, WIDTH.deskX2)}
         srcSet={`
   ${getURL(img, WIDTH.deskX2)} ${WIDTH.deskX2}w,
   ${getURL(img, WIDTH.deskX1)} ${WIDTH.deskX1}w,
@@ -44,7 +46,7 @@ const LazyImage = ({ className, img, sizes, scrollPosition, ...restProps }) => {
 export const Image = ({ className, img, sizes, ...restProps }) => (
   <img
     className={clsx('image', className)}
-    src={getURL(img, WIDTH.mobileX1)}
+    src={getURL(img, WIDTH.deskX2)}
     srcSet={`
 ${getURL(img, WIDTH.deskX2)} ${WIDTH.deskX2}w,
 ${getURL(img, WIDTH.deskX1)} ${WIDTH.deskX1}w,

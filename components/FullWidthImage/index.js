@@ -8,6 +8,7 @@ import ImageExpandButton from 'components/ImageExpandButton';
 import { setImageModalStateAction } from 'store/actions/projectActions';
 
 import './styles.scss';
+import Plx from 'react-plx/lib/Plx';
 
 function FullWidthImage({
   children,
@@ -32,7 +33,7 @@ function FullWidthImage({
         id={expandId}
         onClick={handleExpandClick}
       />
-      <div className="fullwidthimage__image">{children}</div>
+      <div className="fullwidthimage__image__container">{children}</div>
       <p className="fullwidthimage__caption t-caption">{caption}</p>
     </div>
   );
