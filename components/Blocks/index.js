@@ -3,6 +3,7 @@
 import React, { memo } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import PropTypes from 'prop-types';
+import Plx from 'react-plx';
 
 import { generateColor } from 'lib/utils';
 
@@ -22,22 +23,43 @@ const projectSerializers = (container = 'div') => ({
 const MultipleImageRenderer = ({ node: { single_image } }) => {
   const { color } = single_image[0];
   return (
-    <InlineImage
+    <Plx
       className="project__multiple"
-      color={generateColor(color.rgb, color.alpha)}
-      caption={single_image.map(x => x.caption)}
-      keys={single_image.map(x => x._key)}
+      parallaxData={[
+        {
+          start: 'self',
+          startOffset: '0',
+          end: 'self',
+          endOffset: '100%',
+          easing: 'easeOutSine',
+          properties: [
+            {
+              startValue: 20,
+              endValue: -10,
+              property: 'translateY',
+              unit: '%',
+            },
+          ],
+        },
+      ]}
     >
-      {single_image.map(({ alt, asset, _key }) => (
-        <Image
-          className="project__fullwidth__image"
-          alt={alt}
-          img={{ asset }}
-          key={_key}
-          threshold={200}
-        />
-      ))}
-    </InlineImage>
+      <InlineImage
+        className="project__multiple"
+        color={generateColor(color.rgb, color.alpha)}
+        caption={single_image.map(x => x.caption)}
+        keys={single_image.map(x => x._key)}
+      >
+        {single_image.map(({ alt, asset, _key }) => (
+          <Image
+            className="project__fullwidth__image"
+            alt={alt}
+            img={{ asset }}
+            key={_key}
+            threshold={400}
+          />
+        ))}
+      </InlineImage>
+    </Plx>
   );
 };
 
@@ -50,31 +72,72 @@ const CustomImageRenderer = ({
       caption={caption}
       expandId={_key}
     >
-      <Image
-        className="project__fullwidth__image"
-        alt={alt}
-        img={{ asset }}
-        threshold={400}
-        effect="opacity"
-        sizes="100vw"
-      />
+      <Plx
+        className="fullwidthimage__image"
+        parallaxData={[
+          {
+            start: 'self',
+            startOffset: '0',
+            end: 'self',
+            endOffset: '100%',
+            easing: 'easeOutSine',
+            properties: [
+              {
+                startValue: 0,
+                endValue: -60,
+                property: 'translateY',
+                unit: '%',
+              },
+            ],
+          },
+        ]}
+      >
+        <Image
+          className="project__fullwidth__image"
+          alt={alt}
+          img={{ asset }}
+          threshold={400}
+          effect="opacity"
+          sizes="100vw"
+        />
+      </Plx>
     </FullWidthImage>
   ) : (
-    <InlineImage
+    <Plx
       className="project__inline"
-      caption={caption}
-      color={generateColor(color.rgb, color.alpha)}
-      expandId={_key}
+      parallaxData={[
+        {
+          start: 'self',
+          startOffset: '0',
+          end: 'self',
+          endOffset: '100%',
+          easing: 'easeOutSine',
+          properties: [
+            {
+              startValue: 10,
+              endValue: -20,
+              property: 'translateY',
+              unit: '%',
+            },
+          ],
+        },
+      ]}
     >
-      <Image
-        className="project__inline"
-        alt={alt}
-        img={{ asset }}
-        threshold={200}
-        effect="opacity"
-        sizes="(max-width: 768px) 100vw, 75vw"
-      />
-    </InlineImage>
+      <InlineImage
+        caption={caption}
+        color={generateColor(color.rgb, color.alpha)}
+        expandId={_key}
+      >
+        <Image
+          className="project__inline"
+          alt={alt}
+          img={{ asset }}
+          threshold={400}
+          effect="opacity"
+          sizes="(max-width: 768px) 100vw, 75vw"
+        />
+      </InlineImage>
+    </Plx>
   );
 
 const BlockRenderer = ({ node, children }) => {
