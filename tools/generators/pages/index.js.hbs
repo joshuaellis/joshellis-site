@@ -1,0 +1,49 @@
+import React from 'react';
+import Head from 'next/head';
+import PropTypes from 'prop-types';
+{{#if wantRedux }}
+import { connect } from 'react-redux';
+
+import {} from 'store/{{ properCase name }}Actions'
+{{/if}}
+
+import sanity from 'lib/client';
+
+const queries = {};
+
+export function {{ properCase name }}() {
+return (
+<React.Fragment>
+
+  <Head>
+    <title>{{ properCase name }} – Josh Ellis</title>
+    <meta name="description" content="" />
+  </Head>
+  <main className="{{ name }}">
+  </main>
+</React.Fragment>
+);
+}
+
+{{ properCase name }}.propTypes = {};
+
+{{ properCase name }}.getInitialProps = async () => {
+return {};
+};
+
+{{#if wantRedux }}
+const mapStateToProps = ({ global: { projectList } }) => ({
+projects: projectList,
+});
+
+const mapDispatchToProps = dispatch => ({
+dispatch,
+})
+
+export default connect(
+mapStateToProps,
+mapDispatchToProps,
+)({{ properCase name }});
+{{else}}
+export default {{ properCase name }}
+{{/if}}

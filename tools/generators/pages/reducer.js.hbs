@@ -1,0 +1,13 @@
+import produce from 'immer';
+
+import { } from '../constants/{{ properCase name }}Constants';
+
+export const initialState = {};
+
+/* eslint-disable default-case, no-param-reassign */
+const {{ properCase name }}Reducer = (state = initialState, action) =>
+produce(state, draft => {
+switch (action.type) {}
+});
+
+export default {{ properCase name }}Reducer;

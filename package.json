@@ -12,7 +12,8 @@
     "storybook": "start-storybook -p 9001 -s ./",
     "fetch:strings": "node ./lib/fetchStrings.js",
     "deploy:staging": "git config heroku.remote develop && git push develop master",
-    "deploy:prod": "git config heroku.remote production && git push production master"
+    "deploy:prod": "git config heroku.remote production && git push production master",
+    "generate": "plop --plopfile tools/generators/index.js"
   },
   "repository": {
     "type": "git",
@@ -92,6 +93,7 @@
     "eslint-plugin-react-hooks": "^2.0.1",
     "eslint-watch": "^6.0.0",
     "markdown-it": "^10.0.0",
+    "plop": "^2.5.3",
     "prettier": "^1.18.2",
     "webpack-bundle-analyzer": "^3.4.1"
   }
