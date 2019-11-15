@@ -12,7 +12,7 @@ const helmet = require('helmet');
 const dotenv = require('dotenv');
 
 // custom scripts
-const router = require('../routes/index.js');
+const router = require('../src/routes/index.js');
 const logger = require('./logger.js');
 const sendSitemap = require('./sitemap');
 const sendRobots = require('./robots');

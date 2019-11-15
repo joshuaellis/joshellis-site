@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import imageUrlBuilder from '@sanity/image-url';
-import sanityClient from '../lib/client';
+import sanityClient from 'lib/client';
 
 export const imageUrlFor = source =>
   imageUrlBuilder(sanityClient).image(buildImageObj(source));
