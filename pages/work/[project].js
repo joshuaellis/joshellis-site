@@ -18,6 +18,8 @@ import { setImageModalStateAction } from 'store/actions/projectActions';
 
 const queries = {
   getProject: id => `*[slug == '${id}' && !(_id in path("drafts.**"))]`,
+  getNextPrevCard: id =>
+    `*[slug == '${id}' && !(_id in path("drafts.**"))]{ card_pagination, title, 'hex': card_color.hex, }`,
 };
 
 const renderMeta = ({ client, studio, role, tech }) => [

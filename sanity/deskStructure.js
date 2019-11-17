@@ -6,31 +6,25 @@ export default () =>
     .items([
       S.listItem()
         .title('Projects')
-        .child(S.documentTypeList('project')),
+        .child(
+          S.documentTypeList('project').defaultOrdering([
+            { field: 'title', direction: 'asc' },
+          ]),
+        ),
       S.listItem()
         .title('Pages')
         .child(
           S.list()
             .title('All pages')
             .items([
-              S.listItem()
-                .title('Home page')
-                .child(
-                  S.editor()
-                    .title('Home')
-                    .id('home-page')
-                    .schemaType('homepage')
-                    .documentId('home-page'),
-                ),
-              S.listItem()
-                .title('About page')
-                .child(
-                  S.editor()
-                    .title('About')
-                    .id('about-page')
-                    .schemaType('aboutpage')
-                    .documentId('about-page'),
-                ),
+              S.documentListItem()
+                .id('about-page')
+                .title('About Page')
+                .schemaType('aboutpage'),
+              S.documentListItem()
+                .id('play-page')
+                .title('Play Page')
+                .schemaType('playpage'),
             ]),
         ),
       S.listItem()

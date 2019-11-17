@@ -13,7 +13,7 @@ import sanity from 'lib/client';
 import { testMarkdownLink } from 'lib/utils';
 
 const queries = {
-  getStandfirst: `*[_type == 'homepage' && !(_id in path("drafts.**"))]{ standfirst }`,
+  getStandfirst: `*[_type == 'project' && !(_id in path("drafts.**"))]{ card_home, title, slug, client }`,
 };
 
 const homeSerializers = (container = 'div') => ({
