@@ -5,7 +5,7 @@ export default {
   fieldsets: [
     {
       name: 'meta-data',
-      title: 'Meta data',
+      title: 'SEO',
       options: {
         collapsible: true,
         collapsed: true,
@@ -14,10 +14,22 @@ export default {
     {
       name: 'info',
       title: 'Project info',
+      options: {
+        collapsible: true,
+        collapsed: true,
+      },
     },
     {
       name: 'project-links',
       title: 'Project URLs',
+      options: {
+        collapsible: true,
+        collapsed: true,
+      },
+    },
+    {
+      name: 'project-cards',
+      title: 'Project Cards',
       options: {
         collapsible: true,
         collapsed: true,
@@ -31,15 +43,15 @@ export default {
       type: 'title',
     },
     {
-      title: 'Year',
-      name: 'year',
-      type: 'year',
-      fieldset: 'meta-data',
-    },
-    {
       title: 'Excerpt',
       name: 'excerpt',
       type: 'excerpt',
+      fieldset: 'meta-data',
+    },
+    {
+      title: 'Share Image',
+      name: 'share_image',
+      type: 'image',
       fieldset: 'meta-data',
     },
     {
@@ -74,11 +86,6 @@ export default {
       fieldset: 'info',
     },
     {
-      name: 'body',
-      type: 'project-block',
-      title: 'Project text',
-    },
-    {
       name: 'url',
       type: 'custom-url',
       title: 'URL to project',
@@ -89,6 +96,43 @@ export default {
       type: 'url',
       title: 'iFrame URL for video',
       fieldset: 'project-links',
+    },
+    {
+      name: 'card_color',
+      type: 'color',
+      title: 'Card background colour',
+      fieldset: 'project-cards',
+    },
+    {
+      name: 'card_home',
+      type: 'image',
+      title: 'Card for Home',
+      description: 'This should be a 5:4 ratio',
+      fieldset: 'project-cards',
+    },
+    {
+      name: 'card_pagination',
+      type: 'image',
+      title: 'Image for pagination',
+      description:
+        'This should be cropped correctly and on a transparent background',
+      fieldset: 'project-cards',
+      fields: [
+        {
+          name: 'fullWidth',
+          type: 'boolean',
+          title: 'Make image full width of pagination block',
+          layout: 'checkbox',
+          options: {
+            isHighlighted: true,
+          },
+        },
+      ],
+    },
+    {
+      name: 'body',
+      type: 'project-block',
+      title: 'Project text',
     },
   ],
   preview: {
