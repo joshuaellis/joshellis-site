@@ -79,7 +79,13 @@ export function ProjectPage({
         <meta property="og:title" content={`${title} | Josh Ellis`} />
         <meta property="og:description" content={excerpt} />
         <meta property="og:image" content={share_image} />
-        <meta property="og:url" content={`www.joshellis.co.uk/work/${slug}`} />
+        <meta property="og:locale" content="en_UK" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta
+          property="og:url"
+          content={`https://www.joshellis.co.uk/work/${slug}`}
+        />
         <meta property="og:site_name" content={`${title} | Josh Ellis`} />
         <meta name="twitter:title" content={`${title} | Josh Ellis`} />
         <meta name="twitter:description" content={excerpt} />
