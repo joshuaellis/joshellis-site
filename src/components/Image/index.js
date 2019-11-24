@@ -8,7 +8,6 @@ import React, { memo, useState } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/opacity.css';
 
 import { imageUrlFor } from 'lib/images';
 
@@ -37,6 +36,7 @@ const LazyImage = ({ className, img, sizes, scrollPosition, ...restProps }) => {
         sizes={sizes}
         afterLoad={() => setLoading(false)}
         scrollPosition={scrollPosition}
+        threshold={600}
         {...restProps}
       />
     </div>

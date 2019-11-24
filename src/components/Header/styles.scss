@@ -37,6 +37,7 @@ $d-project-nav-right: 26px;
 
 .head__title {
   color: $c-white;
+  display: inline-block;
 
   > a > span {
     display: block;

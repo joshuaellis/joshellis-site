@@ -56,7 +56,6 @@ const MultipleImageRenderer = ({ node: { single_image } }) => {
             alt={alt}
             img={{ asset }}
             key={_key}
-            threshold={400}
             sizes="(max-width: 768px) 100vw, 75vw"
           />
         ))}
@@ -98,8 +97,6 @@ const CustomImageRenderer = ({
           className="project__fullwidth__image"
           alt={alt}
           img={{ asset }}
-          threshold={400}
-          effect="opacity"
           sizes="100vw"
         />
       </Plx>
@@ -134,8 +131,6 @@ const CustomImageRenderer = ({
           className="project__inline"
           alt={alt}
           img={{ asset }}
-          threshold={400}
-          effect="opacity"
           sizes="(max-width: 768px) 100vw, 75vw"
         />
       </InlineImage>
