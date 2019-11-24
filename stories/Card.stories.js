@@ -17,6 +17,13 @@ const BLACK_MIRROR_IMAGE = {
   },
 };
 
+const PAGINATED_IMAGE = {
+  asset: {
+    _ref: 'image-24d7871fa8619b72c6fa97791fa9b37ec20643bb-969x600-png',
+    _type: 'reference',
+  },
+};
+
 storiesOf('Card', module)
   .add('home // default', () => (
     <Card
@@ -28,7 +35,26 @@ storiesOf('Card', module)
       title="Design Skills"
     />
   ))
-  .add('next / prev', () => <Card variant="next" />)
+  .add('next', () => (
+    <Card
+      variant="next"
+      className="story__card"
+      color="#fb7e7c"
+      image={PAGINATED_IMAGE}
+      slug="#"
+      title="Design Skills"
+    />
+  ))
+  .add('prev', () => (
+    <Card
+      variant="prev"
+      className="story__card"
+      color="#fb7e7c"
+      image={PAGINATED_IMAGE}
+      slug="#"
+      title="Design Skills"
+    />
+  ))
   .add('image cover', () => (
     <Card
       className="story__card"

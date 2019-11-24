@@ -33,7 +33,7 @@ const LazyImage = ({ className, img, sizes, scrollPosition, ...restProps }) => {
   ${getURL(img, WIDTH.mobileX2)} ${WIDTH.mobileX2}w,
   ${getURL(img, WIDTH.mobileX1)} ${WIDTH.mobileX1}w,
   `}
-        alt={img.alt}
+        alt={img.alt || ''}
         sizes={sizes}
         afterLoad={() => setLoading(false)}
         scrollPosition={scrollPosition}
@@ -57,7 +57,7 @@ ${getURL(img, WIDTH.largeMobileX1)} ${WIDTH.largeMobileX1}w,
 ${getURL(img, WIDTH.mobileX2)} ${WIDTH.mobileX2}w,
 ${getURL(img, WIDTH.mobileX1)} ${WIDTH.mobileX1}w,
 `}
-    alt={img.alt}
+    alt={img.alt || ''}
     sizes={sizes}
     {...restProps}
   />
