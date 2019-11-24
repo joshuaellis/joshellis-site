@@ -48,7 +48,7 @@ async function main() {
     output = Object.assign(output, data);
   }
 
-  const outputPath = path.resolve(__dirname, '../static/strings.json');
+  const outputPath = path.resolve(__dirname, '../../static/strings.json');
   fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
 }
 

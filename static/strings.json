@@ -2,12 +2,12 @@
   "site-title": "Josh Ellis",
   "meta-site": "https://www.joshellis.co.uk",
   "meta-title": "Josh Ellis, Designer/Developer",
-  "meta-description": "",
-  "meta-share": "",
-  "nav-projects": "Projects",
+  "meta-description": "Josh Ellis is a developer currently working at Sennep. He has a strong curiosity with product design &amp; development",
+  "meta-share": "Josh Ellis is a developer currently working at Sennep. He has a strong curiosity with product design &amp; development",
+  "nav-projects": "Work",
+  "nav-play": "Play",
   "nav-about": "Info",
   "contact-title": "Contact me",
   "instagram-title": "Stalk me",
-  "linkedin-title": "Hire me",
-  "github-title": "Judge my code"
+  "linkedin-title": "Hire me"
 }

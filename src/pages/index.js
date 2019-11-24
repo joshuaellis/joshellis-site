@@ -25,18 +25,16 @@ export function Home({ projectCards }) {
     <React.Fragment>
       <Head>
         <title>Josh Ellis</title>
-
         <meta name="description" content={t('meta-description')} />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={t('meta-title')} />
         <meta property="og:description" content={t('meta-share')} />
-        <meta property="og:image" content="" />
+        <meta property="og:image" content="/static/home_share.png" />
         <meta property="og:url" content={t('meta-url')} />
         <meta property="og:site_name" content={t('site-title')} />
-
         <meta name="twitter:title" content={t('meta-title')} />
         <meta name="twitter:description" content={t('meta-share')} />
-        <meta name="twitter:image" content="" />
+        <meta name="twitter:image" content="/static/home_share.png" />
       </Head>
       <main className="home">
         <Standfirst />

@@ -10,7 +10,7 @@
     "prestart": "npm run build",
     "heroku-postbuild": "npm run build",
     "storybook": "start-storybook -p 9001 -s ./",
-    "fetch:strings": "node ./lib/fetchStrings.js",
+    "fetch:strings": "node ./src/lib/fetchStrings.js",
     "deploy:staging": "git config heroku.remote develop && git push develop master",
     "deploy:prod": "git config heroku.remote production && git push production master",
     "generate": "plop --plopfile tools/generators/index.js"

@@ -75,7 +75,6 @@ export function ProjectPage({
     }
     return initialKey;
   };
-  console.log(paginationItems);
   return (
     <React.Fragment>
       <Head>
