@@ -34,15 +34,8 @@
 }
 
 @mixin max-width {
-  // padding: 0 $d-page-gutter;
-
-  @include media('>=tablet') {
-    // padding: 0 #{$d-page-gutter * 2.5};
-  }
-
   @include media('>=desktop') {
     margin: 0 auto;
-    // padding: 0 u(10);
     max-width: $max-width + ($d-page-gutter * 5);
   }
 }

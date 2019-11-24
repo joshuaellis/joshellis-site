@@ -6,7 +6,7 @@ import 'sanitize.css/sanitize.css';
 import 'sanitize.css/typography.css';
 import 'sanitize.css/forms.css';
 import './stories.css';
-import '../styles/styles';
+import '../src/styles/styles';
 
 addParameters({
   options: {

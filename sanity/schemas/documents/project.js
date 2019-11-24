@@ -104,6 +104,16 @@ export default {
       fieldset: 'project-cards',
     },
     {
+      name: 'card_full_image',
+      type: 'boolean',
+      title: 'Make image full width of card',
+      layout: 'checkbox',
+      options: {
+        isHighlighted: true,
+      },
+      fieldset: 'project-cards',
+    },
+    {
       name: 'card_home',
       type: 'image',
       title: 'Card for Home',
@@ -117,17 +127,6 @@ export default {
       description:
         'This should be cropped correctly and on a transparent background',
       fieldset: 'project-cards',
-      fields: [
-        {
-          name: 'fullWidth',
-          type: 'boolean',
-          title: 'Make image full width of pagination block',
-          layout: 'checkbox',
-          options: {
-            isHighlighted: true,
-          },
-        },
-      ],
     },
     {
       name: 'body',

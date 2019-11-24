@@ -20,3 +20,11 @@ const linkReplacer = ([tagTitle, tagURL]) => (
 );
 
 export const generateColor = ({ r, g, b }, a) => `rgba(${r}, ${g}, ${b}, ${a})`;
+
+export const removeMarkdown = str => {
+  const markdownReturned = testMarkdownLink(str, false);
+  if (typeof markdownReturned === 'object') {
+    return markdownReturned[0];
+  }
+  return markdownReturned;
+};

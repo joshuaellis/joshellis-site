@@ -39,16 +39,6 @@ function Footer() {
             className="foot__anchor foot__anchor--orange"
             rel="noopener"
             target="_blank"
-            href="https://github.com/joshuaellis"
-          >
-            {t('github-title')}
-          </a>
-        </li>
-        <li className="foot__item">
-          <a
-            className="foot__anchor foot__anchor--green"
-            rel="noopener"
-            target="_blank"
             href="https://www.linkedin.com/in/joshua-ellis-66b362114/"
           >
             {t('linkedin-title')}

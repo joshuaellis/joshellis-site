@@ -28,6 +28,10 @@
     display: flex;
     padding: 0 u(5);
   }
+
+  @include media('>=desktop') {
+    padding: 0 u(10);
+  }
 }
 
 .foot__item + .foot__item {

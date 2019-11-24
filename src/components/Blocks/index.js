@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable camelcase */
 
 import React, { memo } from 'react';
@@ -56,6 +57,7 @@ const MultipleImageRenderer = ({ node: { single_image } }) => {
             img={{ asset }}
             key={_key}
             threshold={400}
+            sizes="(max-width: 768px) 100vw, 75vw"
           />
         ))}
       </InlineImage>
@@ -168,6 +170,7 @@ const BlockRenderer = ({ node, children }) => {
   );
 };
 
+// eslint-disable-next-line react/prop-types
 export default memo(({ body }) => (
   <BlockContent
     blocks={body}
