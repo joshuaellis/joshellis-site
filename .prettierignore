@@ -1,8 +1,10 @@
 build/
-node_modules/
 ./tools/
 tools
 package-lock.json
 yarn.lock
 package.json
 node_modules
+./node_modules/
+./sanity/node_modules/
+

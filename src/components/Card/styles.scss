@@ -9,6 +9,7 @@
   display: block;
   overflow: hidden;
   position: relative;
+  background-color: $c-foot-bg;
 
   .card__image {
     transition: transform 500ms ease-out;
@@ -63,6 +64,10 @@
         font-size: 16px;
         margin-bottom: 0;
       }
+
+      > h3.t-h2 {
+        line-height: 40px;
+      }
     }
   }
 
@@ -75,6 +80,10 @@
 
       > span {
         margin-bottom: u(1.5);
+      }
+
+      > h3.t-h2 {
+        line-height: 54px;
       }
     }
   }

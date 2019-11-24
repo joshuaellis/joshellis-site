@@ -65,12 +65,6 @@ function Card({ variant, ...restProps }) {
 }
 
 Card.propTypes = {
-  className: PropTypes.string,
-  color: PropTypes.string,
-  fullWidth: PropTypes.bool,
-  image: PropTypes.object,
-  slug: PropTypes.string,
-  title: PropTypes.string,
   variant: PropTypes.string,
 };
 
@@ -83,6 +77,12 @@ HomeCard.propTypes = {
 };
 
 NextPrevCard.propTypes = {
+  className: PropTypes.string,
+  color: PropTypes.string,
+  fullWidth: PropTypes.bool,
+  image: PropTypes.object,
+  slug: PropTypes.string,
+  title: PropTypes.string,
   variant: PropTypes.string,
 };
 
