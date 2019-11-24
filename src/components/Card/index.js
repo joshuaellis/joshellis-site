@@ -1,21 +1,24 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
+import Link from 'next/link';
 
 import { Image } from 'components/Image';
 
 import './styles.scss';
 
 const HomeCard = ({ className, client, image, slug, title }) => (
-  <a className={clsx('card card--home', className)} href={`work/${slug}`}>
-    <div className="card__meta">
-      <span className="t-caption">{client}</span>
-      <h3 className="t-h2">{title}</h3>
-    </div>
-    <div className="card__image">
-      <Image img={image} sizes="(max-width: 768px) 100vw, 75vw" />
-    </div>
-  </a>
+  <Link href="/work/[project]" as={slug}>
+    <a className={clsx('card card--home', className)}>
+      <div className="card__meta">
+        <span className="t-caption">{client}</span>
+        <h3 className="t-h2">{title}</h3>
+      </div>
+      <div className="card__image">
+        <Image img={image} sizes="(max-width: 768px) 100vw, 75vw" />
+      </div>
+    </a>
+  </Link>
 );
 
 const NextPrevCard = ({
@@ -27,31 +30,32 @@ const NextPrevCard = ({
   title,
   variant,
 }) => (
-  <a
-    className={clsx(
-      'card card--pagi',
-      fullWidth && 'card--full-width',
-      variant === 'prev' && 'card--prev',
-      variant === 'next' && 'card--next',
-      className,
-    )}
-    href={`work/${slug}`}
-    style={{ backgroundColor: color }}
-  >
-    <div className="card__container">
-      <div className="card__meta">
-        <span className="t-caption">
-          {variant === 'next' ? 'Next project' : 'Previous project'}
-        </span>
-        <h3 className="t-h4">{title}</h3>
+  <Link href="/work/[project]" as={slug}>
+    <a
+      className={clsx(
+        'card card--pagi',
+        fullWidth && 'card--full-width',
+        variant === 'prev' && 'card--prev',
+        variant === 'next' && 'card--next',
+        className,
+      )}
+      style={{ backgroundColor: color }}
+    >
+      <div className="card__container">
+        <div className="card__meta">
+          <span className="t-caption">
+            {variant === 'next' ? 'Next project' : 'Previous project'}
+          </span>
+          <h3 className="t-h4">{title}</h3>
+        </div>
+        <Image
+          className="card__image"
+          img={image}
+          sizes="(max-width: 768px) 75vw, 50vw"
+        />
       </div>
-      <Image
-        className="card__image"
-        img={image}
-        sizes="(max-width: 768px) 75vw, 50vw"
-      />
-    </div>
-  </a>
+    </a>
+  </Link>
 );
 
 function Card({ variant, ...restProps }) {

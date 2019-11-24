@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
 import Head from 'next/head';
@@ -17,7 +18,8 @@ import Iframe from 'components/Iframe';
 import { setImageModalStateAction } from 'store/actions/projectActions';
 
 const queries = {
-  getProject: id => `*[slug == '${id}' && !(_id in path("drafts.**"))]`,
+  getProject: id =>
+    `*[slug == '${id}' && !(_id in path("drafts.**"))]{'share_image': share_image.asset->url, ...}`,
   getNextPrevCard: id =>
     `*[slug == '${id}' && !(_id in path("drafts.**"))]{ card_pagination, title, 'hex': card_color.hex, }`,
 };
@@ -37,6 +39,8 @@ export function ProjectPage({
   imageModalId,
   meta,
   showImageModal,
+  share_image,
+  slug,
   title,
   url,
 }) {
@@ -69,7 +73,17 @@ export function ProjectPage({
     <React.Fragment>
       <Head>
         <title>{`${title} | Josh Ellis`}</title>
-        <meta name="description" content={excerpt}></meta>
+        <meta property="og:title" content={`${title} | Josh Ellis`} />
+        <meta name="description" content={excerpt} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={`${title} | Josh Ellis`} />
+        <meta property="og:description" content={excerpt} />
+        <meta property="og:image" content={share_image} />
+        <meta property="og:url" content={`www.joshellis.co.uk/work/${slug}`} />
+        <meta property="og:site_name" content={`${title} | Josh Ellis`} />
+        <meta name="twitter:title" content={`${title} | Josh Ellis`} />
+        <meta name="twitter:description" content={excerpt} />
+        <meta name="twitter:image" content={share_image} />
       </Head>
       <main className="project">
         <header className="generic__section project__head">
@@ -125,6 +139,8 @@ ProjectPage.getInitialProps = async ({ query, res }) => {
     tech,
     title,
     url,
+    slug,
+    share_image,
   } = data;
   return {
     body,
@@ -132,6 +148,8 @@ ProjectPage.getInitialProps = async ({ query, res }) => {
     iframe,
     title,
     url,
+    slug,
+    share_image,
     meta: { client, role, studio, tech },
   };
 };
@@ -154,6 +172,8 @@ ProjectPage.propTypes = {
   imageModalId: PropTypes.string,
   meta: PropTypes.object,
   title: PropTypes.string,
+  share_image: PropTypes.string,
+  slug: PropTypes.string,
   showImageModal: PropTypes.bool,
   url: PropTypes.string,
 };
