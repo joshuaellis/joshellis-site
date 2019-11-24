@@ -1,3 +1,77 @@
 @import 'styles/functions';
 @import 'styles/mixins';
 @import 'styles/variables';
+
+.card {
+  color: $c-white;
+  width: 100%;
+  z-index: 0;
+  display: block;
+}
+
+.card--home {
+  @include aspect-ratio(5, 4) {
+    width: 100%;
+    height: 100%;
+  }
+  padding: u(1.5);
+  overflow: hidden;
+
+  > .card__meta {
+    position: absolute;
+    top: u(1.5);
+    left: u(1.5);
+    z-index: 10;
+
+    > span {
+      margin-bottom: u(0.5);
+    }
+
+    > h3.t-h2 {
+      font-weight: 800;
+    }
+  }
+
+  > .card__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 500ms ease-out;
+    transform-origin: center;
+  }
+
+  &:hover {
+    .card__image {
+      transform: scale(1.05);
+    }
+  }
+
+  @include media('>=tablet') {
+    padding: u(2);
+
+    > .card__meta {
+      top: u(2);
+      left: u(2);
+
+      > span {
+        font-size: 16px;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  @include media('>=desktop') {
+    padding: u(4);
+
+    > .card__meta {
+      top: u(4);
+      left: u(4);
+
+      > span {
+        margin-bottom: u(1.5);
+      }
+    }
+  }
+}
