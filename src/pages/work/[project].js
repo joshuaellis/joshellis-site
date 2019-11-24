@@ -6,7 +6,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import sanity from 'lib/client';
-import { testMarkdownLink } from 'lib/utils';
+import { testMarkdownLink, flattenArray } from 'lib/utils';
+import getNextPrevItems from 'lib/pagination';
 
 import Blocks from 'components/Blocks';
 import MetaData from 'components/MetaData';
@@ -14,14 +15,19 @@ import LargeUrl from 'components/LargeUrl';
 import Portal from 'components/Portal';
 import ImageModal from 'components/ImageModal';
 import Iframe from 'components/Iframe';
+import Card from 'components/Card';
 
 import { setImageModalStateAction } from 'store/actions/projectActions';
 
 const queries = {
   getProject: id =>
     `*[slug == '${id}' && !(_id in path("drafts.**"))]{'share_image': share_image.asset->url, ...}`,
-  getNextPrevCard: id =>
-    `*[slug == '${id}' && !(_id in path("drafts.**"))]{ card_pagination, title, 'hex': card_color.hex, }`,
+  getNextPrevCard: () =>
+    `*[_type == 'projectStructure']{
+      'projects': projects[]{
+        'projects':year_project[]->{card_pagination, card_full_image, title, slug, 'hex': card_color.hex}
+      }
+    }`,
 };
 
 const renderMeta = ({ client, studio, role, tech }) => [
@@ -41,6 +47,7 @@ export function ProjectPage({
   showImageModal,
   share_image,
   slug,
+  paginationItems,
   title,
   url,
 }) {
@@ -68,7 +75,7 @@ export function ProjectPage({
     }
     return initialKey;
   };
-
+  console.log(paginationItems);
   return (
     <React.Fragment>
       <Head>
@@ -114,6 +121,18 @@ export function ProjectPage({
           </div>
         ) : null}
       </main>
+      <div className="project__pagination">
+        {paginationItems.map((x, i) => (
+          <Card
+            color={x.hex}
+            fullWidth={x.card_full_image}
+            image={x.card_pagination}
+            title={x.title}
+            slug={x.slug}
+            variant={i === 0 ? 'prev' : 'next'}
+          />
+        ))}
+      </div>
       <Portal elementId="#modal">
         {showImageModal && (
           <ImageModal
@@ -129,6 +148,12 @@ export function ProjectPage({
 ProjectPage.getInitialProps = async ({ query, res }) => {
   const { project } = query;
   const [data] = await sanity.fetch(queries.getProject(project));
+  const [{ projects }] = await sanity.fetch(queries.getNextPrevCard());
+  const flattenedProjects = flattenArray(
+    projects.map(x => [...x.projects]),
+  ).reverse();
+  const paginationItems = getNextPrevItems(project, flattenedProjects);
+
   if (!data || data.length === 0) {
     res.writeHead(302, {
       Location: '/',
@@ -154,6 +179,7 @@ ProjectPage.getInitialProps = async ({ query, res }) => {
     iframe,
     title,
     url,
+    paginationItems,
     slug,
     share_image,
     meta: { client, role, studio, tech },
@@ -177,10 +203,11 @@ ProjectPage.propTypes = {
   iframe: PropTypes.string,
   imageModalId: PropTypes.string,
   meta: PropTypes.object,
-  title: PropTypes.string,
+  paginationItems: PropTypes.array,
   share_image: PropTypes.string,
-  slug: PropTypes.string,
   showImageModal: PropTypes.bool,
+  slug: PropTypes.string,
+  title: PropTypes.string,
   url: PropTypes.string,
 };
 

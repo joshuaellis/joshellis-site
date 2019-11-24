@@ -286,3 +286,20 @@
     }
   }
 }
+
+.project__pagination {
+  margin-top: u(5);
+
+  & + .foot {
+    margin-top: 0;
+  }
+
+  @include media('>=tablet') {
+    margin-top: u(12);
+    display: flex;
+  }
+
+  @include media('>=desktop') {
+    margin-top: 120px;
+  }
+}

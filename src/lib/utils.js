@@ -28,3 +28,12 @@ export const removeMarkdown = str => {
   }
   return markdownReturned;
 };
+
+export const flattenArray = arr =>
+  arr.reduce(
+    (flat, toFlatten) =>
+      flat.concat(
+        Array.isArray(toFlatten) ? flattenArray(toFlatten) : toFlatten,
+      ),
+    [],
+  );

@@ -48,11 +48,13 @@ const NextPrevCard = ({
           </span>
           <h3 className="t-h4">{title}</h3>
         </div>
-        <Image
-          className="card__image"
-          img={image}
-          sizes="(max-width: 768px) 75vw, 50vw"
-        />
+        <div className={clsx(fullWidth && 'card__full__container')}>
+          <Image
+            className="card__image"
+            img={image}
+            sizes="(max-width: 768px) 75vw, 50vw"
+          />
+        </div>
       </div>
     </a>
   </Link>

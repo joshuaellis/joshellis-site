@@ -127,7 +127,8 @@
 
   @include media('>=desktop') {
     .card__container {
-      width: 528px;
+      min-width: 528px;
+      max-width: 728px;
     }
 
     .card__meta {
@@ -153,9 +154,7 @@
   }
 
   @include media('>=desktop') {
-    .card__container {
-      float: left;
-    }
+    padding-right: u(10);
 
     .card__image {
       left: 0;
@@ -174,9 +173,7 @@
   }
 
   @include media('>=desktop') {
-    .card__container {
-      float: right;
-    }
+    padding-left: u(10);
 
     .card__image {
       right: 0;
@@ -186,18 +183,21 @@
 }
 
 .card--full-width {
-  &:hover {
-    .card__image {
-      transform: translate(-50%, -50%) scale(1.05);
-    }
+  .card__full__container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   .card__image {
-    width: 100%;
+    left: 0;
     bottom: auto;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+    position: relative;
   }
 
   @include media('>=desktop') {
