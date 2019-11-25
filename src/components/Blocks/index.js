@@ -10,7 +10,7 @@ import { generateColor } from 'lib/utils';
 
 import InlineImage from 'components/InlineImage';
 import FullWidthImage from 'components/FullWidthImage';
-import Image from 'components/Image';
+import LazyImage, { Image } from 'components/Image';
 
 const projectSerializers = (container = 'div') => ({
   types: {
@@ -51,7 +51,7 @@ const MultipleImageRenderer = ({ node: { single_image } }) => {
         keys={single_image.map(x => x._key)}
       >
         {single_image.map(({ alt, asset, _key }) => (
-          <Image
+          <LazyImage
             className="project__fullwidth__image"
             alt={alt}
             img={{ asset }}
@@ -127,7 +127,7 @@ const CustomImageRenderer = ({
         color={generateColor(color.rgb, color.alpha)}
         expandId={_key}
       >
-        <Image
+        <LazyImage
           className="project__inline"
           alt={alt}
           img={{ asset }}
