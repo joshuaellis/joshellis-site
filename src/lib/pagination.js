@@ -1,6 +1,5 @@
 export default function getNextPrevItems(current, array) {
   let paginationItems;
-  console.log('pagin >>>',current, array);
   array.forEach((item, index) => {
     if (item.slug === current && index) {
       paginationItems = [array[index - 1], array[index + 1]];
