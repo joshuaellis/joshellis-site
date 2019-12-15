@@ -28,7 +28,7 @@ const prettyHost = customHost || 'localhost';
 const port = parseInt(process.env.PORT, 10) || 3000;
 const publicEnvFilename = 'public.env';
 
-const app = next({ dev: isDev });
+const app = next({ dir: '.', dev: isDev });
 const handle = app.getRequestHandler();
 
 const ssrCache = new LRUCache({
@@ -92,6 +92,7 @@ const renderAndCache = (req, res, pagePath, queryParams) => {
 const routerHandler = router.getRequestHandler(
   app,
   ({ req, res, route, query }) => {
+    console.log(route);
     renderAndCache(req, res, route.page, query);
   },
 );
@@ -99,8 +100,8 @@ const routerHandler = router.getRequestHandler(
 app.prepare().then(() => {
   const server = express();
 
-  // const staticDir = path.resolve(__dirname, '..', '.next/static');
-  // server.use('/_next/static', express.static(staticDir));
+  const staticDir = path.resolve(__dirname, '..', '.next/static');
+  server.use('/_next/static', express.static(staticDir));
 
   server.use(compression({ threshold: 0 }));
   server.use(
@@ -153,9 +154,17 @@ app.prepare().then(() => {
     app.serveStatic(req, res, path.resolve('./.next/manifest.appcache')),
   );
 
-  server.get('/work/:project', (req, res) =>
-    app.render(req, res, '/post', { project: req.params.slug }),
-  );
+  // server.get('/work/:project', (req, res) =>
+  //   app.render(req, res, '/work', { project: req.params.slug }),
+  // );
+
+  // server.get('/play/:project', (req, res) => {
+  //   app.serveStatic(
+  //     req,
+  //     res,
+  //     path.resolve(`./static/${req.params.slug}/index.html`),
+  //   );
+  // });
 
   if (isProd) {
     server.get('/_next/-/app.js', (req, res) =>

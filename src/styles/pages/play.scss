@@ -1,8 +1,12 @@
+@import 'styles/functions';
+@import 'styles/mixins';
+@import 'styles/variables';
+
 .play > div {
   width: 100vw;
   height: 100vh;
   position: absolute;
   top: 0;
   left: 0;
-  background-color: black;
+  background-color: $c-black;
 }

@@ -12,10 +12,10 @@ const routes = require('next-routes')();
 // Please add your route between of comments
 //
 // ------------ ROUTES ---------------
-// routes.add('work', '/work/:postId');
+// routes.add('work', '/work/:project');
 // routes.add('create', '/create_post');
 // routes.add('signin', '/sign_in');
-// routes.add('signup', '/sign_up');
+// routes.add('circlwave', '/static/circlewave/index.html');
 //
 //
 

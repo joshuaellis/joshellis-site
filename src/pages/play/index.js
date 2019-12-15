@@ -14,6 +14,18 @@ export function Play() {
       </Head>
       <main className="play">
         <div></div>
+        <a
+          style={{
+            position: 'absolute',
+            top: '140px',
+            left: '140px',
+            color: 'white',
+            fontSize: '80px',
+          }}
+          href="static/circlewave/index.html"
+        >
+          CIRCLE WAVE
+        </a>
       </main>
     </React.Fragment>
   );
