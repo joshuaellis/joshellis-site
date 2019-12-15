@@ -5,14 +5,18 @@
  */
 
 import React, { memo } from 'react';
+import clsx from 'clsx';
+import { useRouter } from 'next/router';
 
 import t from 'lib/strings';
 
 import './styles.scss';
 
 function Footer() {
+  const router = useRouter();
+  const play = router ? router.pathname === '/play' : false;
   return (
-    <footer className="foot t-foot">
+    <footer className={clsx('foot t-foot', play && 'foot--play')}>
       <ul className="foot__list">
         <li className="foot__item">
           <a

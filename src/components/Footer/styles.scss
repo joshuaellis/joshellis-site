@@ -20,6 +20,11 @@
   }
 }
 
+.foot--play {
+  background-color: transparent;
+  color: $c-white;
+}
+
 .foot__list {
   @include max-width;
   padding: 0 u(2);

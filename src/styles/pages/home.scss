@@ -4,6 +4,7 @@
 
 .home {
   padding-top: $mobile-header-height;
+  z-index: 0;
 
   > .project-list {
     margin-top: u(3);
@@ -73,5 +74,22 @@
     > .home__card + .home__card {
       margin-top: 0;
     }
+  }
+}
+
+.home__info__overlay {
+  padding-top: 0;
+  overflow-y: scroll;
+  top: $mobile-header-height;
+  min-height: calc(100vh - #{$mobile-header-height});
+
+  @include media('>=tablet') {
+    top: $tablet-header-height - 32px;
+    min-height: calc(100vh - #{$tablet-header-height});
+  }
+
+  @include media('>=desktop') {
+    top: $desktop-header-height - 48px;
+    min-height: calc(100vh - #{$desktop-header-height});
   }
 }

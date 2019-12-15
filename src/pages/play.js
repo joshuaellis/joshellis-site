@@ -4,33 +4,21 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 
 import t from 'lib/strings';
-import sanity from 'lib/client';
 
-const queries = {
-  getProjects: `*[_type == 'playpage' && !(_id in path("drafts.**"))]`,
-};
-
-export function Play({ projects }) {
+export function Play() {
   return (
     <React.Fragment>
       <Head>
-        <title>Josh Ellis</title>
+        <title>Play | Josh Ellis</title>
         <meta name="description" content={t('meta-description')} />
       </Head>
-      <main className="play">{projects}</main>
+      <main className="play">
+        <div></div>
+      </main>
     </React.Fragment>
   );
 }
 
-Play.propTypes = {
-  projects: PropTypes.array,
-};
-
-Play.getInitialProps = async () => {
-  const [data] = await sanity.fetch(queries.getProjects);
-  return {
-    projects: data,
-  };
-};
+Play.propTypes = {};
 
 export default Play;

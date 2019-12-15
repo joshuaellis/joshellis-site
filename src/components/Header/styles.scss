@@ -78,7 +78,12 @@ $d-project-nav-right: 26px;
   }
 }
 
-.head__nav {
+.head--play {
+  background-color: transparent;
+
+  > div {
+    background-color: transparent;
+  }
 }
 
 .head__nav__link {
@@ -169,50 +174,52 @@ $d-project-nav-right: 26px;
   transform: translateX(100%);
 }
 
-@include media('<tablet') {
-  .head__menu-enter {
+.head__nav__icons {
+  display: flex;
+  position: absolute;
+  top: u(2);
+  right: u(2);
+
+  @include media('>=tablet') {
+    top: u(3);
+    right: u(5);
+  }
+
+  @include media('>=desktop') {
+    top: u(4);
+    right: u(10);
+  }
+
+  > a,
+  button {
+    @include unbutton;
     display: block;
+    width: 32px;
+    height: 32px;
+    border: solid 2px $c-white;
+    border-radius: 50%;
+
+    &:focus {
+      outline: none;
+    }
+
+    > svg {
+      margin-top: -2px;
+      margin-left: -2px;
+      color: $c-white;
+    }
   }
 
-  .head__menu-enter-active {
-    transform: translateY(-100%);
+  > a {
+    margin-right: 24px;
+    display: none;
+
+    @include media('>=tablet') {
+      display: block;
+    }
   }
 
-  .head__menu-enter-done {
-    transform: translateY(-100%);
-    display: block;
-  }
-
-  .head__menu-exit {
-    transform: translateY(0);
-    display: block;
-  }
-
-  .head__menu-exit-active {
-    transform: translateY(0);
-  }
-}
-
-@include media('>=tablet') {
-  .head__menu-enter {
-    display: block;
-  }
-
-  .head__menu-enter-active {
-    transform: translateY(#{$d-menu-max-height + u(11)});
-  }
-
-  .head__menu-enter-done {
-    transform: translateY(#{$d-menu-max-height + u(11)});
-    display: block;
-  }
-
-  .head__menu-exit {
-    transform: translateY(0);
-    display: block;
-  }
-
-  .head__menu-exit-active {
-    transform: translateY(0);
+  > .icon--active {
+    border-color: $c-blue;
   }
 }

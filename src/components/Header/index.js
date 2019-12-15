@@ -13,21 +13,22 @@ import clsx from 'clsx';
 
 import t from 'lib/strings';
 import useClickOutside from 'lib/useClickOutside';
-import Menu from 'components/Menu';
 import Portal from 'components/Portal';
 import InfoModal from 'components/InfoModal';
 
+import PlayIcon from 'static/icons/play.svg';
+import InfoIcon from 'static/icons/info.svg';
+
 import './styles.scss';
 
-function Header({ infoContent, projectList }) {
+function Header({ infoContent }) {
   const router = useRouter();
   const [openMenu, setOpenMenu] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
   const menuRef = useRef(null);
-  const menuListRef = useRef(null);
   const small = router ? router.pathname !== '/' : true;
+  const play = router ? router.pathname === '/play' : false;
 
-  const MENU_DURATION = 800;
   const INFO_DURATION = 800;
 
   // event handlers
@@ -41,18 +42,8 @@ function Header({ infoContent, projectList }) {
     setShowInfo(!showInfo);
   };
 
-  const handleProjectsClick = () => {
-    if (showInfo) {
-      setShowInfo(false);
-    }
-    setOpenMenu(!openMenu);
-    menuListRef.current.scrollTo({ top: 0 });
-  };
-
-  const handleMenuClick = () => setOpenMenu(false);
-
   return (
-    <header className="head__container">
+    <header className={clsx('head__container', play && 'head--play')}>
       <div className={clsx('head', small && 'head--small')}>
         <h1 className="head__title">
           <a href="/">
@@ -63,18 +54,40 @@ function Header({ infoContent, projectList }) {
             </span>
           </a>
         </h1>
-        {small && (
-          <nav className="head__nav">
+        {!small && (
+          <nav className="head__nav__icons">
+            <a href="/play">
+              <PlayIcon width={32} height={32} />
+            </a>
             <button
               type="button"
+              onClick={handleInfoClick}
+              className={clsx(showInfo && 'icon--active')}
+            >
+              <InfoIcon width={32} height={32} />
+            </button>
+          </nav>
+        )}
+        {small && (
+          <nav className="head__nav">
+            <a
               className={clsx(
                 'head__nav__link',
                 openMenu && 'head__nav__link--active',
               )}
-              onClick={handleProjectsClick}
+              href="/"
             >
               {t('nav-projects')}
-            </button>
+            </a>
+            <a
+              className={clsx(
+                'head__nav__link',
+                openMenu && 'head__nav__link--active',
+              )}
+              href="/play"
+            >
+              {t('nav-play')}
+            </a>
             <button
               type="button"
               onClick={handleInfoClick}
@@ -88,19 +101,6 @@ function Header({ infoContent, projectList }) {
           </nav>
         )}
       </div>
-      <CSSTransition
-        in={openMenu}
-        timeout={MENU_DURATION}
-        classNames="head__menu"
-      >
-        <div className="head__menu--static" ref={menuRef}>
-          <Menu
-            data={projectList}
-            ref={menuListRef}
-            onClick={handleMenuClick}
-          />
-        </div>
-      </CSSTransition>
       <Portal elementId="#modal">
         {infoContent ? (
           <CSSTransition
@@ -110,7 +110,10 @@ function Header({ infoContent, projectList }) {
             appear
             unmountOnExit
           >
-            <InfoModal className="header__info" content={infoContent} />
+            <InfoModal
+              className={clsx('header__info', !small && 'home__info__overlay')}
+              content={infoContent}
+            />
           </CSSTransition>
         ) : null}
       </Portal>
@@ -119,7 +122,6 @@ function Header({ infoContent, projectList }) {
 }
 
 Header.propTypes = {
-  projectList: PropTypes.array,
   infoContent: PropTypes.object,
 };
 
