@@ -3,34 +3,65 @@ import React from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 
-import t from 'lib/strings';
+import { Image } from 'components/Image';
 
-export function Play() {
+import t from 'lib/strings';
+import sanity from 'lib/client';
+
+const queries = {
+  getPlayCards: `*[_type == 'playpage']{
+    'projects':[...work]{
+      play_gif,
+      play_slug,
+    }
+  }`,
+};
+
+export function Play({ projects = [] }) {
+  const title = 'Play | Josh Ellis';
   return (
     <React.Fragment>
       <Head>
-        <title>Play | Josh Ellis</title>
+        <title>{title}</title>
         <meta name="description" content={t('meta-description')} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={t('meta-share')} />
+        <meta property="og:image" content="/home_share.png" />
+        <meta property="og:url" content={`${t('meta-url')}/play`} />
+        <meta property="og:site_name" content={t('site-title')} />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={t('meta-share')} />
+        <meta name="twitter:image" content="/home_share.png" />
       </Head>
       <main className="play">
-        <div></div>
-        <a
-          style={{
-            position: 'absolute',
-            top: '140px',
-            left: '140px',
-            color: 'white',
-            fontSize: '80px',
-          }}
-          href="/play/circlewave/index.html"
-        >
-          CIRCLE WAVE
-        </a>
+        <div className="play__bg"></div>
+        {projects.map(({ img, href }) => (
+          <a key={href} className="play__card" href={`/play/${href}`}>
+            <Image
+              className="play__card__gif"
+              img={img}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </a>
+        ))}
       </main>
     </React.Fragment>
   );
 }
 
-Play.propTypes = {};
+Play.getInitialProps = async () => {
+  const [{ projects }] = await sanity.fetch(queries.getPlayCards);
+  return {
+    projects: projects.map(x => ({
+      href: x.play_slug,
+      img: x.play_gif,
+    })),
+  };
+};
+
+Play.propTypes = {
+  projects: PropTypes.array,
+};
 
 export default Play;

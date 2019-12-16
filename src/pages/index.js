@@ -2,7 +2,6 @@
 import React from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 import Standfirst from 'components/Standfirst';
 import Card from 'components/Card';
@@ -75,4 +74,4 @@ Home.getInitialProps = async () => {
   };
 };
 
-export default connect(null, null)(Home);
+export default Home;
