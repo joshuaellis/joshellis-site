@@ -18,12 +18,11 @@ const initExport = {
       styles: path.resolve(__dirname, 'src/styles/'),
       lib: path.resolve(__dirname, 'src/lib/'),
       layouts: path.resolve(__dirname, 'src/layouts/'),
-      icons: path.resolve(__dirname, 'static/icons/'),
-      static: path.resolve(__dirname, 'static/'),
+      icons: path.resolve(__dirname, 'public/icons/'),
       store: path.resolve(__dirname, 'src/store/'),
     };
 
-    const iconsPath = path.resolve(__dirname, '.', 'static', 'icons');
+    const iconsPath = path.resolve(__dirname, '.', 'public', 'icons');
 
     config.module.rules.forEach(rule => {
       if (rule.test.toString().indexOf('svg') !== -1) {
@@ -51,21 +50,16 @@ const initExport = {
     config.module.rules.push({
       test: /\.(eot|otf|ttf|woff|woff2)$/,
       use: [
-        // using emit-file-loader just to shut up 'Cannot find module',
-        // it will make copy of image in component directory
         {
           loader: 'emit-file-loader',
           options: {
             name: 'dist/[path][name].[ext]',
           },
         },
-        // this will create image copy, that we will use,
-        // output path - '/.next/static/longhash.png'
-        // url - '/_next/static/longhash.png'
         {
           loader: 'file-loader',
           options: {
-            outputPath: 'static/',
+            outputPath: 'public/',
             publicPath: '/_next/',
           },
         },

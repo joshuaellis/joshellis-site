@@ -22,7 +22,7 @@ export function Play() {
             color: 'white',
             fontSize: '80px',
           }}
-          href="static/circlewave/index.html"
+          href="/play/circlewave/index.html"
         >
           CIRCLE WAVE
         </a>

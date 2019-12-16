@@ -15,7 +15,7 @@ const routes = require('next-routes')();
 // routes.add('work', '/work/:project');
 // routes.add('create', '/create_post');
 // routes.add('signin', '/sign_in');
-// routes.add('circlwave', '/static/circlewave/index.html');
+routes.add('play/circlwave', 'play/circlewave/index.html');
 //
 //
 

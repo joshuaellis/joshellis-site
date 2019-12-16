@@ -2,17 +2,16 @@ const path = require('path');
 const autoprefixer = require('autoprefixer');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const iconsPath = path.resolve(__dirname, '..', 'static', 'icons');
+const iconsPath = path.resolve(__dirname, '..', 'public', 'icons');
 
 module.exports = {
   resolve: {
     alias: {
       components: path.resolve(__dirname, '../src/components/'),
       styles: path.resolve(__dirname, '../src/styles/'),
-      static: path.resolve(__dirname, '../static/'),
       lib: path.resolve(__dirname, '../src/lib/'),
       layouts: path.resolve(__dirname, '../src/layouts/'),
-      icons: path.resolve(__dirname, '../static/icons/'),
+      icons: path.resolve(__dirname, '../public/icons/'),
       store: path.resolve(__dirname, '../src/store/'),
     },
   },

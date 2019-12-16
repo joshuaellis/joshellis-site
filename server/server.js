@@ -100,9 +100,6 @@ const routerHandler = router.getRequestHandler(
 app.prepare().then(() => {
   const server = express();
 
-  const staticDir = path.resolve(__dirname, '..', '.next/static');
-  server.use('/_next/static', express.static(staticDir));
-
   server.use(compression({ threshold: 0 }));
   server.use(
     cors({
@@ -139,7 +136,7 @@ app.prepare().then(() => {
   }
 
   server.get(`/favicon.ico`, (req, res) =>
-    app.serveStatic(req, res, path.resolve('./static/icons/favicon.ico')),
+    app.serveStatic(req, res, path.resolve('./public/icons/favicon.ico')),
   );
 
   server.get('/sw.js', (req, res) =>

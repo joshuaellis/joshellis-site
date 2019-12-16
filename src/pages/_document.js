@@ -8,7 +8,7 @@ export default class extends Document {
       <html lang="en">
         <Head>
           <GTMTrackingHead />
-          <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
+          <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         </Head>
         <body>
           <GTMTrackingBody />

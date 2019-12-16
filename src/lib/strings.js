@@ -1,4 +1,4 @@
-import STRINGS from 'static/strings.json';
+import STRINGS from '../../public/strings.json';
 
 export default function t(id, replacements) {
   const value = STRINGS[id];

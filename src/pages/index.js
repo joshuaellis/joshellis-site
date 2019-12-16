@@ -29,12 +29,12 @@ export function Home({ projectCards }) {
         <meta property="og:type" content="website" />
         <meta property="og:title" content={t('meta-title')} />
         <meta property="og:description" content={t('meta-share')} />
-        <meta property="og:image" content="/static/home_share.png" />
+        <meta property="og:image" content="/home_share.png" />
         <meta property="og:url" content={t('meta-url')} />
         <meta property="og:site_name" content={t('site-title')} />
         <meta name="twitter:title" content={t('meta-title')} />
         <meta name="twitter:description" content={t('meta-share')} />
-        <meta name="twitter:image" content="/static/home_share.png" />
+        <meta name="twitter:image" content="/home_share.png" />
       </Head>
       <main className="home">
         <Standfirst />
@@ -75,7 +75,4 @@ Home.getInitialProps = async () => {
   };
 };
 
-export default connect(
-  null,
-  null,
-)(Home);
+export default connect(null, null)(Home);

@@ -16,8 +16,8 @@ import useClickOutside from 'lib/useClickOutside';
 import Portal from 'components/Portal';
 import InfoModal from 'components/InfoModal';
 
-import PlayIcon from 'static/icons/play.svg';
-import InfoIcon from 'static/icons/info.svg';
+import PlayIcon from 'icons/play.svg';
+import InfoIcon from 'icons/info.svg';
 
 import './styles.scss';
 
