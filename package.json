@@ -26,6 +26,7 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/joshua_ellis/joshellis.co.uk#readme",
   "dependencies": {
+    "@babel/core": "^7.7.7",
     "@babel/node": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@sanity/block-content-to-react": "^2.0.7",
@@ -84,7 +85,7 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.14.3",
-    "eslint-plugin-react-hooks": "^2.0.1",
+    "eslint-plugin-react-hooks": "^2.3.0",
     "eslint-watch": "^6.0.0",
     "markdown-it": "^10.0.0",
     "plop": "^2.5.3",
