@@ -7,11 +7,9 @@ export default class extends Document {
     return (
       <html lang="en">
         <Head>
-          <GTMTrackingHead />
           <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
         </Head>
         <body>
-          <GTMTrackingBody />
           <Main />
           <div id="modal" />
           <NextScript />
