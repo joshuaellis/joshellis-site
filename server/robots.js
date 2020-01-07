@@ -1,9 +1,9 @@
-const FILE_NAME_ROBOTS = 'robots.txt';
+export const FILE_NAME_ROBOTS = 'robots.txt';
 
-const sendRobots = (req, res, handle) => {
+export default (req, res, handle) => {
   try {
     res.status(200).sendFile(FILE_NAME_ROBOTS, {
-      root: `${__dirname}/../static/`,
+      root: `${__dirname}/static/`,
       headers: {
         'Content-Type': 'text/plain;charset=UTF-8',
       },
@@ -12,5 +12,3 @@ const sendRobots = (req, res, handle) => {
     return handle(req, res);
   }
 };
-
-module.exports = sendRobots;
