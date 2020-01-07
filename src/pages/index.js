@@ -69,13 +69,15 @@ Home.propTypes = {
 };
 
 Home.getInitialProps = async () => {
-  const [{ projects }] = await sanity.fetch(queries.getProjectCards);
-  return {
-    projectCards: projects,
-  };
+  try {
+    const [{ projects }] = await sanity.fetch(queries.getProjectCards);
+    return {
+      projectCards: projects,
+    };
+  } catch (err) {
+    console.error(err);
+    return {};
+  }
 };
 
-export default connect(
-  null,
-  null,
-)(Home);
+export default connect(null, null)(Home);
