@@ -24,25 +24,16 @@ const queries = {
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
-    try {
-      const [projectData] = await sanity.fetch(queries.getProjectList);
-      const [infoData] = await sanity.fetch(queries.getInfoContent);
-      const { projects } = projectData;
-      return {
-        projectList: projects,
-        infoContent: infoData,
-        pageProps: Component.getInitialProps
-          ? await Component.getInitialProps(ctx)
-          : {},
-      };
-    } catch (err) {
-      console.error(err);
-      return {
-        pageProps: Component.getInitialProps
-          ? await Component.getInitialProps(ctx)
-          : {},
-      };
-    }
+    const [projectData] = await sanity.fetch(queries.getProjectList);
+    const [infoData] = await sanity.fetch(queries.getInfoContent);
+    const { projects } = projectData;
+    return {
+      projectList: projects,
+      infoContent: infoData,
+      pageProps: Component.getInitialProps
+        ? await Component.getInitialProps(ctx)
+        : {},
+    };
   }
 
   render() {
