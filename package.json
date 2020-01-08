@@ -20,7 +20,7 @@
     "url": "git+https://joshua_ellis@bitbucket.org/joshua_ellis/joshellis.co.uk.git"
   },
   "engines": {
-    "node": "10.x"
+    "node": "10.15.3"
   },
   "author": "Josh Ellis",
   "license": "ISC",
