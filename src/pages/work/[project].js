@@ -145,49 +145,44 @@ export function ProjectPage({
 }
 
 ProjectPage.getInitialProps = async ({ query, res }) => {
-  try {
-    const { project } = query;
-    const [data] = await sanity.fetch(queries.getProject(project));
-    const [{ projects }] = await sanity.fetch(queries.getNextPrevCard());
-    const flattenedProjects = flattenArray(
-      projects.map(x => [...x.projects]),
-    ).reverse();
-    const paginationItems = getNextPrevItems(project, flattenedProjects);
+  const { project } = query;
+  const [data] = await sanity.fetch(queries.getProject(project));
+  const [{ projects }] = await sanity.fetch(queries.getNextPrevCard());
+  const flattenedProjects = flattenArray(
+    projects.map(x => [...x.projects]),
+  ).reverse();
+  const paginationItems = getNextPrevItems(project, flattenedProjects);
 
-    if (!data || data.length === 0) {
-      res.writeHead(302, {
-        Location: '/',
-      });
-      res.end();
-    }
-    const {
-      body,
-      client,
-      excerpt,
-      iframe,
-      role,
-      studio,
-      tech,
-      title,
-      url,
-      slug,
-      share_image,
-    } = data;
-    return {
-      body,
-      excerpt,
-      iframe,
-      title,
-      url,
-      paginationItems,
-      slug,
-      share_image,
-      meta: { client, role, studio, tech },
-    };
-  } catch (err) {
-    console.error(err);
-    return {};
+  if (!data || data.length === 0) {
+    res.writeHead(302, {
+      Location: '/',
+    });
+    res.end();
   }
+  const {
+    body,
+    client,
+    excerpt,
+    iframe,
+    role,
+    studio,
+    tech,
+    title,
+    url,
+    slug,
+    share_image,
+  } = data;
+  return {
+    body,
+    excerpt,
+    iframe,
+    title,
+    url,
+    paginationItems,
+    slug,
+    share_image,
+    meta: { client, role, studio, tech },
+  };
 };
 
 const mapStateToProps = ({ project: { imageModal } }) => ({
@@ -215,4 +210,7 @@ ProjectPage.propTypes = {
   url: PropTypes.string,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectPage);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ProjectPage);
