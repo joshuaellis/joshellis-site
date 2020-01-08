@@ -1,9 +1,9 @@
 import express from 'express';
 import compression from 'compression';
 import next from 'next';
-// import { REDIRECT_RULES } from './redirects';
-import sendRobots, { FILE_NAME_ROBOTS } from './robots';
-import sendSitemap, { FILE_NAME_SITEMAP } from './sitemap';
+
+const FILE_NAME_ROBOTS = 'robots.txt';
+const FILE_NAME_SITEMAP = 'sitemap.xml';
 
 let dev;
 switch (process.env.NODE_ENV_CUSTOM) {
@@ -46,11 +46,21 @@ app.prepare().then(() => {
   // FILES //
 
   server.get(`/${FILE_NAME_ROBOTS}`, (req, res) => {
-    sendRobots(req, res, handle);
+    res.status(200).sendFile(FILE_NAME_ROBOTS, {
+      root: `${__dirname}/static/`,
+      headers: {
+        'Content-Type': 'text/plain;charset=UTF-8',
+      },
+    });
   });
 
   server.get(`/${FILE_NAME_SITEMAP}`, (req, res) => {
-    sendSitemap(req, res, handle);
+    res.status(200).sendFile(FILE_NAME_SITEMAP, {
+      root: `${__dirname}/static/`,
+      headers: {
+        'Content-Type': 'text/plain;charset=UTF-8',
+      },
+    });
   });
 
   // HOME //
