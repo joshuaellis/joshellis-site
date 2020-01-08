@@ -26,6 +26,7 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/joshua_ellis/joshellis.co.uk#readme",
   "dependencies": {
+    "@babel/node": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
     "@sanity/block-content-to-react": "^2.0.7",
     "@sanity/client": "^0.142.0",
@@ -33,7 +34,6 @@
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "autoprefixer": "^9.6.1",
-    "babel-node": "0.0.1-security",
     "clsx": "^1.0.4",
     "compression": "^1.7.4",
     "css-loader": "^3.2.0",
