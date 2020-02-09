@@ -12,7 +12,7 @@
     "storybook": "start-storybook -p 9001 -s ./",
     "fetch:strings": "node ./src/lib/fetchStrings.js",
     "deploy:staging": "git push heroku-staging develop:master",
-    "deploy:prod": "git push heroku-production production:master",
+    "deploy:prod": "git push heroku-production master:master",
     "generate": "plop --plopfile tools/generators/index.js"
   },
   "repository": {

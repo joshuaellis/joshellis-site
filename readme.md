@@ -43,5 +43,5 @@ Run either of the following:
 
 Run either of the following:
 
-1. `git push heroku-production production:master`
-2. `npm run deploy:production`
+1. `git push heroku-production master:master`
+2. `npm run deploy:prod`
