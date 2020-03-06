@@ -1,8 +1,5 @@
 /* eslint-disable global-require */
 const { IgnorePlugin } = require('webpack');
-const autoprefixer = require('autoprefixer');
-const withSass = require('@zeit/next-sass');
-const withCSS = require('@zeit/next-css');
 const path = require('path');
 
 const initExport = {
@@ -77,29 +74,9 @@ const initExport = {
       );
     }
 
-    config.module.rules.forEach(rule => {
-      if (Array.isArray(rule.use)) {
-        rule.use.forEach(u => {
-          if (u.loader === 'css-loader' && u.options) {
-            // eslint-disable-next-line no-param-reassign
-            delete u.options.minimize;
-          }
-        });
-      }
-    });
-
     return config;
   },
 };
 
 /* eslint-enable global-require */
-module.exports = withCSS(
-  withSass(initExport, {
-    postcssLoaderOptions: { plugins: [autoprefixer] },
-    cssModules: true,
-    cssLoaderOptions: {
-      importLoaders: 2,
-      localIdentName: '[local]___[hash:base64:5]',
-    },
-  }),
-);
+module.exports = initExport;

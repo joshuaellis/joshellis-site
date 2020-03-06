@@ -1,12 +1,16 @@
 import { configure, addDecorator, addParameters } from '@storybook/react';
 import { themes } from '@storybook/theming';
 import { withA11y } from '@storybook/addon-a11y';
+import { createGlobalStyle } from 'styled-components';
 
-import 'sanitize.css/sanitize.css';
-import 'sanitize.css/typography.css';
-import 'sanitize.css/forms.css';
+import { CSS_FONTS, CSS_GLOBAL } from 'styles';
+
 import './stories.css';
-import '../src/styles/styles';
+
+const GlobalStyle = createGlobalStyle`
+  ${CSS_FONTS}
+  ${CSS_GLOBAL}
+`;
 
 addParameters({
   options: {
@@ -14,7 +18,12 @@ addParameters({
   },
 });
 
-addDecorator(storyFn => storyFn());
+addDecorator(storyFn => (
+  <React.Fragment>
+    <GlobalStyle />
+    {storyFn()}
+  </React.Fragment>
+));
 
 addDecorator(withA11y);
 
