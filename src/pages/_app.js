@@ -1,6 +1,9 @@
 import App from 'next/app';
 import React from 'react';
+import { createGlobalStyle } from 'styled-components';
 import { Provider } from 'react-redux';
+
+// import { CSS_GLOBAL, CSS_FONTS } from 'styles';
 
 import withReduxStore from 'lib/with-redux-store';
 import sanity from 'lib/client';
@@ -10,7 +13,8 @@ import Footer from 'components/Footer';
 
 import { putProjectListDataAction } from 'store/actions/globalActions';
 
-import '../styles/styles';
+const GlobalStyle = createGlobalStyle`
+`;
 
 const queries = {
   getProjectList: `*[_type == 'projectStructure']{
@@ -54,13 +58,16 @@ class MyApp extends App {
     }
 
     return (
-      <Provider store={reduxStore}>
-        <div className="main">
-          <Header projectList={projects} infoContent={infoContent} />
-          <Component {...pageProps} />
-          <Footer />
-        </div>
-      </Provider>
+      <React.Fragment>
+        <Provider store={reduxStore}>
+          <div className="main">
+            <Header projectList={projects} infoContent={infoContent} />
+            <Component {...pageProps} />
+            <Footer />
+          </div>
+        </Provider>
+        <GlobalStyle />
+      </React.Fragment>
     );
   }
 }

@@ -6,25 +6,34 @@
 
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import clsx from 'clsx';
+import styled from 'styled-components';
 
 import ExpandIcon from 'icons/expand.svg';
 
-import './styles.scss';
-
 function ImageExpandButton({ className, id, onClick }) {
   return (
-    <button
+    <StyledButton
       aria-label="Expand image"
       type="button"
-      className={clsx('button--expand', className)}
+      className={className}
       onClick={onClick}
       data-modal-id={id}
     >
       <ExpandIcon width={16} height={16} />
-    </button>
+    </StyledButton>
   );
 }
+
+const StyledButton = styled.button`
+  width: 32px;
+  height: 32px;
+  border-bottom-left-radius: 6px;
+  padding: 0;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(2px);
+  cursor: pointer;
+`;
 
 ImageExpandButton.propTypes = {
   className: PropTypes.string,
