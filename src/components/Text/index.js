@@ -14,23 +14,36 @@ function Text({ children, className, text }) {
   return (
     <TextBlock className={className}>
       {children}
-      <TextOrnament className="text__ornament" />
-      <TextBody className="t-body">{text}</TextBody>
+      <TextOrnament />
+      <TextCopy>{text}</TextCopy>
     </TextBlock>
   );
 }
 
-const TextBlock = styled.div`
-  > *:first-child {
-    font-family: ${FONT_FAMILIES.surt};
-    font-size: ${FONT_SIZES.defaultSmall};
-    line-height: ${LINE_HEIGHTS.default};
-    font-weight: 400;
-    color: ${COLORS.black};
+export const TextHead = ({ children, className }) => (
+  <TextBlock className={className}>
+    <TextTitle>{children}</TextTitle>
+    <TextOrnament />
+  </TextBlock>
+);
 
-    ${MEDIA_QUERIES.tabletUp} {
-      font-size: ${FONT_SIZES.default};
-    }
+export const TextBody = ({ children, className }) => (
+  <TextBlock>
+    <TextCopy className={className}>{children}</TextCopy>
+  </TextBlock>
+);
+
+const TextBlock = styled.div``;
+
+const TextTitle = styled.h2`
+  font-family: ${FONT_FAMILIES.surt};
+  font-size: ${FONT_SIZES.defaultSmall};
+  line-height: ${LINE_HEIGHTS.default};
+  font-weight: 400;
+  color: ${COLORS.black};
+
+  ${MEDIA_QUERIES.tabletUp} {
+    font-size: ${FONT_SIZES.default};
   }
 `;
 
@@ -42,7 +55,7 @@ const TextOrnament = styled.span`
   width: 24px;
 `;
 
-const TextBody = styled.p`
+const TextCopy = styled.p`
   font-family: ${FONT_FAMILIES.surt};
   font-size: ${FONT_SIZES.default};
   line-height: ${LINE_HEIGHTS.default};
@@ -54,6 +67,21 @@ const TextBody = styled.p`
     line-height: ${FONT_SIZES.defaultLarge};
   }
 `;
+
+TextHead.propTypes = {
+  children: PropTypes.string,
+  className: PropTypes.string,
+};
+
+TextBody.propTypes = {
+  children: PropTypes.string,
+  className: PropTypes.string,
+};
+
+TextHead.propTypes = {
+  children: PropTypes.string,
+  className: PropTypes.string,
+};
 
 Text.propTypes = {
   children: PropTypes.element,
