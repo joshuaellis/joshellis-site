@@ -28,17 +28,17 @@ export default function LargeNav({ handleInfoClick, showInfo }) {
 const StyledNav = styled.nav`
   display: flex;
   position: absolute;
-  top: u(2);
-  right: u(2);
+  top: 16px;
+  right: 16px;
 
   @include media('>=tablet') {
-    top: u(3);
-    right: u(5);
+    top: 24px;
+    right: 40px;
   }
 
   @include media('>=desktop') {
-    top: u(4);
-    right: u(10);
+    top: 32px;
+    right: 80px;
   }
 
   > a,
@@ -74,7 +74,7 @@ const LargeNavButton = styled.button`
   > svg {
     margin-top: -2px;
     margin-left: -2px;
-    color: ${COLORS.white};
+    fill: ${COLORS.white};
   }
 `;
 
@@ -94,7 +94,7 @@ const LargeNavAnchor = styled.a`
   > svg {
     margin-top: -2px;
     margin-left: -2px;
-    color: ${COLORS.white};
+    fill: ${COLORS.white};
   }
 
   ${MEDIA_QUERIES.tabletUp} {

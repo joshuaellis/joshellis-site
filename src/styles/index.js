@@ -6,7 +6,7 @@ import MISC from './misc';
 import MEDIA_QUERIES from './mediaQueries';
 import WIDTHS from './widths';
 
-export default {
+export {
   COLORS,
   CSS_FONTS,
   CSS_GLOBAL,

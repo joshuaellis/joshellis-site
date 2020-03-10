@@ -36,7 +36,7 @@ export const IframeContainer = styled.div`
     display: block;
     content: '';
     width: 100%;
-    padding-top: (16 / 9) * 100%;
+    padding-top: ${(16 / 9) * 100}%;
   }
 
   iframe {

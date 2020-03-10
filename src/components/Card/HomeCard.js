@@ -23,16 +23,24 @@ export default function HomeCard({ className, client, image, slug, title }) {
           <MetaTitle>{title}</MetaTitle>
         </HomeCardMeta>
         <HomeCardImage>
-          <Image img={image} sizes="(max-width: 768px) 100vw, 75vw" />
+          <StyledImage img={image} sizes="(max-width: 768px) 100vw, 75vw" />
         </HomeCardImage>
       </HomeCardAnchor>
     </Link>
   );
 }
 
-const HomeCardImage = styled.img`
+const HomeCardImage = styled.div`
   transition: transform 500ms ease-out;
   transform-origin: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`;
+
+const StyledImage = styled(Image)`
   position: absolute;
   top: 0;
   left: 0;
@@ -55,7 +63,7 @@ const HomeCardAnchor = styled.a`
     display: block;
     content: '';
     width: 100%;
-    padding-top: (4 / 5) * 100%;
+    padding-top: ${(4 / 5) * 100}%;
   }
 
   &:hover {

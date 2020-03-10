@@ -11,18 +11,18 @@ const initExport = {
     // eslint-disable-next-line no-param-reassign
     config.resolve.alias = {
       ...config.resolve.alias,
-      components: path.resolve(__dirname, 'src/components/'),
-      styles: path.resolve(__dirname, 'src/styles/'),
+      components: path.resolve(__dirname, './src/components/'),
+      styles: path.resolve(__dirname, './src/styles'),
       lib: path.resolve(__dirname, 'src/lib/'),
-      layouts: path.resolve(__dirname, 'src/layouts/'),
-      icons: path.resolve(__dirname, 'public/icons/'),
-      store: path.resolve(__dirname, 'src/store/'),
+      layouts: path.resolve(__dirname, './src/layouts/'),
+      icons: path.resolve(__dirname, './public/icons/'),
+      store: path.resolve(__dirname, './src/store/'),
     };
 
     const iconsPath = path.resolve(__dirname, '.', 'public', 'icons');
 
     config.module.rules.forEach(rule => {
-      if (rule.test.toString().indexOf('svg') !== -1) {
+      if (rule.test && rule.test.toString().indexOf('svg') !== -1) {
         // eslint-disable-next-line no-param-reassign
         rule.exclude = [iconsPath];
       }
@@ -42,25 +42,6 @@ const initExport = {
         },
       ],
       include: [iconsPath],
-    });
-
-    config.module.rules.push({
-      test: /\.(eot|otf|ttf|woff|woff2)$/,
-      use: [
-        {
-          loader: 'emit-file-loader',
-          options: {
-            name: 'dist/[path][name].[ext]',
-          },
-        },
-        {
-          loader: 'file-loader',
-          options: {
-            outputPath: 'public/',
-            publicPath: '/_next/',
-          },
-        },
-      ],
     });
 
     if (!prod && process.env.ANALYZE_BUILD) {

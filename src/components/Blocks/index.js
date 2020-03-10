@@ -226,14 +226,14 @@ export const ProjectMultipleInline = styled(Plx)`
   ${ProjectTextBody} + & {
     position: relative;
     z-index: -10;
-    margin-top: u(-7);
+    margin-top: -56px;
 
     ${MEDIA_QUERIES.tabletUp} {
-      margin-top: u(-16);
+      margin-top: -128px;
     }
 
     @include media('>=desktop') {
-      margin-top: u(-20);
+      margin-top: -160px;
     }
   }
 `;
@@ -274,8 +274,8 @@ export const ProjectInlineImage = styled(Plx)`
 
 export const ProjectStandfirst = styled.div`
   ${MISC.genericSection};
-  margin-top: u(4);
-  margin-bottom: u(4);
+  margin-top: 32px;
+  margin-bottom: 32px;
 
   & + ${ProjectTextHead} {
     margin-top: 0;

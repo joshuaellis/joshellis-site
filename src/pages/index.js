@@ -88,7 +88,7 @@ const HomeMain = styled.main`
   }
 
   ${MEDIA_QUERIES.desktopUp} {
-    padding-top: ${MISC.desktopHeaderHeight};
+    padding-top: ${MISC.desktopHeaderHeight}px;
 
     > .project-list {
       margin-top: 48px;
@@ -115,9 +115,9 @@ const HomeCardGrid = styled.div`
     margin: 124px 40px 32px 40px;
   }
 
-  ${MEDIA_QUERIES.largeUp} {
-    margin: 140px 80px 72px 80px;
-    margin: 0 auto;
+  ${MEDIA_QUERIES.desktopUp} {
+    margin: 140px auto 72px auto;
+    padding: 0 80px;
     max-width: ${MISC.maxWidth + MISC.pageGutter * 5}px;
   }
 `;

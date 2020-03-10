@@ -9,7 +9,14 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { COLORS, MEDIA_QUERIES, MISC } from 'styles';
+import {
+  COLORS,
+  FONT_FAMILIES,
+  FONT_SIZES,
+  LINE_HEIGHTS,
+  MEDIA_QUERIES,
+  MISC,
+} from 'styles';
 
 function Standfirst({ className }) {
   // const [isStuck, setIsStuck] = useState(false);
@@ -49,9 +56,9 @@ function Standfirst({ className }) {
   return (
     <StandfirstDiv className={className}>
       <StandfirstContainer>
-        <h2>
+        <StandfirstCopy>
           <span>{"Here's my work –"}</span>
-        </h2>
+        </StandfirstCopy>
       </StandfirstContainer>
     </StandfirstDiv>
   );
@@ -91,6 +98,22 @@ const StandfirstContainer = styled.div`
     margin: 0 auto;
     max-width: ${MISC.maxWidth + MISC.pageGutter * 5}px;
     padding: 0 80px;
+  }
+`;
+
+const StandfirstCopy = styled.h2`
+  font-family: ${FONT_FAMILIES.surt};
+  font-size: ${FONT_SIZES.mediumSmall};
+  line-height: ${LINE_HEIGHTS.mediumSmall};
+  font-weight: 500;
+
+  ${MEDIA_QUERIES.tabletUp} {
+    font-size: ${FONT_SIZES.large};
+    line-height: ${LINE_HEIGHTS.large};
+  }
+
+  ${MEDIA_QUERIES.desktopUp} {
+    font-size: ${FONT_SIZES.larger};
   }
 `;
 

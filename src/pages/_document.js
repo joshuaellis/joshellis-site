@@ -1,6 +1,6 @@
 import React from 'react';
 import { ServerStyleSheet } from 'styled-components';
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 import { GTMTrackingHead, GTMTrackingBody } from '../components/Tracking';
 
@@ -32,7 +32,7 @@ export default class JoshDocument extends Document {
 
   render() {
     return (
-      <html lang="en">
+      <Html lang="en">
         <Head>
           <GTMTrackingHead />
           <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -43,7 +43,7 @@ export default class JoshDocument extends Document {
           <div id="modal" />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }

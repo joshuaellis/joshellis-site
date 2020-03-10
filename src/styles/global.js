@@ -54,18 +54,4 @@ export default `
     #__next {
       height: 100%;
     }
-
-    .main {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .main > *:nth-child(2) {
-      flex: 1 0 auto;
-    }
-
-    .main > footer {
-      flex-shrink: 0;
-    }
 `;

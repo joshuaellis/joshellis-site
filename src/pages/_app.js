@@ -1,6 +1,6 @@
 import App from 'next/app';
 import React from 'react';
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import { Provider } from 'react-redux';
 
 import { CSS_GLOBAL, CSS_FONTS } from 'styles';
@@ -61,17 +61,31 @@ class MyApp extends App {
 
     return (
       <React.Fragment>
+        <GlobalStyle />
         <Provider store={reduxStore}>
-          <div className="main">
+          <AppMain>
             <Header projectList={projects} infoContent={infoContent} />
             <Component {...pageProps} />
             <Footer />
-          </div>
+          </AppMain>
         </Provider>
-        <GlobalStyle />
       </React.Fragment>
     );
   }
 }
+
+const AppMain = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  & > *:nth-child(2) {
+    flex: 1 0 auto;
+  }
+
+  & > footer {
+    flex-shrink: 0;
+  }
+`;
 
 export default withReduxStore(MyApp);

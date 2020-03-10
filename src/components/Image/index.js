@@ -75,7 +75,7 @@ const ImageContainer = styled.div`
       display: block;
       content: '';
       width: 100%;
-      padding-top: (3 / 2) * 100%;
+      padding-top: ${(3 / 2) * 100}%;
     }
 
     ${StyledImage},
