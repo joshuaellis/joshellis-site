@@ -27,7 +27,7 @@ function Iframe({ className, src, title }) {
   );
 }
 
-const IframeContainer = styled.div`
+export const IframeContainer = styled.div`
   overflow: hidden;
   background-color: ${COLORS.footBg};
   position: relative;

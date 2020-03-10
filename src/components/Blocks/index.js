@@ -77,7 +77,7 @@ const CustomImageRenderer = ({
   node: { alt, asset, caption, fullWidth, color, _key },
 }) =>
   fullWidth ? (
-    <StyledFullWidthImage caption={caption} expandId={_key}>
+    <ProjectFullWidthImage caption={caption} expandId={_key}>
       <Plx
         parallaxData={[
           {
@@ -104,7 +104,7 @@ const CustomImageRenderer = ({
           sizes="100vw"
         />
       </Plx>
-    </StyledFullWidthImage>
+    </ProjectFullWidthImage>
   ) : (
     <ProjectInlineImage
       className="project__inline"
@@ -154,9 +154,9 @@ const BlockRenderer = ({ node, children }) => {
 
   if (style === 'standfirst') {
     return (
-      <StyledStandfirst>
+      <ProjectStandfirst>
         <StandfirstCopy>{children}</StandfirstCopy>
-      </StyledStandfirst>
+      </ProjectStandfirst>
     );
   }
 
@@ -238,7 +238,7 @@ export const ProjectMultipleInline = styled(Plx)`
   }
 `;
 
-export const StyledFullWidthImage = styled(FullWidthImage)``;
+export const ProjectFullWidthImage = styled(FullWidthImage)``;
 
 export const ProjectInlineImage = styled(Plx)`
   ${ProjectTextBody} + & {
@@ -272,7 +272,7 @@ export const ProjectInlineImage = styled(Plx)`
   }
 `;
 
-export const StyledStandfirst = styled.div`
+export const ProjectStandfirst = styled.div`
   ${MISC.genericSection};
   margin-top: u(4);
   margin-bottom: u(4);

@@ -3,7 +3,7 @@ import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 import { Provider } from 'react-redux';
 
-// import { CSS_GLOBAL, CSS_FONTS } from 'styles';
+import { CSS_GLOBAL, CSS_FONTS } from 'styles';
 
 import withReduxStore from 'lib/with-redux-store';
 import sanity from 'lib/client';
@@ -14,6 +14,8 @@ import Footer from 'components/Footer';
 import { putProjectListDataAction } from 'store/actions/globalActions';
 
 const GlobalStyle = createGlobalStyle`
+  ${CSS_FONTS}
+  ${CSS_GLOBAL}
 `;
 
 const queries = {

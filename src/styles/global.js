@@ -45,21 +45,6 @@ export default `
         margin: 0;
     }
 
-    .generic__section {
-      @include max-width;
-      display: grid;
-
-      @include media('>=tablet') {
-        grid-template-columns: repeat(6, 1fr);
-        grid-column-gap: u(4);
-      }
-
-      @include media('>=desktop') {
-        grid-template-columns: repeat(12, 1fr);
-        grid-column-gap: 32px;
-      }
-    }
-
     .modal--active {
       overflow: hidden;
       position: fixed;

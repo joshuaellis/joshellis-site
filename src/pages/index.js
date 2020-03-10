@@ -1,7 +1,15 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+import {
+  FONT_FAMILIES,
+  FONT_SIZES,
+  LINE_HEIGHTS,
+  MISC,
+  MEDIA_QUERIES,
+} from 'styles';
 
 import Standfirst from 'components/Standfirst';
 import Card from 'components/Card';
@@ -35,15 +43,15 @@ export function Home({ projectCards }) {
         <meta name="twitter:description" content={t('meta-share')} />
         <meta name="twitter:image" content="/home_share.png" />
       </Head>
-      <main className="home">
+      <HomeMain>
         <Standfirst />
-        <div className="home__cards">
+        <HomeCardGrid>
           {projectCards.map(year => (
-            <div key={year.year} className="home__cards__block">
-              <span className="home__cards__year t-small-body">
+            <HomeCard key={year.year}>
+              <YearTitle className="home__cards__year t-small-body">
                 {year.year}
-              </span>
-              <div className="home__cards__grid">
+              </YearTitle>
+              <YearCardsGrid>
                 {year.projects.map(project => (
                   <Card
                     key={project.slug}
@@ -54,14 +62,100 @@ export function Home({ projectCards }) {
                     title={project.title}
                   />
                 ))}
-              </div>
-            </div>
+              </YearCardsGrid>
+            </HomeCard>
           ))}
-        </div>
-      </main>
+        </HomeCardGrid>
+      </HomeMain>
     </React.Fragment>
   );
 }
+
+const HomeMain = styled.main`
+  padding-top: ${MISC.mobileHeaderHeight}px;
+  z-index: 0;
+
+  > .project-list {
+    margin-top: 24px;
+  }
+
+  ${MEDIA_QUERIES.tabletUp} {
+    padding-top: ${MISC.tabletHeaderHeight}px;
+
+    > .project-list {
+      margin-top: 32px;
+    }
+  }
+
+  ${MEDIA_QUERIES.desktopUp} {
+    padding-top: ${MISC.desktopHeaderHeight};
+
+    > .project-list {
+      margin-top: 48px;
+    }
+  }
+`;
+
+const HomeCard = styled.div`
+  & + & {
+    margin-top: 24px;
+  }
+
+  ${MEDIA_QUERIES.tabletUp} {
+    & + & {
+      margin-top: 48px;
+    }
+  }
+`;
+
+const HomeCardGrid = styled.div`
+  margin: 88px 16px 0 16px;
+
+  ${MEDIA_QUERIES.tabletUp} {
+    margin: 124px 40px 32px 40px;
+  }
+
+  ${MEDIA_QUERIES.largeUp} {
+    margin: 140px 80px 72px 80px;
+    margin: 0 auto;
+    max-width: ${MISC.maxWidth + MISC.pageGutter * 5}px;
+  }
+`;
+
+const YearTitle = styled.span`
+  font-family: ${FONT_FAMILIES.surt};
+  font-weight: 400;
+  font-size: ${FONT_SIZES.defaultSmall};
+  line-height: ${LINE_HEIGHTS.defaultSmall};
+  padding: 6px 12px;
+  background-color: #ebebeb;
+
+  ${MEDIA_QUERIES.tabletUp} {
+    font-size: ${FONT_SIZES.default};
+    line-height: ${LINE_HEIGHTS.default};
+    padding: 8px 16px;
+  }
+`;
+
+const YearCardsGrid = styled.div`
+  margin-top: 16px;
+
+  > .home__card + .home__card {
+    margin-top: 20px;
+  }
+
+  ${MEDIA_QUERIES.tabletUp} {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 32px;
+    grid-row-gap: 32px;
+
+    > .home__card + .home__card {
+      margin-top: 0;
+    }
+  }
+`;
 
 Home.propTypes = {
   projectCards: PropTypes.array,

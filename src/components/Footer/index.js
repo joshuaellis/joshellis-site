@@ -61,7 +61,7 @@ function Footer() {
   );
 }
 
-const StyledFooter = styled.footer`
+export const StyledFooter = styled.footer`
   font-family: ${FONT_FAMILIES.surt};
   font-size: ${FONT_SIZES.nav};
   line-height: ${LINE_HEIGHTS.mediumSmall};

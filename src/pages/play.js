@@ -34,15 +34,11 @@ export function Play({ projects = [] }) {
         <meta name="twitter:description" content={t('meta-share')} />
         <meta name="twitter:image" content="/home_share.png" />
       </Head>
-      <main className="play">
+      <main>
         <div className="play__bg"></div>
         {projects.map(({ img, href }) => (
-          <a key={href} className="play__card" href={`/play/${href}`}>
-            <Image
-              className="play__card__gif"
-              img={img}
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
+          <a key={href} href={`/play/${href}`}>
+            <Image img={img} sizes="(max-width: 768px) 100vw, 50vw" />
           </a>
         ))}
       </main>
