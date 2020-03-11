@@ -1,7 +1,7 @@
-import MEDIA_QUERIES from './mediaQueries';
+import MEDIA_QUERIES from './mediaQueries'
 
-const maxWidth = 1600;
-const pageGutter = 16;
+const maxWidth = 1600
+const pageGutter = 16
 
 export default {
   mobileHeaderHeight: 144,
@@ -26,5 +26,5 @@ export default {
       grid-template-columns: repeat(12, 1fr);
       grid-column-gap: 32px;
     }
-  `,
-};
+  `
+}

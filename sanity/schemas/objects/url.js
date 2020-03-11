@@ -3,6 +3,6 @@ export default {
   title: 'URL',
   type: 'markdown',
   options: {
-    minRows: 1,
-  },
-};
+    minRows: 1
+  }
+}

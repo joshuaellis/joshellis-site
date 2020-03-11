@@ -3,31 +3,31 @@
  * Portal
  *
  */
-import React from 'react';
-import PropTypes from 'prop-types';
-import { createPortal } from 'react-dom';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { createPortal } from 'react-dom'
 
 export class Portal extends React.Component {
-  componentDidMount() {
-    this.element = document.querySelector(this.props.elementId);
+  componentDidMount () {
+    this.element = document.querySelector(this.props.elementId)
   }
 
-  render() {
+  render () {
     if (this.element === undefined) {
-      return null;
+      return null
     }
 
-    return createPortal(this.props.children, this.element);
+    return createPortal(this.props.children, this.element)
   }
 }
 
 Portal.defaultProps = {
-  elementId: 'modal',
-};
+  elementId: 'modal'
+}
 
 Portal.propTypes = {
   elementId: PropTypes.string,
-  children: PropTypes.oneOfType([PropTypes.element, PropTypes.bool]).isRequired,
-};
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.bool]).isRequired
+}
 
-export default Portal;
+export default Portal

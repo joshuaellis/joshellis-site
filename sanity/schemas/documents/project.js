@@ -8,100 +8,100 @@ export default {
       title: 'SEO',
       options: {
         collapsible: true,
-        collapsed: true,
-      },
+        collapsed: true
+      }
     },
     {
       name: 'info',
       title: 'Project info',
       options: {
         collapsible: true,
-        collapsed: true,
-      },
+        collapsed: true
+      }
     },
     {
       name: 'project-links',
       title: 'Project URLs',
       options: {
         collapsible: true,
-        collapsed: true,
-      },
+        collapsed: true
+      }
     },
     {
       name: 'project-cards',
       title: 'Project Cards',
       options: {
         collapsible: true,
-        collapsed: true,
-      },
-    },
+        collapsed: true
+      }
+    }
   ],
   fields: [
     {
       title: 'Title',
       name: 'title',
-      type: 'title',
+      type: 'title'
     },
     {
       title: 'Excerpt',
       name: 'excerpt',
       type: 'excerpt',
-      fieldset: 'meta-data',
+      fieldset: 'meta-data'
     },
     {
       title: 'Share Image',
       name: 'share_image',
       type: 'image',
-      fieldset: 'meta-data',
+      fieldset: 'meta-data'
     },
     {
       title: 'Slug',
       name: 'slug',
       type: 'custom-slug',
-      fieldset: 'meta-data',
+      fieldset: 'meta-data'
     },
     {
       title: 'Client',
       name: 'client',
       type: 'client',
-      fieldset: 'info',
+      fieldset: 'info'
     },
     {
       title: 'Studio',
       name: 'studio',
       type: 'studio',
-      fieldset: 'info',
+      fieldset: 'info'
     },
     {
       title: 'Role',
       name: 'role',
       type: 'role',
-      fieldset: 'info',
+      fieldset: 'info'
     },
     {
       title: 'Text stack',
       name: 'tech',
       type: 'string',
       description: 'seperate each tech with a comma',
-      fieldset: 'info',
+      fieldset: 'info'
     },
     {
       name: 'url',
       type: 'custom-url',
       title: 'URL to project',
-      fieldset: 'project-links',
+      fieldset: 'project-links'
     },
     {
       name: 'iframe',
       type: 'url',
       title: 'iFrame URL for video',
-      fieldset: 'project-links',
+      fieldset: 'project-links'
     },
     {
       name: 'card_color',
       type: 'color',
       title: 'Card background colour',
-      fieldset: 'project-cards',
+      fieldset: 'project-cards'
     },
     {
       name: 'card_full_image',
@@ -109,16 +109,16 @@ export default {
       title: 'Make image full width of card',
       layout: 'checkbox',
       options: {
-        isHighlighted: true,
+        isHighlighted: true
       },
-      fieldset: 'project-cards',
+      fieldset: 'project-cards'
     },
     {
       name: 'card_home',
       type: 'image',
       title: 'Card for Home',
       description: 'This should be a 5:4 ratio',
-      fieldset: 'project-cards',
+      fieldset: 'project-cards'
     },
     {
       name: 'card_pagination',
@@ -126,17 +126,17 @@ export default {
       title: 'Image for pagination',
       description:
         'This should be cropped correctly and on a transparent background',
-      fieldset: 'project-cards',
+      fieldset: 'project-cards'
     },
     {
       name: 'body',
       type: 'project-block',
-      title: 'Project text',
-    },
+      title: 'Project text'
+    }
   ],
   preview: {
     select: {
-      title: 'title',
-    },
-  },
-};
+      title: 'title'
+    }
+  }
+}

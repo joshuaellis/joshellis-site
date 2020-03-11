@@ -4,12 +4,12 @@
  *
  */
 
-import React, { memo } from 'react';
-import clsx from 'clsx';
-import styled from 'styled-components';
-import { useRouter } from 'next/router';
+import React, { memo } from 'react'
+import clsx from 'clsx'
+import styled from 'styled-components'
+import { useRouter } from 'next/router'
 
-import t from 'lib/strings';
+import t from 'lib/strings'
 
 import {
   COLORS,
@@ -17,48 +17,48 @@ import {
   FONT_SIZES,
   LINE_HEIGHTS,
   MEDIA_QUERIES,
-  MISC,
-} from 'styles';
+  MISC
+} from 'styles'
 
-function Footer() {
-  const router = useRouter();
-  const play = router ? router.pathname === '/play' : false;
+function Footer () {
+  const router = useRouter()
+  const play = router ? router.pathname === '/play' : false
   return (
     <StyledFooter className={clsx(play && 'foot--play')}>
       <FooterList>
         <FooterItem>
           <FooterAnchor
-            className="foot__anchor--blue"
-            rel="noopener"
-            target="_blank"
-            href="mailto:joshua.ellis18@gmail.com?Subject=Hello%20there"
+            className='foot__anchor--blue'
+            rel='noopener'
+            target='_blank'
+            href='mailto:joshua.ellis18@gmail.com?Subject=Hello%20there'
           >
             {t('contact-title')}
           </FooterAnchor>
         </FooterItem>
         <FooterItem>
           <FooterAnchor
-            className="foot__anchor--red"
-            rel="noopener"
-            target="_blank"
-            href="https://www.instagram.com/planet_josh"
+            className='foot__anchor--red'
+            rel='noopener'
+            target='_blank'
+            href='https://www.instagram.com/planet_josh'
           >
             {t('instagram-title')}
           </FooterAnchor>
         </FooterItem>
         <FooterItem>
           <FooterAnchor
-            className="foot__anchor--orange"
-            rel="noopener"
-            target="_blank"
-            href="https://www.linkedin.com/in/joshua-ellis-66b362114/"
+            className='foot__anchor--orange'
+            rel='noopener'
+            target='_blank'
+            href='https://www.linkedin.com/in/joshua-ellis-66b362114/'
           >
             {t('linkedin-title')}
           </FooterAnchor>
         </FooterItem>
       </FooterList>
     </StyledFooter>
-  );
+  )
 }
 
 export const StyledFooter = styled.footer`
@@ -81,7 +81,7 @@ export const StyledFooter = styled.footer`
     background-color: transparent;
     color: ${COLORS.white};
   }
-`;
+`
 
 const FooterList = styled.ul`
   padding: 0 16px;
@@ -96,7 +96,7 @@ const FooterList = styled.ul`
     margin: 0 auto;
     max-width: ${MISC.maxWidth + MISC.pageGutter * 5}px;
   }
-`;
+`
 
 const FooterItem = styled.li`
   ${MEDIA_QUERIES.tabletUp} {
@@ -104,7 +104,7 @@ const FooterItem = styled.li`
       margin-left: 40px;
     }
   }
-`;
+`
 
 const FooterAnchor = styled.a`
   text-decoration: none;
@@ -157,6 +157,6 @@ const FooterAnchor = styled.a`
       background-color: ${COLORS.green};
     }
   }
-`;
+`
 
-export default memo(Footer);
+export default memo(Footer)

@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import clsx from 'clsx';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import clsx from 'clsx'
 
-import t from 'lib/strings';
+import t from 'lib/strings'
 
 import {
   COLORS,
@@ -11,33 +11,33 @@ import {
   FONT_FAMILIES,
   FONT_SIZES,
   LINE_HEIGHTS,
-  MEDIA_QUERIES,
-} from 'styles';
+  MEDIA_QUERIES
+} from 'styles'
 
-export default function SmallNav({ handleInfoClick, openMenu, showInfo }) {
+export default function SmallNav ({ handleInfoClick, openMenu, showInfo }) {
   return (
     <nav>
       <SmallNavAnchor
         className={clsx(openMenu && 'head__nav__link--active')}
-        href="/"
+        href='/'
       >
         {t('nav-projects')}
       </SmallNavAnchor>
       <SmallNavAnchor
         className={clsx(openMenu && 'head__nav__link--active')}
-        href="/play"
+        href='/play'
       >
         {t('nav-play')}
       </SmallNavAnchor>
       <SmallNavButton
-        type="button"
+        type='button'
         onClick={handleInfoClick}
         className={clsx(showInfo && 'head__nav__link--active')}
       >
         {t('nav-about')}
       </SmallNavButton>
     </nav>
-  );
+  )
 }
 
 const SmallNavAnchor = styled.a`
@@ -77,7 +77,7 @@ const SmallNavAnchor = styled.a`
   ${MEDIA_QUERIES.tabletUp} {
     font-size: ${FONT_SIZES.defaultLarge};
   }
-`;
+`
 
 const SmallNavButton = styled.button`
   padding: 0;
@@ -125,10 +125,10 @@ const SmallNavButton = styled.button`
   ${MEDIA_QUERIES.tabletUp} {
     font-size: ${FONT_SIZES.defaultLarge};
   }
-`;
+`
 
 SmallNav.propTypes = {
   handleInfoClick: PropTypes.func,
   openMenu: PropTypes.bool,
-  showInfo: PropTypes.bool,
-};
+  showInfo: PropTypes.bool
+}

@@ -1,5 +1,7 @@
 {
-  "presets": ["next/babel"],
+  "presets": [
+    "next/babel"
+  ],
   "plugins": [
     [
       "styled-components",
@@ -8,6 +10,15 @@
         "displayName": true,
         "preprocess": false
       }
-    ]
-  ]
+    ],
+    "@babel/plugin-proposal-class-properties"
+  ],
+  "env": {
+    "production": {
+      "plugins": [
+        "transform-react-remove-prop-types",
+        "transform-remove-console"
+      ]
+    }
+  }
 }

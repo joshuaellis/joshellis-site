@@ -9,7 +9,7 @@ export default {
       styles: [
         { title: 'Standfirst', value: 'standfirst' },
         { title: 'Normal', value: 'normal' },
-        { title: 'Heading 2', value: 'h2' },
+        { title: 'Heading 2', value: 'h2' }
       ],
       marks: {
         annotations: [
@@ -21,21 +21,21 @@ export default {
             fields: [
               {
                 name: 'url',
-                type: 'url',
-              },
-            ],
-          },
-        ],
-      },
+                type: 'url'
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       type: 'custom-image',
       options: {
-        hotspot: true,
-      },
+        hotspot: true
+      }
     },
     {
-      type: 'multiple_images',
-    },
-  ],
-};
+      type: 'multiple_images'
+    }
+  ]
+}

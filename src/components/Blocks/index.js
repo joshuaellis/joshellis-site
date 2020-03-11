@@ -1,38 +1,35 @@
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable camelcase */
+import React, { memo } from 'react'
+import BlockContent from '@sanity/block-content-to-react'
+import PropTypes from 'prop-types'
+import Plx from 'react-plx'
+import styled from 'styled-components'
 
-import React, { memo } from 'react';
-import BlockContent from '@sanity/block-content-to-react';
-import PropTypes from 'prop-types';
-import Plx from 'react-plx';
-import styled from 'styled-components';
+import { generateColor } from 'lib/utils'
 
-import { generateColor } from 'lib/utils';
-
-import InlineImage from 'components/InlineImage';
-import FullWidthImage from 'components/FullWidthImage';
-import LazyImage, { Image } from 'components/Image';
-import { TextHead, TextBody } from 'components/Text';
+import InlineImage from 'components/InlineImage'
+import FullWidthImage from 'components/FullWidthImage'
+import LazyImage, { Image } from 'components/Image'
+import { TextHead, TextBody } from 'components/Text'
 
 import {
   FONT_FAMILIES,
   FONT_SIZES,
   LINE_HEIGHTS,
   MEDIA_QUERIES,
-  MISC,
-} from 'styles';
+  MISC
+} from 'styles'
 
 const projectSerializers = (container = 'div') => ({
   types: {
     'custom-image': props => CustomImageRenderer(props),
     multiple_images: props => MultipleImageRenderer(props),
-    block: BlockRenderer,
+    block: BlockRenderer
   },
-  container,
-});
+  container
+})
 
-const MultipleImageRenderer = ({ node: { single_image } }) => {
-  const { color } = single_image[0];
+const MultipleImageRenderer = ({ node: { single_image: singleImg } }) => {
+  const { color } = singleImg[0]
   return (
     <ProjectMultipleInline
       parallaxData={[
@@ -47,34 +44,34 @@ const MultipleImageRenderer = ({ node: { single_image } }) => {
               startValue: 20,
               endValue: -10,
               property: 'translateY',
-              unit: '%',
-            },
-          ],
-        },
+              unit: '%'
+            }
+          ]
+        }
       ]}
     >
       <InlineImage
-        className="project__multiple-inline"
+        className='project__multiple-inline'
         color={generateColor(color.rgb, color.alpha)}
-        caption={single_image.map(x => x.caption)}
-        keys={single_image.map(x => x._key)}
+        caption={singleImg.map(x => x.caption)}
+        keys={singleImg.map(x => x._key)}
       >
-        {single_image.map(({ alt, asset, _key }) => (
+        {singleImg.map(({ alt, asset, _key }) => (
           <LazyImage
-            className="project__multiple-inline"
+            className='project__multiple-inline'
             alt={alt}
             img={{ asset }}
             key={_key}
-            sizes="(max-width: 768px) 100vw, 75vw"
+            sizes='(max-width: 768px) 100vw, 75vw'
           />
         ))}
       </InlineImage>
     </ProjectMultipleInline>
-  );
-};
+  )
+}
 
 const CustomImageRenderer = ({
-  node: { alt, asset, caption, fullWidth, color, _key },
+  node: { alt, asset, caption, fullWidth, color, _key }
 }) =>
   fullWidth ? (
     <ProjectFullWidthImage caption={caption} expandId={_key}>
@@ -91,23 +88,23 @@ const CustomImageRenderer = ({
                 startValue: 0,
                 endValue: -60,
                 property: 'translateY',
-                unit: '%',
-              },
-            ],
-          },
+                unit: '%'
+              }
+            ]
+          }
         ]}
       >
         <Image
           // className="project__fullwidth__image"
           alt={alt}
           img={{ asset }}
-          sizes="100vw"
+          sizes='100vw'
         />
       </Plx>
     </ProjectFullWidthImage>
   ) : (
     <ProjectInlineImage
-      className="project__inline"
+      className='project__inline'
       parallaxData={[
         {
           start: 'self',
@@ -120,10 +117,10 @@ const CustomImageRenderer = ({
               startValue: 10,
               endValue: -20,
               property: 'translateY',
-              unit: '%',
-            },
-          ],
-        },
+              unit: '%'
+            }
+          ]
+        }
       ]}
     >
       <InlineImage
@@ -132,24 +129,24 @@ const CustomImageRenderer = ({
         expandId={_key}
       >
         <LazyImage
-          className="project__inline"
+          className='project__inline'
           alt={alt}
           img={{ asset }}
-          sizes="(max-width: 768px) 100vw, 75vw"
+          sizes='(max-width: 768px) 100vw, 75vw'
         />
       </InlineImage>
     </ProjectInlineImage>
-  );
+  )
 
 const BlockRenderer = ({ node, children }) => {
-  const style = node.style || 'normal';
+  const style = node.style || 'normal'
 
   if (/^h\d/.test(style)) {
     return (
       <ProjectTextHead>
         <TextHead>{children}</TextHead>
       </ProjectTextHead>
-    );
+    )
   }
 
   if (style === 'standfirst') {
@@ -157,19 +154,38 @@ const BlockRenderer = ({ node, children }) => {
       <ProjectStandfirst>
         <StandfirstCopy>{children}</StandfirstCopy>
       </ProjectStandfirst>
-    );
+    )
   }
 
-  return <ProjectTextBody>{children}</ProjectTextBody>;
-};
+  return <ProjectTextBody>{children}</ProjectTextBody>
+}
 
-// eslint-disable-next-line react/prop-types
 export default memo(({ body }) => (
   <BlockContent
     blocks={body}
     serializers={projectSerializers(React.Fragment)}
   />
-));
+))
+
+export const ProjectTextBody = styled(TextBody)`
+  ${MISC.genericSection};
+  margin-bottom: 32px;
+  pointer-events: none;
+
+  ${MEDIA_QUERIES.tabletUp} {
+    margin-bottom: 64px;
+    & > * {
+      grid-column: 1 / 4;
+    }
+  }
+
+  ${MEDIA_QUERIES.desktopUp} {
+    margin-bottom: 72px;
+    & > * {
+      grid-column: 1 / 5;
+    }
+  }
+`
 
 export const ProjectTextHead = styled.div`
   ${MISC.genericSection};
@@ -200,27 +216,7 @@ export const ProjectTextHead = styled.div`
       grid-column: 1 / 5;
     }
   }
-`;
-
-export const ProjectTextBody = styled(TextBody)`
-  ${MISC.genericSection};
-  margin-bottom: 32px;
-  pointer-events: none;
-
-  ${MEDIA_QUERIES.tabletUp} {
-    margin-bottom: 64px;
-    & > * {
-      grid-column: 1 / 4;
-    }
-  }
-
-  ${MEDIA_QUERIES.desktopUp} {
-    margin-bottom: 72px;
-    & > * {
-      grid-column: 1 / 5;
-    }
-  }
-`;
+`
 
 export const ProjectMultipleInline = styled(Plx)`
   ${ProjectTextBody} + & {
@@ -236,9 +232,9 @@ export const ProjectMultipleInline = styled(Plx)`
       margin-top: -160px;
     }
   }
-`;
+`
 
-export const ProjectFullWidthImage = styled(FullWidthImage)``;
+export const ProjectFullWidthImage = styled(FullWidthImage)``
 
 export const ProjectInlineImage = styled(Plx)`
   ${ProjectTextBody} + & {
@@ -270,7 +266,7 @@ export const ProjectInlineImage = styled(Plx)`
       margin-top: -80px;
     }
   }
-`;
+`
 
 export const ProjectStandfirst = styled.div`
   ${MISC.genericSection};
@@ -284,7 +280,7 @@ export const ProjectStandfirst = styled.div`
   ${MEDIA_QUERIES.tabletUp} {
     display: none;
   }
-`;
+`
 
 const StandfirstCopy = styled.p`
   font-family: ${FONT_FAMILIES.surt};
@@ -301,7 +297,7 @@ const StandfirstCopy = styled.p`
     font-size: ${FONT_SIZES.mediumLarge};
     line-height: ${LINE_HEIGHTS.mediumLarge};
   }
-`;
+`
 
 MultipleImageRenderer.propTypes = {
   node: PropTypes.shape({
@@ -310,11 +306,11 @@ MultipleImageRenderer.propTypes = {
         alt: PropTypes.string,
         asset: PropTypes.object,
         caption: PropTypes.string,
-        color: PropTypes.object,
-      }),
-    ),
-  }),
-};
+        color: PropTypes.object
+      })
+    )
+  })
+}
 
 CustomImageRenderer.propTypes = {
   node: PropTypes.shape({
@@ -323,11 +319,11 @@ CustomImageRenderer.propTypes = {
     caption: PropTypes.string,
     fullWidth: PropTypes.bool,
     color: PropTypes.object,
-    _key: PropTypes.string,
-  }),
-};
+    _key: PropTypes.string
+  })
+}
 
 BlockRenderer.propTypes = {
   node: PropTypes.object,
-  children: PropTypes.array,
-};
+  children: PropTypes.array
+}

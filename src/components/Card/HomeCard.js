@@ -1,33 +1,32 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import Link from 'next/link';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import Link from 'next/link'
 
-import { Image } from 'components/Image';
+import { Image } from 'components/Image'
 
 import {
   COLORS,
   FONT_FAMILIES,
   FONT_SIZES,
   LINE_HEIGHTS,
-  MEDIA_QUERIES,
-} from 'styles';
+  MEDIA_QUERIES
+} from 'styles'
 
-export default function HomeCard({ className, client, image, slug, title }) {
+export default function HomeCard ({ className, client, image, slug, title }) {
   return (
-    <Link href="/work/[project]" as={slug}>
+    <Link href='/work/[project]' as={slug}>
       <HomeCardAnchor className={className}>
         <HomeCardMeta>
           <MetaCaption>{client}</MetaCaption>
           <MetaTitle>{title}</MetaTitle>
         </HomeCardMeta>
         <HomeCardImage>
-          <StyledImage img={image} sizes="(max-width: 768px) 100vw, 75vw" />
+          <StyledImage img={image} sizes='(max-width: 768px) 100vw, 75vw' />
         </HomeCardImage>
       </HomeCardAnchor>
     </Link>
-  );
+  )
 }
 
 const HomeCardImage = styled.div`
@@ -38,7 +37,7 @@ const HomeCardImage = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-`;
+`
 
 const StyledImage = styled(Image)`
   position: absolute;
@@ -46,7 +45,7 @@ const StyledImage = styled(Image)`
   left: 0;
   width: 100%;
   height: 100%;
-`;
+`
 
 const HomeCardAnchor = styled.a`
   color: ${COLORS.white};
@@ -80,7 +79,7 @@ const HomeCardAnchor = styled.a`
   ${MEDIA_QUERIES.desktopUp} {
     padding: 32px;
   }
-`;
+`
 
 const HomeCardMeta = styled.div`
   position: absolute;
@@ -97,7 +96,7 @@ const HomeCardMeta = styled.div`
     top: 32px;
     left: 32px;
   }
-`;
+`
 
 const MetaCaption = styled.span`
   font-family: ${FONT_FAMILIES.surt};
@@ -115,7 +114,7 @@ const MetaCaption = styled.span`
   ${MEDIA_QUERIES.desktopUp} {
     margin-bottom: 12px;
   }
-`;
+`
 
 const MetaTitle = styled.h3`
   font-family: ${FONT_FAMILIES.surt};
@@ -132,12 +131,12 @@ const MetaTitle = styled.h3`
     font-size: ${FONT_SIZES.larger};
     line-height: ${LINE_HEIGHTS.massiveSmall};
   }
-`;
+`
 
 HomeCard.propTypes = {
   className: PropTypes.string,
   client: PropTypes.string,
   image: PropTypes.object,
   slug: PropTypes.string,
-  title: PropTypes.string,
-};
+  title: PropTypes.string
+}

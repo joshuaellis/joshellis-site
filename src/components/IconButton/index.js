@@ -1,15 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
-import { COLORS } from 'styles';
+import { COLORS } from 'styles'
 
-function IconButton({ children, className, ...restProps }) {
+function IconButton ({ children, className, ...restProps }) {
   return (
-    <StyledIconButton type="button" className={className} {...restProps}>
+    <StyledIconButton type='button' className={className} {...restProps}>
       {children}
     </StyledIconButton>
-  );
+  )
 }
 
 const StyledIconButton = styled.button`
@@ -37,11 +37,11 @@ const StyledIconButton = styled.button`
   &:focus {
     box-shadow: 0 0 0 2px rgba(${COLORS.blue}, 0.4);
   }
-`;
+`
 
 IconButton.propTypes = {
   children: PropTypes.element,
-  className: PropTypes.string,
-};
+  className: PropTypes.string
+}
 
-export default IconButton;
+export default IconButton

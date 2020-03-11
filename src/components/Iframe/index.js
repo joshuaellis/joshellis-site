@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
-import Loader from 'components/Loader';
+import Loader from 'components/Loader'
 
-import { COLORS } from 'styles';
+import { COLORS } from 'styles'
 
-function Iframe({ className, src, title }) {
-  const [loading, setLoading] = useState(true);
+function Iframe ({ className, src, title }) {
+  const [loading, setLoading] = useState(true)
   return (
     <IframeContainer className={className}>
       {loading && (
         <IframeLoader>
-          <Loader size="32px" />
+          <Loader size='32px' />
         </IframeLoader>
       )}
       <iframe
@@ -24,7 +24,7 @@ function Iframe({ className, src, title }) {
         onLoad={() => setLoading(false)}
       />
     </IframeContainer>
-  );
+  )
 }
 
 export const IframeContainer = styled.div`
@@ -47,23 +47,23 @@ export const IframeContainer = styled.div`
     width: 100%;
     border: 0;
   }
-`;
+`
 
 const IframeLoader = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-`;
+`
 
 Iframe.defaultProps = {
-  title: 'project video',
-};
+  title: 'project video'
+}
 
 Iframe.propTypes = {
   className: PropTypes.string,
   src: PropTypes.string.isRequired,
-  title: PropTypes.string,
-};
+  title: PropTypes.string
+}
 
-export default Iframe;
+export default Iframe

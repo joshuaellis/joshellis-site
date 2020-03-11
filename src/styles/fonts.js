@@ -1,6 +1,6 @@
 export const FONT_FAMILIES = {
-  surt: 'Surt, Helvetica, Arial, sans-serif',
-};
+  surt: 'Surt, Helvetica, Arial, sans-serif'
+}
 
 export const FONT_SIZES = {
   massiveLarge: '80px',
@@ -15,8 +15,8 @@ export const FONT_SIZES = {
   default: '16px',
   defaultSmall: '14px',
   small: '12px',
-  nav: '18px',
-};
+  nav: '18px'
+}
 
 export const LINE_HEIGHTS = {
   massiveLarge: '96px',
@@ -29,8 +29,8 @@ export const LINE_HEIGHTS = {
   defaultLarge: '32px',
   default: '24px',
   defaultSmall: '20px',
-  small: '14px',
-};
+  small: '14px'
+}
 
 export const CSS_FONTS = `
   @font-face {
@@ -77,4 +77,4 @@ export const CSS_FONTS = `
     font-weight: 900;
     font-style: normal;
   }
-`;
+`

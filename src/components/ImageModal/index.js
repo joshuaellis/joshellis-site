@@ -4,30 +4,30 @@
  *
  */
 
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import styled, { keyframes } from 'styled-components';
+import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
+import styled, { keyframes } from 'styled-components'
 
-import handleModalScrollling from 'lib/handleModalScrollling';
+import handleModalScrollling from 'lib/handleModalScrollling'
 
-import Close from 'icons/close.svg';
+import Close from 'icons/close.svg'
 
-import IconButton from 'components/IconButton';
-import { Image } from 'components/Image';
+import IconButton from 'components/IconButton'
+import { Image } from 'components/Image'
 
-import { EASING } from 'styles';
+import { EASING } from 'styles'
 
-function ImageModal({ img, className, onCloseClick }) {
-  useEffect(handleModalScrollling, []);
+function ImageModal ({ img, className, onCloseClick }) {
+  useEffect(handleModalScrollling, [])
 
   return (
     <Modal className={className}>
-      <Image img={img} sizes="100vw" />
-      <IconButton className="modal__button" onClick={onCloseClick}>
+      <Image img={img} sizes='100vw' />
+      <IconButton className='modal__button' onClick={onCloseClick}>
         <Close height={24} width={24} />
       </IconButton>
     </Modal>
-  );
+  )
 }
 
 const FallInKeyframes = keyframes`
@@ -44,7 +44,7 @@ const FallInKeyframes = keyframes`
   100% {
     transform: scale(1);
   }
-`;
+`
 
 const Modal = styled.div`
   width: 100vw;
@@ -75,12 +75,12 @@ const Modal = styled.div`
   & > *:first-child {
     animation: ${FallInKeyframes} 250ms ${EASING.easeOutSine};
   }
-`;
+`
 
 ImageModal.propTypes = {
   className: PropTypes.string,
   img: PropTypes.object,
-  onCloseClick: PropTypes.func,
-};
+  onCloseClick: PropTypes.func
+}
 
-export default ImageModal;
+export default ImageModal

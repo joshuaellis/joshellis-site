@@ -13,7 +13,10 @@
     "fetch:strings": "node ./src/lib/fetchStrings.js",
     "deploy:staging": "git push heroku-staging develop:master",
     "deploy:prod": "git push heroku-production master:master",
-    "generate": "plop --plopfile tools/generators/index.js"
+    "generate": "plop --plopfile tools/generators/index.js",
+    "test": "standard",
+    "format": "prettier-standard --format",
+    "lint": "standard --fix && yarn format"
   },
   "repository": {
     "type": "git",
@@ -22,6 +25,10 @@
   "engines": {
     "node": "10.15.3",
     "yarn": "1.19.0"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "ignore": [".next/", "public/"]
   },
   "author": "Josh Ellis",
   "license": "ISC",
@@ -53,33 +60,21 @@
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/polyfill": "^7.6.0",
     "@storybook/addon-a11y": "^5.1.11",
     "@storybook/addon-backgrounds": "^5.1.11",
     "@storybook/addon-viewport": "^5.1.11",
     "@storybook/react": "^5.1.11",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
-    "babel-plugin-module-resolver": "^3.2.0",
+    "babel-plugin-styled-components": "^1.10.7",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "copy-webpack-plugin": "^5.0.4",
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-config-prettier": "^6.3.0",
-    "eslint-import-resolver-babel-module": "^5.1.0",
-    "eslint-import-resolver-webpack": "^0.11.1",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.14.3",
-    "eslint-plugin-react-hooks": "^2.0.1",
-    "eslint-watch": "^6.0.0",
+    "eslint": "^6.8.0",
     "markdown-it": "^10.0.0",
     "plop": "^2.5.3",
-    "prettier": "^1.18.2",
+    "prettier-standard": "^16.2.1",
+    "standard": "^14.3.1",
     "webpack-bundle-analyzer": "^3.4.1"
   }
 }

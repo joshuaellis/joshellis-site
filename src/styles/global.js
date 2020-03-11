@@ -1,4 +1,4 @@
-import { FONT_FAMILIES, FONT_SIZES, LINE_HEIGHTS } from './fonts';
+import { FONT_FAMILIES, FONT_SIZES, LINE_HEIGHTS } from './fonts'
 
 export default `
     *,
@@ -54,4 +54,4 @@ export default `
     #__next {
       height: 100%;
     }
-`;
+`

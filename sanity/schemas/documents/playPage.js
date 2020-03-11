@@ -17,17 +17,17 @@ export default {
               type: 'string',
               name: 'play_slug',
               title: 'Slug',
-              description: 'This must be the same name as the file in static',
+              description: 'This must be the same name as the file in static'
             },
             {
               type: 'image',
               name: 'play_gif',
               title: 'Gif',
-              description: 'This must be the same 16:9 ratio',
-            },
-          ],
-        },
-      ],
-    },
-  ],
-};
+              description: 'This must be the same 16:9 ratio'
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

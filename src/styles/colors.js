@@ -7,5 +7,5 @@ export default {
   green: '#5fd16d',
   teal: '#4cccaf',
   footBg: '#e8e8e8',
-  type: '#423f4a',
-};
+  type: '#423f4a'
+}

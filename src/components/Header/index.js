@@ -1,20 +1,19 @@
-/* eslint-disable react/jsx-curly-brace-presence */
 /**
  *
  * Header
  *
  */
 
-import React, { memo, useState, useRef } from 'react';
-import { CSSTransition } from 'react-transition-group';
-import { useRouter } from 'next/router';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import styled from 'styled-components';
+import React, { memo, useState, useRef } from 'react'
+import { CSSTransition } from 'react-transition-group'
+import { useRouter } from 'next/router'
+import PropTypes from 'prop-types'
+import clsx from 'clsx'
+import styled from 'styled-components'
 
-import useClickOutside from 'lib/useClickOutside';
-import Portal from 'components/Portal';
-import InfoModal from 'components/InfoModal';
+import useClickOutside from 'lib/useClickOutside'
+import Portal from 'components/Portal'
+import InfoModal from 'components/InfoModal'
 
 import {
   COLORS,
@@ -23,41 +22,41 @@ import {
   FONT_SIZES,
   LINE_HEIGHTS,
   MEDIA_QUERIES,
-  MISC,
-} from 'styles';
+  MISC
+} from 'styles'
 
-import LargeNav from './LargeNav';
-import SmallNav from './SmallNav';
+import LargeNav from './LargeNav'
+import SmallNav from './SmallNav'
 
-function Header({ infoContent }) {
-  const router = useRouter();
-  const [openMenu, setOpenMenu] = useState(false);
-  const [showInfo, setShowInfo] = useState(false);
-  const menuRef = useRef(null);
-  const small = router ? router.pathname !== '/' : true;
-  const play = router ? router.pathname === '/play' : false;
+function Header ({ infoContent }) {
+  const router = useRouter()
+  const [openMenu, setOpenMenu] = useState(false)
+  const [showInfo, setShowInfo] = useState(false)
+  const menuRef = useRef(null)
+  const small = router ? router.pathname !== '/' : true
+  const play = router ? router.pathname === '/play' : false
 
-  const INFO_DURATION = 800;
+  const INFO_DURATION = 800
 
   // event handlers
 
-  useClickOutside(menuRef, setOpenMenu);
+  useClickOutside(menuRef, setOpenMenu)
 
   const handleInfoClick = () => {
     if (openMenu) {
-      setOpenMenu(false);
+      setOpenMenu(false)
     }
-    setShowInfo(!showInfo);
-  };
+    setShowInfo(!showInfo)
+  }
 
   return (
     <StyledHeader className={clsx(play && 'head--play')}>
       <Head className={clsx(small && 'head--small')}>
         <HeadTitle>
-          <a href="/">
-            <span>{'Hello, '}</span>
+          <a href='/'>
+            <span>Hello, </span>
             <span>
-              <span>{"I'm "}</span>
+              <span>I'm </span>
               {'Josh Ellis'}
             </span>
           </a>
@@ -73,12 +72,12 @@ function Header({ infoContent }) {
           />
         )}
       </Head>
-      <Portal elementId="#modal">
+      <Portal elementId='#modal'>
         {infoContent ? (
           <CSSTransition
             in={showInfo}
             timeout={INFO_DURATION}
-            classNames="header__info"
+            classNames='header__info'
             appear
             unmountOnExit
           >
@@ -90,7 +89,7 @@ function Header({ infoContent }) {
         ) : null}
       </Portal>
     </StyledHeader>
-  );
+  )
 }
 
 const StyledHeader = styled.header`
@@ -107,7 +106,7 @@ const StyledHeader = styled.header`
       background-color: transparent;
     }
   }
-`;
+`
 
 const HeadTitle = styled.h1`
   font-family: ${FONT_FAMILIES.surt};
@@ -130,7 +129,7 @@ const HeadTitle = styled.h1`
     font-size: ${FONT_SIZES.massiveLarge};
     line-height: ${LINE_HEIGHTS.massiveLarge};
   }
-`;
+`
 
 const Head = styled.div`
   position: relative;
@@ -194,7 +193,7 @@ const Head = styled.div`
       }
     }
   }
-`;
+`
 
 const HomeInfoModal = styled(InfoModal)`
   left: 100%;
@@ -233,10 +232,10 @@ const HomeInfoModal = styled(InfoModal)`
   &.header__info-exit-done {
     transform: translateX(100%);
   }
-`;
+`
 
 Header.propTypes = {
-  infoContent: PropTypes.object,
-};
+  infoContent: PropTypes.object
+}
 
-export default memo(Header);
+export default memo(Header)

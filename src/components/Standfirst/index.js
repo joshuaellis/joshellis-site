@@ -1,13 +1,12 @@
-/* eslint-disable react/jsx-curly-brace-presence */
 /**
  *
  * Standfirst
  *
  */
 
-import React, { memo } from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React, { memo } from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 import {
   COLORS,
@@ -15,10 +14,10 @@ import {
   FONT_SIZES,
   LINE_HEIGHTS,
   MEDIA_QUERIES,
-  MISC,
-} from 'styles';
+  MISC
+} from 'styles'
 
-function Standfirst({ className }) {
+function Standfirst ({ className }) {
   // const [isStuck, setIsStuck] = useState(false);
   // const stickyRef = useRef(null);
 
@@ -57,11 +56,11 @@ function Standfirst({ className }) {
     <StandfirstDiv className={className}>
       <StandfirstContainer>
         <StandfirstCopy>
-          <span>{"Here's my work –"}</span>
+          <span>Here's my work –</span>
         </StandfirstCopy>
       </StandfirstContainer>
     </StandfirstDiv>
-  );
+  )
 }
 
 const StandfirstDiv = styled.div`
@@ -85,7 +84,7 @@ const StandfirstDiv = styled.div`
   ${MEDIA_QUERIES.desktopUp} {
     top: ${MISC.desktopHeaderHeight}px;
   }
-`;
+`
 
 const StandfirstContainer = styled.div`
   padding: 0 16px;
@@ -99,7 +98,7 @@ const StandfirstContainer = styled.div`
     max-width: ${MISC.maxWidth + MISC.pageGutter * 5}px;
     padding: 0 80px;
   }
-`;
+`
 
 const StandfirstCopy = styled.h2`
   font-family: ${FONT_FAMILIES.surt};
@@ -115,10 +114,10 @@ const StandfirstCopy = styled.h2`
   ${MEDIA_QUERIES.desktopUp} {
     font-size: ${FONT_SIZES.larger};
   }
-`;
+`
 
 Standfirst.propTypes = {
-  className: PropTypes.string,
-};
+  className: PropTypes.string
+}
 
-export default memo(Standfirst);
+export default memo(Standfirst)

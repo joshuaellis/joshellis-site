@@ -1,22 +1,22 @@
-import React from 'react';
-import Head from 'next/head';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from 'react'
+import Head from 'next/head'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 import {
   FONT_FAMILIES,
   FONT_SIZES,
   LINE_HEIGHTS,
   MISC,
-  MEDIA_QUERIES,
-} from 'styles';
+  MEDIA_QUERIES
+} from 'styles'
 
-import Standfirst from 'components/Standfirst';
-import Card from 'components/Card';
+import Standfirst from 'components/Standfirst'
+import Card from 'components/Card'
 
-import t from 'lib/strings';
-import sanity from 'lib/client';
-import { removeMarkdown } from 'lib/utils';
+import t from 'lib/strings'
+import sanity from 'lib/client'
+import { removeMarkdown } from 'lib/utils'
 
 const queries = {
   getProjectCards: `*[_type == 'projectStructure']{
@@ -24,38 +24,38 @@ const queries = {
       'year':year_title,
       'projects':year_project[]->{card_home, title, slug, client}
     }
-  }`,
-};
+  }`
+}
 
-export function Home({ projectCards }) {
+export function Home ({ projectCards }) {
   return (
-    <React.Fragment>
+    <>
       <Head>
         <title>Josh Ellis</title>
-        <meta name="description" content={t('meta-description')} />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={t('meta-title')} />
-        <meta property="og:description" content={t('meta-share')} />
-        <meta property="og:image" content="/home_share.png" />
-        <meta property="og:url" content={t('meta-url')} />
-        <meta property="og:site_name" content={t('site-title')} />
-        <meta name="twitter:title" content={t('meta-title')} />
-        <meta name="twitter:description" content={t('meta-share')} />
-        <meta name="twitter:image" content="/home_share.png" />
+        <meta name='description' content={t('meta-description')} />
+        <meta property='og:type' content='website' />
+        <meta property='og:title' content={t('meta-title')} />
+        <meta property='og:description' content={t('meta-share')} />
+        <meta property='og:image' content='/home_share.png' />
+        <meta property='og:url' content={t('meta-url')} />
+        <meta property='og:site_name' content={t('site-title')} />
+        <meta name='twitter:title' content={t('meta-title')} />
+        <meta name='twitter:description' content={t('meta-share')} />
+        <meta name='twitter:image' content='/home_share.png' />
       </Head>
       <HomeMain>
         <Standfirst />
         <HomeCardGrid>
           {projectCards.map(year => (
             <HomeCard key={year.year}>
-              <YearTitle className="home__cards__year t-small-body">
+              <YearTitle className='home__cards__year t-small-body'>
                 {year.year}
               </YearTitle>
               <YearCardsGrid>
                 {year.projects.map(project => (
                   <Card
                     key={project.slug}
-                    className="home__card"
+                    className='home__card'
                     client={removeMarkdown(project.client)}
                     image={project.card_home}
                     slug={`work/${project.slug}`}
@@ -67,8 +67,8 @@ export function Home({ projectCards }) {
           ))}
         </HomeCardGrid>
       </HomeMain>
-    </React.Fragment>
-  );
+    </>
+  )
 }
 
 const HomeMain = styled.main`
@@ -94,7 +94,7 @@ const HomeMain = styled.main`
       margin-top: 48px;
     }
   }
-`;
+`
 
 const HomeCard = styled.div`
   & + & {
@@ -106,7 +106,7 @@ const HomeCard = styled.div`
       margin-top: 48px;
     }
   }
-`;
+`
 
 const HomeCardGrid = styled.div`
   margin: 88px 16px 0 16px;
@@ -120,7 +120,7 @@ const HomeCardGrid = styled.div`
     padding: 0 80px;
     max-width: ${MISC.maxWidth + MISC.pageGutter * 5}px;
   }
-`;
+`
 
 const YearTitle = styled.span`
   font-family: ${FONT_FAMILIES.surt};
@@ -135,7 +135,7 @@ const YearTitle = styled.span`
     line-height: ${LINE_HEIGHTS.default};
     padding: 8px 16px;
   }
-`;
+`
 
 const YearCardsGrid = styled.div`
   margin-top: 16px;
@@ -155,17 +155,17 @@ const YearCardsGrid = styled.div`
       margin-top: 0;
     }
   }
-`;
+`
 
 Home.propTypes = {
-  projectCards: PropTypes.array,
-};
+  projectCards: PropTypes.array
+}
 
 Home.getInitialProps = async () => {
-  const [{ projects }] = await sanity.fetch(queries.getProjectCards);
+  const [{ projects }] = await sanity.fetch(queries.getProjectCards)
   return {
-    projectCards: projects,
-  };
-};
+    projectCards: projects
+  }
+}
 
-export default Home;
+export default Home

@@ -1,34 +1,34 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
-import ImageExpandButton from 'components/ImageExpandButton';
+import ImageExpandButton from 'components/ImageExpandButton'
 
-import { FONT_FAMILIES, FONT_SIZES, LINE_HEIGHTS, MEDIA_QUERIES } from 'styles';
+import { FONT_FAMILIES, FONT_SIZES, LINE_HEIGHTS, MEDIA_QUERIES } from 'styles'
 
-export default function ImageContainer({
+export default function ImageContainer ({
   caption,
   children,
   id,
-  onImageExpandClick,
+  onImageExpandClick
 }) {
   const handleExpandClick = e => {
     if (onImageExpandClick) {
-      onImageExpandClick(e);
+      onImageExpandClick(e)
     }
-  };
+  }
 
   return (
     <ImageInner>
       <ImageExpandButton
-        className="inline-image__expand"
+        className='inline-image__expand'
         id={id}
         onClick={handleExpandClick}
       />
       <ImageWrapper>{children}</ImageWrapper>
       <ImageCaption>{caption}</ImageCaption>
     </ImageInner>
-  );
+  )
 }
 
 export const ImageInner = styled.div`
@@ -42,7 +42,7 @@ export const ImageInner = styled.div`
       display: none;
     }
   }
-`;
+`
 
 const ImageWrapper = styled.div`
   width: 100%;
@@ -51,7 +51,7 @@ const ImageWrapper = styled.div`
     width: 100%;
     object-fit: contain;
   }
-`;
+`
 
 const ImageCaption = styled.p`
   margin-top: 4px;
@@ -66,11 +66,11 @@ const ImageCaption = styled.p`
     font-size: ${FONT_SIZES.defaultSmall};
     line-height: ${LINE_HEIGHTS.default};
   }
-`;
+`
 
 ImageContainer.propTypes = {
   caption: PropTypes.string,
   id: PropTypes.string,
   children: PropTypes.element,
-  onImageExpandClick: PropTypes.func,
-};
+  onImageExpandClick: PropTypes.func
+}

@@ -1,16 +1,16 @@
-import React, { memo } from 'react';
-import { useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import styled from 'styled-components';
+import React, { memo } from 'react'
+import { useDispatch } from 'react-redux'
+import PropTypes from 'prop-types'
+import clsx from 'clsx'
+import styled from 'styled-components'
 
-import { setImageModalStateAction } from 'store/actions/projectActions';
+import { setImageModalStateAction } from 'store/actions/projectActions'
 
-import { MEDIA_QUERIES, MISC } from 'styles';
+import { MEDIA_QUERIES, MISC } from 'styles'
 
-import ImageContainer, { ImageInner } from './ImageContainer';
+import ImageContainer, { ImageInner } from './ImageContainer'
 
-function InlineImage({
+function InlineImage ({
   caption,
   children,
   className,
@@ -20,20 +20,20 @@ function InlineImage({
   style,
   ...restProps
 }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const handleExpandClick = e =>
     dispatch(
       setImageModalStateAction(
         e.currentTarget.getAttribute('data-modal-id'),
-        true,
-      ),
-    );
+        true
+      )
+    )
 
   return (
     <InlineImageRoot
       className={clsx(
         children && children.length > 1 && 'inlineimage--multiple',
-        className,
+        className
       )}
       style={{ backgroundColor: color, ...style }}
       {...restProps}
@@ -62,7 +62,7 @@ function InlineImage({
         )}
       </InlineImageContainer>
     </InlineImageRoot>
-  );
+  )
 }
 
 const InlineImageRoot = styled.div`
@@ -74,7 +74,7 @@ const InlineImageRoot = styled.div`
     padding-top: 40px;
     padding-bottom: 56px;
   }
-`;
+`
 
 const InlineImageContainer = styled.div`
   padding: 0 16px;
@@ -109,7 +109,7 @@ const InlineImageContainer = styled.div`
       margin-top: 56px;
     }
   }
-`;
+`
 
 InlineImage.propTypes = {
   caption: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
@@ -119,12 +119,12 @@ InlineImage.propTypes = {
   expandId: PropTypes.string,
   expandClick: PropTypes.func,
   keys: PropTypes.array,
-  style: PropTypes.object,
-};
+  style: PropTypes.object
+}
 
 InlineImage.defaultProps = {
   color: 'transparent',
-  style: {},
-};
+  style: {}
+}
 
-export default memo(InlineImage);
+export default memo(InlineImage)

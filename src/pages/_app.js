@@ -1,22 +1,22 @@
-import App from 'next/app';
-import React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
-import { Provider } from 'react-redux';
+import App from 'next/app'
+import React from 'react'
+import styled, { createGlobalStyle } from 'styled-components'
+import { Provider } from 'react-redux'
 
-import { CSS_GLOBAL, CSS_FONTS } from 'styles';
+import { CSS_GLOBAL, CSS_FONTS } from 'styles'
 
-import withReduxStore from 'lib/with-redux-store';
-import sanity from 'lib/client';
+import withReduxStore from 'lib/with-redux-store'
+import sanity from 'lib/client'
 
-import Header from 'components/Header';
-import Footer from 'components/Footer';
+import Header from 'components/Header'
+import Footer from 'components/Footer'
 
-import { putProjectListDataAction } from 'store/actions/globalActions';
+import { putProjectListDataAction } from 'store/actions/globalActions'
 
 const GlobalStyle = createGlobalStyle`
   ${CSS_FONTS}
   ${CSS_GLOBAL}
-`;
+`
 
 const queries = {
   getProjectList: `*[_type == 'projectStructure']{
@@ -25,42 +25,42 @@ const queries = {
       'projects':year_project[]->{slug, title}
     }
   }`,
-  getInfoContent: `*[_type == 'aboutpage' && !(_id in path("drafts.**"))]`,
-};
+  getInfoContent: '*[_type == \'aboutpage\' && !(_id in path("drafts.**"))]'
+}
 
 class MyApp extends App {
-  static async getInitialProps({ Component, ctx }) {
-    const [projectData] = await sanity.fetch(queries.getProjectList);
-    const [infoData] = await sanity.fetch(queries.getInfoContent);
-    const { projects } = projectData;
+  static async getInitialProps ({ Component, ctx }) {
+    const [projectData] = await sanity.fetch(queries.getProjectList)
+    const [infoData] = await sanity.fetch(queries.getInfoContent)
+    const { projects } = projectData
     return {
       projectList: projects,
       infoContent: infoData,
       pageProps: Component.getInitialProps
         ? await Component.getInitialProps(ctx)
-        : {},
-    };
+        : {}
+    }
   }
 
-  render() {
+  render () {
     const {
       Component,
       pageProps,
       reduxStore,
       projectList,
-      infoContent,
-    } = this.props;
+      infoContent
+    } = this.props
 
-    let projects;
+    let projects
     if (projectList) {
-      projects = projectList;
-      reduxStore.dispatch(putProjectListDataAction(projectList));
+      projects = projectList
+      reduxStore.dispatch(putProjectListDataAction(projectList))
     } else {
-      projects = reduxStore.getState().global.projectList;
+      projects = reduxStore.getState().global.projectList
     }
 
     return (
-      <React.Fragment>
+      <>
         <GlobalStyle />
         <Provider store={reduxStore}>
           <AppMain>
@@ -69,8 +69,8 @@ class MyApp extends App {
             <Footer />
           </AppMain>
         </Provider>
-      </React.Fragment>
-    );
+      </>
+    )
   }
 }
 
@@ -86,6 +86,6 @@ const AppMain = styled.div`
   & > footer {
     flex-shrink: 0;
   }
-`;
+`
 
-export default withReduxStore(MyApp);
+export default withReduxStore(MyApp)

@@ -1,28 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import clsx from 'clsx';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import clsx from 'clsx'
 
-import PlayIcon from 'icons/play.svg';
-import InfoIcon from 'icons/info.svg';
+import PlayIcon from 'icons/play.svg'
+import InfoIcon from 'icons/info.svg'
 
-import { COLORS, MEDIA_QUERIES } from 'styles';
+import { COLORS, MEDIA_QUERIES } from 'styles'
 
-export default function LargeNav({ handleInfoClick, showInfo }) {
+export default function LargeNav ({ handleInfoClick, showInfo }) {
   return (
     <StyledNav>
-      <LargeNavAnchor href="/play">
+      <LargeNavAnchor href='/play'>
         <PlayIcon width={32} height={32} />
       </LargeNavAnchor>
       <LargeNavButton
-        type="button"
+        type='button'
         onClick={handleInfoClick}
         className={clsx(showInfo && 'icon--active')}
       >
         <InfoIcon width={32} height={32} />
       </LargeNavButton>
     </StyledNav>
-  );
+  )
 }
 
 const StyledNav = styled.nav`
@@ -48,7 +48,7 @@ const StyledNav = styled.nav`
   > .icon--active {
     border-color: $c-blue;
   }
-`;
+`
 
 const LargeNavButton = styled.button`
   padding: 0;
@@ -76,7 +76,7 @@ const LargeNavButton = styled.button`
     margin-left: -2px;
     fill: ${COLORS.white};
   }
-`;
+`
 
 const LargeNavAnchor = styled.a`
   display: block;
@@ -100,9 +100,9 @@ const LargeNavAnchor = styled.a`
   ${MEDIA_QUERIES.tabletUp} {
     display: block;
   }
-`;
+`
 
 LargeNav.propTypes = {
   handleInfoClick: PropTypes.func,
-  showInfo: PropTypes.bool,
-};
+  showInfo: PropTypes.bool
+}

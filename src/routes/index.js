@@ -1,4 +1,4 @@
-const routes = require('next-routes')();
+const routes = require('next-routes')()
 
 //
 // Because of awesome Next.js, You don't need to add routes for all pages.
@@ -15,8 +15,8 @@ const routes = require('next-routes')();
 // routes.add('work', '/work/:project');
 // routes.add('create', '/create_post');
 // routes.add('signin', '/sign_in');
-routes.add('play/circlwave', 'play/circlewave/index.html');
+routes.add('play/circlwave', 'play/circlewave/index.html')
 //
 //
 
-module.exports = routes;
+module.exports = routes

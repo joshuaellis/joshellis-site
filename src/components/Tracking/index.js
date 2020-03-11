@@ -1,4 +1,4 @@
-import GTMTrackingHead from './gtm-head';
-import GTMTrackingBody from './gtm-body';
+import GTMTrackingHead from './gtm-head'
+import GTMTrackingBody from './gtm-body'
 
-export { GTMTrackingHead, GTMTrackingBody };
+export { GTMTrackingHead, GTMTrackingBody }

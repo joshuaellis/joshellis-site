@@ -1,41 +1,39 @@
-/* eslint-disable no-console */
-import express from 'express';
-import compression from 'compression';
-import next from 'next';
+import express from 'express'
+import compression from 'compression'
+import next from 'next'
 
-const FILE_NAME_SITEMAP = 'sitemap.xml';
-const FILE_NAME_ROBOTS = 'robots.txt';
+const FILE_NAME_SITEMAP = 'sitemap.xml'
+const FILE_NAME_ROBOTS = 'robots.txt'
 
-let dev;
+let dev
 switch (process.env.NODE_ENV_CUSTOM) {
   case 'production':
-    dev = false;
-    break;
+    dev = false
+    break
   default:
-    dev = true;
-    break;
+    dev = true
+    break
 }
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000
 
 if (
   dev ||
   process.env.NODE_ENV_TEST === 'staging' ||
   process.env.NODE_ENV_TEST === 'production'
 ) {
-  // eslint-disable-next-line global-require
-  require('dotenv').config();
+  require('dotenv').config()
 }
 
-const app = next({ dev });
-const handle = app.getRequestHandler();
+const app = next({ dev })
+const handle = app.getRequestHandler()
 
 app.prepare().then(() => {
-  const server = express();
+  const server = express()
 
-  server.enable('strict routing');
-  server.use(compression());
-  server.use(express.json());
+  server.enable('strict routing')
+  server.use(compression())
+  server.use(express.json())
 
   // FILES //
 
@@ -43,55 +41,55 @@ app.prepare().then(() => {
     res.status(200).sendFile(FILE_NAME_ROBOTS, {
       root: `${__dirname}/static/`,
       headers: {
-        'Content-Type': 'text/plain;charset=UTF-8',
-      },
-    });
-  });
+        'Content-Type': 'text/plain;charset=UTF-8'
+      }
+    })
+  })
 
   server.get(`/${FILE_NAME_SITEMAP}`, (req, res) => {
     res.status(200).sendFile(FILE_NAME_SITEMAP, {
       root: `${__dirname}/static/`,
       headers: {
-        'Content-Type': 'text/plain;charset=UTF-8',
-      },
-    });
-  });
+        'Content-Type': 'text/plain;charset=UTF-8'
+      }
+    })
+  })
 
   // HOME //
 
   server.get('/', (req, res) => {
-    render(req, res, '/', req.query);
-  });
+    render(req, res, '/', req.query)
+  })
 
   // CATCHALL //
 
-  server.get('*', (req, res) => handle(req, res));
+  server.get('*', (req, res) => handle(req, res))
 
   // LISTEN //
 
   server.listen(port, err => {
-    if (err) throw err;
-    console.log(`WEBSITE MODE: ${process.env.NODE_ENV_CUSTOM}`);
-    console.log(`RUNNING ON PORT: ${port}`);
-  });
+    if (err) throw err
+    console.log(`WEBSITE MODE: ${process.env.NODE_ENV_CUSTOM}`)
+    console.log(`RUNNING ON PORT: ${port}`)
+  })
 
   //
-});
+})
 
 const render = (req, res, pagePath, queryParams, options = null) => {
   if (options) {
     // console.log('set options', options)
     if (options.maxAge !== null && options.maxAge > 0) {
-      res.header('Cache-Control', `public, max-age=${options.maxAge}`);
+      res.header('Cache-Control', `public, max-age=${options.maxAge}`)
     }
   }
 
   app
     .renderToHTML(req, res, pagePath, queryParams)
     .then(html => {
-      res.send(html);
+      res.send(html)
     })
     .catch(err => {
-      app.renderError(err, req, res, pagePath, queryParams);
-    });
-};
+      app.renderError(err, req, res, pagePath, queryParams)
+    })
+}

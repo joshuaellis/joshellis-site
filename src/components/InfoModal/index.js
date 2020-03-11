@@ -4,33 +4,33 @@
  *
  */
 
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import BlockContent from '@sanity/block-content-to-react';
+import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import BlockContent from '@sanity/block-content-to-react'
 
-import Text from 'components/Text';
-import { testMarkdownLink } from 'lib/utils';
-import handleModalScrollling from 'lib/handleModalScrollling';
+import Text from 'components/Text'
+import { testMarkdownLink } from 'lib/utils'
+import handleModalScrollling from 'lib/handleModalScrollling'
 import {
   COLORS,
   FONT_FAMILIES,
   FONT_SIZES,
   LINE_HEIGHTS,
   MEDIA_QUERIES,
-  MISC,
-} from 'styles';
+  MISC
+} from 'styles'
 
-import aboutSerializer from './aboutSerializer';
+import aboutSerializer from './aboutSerializer'
 
 const renderCollabText = content => {
-  const textArr = content.collaboration_text.split(/(\[)/);
-  const markdown = testMarkdownLink(textArr.slice(1).join(''));
-  return [textArr[0], markdown];
-};
+  const textArr = content.collaboration_text.split(/(\[)/)
+  const markdown = testMarkdownLink(textArr.slice(1).join(''))
+  return [textArr[0], markdown]
+}
 
-function InfoModal({ className, content, ...restProps }) {
-  useEffect(handleModalScrollling, []);
+function InfoModal ({ className, content, ...restProps }) {
+  useEffect(handleModalScrollling, [])
 
   return (
     <InfoWrapper className={className} {...restProps}>
@@ -41,14 +41,14 @@ function InfoModal({ className, content, ...restProps }) {
             serializers={aboutSerializer('h2')}
           />
         </InfoTitles>
-        <InfoColab className="info-modal__colab">
+        <InfoColab className='info-modal__colab'>
           <Text text={renderCollabText(content)}>
             <InfoColabTitle>Collaboration</InfoColabTitle>
           </Text>
         </InfoColab>
       </InfoInner>
     </InfoWrapper>
-  );
+  )
 }
 
 const InfoWrapper = styled.div`
@@ -66,7 +66,7 @@ const InfoWrapper = styled.div`
   ${MEDIA_QUERIES.tabletUp} {
     padding-top: 88px;
   }
-`;
+`
 
 const InfoInner = styled.div`
   padding: 0 16px;
@@ -92,7 +92,7 @@ const InfoInner = styled.div`
     margin-top: 56px;
     margin-bottom: 72px;
   }
-`;
+`
 
 const InfoTitles = styled.div`
   h2 {
@@ -123,7 +123,7 @@ const InfoTitles = styled.div`
       line-height: ${LINE_HEIGHTS.mediumLarge};
     }
   }
-`;
+`
 
 const InfoColab = styled.div`
   margin-top: 40px;
@@ -151,7 +151,7 @@ const InfoColab = styled.div`
       ${MISC.desktopPageGutter / 2}px + ((100vw - ${MISC.maxWidth}) / 2)
     );
   }
-`;
+`
 
 const InfoColabTitle = styled.h3`
   font-family: ${FONT_FAMILIES.surt};
@@ -174,12 +174,12 @@ const InfoColabTitle = styled.h3`
     font-size: ${FONT_SIZES.mediumLarge};
     line-height: ${LINE_HEIGHTS.mediumLarge};
   }
-`;
+`
 
 InfoModal.propTypes = {
   className: PropTypes.string,
   content: PropTypes.object,
-  style: PropTypes.object,
-};
+  style: PropTypes.object
+}
 
-export default InfoModal;
+export default InfoModal

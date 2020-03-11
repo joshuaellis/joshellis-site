@@ -1,41 +1,40 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import Link from 'next/link';
-import styled from 'styled-components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import clsx from 'clsx'
+import Link from 'next/link'
+import styled from 'styled-components'
 
-import { Image } from 'components/Image';
+import { Image } from 'components/Image'
 
 import {
   COLORS,
   FONT_FAMILIES,
   FONT_SIZES,
   LINE_HEIGHTS,
-  MEDIA_QUERIES,
-} from 'styles';
+  MEDIA_QUERIES
+} from 'styles'
 
-export default function NextPrevCard({
+export default function NextPrevCard ({
   className,
   color,
   fullWidth,
   image,
   slug,
   title,
-  variant,
+  variant
 }) {
   return (
-    <Link href="/work/[project]" as={slug}>
+    <Link href='/work/[project]' as={slug}>
       <NextPrev
         className={clsx(
           fullWidth && 'card--full-width',
           variant === 'prev' && 'card--prev',
           variant === 'next' && 'card--next',
-          className,
+          className
         )}
         style={{ backgroundColor: color }}
       >
-        <div className="card__container">
+        <div className='card__container'>
           <NextPrevMeta>
             <MetaCaption>
               {variant === 'next' ? 'Next project' : 'Previous project'}
@@ -46,15 +45,15 @@ export default function NextPrevCard({
             className={clsx(fullWidth && 'card__full__container')}
           >
             <NextPrevImage
-              className="card__image"
+              className='card__image'
               img={image}
-              sizes="(max-width: 768px) 75vw, 50vw"
+              sizes='(max-width: 768px) 75vw, 50vw'
             />
           </NextPrevImageContainer>
         </div>
       </NextPrev>
     </Link>
-  );
+  )
 }
 
 const NextPrevImage = styled(Image)`
@@ -74,7 +73,7 @@ const NextPrevImage = styled(Image)`
     bottom: 32px;
     width: 323px;
   }
-`;
+`
 
 const NextPrevImageContainer = styled.div`
   &.card__full__container {
@@ -84,13 +83,13 @@ const NextPrevImageContainer = styled.div`
     top: 0;
     left: 0;
   }
-`;
+`
 
 const NextPrevMeta = styled.div`
   ${MEDIA_QUERIES.desktopUp} {
     margin-top: 24px;
   }
-`;
+`
 
 const NextPrev = styled.a`
   color: ${COLORS.white};
@@ -175,7 +174,7 @@ const NextPrev = styled.a`
       }
     }
   }
-`;
+`
 
 const MetaCaption = styled.span`
   font-family: ${FONT_FAMILIES.surt};
@@ -190,14 +189,14 @@ const MetaCaption = styled.span`
     line-height: ${LINE_HEIGHTS.defaultSmall};
     margin-bottom: 12px;
   }
-`;
+`
 
 const MetaTitle = styled.h3`
   font-family: ${FONT_FAMILIES.surt};
   font-size: ${FONT_SIZES.default};
   line-height: ${LINE_HEIGHTS.default};
   font-weight: 800;
-`;
+`
 
 NextPrevCard.propTypes = {
   className: PropTypes.string,
@@ -206,5 +205,5 @@ NextPrevCard.propTypes = {
   image: PropTypes.object,
   slug: PropTypes.string,
   title: PropTypes.string,
-  variant: PropTypes.string,
-};
+  variant: PropTypes.string
+}

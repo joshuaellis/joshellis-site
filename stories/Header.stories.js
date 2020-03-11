@@ -1,7 +1,7 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
+import React from 'react'
+import { storiesOf } from '@storybook/react'
 
-import Header from 'components/Header';
+import Header from 'components/Header'
 
 const DATA = [
   {
@@ -9,25 +9,25 @@ const DATA = [
     projects: [
       { title: 'x', slug: 'xx' },
       { title: 'y', slug: 'yy' },
-      { title: 'z', slug: 'zz' },
-    ],
+      { title: 'z', slug: 'zz' }
+    ]
   },
   {
     year: '2018',
     projects: [
       { title: 'a', slug: 'aa' },
       { title: 'b', slug: 'bb' },
-      { title: 'c', slug: 'cc' },
-    ],
+      { title: 'c', slug: 'cc' }
+    ]
   },
   {
     year: '2017',
     projects: [
       { title: 'black-mirror', slug: 'bm' },
       { title: 'Cisco digital readiness', slug: 'cisco' },
-      { title: 'c', slug: 'cc' },
-    ],
-  },
-];
+      { title: 'c', slug: 'cc' }
+    ]
+  }
+]
 
-storiesOf('Header', module).add('default', () => <Header projectList={DATA} />);
+storiesOf('Header', module).add('default', () => <Header projectList={DATA} />)

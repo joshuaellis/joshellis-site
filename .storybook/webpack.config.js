@@ -1,8 +1,8 @@
-const path = require('path');
-const autoprefixer = require('autoprefixer');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require('path')
+const autoprefixer = require('autoprefixer')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-const iconsPath = path.resolve(__dirname, '..', 'public', 'icons');
+const iconsPath = path.resolve(__dirname, '..', 'public', 'icons')
 
 module.exports = {
   resolve: {
@@ -12,8 +12,8 @@ module.exports = {
       lib: path.resolve(__dirname, '../src/lib/'),
       layouts: path.resolve(__dirname, '../src/layouts/'),
       icons: path.resolve(__dirname, '../public/icons/'),
-      store: path.resolve(__dirname, '../src/store/'),
-    },
+      store: path.resolve(__dirname, '../src/store/')
+    }
   },
   module: {
     rules: [
@@ -21,8 +21,8 @@ module.exports = {
         test: /\.css$/,
         use: [
           { loader: 'style-loader' },
-          { loader: 'css-loader', options: { url: true, importLoaders: 1 } },
-        ],
+          { loader: 'css-loader', options: { url: true, importLoaders: 1 } }
+        ]
       },
       {
         test: /\.scss$/,
@@ -30,13 +30,13 @@ module.exports = {
           { loader: 'style-loader' },
           { loader: 'css-loader', options: { url: true } },
           {
-            loader: 'sass-loader',
-          },
-        ],
+            loader: 'sass-loader'
+          }
+        ]
       },
       {
         test: /\.(eot|otf|ttf|woff|woff2)$/,
-        use: 'file-loader',
+        use: 'file-loader'
       },
       {
         test: /\.svg$/,
@@ -46,12 +46,12 @@ module.exports = {
             loader: 'react-svg-loader',
             options: {
               svgo: {
-                plugins: [{ removeTitle: true }],
-              },
-            },
-          },
+                plugins: [{ removeTitle: true }]
+              }
+            }
+          }
         ],
-        include: [iconsPath],
+        include: [iconsPath]
       },
       {
         test: /\.(jpg|png|gif)$/,
@@ -60,11 +60,11 @@ module.exports = {
             loader: 'url-loader',
             options: {
               // Inline files smaller than 10 kB
-              limit: 10 * 1024,
-            },
-          },
-        ],
-      },
-    ],
-  },
-};
+              limit: 10 * 1024
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

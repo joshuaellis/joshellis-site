@@ -4,6 +4,6 @@ export default {
   title: 'Client',
   validation: Rule => Rule.required(),
   options: {
-    minRows: 1,
-  },
-};
+    minRows: 1
+  }
+}

@@ -4,23 +4,23 @@
  *
  */
 
-import React, { memo, useState } from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import styled from 'styled-components';
+import React, { memo, useState } from 'react'
+import PropTypes from 'prop-types'
+import clsx from 'clsx'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import styled from 'styled-components'
 
-import { imageUrlFor } from 'lib/images';
+import { imageUrlFor } from 'lib/images'
 
-import Loader from 'components/Loader';
+import Loader from 'components/Loader'
 
-import { MEDIA_QUERIES } from 'styles';
+import { MEDIA_QUERIES } from 'styles'
 
 const LazyImage = ({ className, img, sizes, scrollPosition, ...restProps }) => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true)
   return (
     <ImageContainer className={clsx(loading && 'image--loading')}>
-      {loading && <ImageLoader size="32px" />}
+      {loading && <ImageLoader size='32px' />}
       <StyledLazyImage
         wrapperClassName={className}
         src={getURL(img, WIDTH.deskX2)}
@@ -42,8 +42,8 @@ const LazyImage = ({ className, img, sizes, scrollPosition, ...restProps }) => {
         {...restProps}
       />
     </ImageContainer>
-  );
-};
+  )
+}
 
 export const Image = ({ className, img, sizes, ...restProps }) => (
   <StyledImage
@@ -63,7 +63,19 @@ export const Image = ({ className, img, sizes, ...restProps }) => (
     sizes={sizes}
     {...restProps}
   />
-);
+)
+
+const ImageLoader = styled(Loader)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 30;
+`
+
+const StyledImage = styled.img``
+
+const StyledLazyImage = styled(LazyLoadImage)``
 
 const ImageContainer = styled.div`
   &.image--loading {
@@ -97,19 +109,7 @@ const ImageContainer = styled.div`
       }
     }
   }
-`;
-
-const ImageLoader = styled(Loader)`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 30;
-`;
-
-const StyledImage = styled.img``;
-
-const StyledLazyImage = styled(LazyLoadImage)``;
+`
 
 const WIDTH = {
   deskX2: 2560,
@@ -119,26 +119,26 @@ const WIDTH = {
   largeMobileX2: 1080,
   largeMobileX1: 540,
   mobileX2: 750,
-  mobileX1: 375,
-};
+  mobileX1: 375
+}
 
 const getURL = (img, size) =>
   imageUrlFor(img)
     .auto('format')
     .width(size)
-    .url();
+    .url()
 
 LazyImage.propTypes = {
   className: PropTypes.string,
   img: PropTypes.object,
   sizes: PropTypes.string,
-  scrollPosition: PropTypes.object,
-};
+  scrollPosition: PropTypes.object
+}
 
 Image.propTypes = {
   className: PropTypes.string,
   img: PropTypes.object,
-  sizes: PropTypes.string,
-};
+  sizes: PropTypes.string
+}
 
-export default memo(LazyImage);
+export default memo(LazyImage)

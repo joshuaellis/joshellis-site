@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 import {
   COLORS,
@@ -8,17 +8,17 @@ import {
   FONT_FAMILIES,
   FONT_SIZES,
   LINE_HEIGHTS,
-  MEDIA_QUERIES,
-} from 'styles';
+  MEDIA_QUERIES
+} from 'styles'
 
-export default function MetaItem({ children, title }) {
+export default function MetaItem ({ children, title }) {
   return (
     <MetaItemContainer>
       <MetaItemTitle>{title}</MetaItemTitle>
       <MetaItemOrnament />
       {children}
     </MetaItemContainer>
-  );
+  )
 }
 
 const MetaItemContainer = styled.div`
@@ -69,7 +69,7 @@ const MetaItemContainer = styled.div`
   &:nth-child(4) {
     grid-area: tech;
   }
-`;
+`
 
 const MetaItemTitle = styled.span`
   font-family: ${FONT_FAMILIES.surt};
@@ -81,7 +81,7 @@ const MetaItemTitle = styled.span`
   ${MEDIA_QUERIES.tabletUp} {
     font-size: ${FONT_SIZES.default};
   }
-`;
+`
 
 const MetaItemOrnament = styled.span`
   margin: 8px 0 16px 0;
@@ -89,13 +89,13 @@ const MetaItemOrnament = styled.span`
   background-color: ${COLORS.black};
   height: 4px;
   width: 24px;
-`;
+`
 
 MetaItem.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
-    PropTypes.array,
+    PropTypes.array
   ]),
-  title: PropTypes.string,
-};
+  title: PropTypes.string
+}

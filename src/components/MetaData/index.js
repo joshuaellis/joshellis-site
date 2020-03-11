@@ -1,14 +1,14 @@
-import React, { memo } from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React, { memo } from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
-import { testMarkdownLink } from 'lib/utils';
+import { testMarkdownLink } from 'lib/utils'
 
-import { FONT_FAMILIES, FONT_SIZES, LINE_HEIGHTS, MEDIA_QUERIES } from 'styles';
+import { FONT_FAMILIES, FONT_SIZES, LINE_HEIGHTS, MEDIA_QUERIES } from 'styles'
 
-import MetaItem from './MetaItem';
+import MetaItem from './MetaItem'
 
-function MetaData({ className, children }) {
+function MetaData ({ className, children }) {
   return (
     <MetaDataContainer className={className}>
       {children.map(x =>
@@ -16,10 +16,10 @@ function MetaData({ className, children }) {
           <MetaItem title={x.title} key={x.title}>
             {testMarkdownLink(x.copy)}
           </MetaItem>
-        ) : null,
+        ) : null
       )}
     </MetaDataContainer>
-  );
+  )
 }
 
 const MetaDataContainer = styled.div`
@@ -39,11 +39,11 @@ const MetaDataContainer = styled.div`
     grid-column-gap: 32px;
     grid-row-gap: 56px;
   }
-`;
+`
 
 MetaData.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.array,
-};
+  children: PropTypes.array
+}
 
-export default memo(MetaData);
+export default memo(MetaData)

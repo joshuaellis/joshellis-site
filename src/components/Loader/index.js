@@ -1,16 +1,16 @@
-import React, { memo } from 'react';
-import PropTypes from 'prop-types';
-import styled, { keyframes } from 'styled-components';
+import React, { memo } from 'react'
+import PropTypes from 'prop-types'
+import styled, { keyframes } from 'styled-components'
 
-import { COLORS } from 'styles';
+import { COLORS } from 'styles'
 
-function Loader({ className, size }) {
+function Loader ({ className, size }) {
   return (
     <LoaderContainer
       className={className}
       style={{ width: size, height: size }}
     />
-  );
+  )
 }
 
 const SpinKeyframes = keyframes`
@@ -20,7 +20,7 @@ const SpinKeyframes = keyframes`
   to {
     transform: rotate(360deg);
   }
-`;
+`
 
 const SpinBackKeyframes = keyframes`
   from {
@@ -29,7 +29,7 @@ const SpinBackKeyframes = keyframes`
   to {
     transform: rotate(-720deg);
   }
-`;
+`
 
 const LoaderContainer = styled.div`
   position: relative;
@@ -52,11 +52,11 @@ const LoaderContainer = styled.div`
     border-radius: 50%;
     animation: ${SpinBackKeyframes} 1s linear infinite;
   }
-`;
+`
 
 Loader.propTypes = {
   className: PropTypes.string,
-  size: PropTypes.string,
-};
+  size: PropTypes.string
+}
 
-export default memo(Loader);
+export default memo(Loader)

@@ -1,14 +1,12 @@
-/* eslint-disable global-require */
-const { IgnorePlugin } = require('webpack');
-const path = require('path');
+const { IgnorePlugin } = require('webpack')
+const path = require('path')
 
 const initExport = {
   webpack: (config, { dev, isServer }) => {
-    const prod = !dev;
+    const prod = !dev
 
-    config.plugins.push(new IgnorePlugin(/^\.\/locale$/, /moment$/));
+    config.plugins.push(new IgnorePlugin(/^\.\/locale$/, /moment$/))
 
-    // eslint-disable-next-line no-param-reassign
     config.resolve.alias = {
       ...config.resolve.alias,
       components: path.resolve(__dirname, './src/components/'),
@@ -16,17 +14,16 @@ const initExport = {
       lib: path.resolve(__dirname, 'src/lib/'),
       layouts: path.resolve(__dirname, './src/layouts/'),
       icons: path.resolve(__dirname, './public/icons/'),
-      store: path.resolve(__dirname, './src/store/'),
-    };
+      store: path.resolve(__dirname, './src/store/')
+    }
 
-    const iconsPath = path.resolve(__dirname, '.', 'public', 'icons');
+    const iconsPath = path.resolve(__dirname, '.', 'public', 'icons')
 
     config.module.rules.forEach(rule => {
       if (rule.test && rule.test.toString().indexOf('svg') !== -1) {
-        // eslint-disable-next-line no-param-reassign
-        rule.exclude = [iconsPath];
+        rule.exclude = [iconsPath]
       }
-    });
+    })
 
     config.module.rules.push({
       test: /\.svg$/,
@@ -36,28 +33,27 @@ const initExport = {
           loader: 'react-svg-loader',
           options: {
             svgo: {
-              plugins: [{ removeTitle: true }],
-            },
-          },
-        },
+              plugins: [{ removeTitle: true }]
+            }
+          }
+        }
       ],
-      include: [iconsPath],
-    });
+      include: [iconsPath]
+    })
 
     if (!prod && process.env.ANALYZE_BUILD) {
-      const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+      const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
       config.plugins.push(
         new BundleAnalyzerPlugin({
           analyzerMode: 'server',
           analyzerPort: isServer ? 8888 : 8889,
-          openAnalyzer: true,
-        }),
-      );
+          openAnalyzer: true
+        })
+      )
     }
 
-    return config;
-  },
-};
+    return config
+  }
+}
 
-/* eslint-enable global-require */
-module.exports = initExport;
+module.exports = initExport

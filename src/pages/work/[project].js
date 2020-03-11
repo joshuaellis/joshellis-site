@@ -1,28 +1,26 @@
-/* eslint-disable camelcase */
-/* eslint-disable no-underscore-dangle */
-import React from 'react';
-import Head from 'next/head';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import styled from 'styled-components';
+import React from 'react'
+import Head from 'next/head'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import styled from 'styled-components'
 
-import sanity from 'lib/client';
-import { testMarkdownLink, flattenArray } from 'lib/utils';
-import getNextPrevItems from 'lib/pagination';
+import sanity from 'lib/client'
+import { testMarkdownLink, flattenArray } from 'lib/utils'
+import getNextPrevItems from 'lib/pagination'
 
 import Blocks, {
   ProjectInlineImage,
   ProjectFullWidthImage,
   ProjectMultipleInline,
-  ProjectStandfirst,
-} from 'components/Blocks';
-import MetaData from 'components/MetaData';
-import LargeUrl from 'components/LargeUrl';
-import Portal from 'components/Portal';
-import ImageModal from 'components/ImageModal';
-import Iframe, { IframeContainer } from 'components/Iframe';
-import Card from 'components/Card';
-import { StyledFooter } from 'components/Footer';
+  ProjectStandfirst
+} from 'components/Blocks'
+import MetaData from 'components/MetaData'
+import LargeUrl from 'components/LargeUrl'
+import Portal from 'components/Portal'
+import ImageModal from 'components/ImageModal'
+import Iframe, { IframeContainer } from 'components/Iframe'
+import Card from 'components/Card'
+import { StyledFooter } from 'components/Footer'
 
 import {
   COLORS,
@@ -30,10 +28,10 @@ import {
   FONT_SIZES,
   LINE_HEIGHTS,
   MEDIA_QUERIES,
-  MISC,
-} from 'styles';
+  MISC
+} from 'styles'
 
-import { setImageModalStateAction } from 'store/actions/projectActions';
+import { setImageModalStateAction } from 'store/actions/projectActions'
 
 const queries = {
   getProject: id =>
@@ -43,17 +41,17 @@ const queries = {
       'projects': projects[]{
         'projects':year_project[]->{card_pagination, card_full_image, title, slug, 'hex': card_color.hex}
       }
-    }`,
-};
+    }`
+}
 
 const renderMeta = ({ client, studio, role, tech }) => [
   { title: 'Client', copy: client },
   { title: 'Studio', copy: studio },
   { title: 'Role', copy: role },
-  { title: 'Tech', copy: tech },
-];
+  { title: 'Tech', copy: tech }
+]
 
-export function ProjectPage({
+export function ProjectPage ({
   body,
   dispatchSetImageModalState,
   excerpt,
@@ -61,16 +59,16 @@ export function ProjectPage({
   imageModalId,
   meta,
   showImageModal,
-  share_image,
+  shareImg,
   slug,
   paginationItems,
   title,
-  url,
+  url
 }) {
-  const closeImageModal = () => dispatchSetImageModalState(null, false);
+  const closeImageModal = () => dispatchSetImageModalState(null, false)
   const getActiveImage = () => {
     // Check the array to see if it gives us a response
-    const [initialKey] = body.filter(x => x._key === imageModalId);
+    const [initialKey] = body.filter(x => x._key === imageModalId)
     if (!initialKey) {
       /**
        *
@@ -86,32 +84,32 @@ export function ProjectPage({
         .filter(x => x._type === 'multiple_images')
         .map(x => x.single_image)
         .flat()
-        .filter(x => x._key === imageModalId);
-      return multipleKey;
+        .filter(x => x._key === imageModalId)
+      return multipleKey
     }
-    return initialKey;
-  };
+    return initialKey
+  }
   return (
-    <React.Fragment>
+    <>
       <Head>
         <title>{`${title} | Josh Ellis`}</title>
-        <meta property="og:title" content={`${title} | Josh Ellis`} />
-        <meta name="description" content={excerpt} />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={`${title} | Josh Ellis`} />
-        <meta property="og:description" content={excerpt} />
-        <meta property="og:image" content={share_image} />
-        <meta property="og:locale" content="en_UK" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
+        <meta property='og:title' content={`${title} | Josh Ellis`} />
+        <meta name='description' content={excerpt} />
+        <meta property='og:type' content='website' />
+        <meta property='og:title' content={`${title} | Josh Ellis`} />
+        <meta property='og:description' content={excerpt} />
+        <meta property='og:image' content={shareImg} />
+        <meta property='og:locale' content='en_UK' />
+        <meta property='og:image:width' content='1200' />
+        <meta property='og:image:height' content='630' />
         <meta
-          property="og:url"
+          property='og:url'
           content={`https://www.joshellis.co.uk/work/${slug}`}
         />
-        <meta property="og:site_name" content={`${title} | Josh Ellis`} />
-        <meta name="twitter:title" content={`${title} | Josh Ellis`} />
-        <meta name="twitter:description" content={excerpt} />
-        <meta name="twitter:image" content={share_image} />
+        <meta property='og:site_name' content={`${title} | Josh Ellis`} />
+        <meta name='twitter:title' content={`${title} | Josh Ellis`} />
+        <meta name='twitter:description' content={excerpt} />
+        <meta name='twitter:image' content={shareImg} />
       </Head>
       <ProjectMain>
         <ProjectHeader>
@@ -119,7 +117,7 @@ export function ProjectPage({
           <ProjectSubHead>
             <Blocks body={body.slice(0, 1)} />
             <ProjectDivider>
-              <div></div>
+              <div />
             </ProjectDivider>
             <ProjectMeta>{renderMeta(meta)}</ProjectMeta>
           </ProjectSubHead>
@@ -139,6 +137,7 @@ export function ProjectPage({
       <ProjectPagination>
         {paginationItems.map((x, i) => (
           <Card
+            key={x.title}
             color={x.hex}
             fullWidth={x.card_full_image}
             image={x.card_pagination}
@@ -148,7 +147,7 @@ export function ProjectPage({
           />
         ))}
       </ProjectPagination>
-      <Portal elementId="#modal">
+      <Portal elementId='#modal'>
         {showImageModal && (
           <ImageModal
             img={imageModalId ? { ...getActiveImage() } : null}
@@ -156,8 +155,8 @@ export function ProjectPage({
           />
         )}
       </Portal>
-    </React.Fragment>
-  );
+    </>
+  )
 }
 
 const ProjectMain = styled.main`
@@ -186,12 +185,12 @@ const ProjectMain = styled.main`
     grid-template-columns: [left-col] 48px [centered] auto 48px [right-col];
     grid-column-gap: 32px;
   }
-`;
+`
 
 const ProjectHeader = styled.header`
   ${MISC.genericSection};
   width: 100%;
-`;
+`
 
 const ProjectTitle = styled.h1`
   margin-top: 20px;
@@ -215,7 +214,7 @@ const ProjectTitle = styled.h1`
     font-size: ${FONT_SIZES.massiveLarge};
     line-height: ${LINE_HEIGHTS.massiveLarge};
   }
-`;
+`
 
 const ProjectSubHead = styled.div`
   ${MISC.genericSection};
@@ -251,7 +250,7 @@ const ProjectSubHead = styled.div`
       grid-column: 1 / 7;
     }
   }
-`;
+`
 
 const ProjectMeta = styled(MetaData)`
   margin-top: 36px;
@@ -267,7 +266,7 @@ const ProjectMeta = styled(MetaData)`
     margin-bottom: 0;
     grid-column: 9 / 13;
   }
-`;
+`
 
 const ProjectDivider = styled.div`
   display: none;
@@ -285,7 +284,7 @@ const ProjectDivider = styled.div`
       height: 100%;
     }
   }
-`;
+`
 
 const ProjectPagination = styled.div`
   margin-top: 40px;
@@ -302,7 +301,7 @@ const ProjectPagination = styled.div`
   ${MEDIA_QUERIES.desktopUp} {
     margin-top: 120px;
   }
-`;
+`
 
 const ProjectUrl = styled.div`
   ${MISC.genericSection};
@@ -336,7 +335,7 @@ const ProjectUrl = styled.div`
       justify-self: flex-end;
     }
   }
-`;
+`
 
 const ProjectIframe = styled.div`
   ${MISC.genericSection};
@@ -361,22 +360,22 @@ const ProjectIframe = styled.div`
       grid-column: 4 / 13;
     }
   }
-`;
+`
 
 ProjectPage.getInitialProps = async ({ query, res }) => {
-  const { project } = query;
-  const [data] = await sanity.fetch(queries.getProject(project));
-  const [{ projects }] = await sanity.fetch(queries.getNextPrevCard());
+  const { project } = query
+  const [data] = await sanity.fetch(queries.getProject(project))
+  const [{ projects }] = await sanity.fetch(queries.getNextPrevCard())
   const flattenedProjects = flattenArray(
-    projects.map(x => [...x.projects]),
-  ).reverse();
-  const paginationItems = getNextPrevItems(project, flattenedProjects);
+    projects.map(x => [...x.projects])
+  ).reverse()
+  const paginationItems = getNextPrevItems(project, flattenedProjects)
 
   if (!data || data.length === 0) {
     res.writeHead(302, {
-      Location: '/',
-    });
-    res.end();
+      Location: '/'
+    })
+    res.end()
   }
   const {
     body,
@@ -389,8 +388,8 @@ ProjectPage.getInitialProps = async ({ query, res }) => {
     title,
     url,
     slug,
-    share_image,
-  } = data;
+    share_image: shareImg
+  } = data
   return {
     body,
     excerpt,
@@ -399,20 +398,20 @@ ProjectPage.getInitialProps = async ({ query, res }) => {
     url,
     paginationItems,
     slug,
-    share_image,
-    meta: { client, role, studio, tech },
-  };
-};
+    shareImg,
+    meta: { client, role, studio, tech }
+  }
+}
 
 const mapStateToProps = ({ project: { imageModal } }) => ({
   imageModalId: imageModal.imageId,
-  showImageModal: imageModal.show,
-});
+  showImageModal: imageModal.show
+})
 
 const mapDispatchToProps = dispatch => ({
   dispatchSetImageModalState: (id, show) =>
-    dispatch(setImageModalStateAction(id, show)),
-});
+    dispatch(setImageModalStateAction(id, show))
+})
 
 ProjectPage.propTypes = {
   body: PropTypes.array,
@@ -426,7 +425,7 @@ ProjectPage.propTypes = {
   showImageModal: PropTypes.bool,
   slug: PropTypes.string,
   title: PropTypes.string,
-  url: PropTypes.string,
-};
+  url: PropTypes.string
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectPage)

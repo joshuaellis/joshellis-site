@@ -16,7 +16,7 @@ export default {
             {
               type: 'string',
               name: 'year_title',
-              title: 'Year',
+              title: 'Year'
             },
             {
               title: 'Project',
@@ -25,13 +25,13 @@ export default {
               of: [
                 {
                   type: 'reference',
-                  to: [{ type: 'project' }],
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    },
-  ],
-};
+                  to: [{ type: 'project' }]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

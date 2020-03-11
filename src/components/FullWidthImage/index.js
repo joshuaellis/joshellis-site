@@ -1,29 +1,29 @@
-import React, { memo } from 'react';
-import { useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import styled from 'styled-components';
+import React, { memo } from 'react'
+import { useDispatch } from 'react-redux'
+import PropTypes from 'prop-types'
+import clsx from 'clsx'
+import styled from 'styled-components'
 
-import ImageExpandButton from 'components/ImageExpandButton';
-import { setImageModalStateAction } from 'store/actions/projectActions';
+import ImageExpandButton from 'components/ImageExpandButton'
+import { setImageModalStateAction } from 'store/actions/projectActions'
 
-import { FONT_FAMILIES, FONT_SIZES, LINE_HEIGHTS, MEDIA_QUERIES } from 'styles';
+import { FONT_FAMILIES, FONT_SIZES, LINE_HEIGHTS, MEDIA_QUERIES } from 'styles'
 
-function FullWidthImage({
+function FullWidthImage ({
   children,
   caption,
   className,
   expandId,
   ...restProps
 }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const handleExpandClick = e =>
     dispatch(
       setImageModalStateAction(
         e.currentTarget.getAttribute('data-modal-id'),
-        true,
-      ),
-    );
+        true
+      )
+    )
 
   return (
     <FullWidthImageContainer
@@ -31,14 +31,14 @@ function FullWidthImage({
       {...restProps}
     >
       <ImageExpandButton
-        className="fullwidthimage__expand"
+        className='fullwidthimage__expand'
         id={expandId}
         onClick={handleExpandClick}
       />
       <FullImage>{children}</FullImage>
       <ImageCaption>{caption}</ImageCaption>
     </FullWidthImageContainer>
-  );
+  )
 }
 
 export const FullWidthImageContainer = styled.div`
@@ -54,7 +54,7 @@ export const FullWidthImageContainer = styled.div`
       display: none;
     }
   }
-`;
+`
 
 const FullImage = styled.div`
   max-height: 200px;
@@ -67,7 +67,7 @@ const FullImage = styled.div`
   ${MEDIA_QUERIES.desktopUp} {
     max-height: 600px;
   }
-`;
+`
 
 const ImageCaption = styled.p`
   margin: 4px 16px 0 16px;
@@ -85,13 +85,13 @@ const ImageCaption = styled.p`
   ${MEDIA_QUERIES.desktopUp} {
     margin: 8px 32px 0 32px;
   }
-`;
+`
 
 FullWidthImage.propTypes = {
   children: PropTypes.element,
   className: PropTypes.string,
   caption: PropTypes.string,
-  expandId: PropTypes.string,
-};
+  expandId: PropTypes.string
+}
 
-export default memo(FullWidthImage);
+export default memo(FullWidthImage)

@@ -1,15 +1,15 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require('fs')
+const path = require('path')
 const pageComponents = fs.readdirSync(
-  path.join(__dirname, '../../../src/components'),
-);
+  path.join(__dirname, '../../../src/components')
+)
 const pageContainers = fs.readdirSync(
-  path.join(__dirname, '../../../src/pages'),
-);
-const components = pageComponents.concat(pageContainers);
+  path.join(__dirname, '../../../src/pages')
+)
+const components = pageComponents.concat(pageContainers)
 
-function componentExists(comp) {
-  return components.indexOf(comp) >= 0;
+function componentExists (comp) {
+  return components.indexOf(comp) >= 0
 }
 
-module.exports = componentExists;
+module.exports = componentExists
