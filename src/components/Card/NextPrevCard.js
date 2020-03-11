@@ -102,6 +102,7 @@ const NextPrev = styled.a`
   background-color: ${COLORS.footBg};
   height: 200px;
   padding: 16px;
+  cursor: pointer;
 
   &:hover {
     ${NextPrevImage} {

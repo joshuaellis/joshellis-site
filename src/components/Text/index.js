@@ -28,8 +28,8 @@ export const TextHead = ({ children, className }) => (
 );
 
 export const TextBody = ({ children, className }) => (
-  <TextBlock>
-    <TextCopy className={className}>{children}</TextCopy>
+  <TextBlock className={className}>
+    <TextCopy>{children}</TextCopy>
   </TextBlock>
 );
 
@@ -39,7 +39,7 @@ const TextTitle = styled.h2`
   font-family: ${FONT_FAMILIES.surt};
   font-size: ${FONT_SIZES.defaultSmall};
   line-height: ${LINE_HEIGHTS.default};
-  font-weight: 400;
+  font-weight: 800;
   color: ${COLORS.black};
 
   ${MEDIA_QUERIES.tabletUp} {
@@ -64,7 +64,7 @@ const TextCopy = styled.p`
 
   ${MEDIA_QUERIES.tabletUp} {
     font-size: ${FONT_SIZES.defaultLarge};
-    line-height: ${FONT_SIZES.defaultLarge};
+    line-height: ${LINE_HEIGHTS.defaultLarge};
   }
 `;
 

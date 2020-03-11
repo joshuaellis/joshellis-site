@@ -77,7 +77,6 @@ const ImageCaption = styled.p`
   line-height: ${LINE_HEIGHTS.defaultSmall};
 
   ${MEDIA_QUERIES.tabletUp} {
-    text-align: right;
     margin: 8px 40px 0 40px;
     font-size: ${FONT_SIZES.defaultSmall};
     line-height: ${LINE_HEIGHTS.default};

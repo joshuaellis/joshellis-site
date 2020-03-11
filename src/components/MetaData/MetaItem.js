@@ -75,7 +75,7 @@ const MetaItemTitle = styled.span`
   font-family: ${FONT_FAMILIES.surt};
   font-size: ${FONT_SIZES.defaultSmall};
   line-height: ${LINE_HEIGHTS.default};
-  font-weight: 400;
+  font-weight: 800;
   color: ${COLORS.black};
 
   ${MEDIA_QUERIES.tabletUp} {

@@ -58,6 +58,7 @@ const HomeCardAnchor = styled.a`
   background-color: ${COLORS.footBg};
   padding: 12px;
   position: relative;
+  cursor: pointer;
 
   &:before {
     display: block;
