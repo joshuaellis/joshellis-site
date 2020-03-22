@@ -1,11 +1,8 @@
-const { IgnorePlugin } = require('webpack')
 const path = require('path')
 
 const initExport = {
   webpack: (config, { dev, isServer }) => {
     const prod = !dev
-
-    config.plugins.push(new IgnorePlugin(/^\.\/locale$/, /moment$/))
 
     config.resolve.alias = {
       ...config.resolve.alias,
