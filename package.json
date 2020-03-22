@@ -33,6 +33,7 @@
   "homepage": "https://bitbucket.org/joshua_ellis/joshellis.co.uk#readme",
   "dependencies": {
     "@babel/node": "^7.7.7",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/preset-env": "^7.7.7",
     "@sanity/block-content-to-react": "^2.0.7",
     "@sanity/client": "^0.142.0",
@@ -57,7 +58,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@storybook/addon-a11y": "^5.1.11",
     "@storybook/addon-backgrounds": "^5.1.11",
     "@storybook/addon-viewport": "^5.1.11",
