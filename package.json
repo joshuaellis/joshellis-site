@@ -7,8 +7,6 @@
     "dev": "NODE_ENV_CUSTOM=dev babel-node --presets @babel/preset-env ./server/server.js",
     "build": "NODE_ENV_CUSTOM=production next build",
     "start": "NODE_ENV_CUSTOM=production babel-node --presets @babel/preset-env ./server/server.js",
-    "prestart": "npm run build",
-    "heroku-postbuild": "npm run build",
     "storybook": "start-storybook -p 9001 -s ./",
     "fetch:strings": "node ./src/lib/fetchStrings.js",
     "deploy:staging": "git push heroku-staging develop:master",
