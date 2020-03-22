@@ -1,14 +1,8 @@
 import React, { memo } from 'react'
 import BlockContent from '@sanity/block-content-to-react'
 import PropTypes from 'prop-types'
-import Plx from 'react-plx'
 import styled from 'styled-components'
 
-import { generateColor } from 'lib/utils'
-
-import InlineImage from 'components/InlineImage'
-import FullWidthImage from 'components/FullWidthImage'
-import LazyImage, { Image } from 'components/Image'
 import { TextHead, TextBody } from 'components/Text'
 
 import {
@@ -19,124 +13,22 @@ import {
   MISC
 } from 'styles'
 
+import CustomImageRenderer, {
+  ProjectInlineImage,
+  ProjectFullWidthImage
+} from './CustomImageRenderer'
+import CustomMultipleImageRenderer, {
+  ProjectMultipleInline
+} from './CustomMultipleImageRenderer'
+
 const projectSerializers = (container = 'div') => ({
   types: {
-    'custom-image': props => CustomImageRenderer(props),
-    multiple_images: props => MultipleImageRenderer(props),
+    'custom-image': props => CustomImageRenderer(props.node),
+    multiple_images: props => CustomMultipleImageRenderer(props.node),
     block: BlockRenderer
   },
   container
 })
-
-const MultipleImageRenderer = ({ node: { single_image: singleImg } }) => {
-  const { color } = singleImg[0]
-  return (
-    <ProjectMultipleInline
-      parallaxData={[
-        {
-          start: 'self',
-          startOffset: '0',
-          end: 'self',
-          endOffset: '100%',
-          easing: 'easeOutSine',
-          properties: [
-            {
-              startValue: 20,
-              endValue: -10,
-              property: 'translateY',
-              unit: '%'
-            }
-          ]
-        }
-      ]}
-    >
-      <InlineImage
-        className='project__multiple-inline'
-        color={generateColor(color.rgb, color.alpha)}
-        caption={singleImg.map(x => x.caption)}
-        keys={singleImg.map(x => x._key)}
-      >
-        {singleImg.map(({ alt, asset, _key }) => (
-          <LazyImage
-            className='project__multiple-inline'
-            alt={alt}
-            img={{ asset }}
-            key={_key}
-            sizes='(max-width: 768px) 100vw, 75vw'
-          />
-        ))}
-      </InlineImage>
-    </ProjectMultipleInline>
-  )
-}
-
-const CustomImageRenderer = ({
-  node: { alt, asset, caption, fullWidth, color, _key }
-}) =>
-  fullWidth ? (
-    <ProjectFullWidthImage caption={caption} expandId={_key}>
-      <Plx
-        parallaxData={[
-          {
-            start: 'self',
-            startOffset: '0',
-            end: 'self',
-            endOffset: '100%',
-            easing: 'easeOutSine',
-            properties: [
-              {
-                startValue: 0,
-                endValue: -60,
-                property: 'translateY',
-                unit: '%'
-              }
-            ]
-          }
-        ]}
-      >
-        <Image
-          // className="project__fullwidth__image"
-          alt={alt}
-          img={{ asset }}
-          sizes='100vw'
-        />
-      </Plx>
-    </ProjectFullWidthImage>
-  ) : (
-    <ProjectInlineImage
-      className='project__inline'
-      parallaxData={[
-        {
-          start: 'self',
-          startOffset: '0',
-          end: 'self',
-          endOffset: '100%',
-          easing: 'easeOutSine',
-          properties: [
-            {
-              startValue: 10,
-              endValue: -20,
-              property: 'translateY',
-              unit: '%'
-            }
-          ]
-        }
-      ]}
-    >
-      <InlineImage
-        caption={caption}
-        color={generateColor(color.rgb, color.alpha)}
-        expandId={_key}
-      >
-        <LazyImage
-          className='project__inline'
-          alt={alt}
-          img={{ asset }}
-          sizes='(max-width: 768px) 100vw, 75vw'
-        />
-      </InlineImage>
-    </ProjectInlineImage>
-  )
 
 const BlockRenderer = ({ node, children }) => {
   const style = node.style || 'normal'
@@ -160,44 +52,84 @@ const BlockRenderer = ({ node, children }) => {
   return <ProjectTextBody>{children}</ProjectTextBody>
 }
 
-export default memo(({ body }) => (
-  <BlockContent
-    blocks={body}
-    serializers={projectSerializers(React.Fragment)}
-  />
-))
+function Blocks ({ body }) {
+  return (
+    <BlockContent
+      blocks={body}
+      serializers={projectSerializers(React.Fragment)}
+    />
+  )
+}
 
-export const ProjectTextBody = styled(TextBody)`
+const ProjectTextBody = styled(TextBody)`
   ${MISC.genericSection};
   margin-bottom: 32px;
   pointer-events: none;
 
+  & + ${ProjectInlineImage} {
+    position: relative;
+    z-index: -10;
+    margin-top: -56px;
+  }
+
+  & + ${ProjectMultipleInline} {
+    position: relative;
+    z-index: -10;
+    margin-top: -56px;
+  }
+
   ${MEDIA_QUERIES.tabletUp} {
     margin-bottom: 64px;
+
     & > * {
       grid-column: 1 / 4;
+    }
+
+    & + ${ProjectInlineImage} {
+      margin-top: -128px;
+    }
+
+    & + ${ProjectMultipleInline} {
+      margin-top: -128px;
     }
   }
 
   ${MEDIA_QUERIES.desktopUp} {
     margin-bottom: 72px;
+
     & > * {
       grid-column: 1 / 5;
+    }
+
+    & + ${ProjectInlineImage} {
+      margin-top: -160px;
+    }
+
+    & + ${ProjectMultipleInline} {
+      margin-top: -160px;
     }
   }
 `
 
-export const ProjectTextHead = styled.div`
+const ProjectTextHead = styled.div`
   ${MISC.genericSection};
   margin-top: 32px;
   width: 100%;
   pointer-events: none;
 
+  ${ProjectInlineImage} + & {
+    margin-top: -40px;
+  }
+
   ${MEDIA_QUERIES.tabletUp} {
     margin-top: 64px;
 
-    & + ${ProjectTextBody} {
+  ${ProjectMultipleInline} + & + ${ProjectTextBody} {
       margin-top: -8px;
+    }
+
+    ${ProjectInlineImage} + & {
+      margin-top: -64px;
     }
 
     & > * {
@@ -208,7 +140,11 @@ export const ProjectTextHead = styled.div`
   ${MEDIA_QUERIES.desktopUp} {
     margin-top: 80px;
 
-    & + ${ProjectTextBody} {
+    ${ProjectInlineImage} + & {
+      margin-top: -80px;
+    }
+
+    ${ProjectInlineImage} + & + ${ProjectTextBody} {
       margin-top: -24px;
     }
 
@@ -218,57 +154,7 @@ export const ProjectTextHead = styled.div`
   }
 `
 
-export const ProjectMultipleInline = styled(Plx)`
-  ${ProjectTextBody} + & {
-    position: relative;
-    z-index: -10;
-    margin-top: -56px;
-
-    ${MEDIA_QUERIES.tabletUp} {
-      margin-top: -128px;
-    }
-
-    @include media('>=desktop') {
-      margin-top: -160px;
-    }
-  }
-`
-
-export const ProjectFullWidthImage = styled(FullWidthImage)``
-
-export const ProjectInlineImage = styled(Plx)`
-  ${ProjectTextBody} + & {
-    position: relative;
-    z-index: -10;
-    margin-top: -56px;
-  }
-
-  & + ${ProjectTextHead} {
-    margin-top: -40px;
-  }
-
-  ${MEDIA_QUERIES.tabletUp} {
-    ${ProjectTextBody} + & {
-      margin-top: -128px;
-    }
-
-    & + ${ProjectTextHead} {
-      margin-top: -64px;
-    }
-  }
-
-  @include media('>=desktop') {
-    ${ProjectTextBody} + & {
-      margin-top: -160px;
-    }
-
-    & + ${ProjectTextHead} {
-      margin-top: -80px;
-    }
-  }
-`
-
-export const ProjectStandfirst = styled.div`
+const ProjectStandfirst = styled.div`
   ${MISC.genericSection};
   margin-top: 32px;
   margin-bottom: 32px;
@@ -299,31 +185,18 @@ const StandfirstCopy = styled.p`
   }
 `
 
-MultipleImageRenderer.propTypes = {
-  node: PropTypes.shape({
-    single_image: PropTypes.arrayOf(
-      PropTypes.shape({
-        alt: PropTypes.string,
-        asset: PropTypes.object,
-        caption: PropTypes.string,
-        color: PropTypes.object
-      })
-    )
-  })
-}
-
-CustomImageRenderer.propTypes = {
-  node: PropTypes.shape({
-    alt: PropTypes.string,
-    asset: PropTypes.object,
-    caption: PropTypes.string,
-    fullWidth: PropTypes.bool,
-    color: PropTypes.object,
-    _key: PropTypes.string
-  })
-}
-
 BlockRenderer.propTypes = {
   node: PropTypes.object,
   children: PropTypes.array
+}
+
+export default memo(Blocks)
+
+export {
+  ProjectTextHead,
+  ProjectMultipleInline,
+  ProjectTextBody,
+  ProjectFullWidthImage,
+  ProjectInlineImage,
+  ProjectStandfirst
 }

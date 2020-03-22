@@ -18,40 +18,6 @@ import {
 } from 'styles'
 
 function Standfirst ({ className }) {
-  // const [isStuck, setIsStuck] = useState(false);
-  // const stickyRef = useRef(null);
-
-  // const handleScroll = () => {
-  //   const windowWidth = window.innerWidth;
-  //   if (stickyRef.current) {
-  //     if (windowWidth >= BREAKPOINTS.desktop) {
-  //       setIsStuck(
-  //         stickyRef.current.getBoundingClientRect().top <=
-  //           HEADER_HEIGHTS.desktop,
-  //       );
-  //     } else if (windowWidth >= BREAKPOINTS.tablet) {
-  //       setIsStuck(
-  //         stickyRef.current.getBoundingClientRect().top <=
-  //           HEADER_HEIGHTS.tablet,
-  //       );
-  //     } else {
-  //       setIsStuck(
-  //         stickyRef.current.getBoundingClientRect().top <=
-  //           HEADER_HEIGHTS.mobile,
-  //       );
-  //     }
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   handleScroll();
-  //   window.addEventListener('scroll', handleScroll);
-
-  //   return () => {
-  //     window.removeEventListener('scroll', () => handleScroll);
-  //   };
-  // }, []);
-
   return (
     <StandfirstDiv className={className}>
       <StandfirstContainer>
@@ -95,7 +61,7 @@ const StandfirstContainer = styled.div`
 
   ${MEDIA_QUERIES.desktopUp} {
     margin: 0 auto;
-    max-width: ${MISC.maxWidth + MISC.pageGutter * 5}px;
+    max-width: ${MISC.maxWidth + MISC.pageGutter * 15}px;
     padding: 0 80px;
   }
 `

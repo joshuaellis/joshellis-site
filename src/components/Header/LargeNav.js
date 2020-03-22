@@ -11,9 +11,11 @@ import { COLORS, MEDIA_QUERIES } from 'styles'
 export default function LargeNav ({ handleInfoClick, showInfo }) {
   return (
     <StyledNav>
-      <LargeNavAnchor href='/play'>
-        <PlayIcon width={32} height={32} />
-      </LargeNavAnchor>
+      {
+        // <LargeNavAnchor href='/play'>
+        //   <PlayIcon width={32} height={32} />
+        // </LargeNavAnchor>
+      }
       <LargeNavButton
         type='button'
         onClick={handleInfoClick}
@@ -31,12 +33,12 @@ const StyledNav = styled.nav`
   top: 16px;
   right: 16px;
 
-  @include media('>=tablet') {
+  ${MEDIA_QUERIES.tabletUp} {
     top: 24px;
     right: 40px;
   }
 
-  @include media('>=desktop') {
+  ${MEDIA_QUERIES.desktopUp} {
     top: 32px;
     right: 80px;
   }

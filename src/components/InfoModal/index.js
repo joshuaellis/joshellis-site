@@ -84,7 +84,7 @@ const InfoInner = styled.div`
 
   ${MEDIA_QUERIES.desktopUp} {
     margin: 0 auto;
-    max-width: ${MISC.maxWidth + MISC.pageGutter * 5}px;
+    max-width: ${MISC.maxWidth + MISC.pageGutter * 15}px;
     position: relative;
     grid-template-columns: repeat(12, 1fr);
     grid-column-gap: 32px;
@@ -100,10 +100,6 @@ const InfoTitles = styled.div`
     font-weight: 400;
     font-size: ${FONT_SIZES.defaultLarge};
     line-height: ${LINE_HEIGHTS.defaultLarge};
-
-    span {
-      display: block;
-    }
   }
 
   ${MEDIA_QUERIES.tabletUp} {
@@ -133,6 +129,10 @@ const InfoColab = styled.div`
     font-weight: 600;
   }
 
+  p {
+    color: ${COLORS.white};
+  }
+
   ${MEDIA_QUERIES.tabletUp} {
     grid-column: 1 / 4;
     margin-top: 64px;
@@ -148,16 +148,16 @@ const InfoColab = styled.div`
 
   @media (min-width: ${MISC.maxWidth}px) {
     right: calc(
-      ${MISC.desktopPageGutter / 2}px + ((100vw - ${MISC.maxWidth}) / 2)
+      ${MISC.desktopPageGutter / 2}px + ((100vw - ${MISC.maxWidth}px) / 2)
     );
   }
 `
 
 const InfoColabTitle = styled.h3`
   font-family: ${FONT_FAMILIES.surt};
-  font-weight: 400;
-  font-size: ${FONT_SIZES.defaultLarge};
-  line-height: ${LINE_HEIGHTS.defaultLarge};
+  font-weight: 800;
+  font-size: ${FONT_SIZES.defaultSmall};
+  line-height: ${LINE_HEIGHTS.defaultSmall};
 
   color: white !important;
 
@@ -166,13 +166,8 @@ const InfoColabTitle = styled.h3`
   }
 
   ${MEDIA_QUERIES.tabletUp} {
-    font-size: ${FONT_SIZES.medium};
-    line-height: ${LINE_HEIGHTS.medium};
-  }
-
-  ${MEDIA_QUERIES.desktopUp} {
-    font-size: ${FONT_SIZES.mediumLarge};
-    line-height: ${LINE_HEIGHTS.mediumLarge};
+    font-size: ${FONT_SIZES.default};
+    line-height: ${LINE_HEIGHTS.default};
   }
 `
 

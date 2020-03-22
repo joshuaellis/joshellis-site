@@ -6,7 +6,11 @@ import { testMarkdownLink } from 'lib/utils'
 export default (container = 'div') => ({
   types: {
     block: ({ children }) =>
-      children[0].length > 0 ? <span>{children}</span> : <br />
+      children[0].length > 0 ? (
+        <AboutTextContainer>{children}</AboutTextContainer>
+      ) : (
+        <br />
+      )
   },
   marks: {
     color: ({ mark: { hex }, children }) => (
@@ -17,5 +21,9 @@ export default (container = 'div') => ({
   },
   container
 })
+
+const AboutTextContainer = styled.span`
+  display: block;
+`
 
 const AboutColorText = styled.span``

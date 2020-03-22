@@ -90,7 +90,7 @@ export function ProjectPage ({
     return initialKey
   }
   return (
-    <>
+    <React.Fragment>
       <Head>
         <title>{`${title} | Josh Ellis`}</title>
         <meta property='og:title' content={`${title} | Josh Ellis`} />
@@ -155,7 +155,7 @@ export function ProjectPage ({
           />
         )}
       </Portal>
-    </>
+    </React.Fragment>
   )
 }
 

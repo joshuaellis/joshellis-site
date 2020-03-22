@@ -118,7 +118,7 @@ const HomeCardGrid = styled.div`
   ${MEDIA_QUERIES.desktopUp} {
     margin: 140px auto 72px auto;
     padding: 0 80px;
-    max-width: ${MISC.maxWidth + MISC.pageGutter * 5}px;
+    max-width: ${MISC.maxWidth + MISC.pageGutter * 15}px;
   }
 `
 
@@ -154,6 +154,14 @@ const YearCardsGrid = styled.div`
     > .home__card + .home__card {
       margin-top: 0;
     }
+  }
+
+  @media (min-width: ${MISC.maxWidth}px) {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 32px;
+    grid-row-gap: 32px;
   }
 `
 

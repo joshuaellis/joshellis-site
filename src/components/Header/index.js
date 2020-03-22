@@ -150,7 +150,7 @@ const Head = styled.div`
     padding: 32px 80px;
     height: ${MISC.desktopHeaderHeight}px;
     margin: 0 auto;
-    max-width: ${MISC.maxWidth + MISC.pageGutter * 5}px;
+    max-width: ${MISC.maxWidth + MISC.pageGutter * 15}px;
   }
 
   &.head--small {

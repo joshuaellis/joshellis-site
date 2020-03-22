@@ -23,12 +23,14 @@ export default function SmallNav ({ handleInfoClick, openMenu, showInfo }) {
       >
         {t('nav-projects')}
       </SmallNavAnchor>
-      <SmallNavAnchor
-        className={clsx(openMenu && 'head__nav__link--active')}
-        href='/play'
-      >
-        {t('nav-play')}
-      </SmallNavAnchor>
+      {
+        // <SmallNavAnchor
+        //   className={clsx(openMenu && 'head__nav__link--active')}
+        //   href='/play'
+        // >
+        //   {t('nav-play')}
+        // </SmallNavAnchor>
+      }
       <SmallNavButton
         type='button'
         onClick={handleInfoClick}
@@ -107,6 +109,10 @@ const SmallNavButton = styled.button`
     left: 0;
     background-color: ${COLORS.blue};
     transition: width 150ms ${EASING.easeOutQuad};
+  }
+
+  ${SmallNavAnchor} + & {
+    margin-left: 24px;
   }
 
   & + & {
