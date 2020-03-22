@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
-import Link from 'next/link'
 import styled from 'styled-components'
 
 import { Image } from 'components/Image'
@@ -24,35 +23,34 @@ export default function NextPrevCard ({
   variant
 }) {
   return (
-    <Link href='/work/[project]' as={slug}>
-      <NextPrev
-        className={clsx(
-          fullWidth && 'card--full-width',
-          variant === 'prev' && 'card--prev',
-          variant === 'next' && 'card--next',
-          className
-        )}
-        style={{ backgroundColor: color }}
-      >
-        <div className='card__container'>
-          <NextPrevMeta>
-            <MetaCaption>
-              {variant === 'next' ? 'Next project' : 'Previous project'}
-            </MetaCaption>
-            <MetaTitle>{title}</MetaTitle>
-          </NextPrevMeta>
-          <NextPrevImageContainer
-            className={clsx(fullWidth && 'card__full__container')}
-          >
-            <NextPrevImage
-              className='card__image'
-              img={image}
-              sizes='(max-width: 768px) 75vw, 50vw'
-            />
-          </NextPrevImageContainer>
-        </div>
-      </NextPrev>
-    </Link>
+    <NextPrev
+      href={`/work/${slug}`}
+      className={clsx(
+        fullWidth && 'card--full-width',
+        variant === 'prev' && 'card--prev',
+        variant === 'next' && 'card--next',
+        className
+      )}
+      style={{ backgroundColor: color }}
+    >
+      <div className='card__container'>
+        <NextPrevMeta>
+          <MetaCaption>
+            {variant === 'next' ? 'Next project' : 'Previous project'}
+          </MetaCaption>
+          <MetaTitle>{title}</MetaTitle>
+        </NextPrevMeta>
+        <NextPrevImageContainer
+          className={clsx(fullWidth && 'card__full__container')}
+        >
+          <NextPrevImage
+            className='card__image'
+            img={image}
+            sizes='(max-width: 768px) 75vw, 50vw'
+          />
+        </NextPrevImageContainer>
+      </div>
+    </NextPrev>
   )
 }
 

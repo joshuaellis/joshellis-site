@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import Link from 'next/link'
 
 import { Image } from 'components/Image'
 
@@ -15,17 +14,15 @@ import {
 
 export default function HomeCard ({ className, client, image, slug, title }) {
   return (
-    <Link href='/work/[project]' as={slug}>
-      <HomeCardAnchor className={className}>
-        <HomeCardMeta>
-          <MetaCaption>{client}</MetaCaption>
-          <MetaTitle>{title}</MetaTitle>
-        </HomeCardMeta>
-        <HomeCardImage>
-          <StyledImage img={image} sizes='(max-width: 768px) 100vw, 75vw' />
-        </HomeCardImage>
-      </HomeCardAnchor>
-    </Link>
+    <HomeCardAnchor href={`/work/${slug}`} className={className}>
+      <HomeCardMeta>
+        <MetaCaption>{client}</MetaCaption>
+        <MetaTitle>{title}</MetaTitle>
+      </HomeCardMeta>
+      <HomeCardImage>
+        <StyledImage img={image} sizes='(max-width: 768px) 100vw, 75vw' />
+      </HomeCardImage>
+    </HomeCardAnchor>
   )
 }
 
