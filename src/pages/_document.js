@@ -1,22 +1,49 @@
-/* eslint-disable react/react-in-jsx-scope */
-import Document, { Head, Main, NextScript } from 'next/document';
-import { GTMTrackingHead, GTMTrackingBody } from '../components/Tracking';
+import React from 'react'
+import { ServerStyleSheet } from 'styled-components'
+import Document, { Html, Head, Main, NextScript } from 'next/document'
 
-export default class extends Document {
-  render() {
+import { GTMTrackingHead, GTMTrackingBody } from '../components/Tracking'
+
+export default class JoshDocument extends Document {
+  static async getInitialProps (ctx) {
+    const sheet = new ServerStyleSheet()
+    const originalRenderPage = ctx.renderPage
+
+    try {
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: App => props => sheet.collectStyles(<App {...props} />)
+        })
+
+      const initialProps = await Document.getInitialProps(ctx)
+      return {
+        ...initialProps,
+        styles: (
+          <>
+            {initialProps.styles}
+            {sheet.getStyleElement()}
+          </>
+        )
+      }
+    } finally {
+      sheet.seal()
+    }
+  }
+
+  render () {
     return (
-      <html lang="en">
+      <Html lang='en'>
         <Head>
           <GTMTrackingHead />
-          <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
+          <link rel='icon' type='image/x-icon' href='/favicon.ico' />
         </Head>
         <body>
           <GTMTrackingBody />
           <Main />
-          <div id="modal" />
+          <div id='modal' />
           <NextScript />
         </body>
-      </html>
-    );
+      </Html>
+    )
   }
 }

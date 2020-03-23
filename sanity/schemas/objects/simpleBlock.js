@@ -18,12 +18,12 @@ export default {
             fields: [
               {
                 name: 'url',
-                type: 'url',
-              },
-            ],
-          },
-        ],
-      },
-    },
-  ],
-};
+                type: 'url'
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

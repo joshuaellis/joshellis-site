@@ -1,14 +1,16 @@
-import React, { memo } from 'react';
-import { useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
+import React, { memo } from 'react'
+import { useDispatch } from 'react-redux'
+import PropTypes from 'prop-types'
+import clsx from 'clsx'
+import styled from 'styled-components'
 
-import ImageExpandButton from 'components/ImageExpandButton';
-import { setImageModalStateAction } from 'store/actions/projectActions';
+import { setImageModalStateAction } from 'store/actions/projectActions'
 
-import './styles.scss';
+import { MEDIA_QUERIES, MISC } from 'styles'
 
-function InlineImage({
+import ImageContainer, { ImageInner } from './ImageContainer'
+
+function InlineImage ({
   caption,
   children,
   className,
@@ -18,54 +20,96 @@ function InlineImage({
   style,
   ...restProps
 }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const handleExpandClick = e =>
     dispatch(
       setImageModalStateAction(
         e.currentTarget.getAttribute('data-modal-id'),
-        true,
-      ),
-    );
+        true
+      )
+    )
 
   return (
-    <div
+    <InlineImageRoot
       className={clsx(
-        'inlineimage',
         children && children.length > 1 && 'inlineimage--multiple',
-        className,
+        className
       )}
       style={{ backgroundColor: color, ...style }}
       {...restProps}
     >
-      <div className="inlineimage__container">
+      <InlineImageContainer>
         {children && children.length > 1 ? (
           // handles multiple images in the same container
           children.map((x, i) => (
-            <div className="inlineimage__container__inner" key={caption[i]}>
-              <ImageExpandButton
-                className="inlineimage__expand"
-                id={keys[i]}
-                onClick={handleExpandClick}
-              />
-              <div className="inlineimage__image">{x}</div>
-              <p className="inlineimage__caption t-caption">{caption[i]}</p>
-            </div>
+            <ImageContainer
+              caption={caption[i]}
+              id={keys[i]}
+              key={caption[i]}
+              onImageExpandClick={handleExpandClick}
+            >
+              {x}
+            </ImageContainer>
           ))
         ) : (
-          <div className="inlineimage__container__inner">
-            <ImageExpandButton
-              className="inlineimage__expand"
-              id={expandId}
-              onClick={handleExpandClick}
-            />
-            <div className="inlineimage__image">{children}</div>
-            <p className="inlineimage__caption t-caption">{caption}</p>
-          </div>
+          <ImageContainer
+            caption={caption}
+            id={expandId}
+            onImageExpandClick={handleExpandClick}
+          >
+            {children}
+          </ImageContainer>
         )}
-      </div>
-    </div>
-  );
+      </InlineImageContainer>
+    </InlineImageRoot>
+  )
 }
+
+const InlineImageRoot = styled.div`
+  width: 100%;
+  padding-top: 56px;
+  padding-bottom: 64px;
+
+  ${MEDIA_QUERIES.tabletUp} {
+    padding-top: 40px;
+    padding-bottom: 56px;
+  }
+`
+
+const InlineImageContainer = styled.div`
+  padding: 0 16px;
+
+  > ${ImageInner} + ${ImageInner} {
+    margin-top: 40px;
+  }
+
+  ${MEDIA_QUERIES.tabletUp} {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-column-gap: 32px;
+    padding: 0 40px;
+
+    > ${ImageInner} {
+      grid-column: 3 / 7;
+    }
+  }
+
+  ${MEDIA_QUERIES.desktopUp} {
+    margin: 0 auto;
+    max-width: ${MISC.maxWidth + MISC.pageGutter * 5}px;
+    grid-template-columns: repeat(12, 1fr);
+    grid-column-gap: 32px;
+    padding: 0 80px;
+
+    > ${ImageInner} {
+      grid-column: 4 / 13;
+    }
+
+    > ${ImageInner} + ${ImageInner} {
+      margin-top: 56px;
+    }
+  }
+`
 
 InlineImage.propTypes = {
   caption: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
@@ -75,12 +119,12 @@ InlineImage.propTypes = {
   expandId: PropTypes.string,
   expandClick: PropTypes.func,
   keys: PropTypes.array,
-  style: PropTypes.object,
-};
+  style: PropTypes.object
+}
 
 InlineImage.defaultProps = {
   color: 'transparent',
-  style: {},
-};
+  style: {}
+}
 
-export default memo(InlineImage);
+export default memo(InlineImage)

@@ -1,4 +1,4 @@
-import S from '@sanity/desk-tool/structure-builder';
+import S from '@sanity/desk-tool/structure-builder'
 
 export default () =>
   S.list()
@@ -8,8 +8,8 @@ export default () =>
         .title('Projects')
         .child(
           S.documentTypeList('project').defaultOrdering([
-            { field: 'title', direction: 'asc' },
-          ]),
+            { field: 'title', direction: 'asc' }
+          ])
         ),
       S.listItem()
         .title('Pages')
@@ -24,8 +24,8 @@ export default () =>
               S.documentListItem()
                 .id('play-page')
                 .title('Play Page')
-                .schemaType('playpage'),
-            ]),
+                .schemaType('playpage')
+            ])
         ),
       S.listItem()
         .title('Structures')
@@ -36,7 +36,7 @@ export default () =>
               S.documentListItem()
                 .id('project-structure')
                 .title('Project structure')
-                .schemaType('projectStructure'),
-            ]),
-        ),
-    ]);
+                .schemaType('projectStructure')
+            ])
+        )
+    ])

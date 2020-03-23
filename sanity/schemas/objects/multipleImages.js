@@ -11,10 +11,10 @@ export default {
         {
           type: 'custom-image',
           options: {
-            hotspot: true,
-          },
-        },
-      ],
-    },
-  ],
-};
+            hotspot: true
+          }
+        }
+      ]
+    }
+  ]
+}

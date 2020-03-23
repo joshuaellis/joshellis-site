@@ -1,25 +1,34 @@
-import { configure, addDecorator, addParameters } from '@storybook/react';
-import { themes } from '@storybook/theming';
-import { withA11y } from '@storybook/addon-a11y';
+import { configure, addDecorator, addParameters } from '@storybook/react'
+import { themes } from '@storybook/theming'
+import { withA11y } from '@storybook/addon-a11y'
+import { createGlobalStyle } from 'styled-components'
 
-import 'sanitize.css/sanitize.css';
-import 'sanitize.css/typography.css';
-import 'sanitize.css/forms.css';
-import './stories.css';
-import '../src/styles/styles';
+import { CSS_FONTS, CSS_GLOBAL } from 'styles'
+
+import './stories.css'
+
+const GlobalStyle = createGlobalStyle`
+  ${CSS_FONTS}
+  ${CSS_GLOBAL}
+`
 
 addParameters({
   options: {
-    theme: themes.normal,
-  },
-});
+    theme: themes.normal
+  }
+})
 
-addDecorator(storyFn => storyFn());
+addDecorator(storyFn => (
+  <React.Fragment>
+    <GlobalStyle />
+    {storyFn()}
+  </React.Fragment>
+))
 
-addDecorator(withA11y);
+addDecorator(withA11y)
 
-const req = require.context('../stories', true, /\.stories\.js$/);
-function loadStories() {
-  req.keys().forEach(filename => req(filename));
+const req = require.context('../stories', true, /\.stories\.js$/)
+function loadStories () {
+  req.keys().forEach(filename => req(filename))
 }
-configure(loadStories, module);
+configure(loadStories, module)

@@ -1,7 +1,13 @@
 @import './fonts.scss';
 @import './variables.scss';
 
-@mixin font-surt($size, $line-height, $weight: 400, $style: normal, $text-transform: none) {
+@mixin font-surt(
+  $size,
+  $line-height,
+  $weight: 400,
+  $style: normal,
+  $text-transform: none
+) {
   font-family: 'Surt', Arial, san-serif;
   font-size: $size * 1px;
   font-weight: $weight;
@@ -124,13 +130,4 @@
   @include media('>=tablet') {
     font-size: 20px;
   }
-}
-
-@mixin t-a {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  font-weight: inherit;
-  color: inherit;
-  text-decoration: none;
 }

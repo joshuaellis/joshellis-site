@@ -4,32 +4,41 @@
  *
  */
 
-import React, { memo } from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
+import React, { memo } from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
-import ExpandIcon from 'icons/expand.svg';
+import ExpandIcon from 'icons/expand.svg'
 
-import './styles.scss';
-
-function ImageExpandButton({ className, id, onClick }) {
+function ImageExpandButton ({ className, id, onClick }) {
   return (
-    <button
-      aria-label="Expand image"
-      type="button"
-      className={clsx('button--expand', className)}
+    <StyledButton
+      aria-label='Expand image'
+      type='button'
+      className={className}
       onClick={onClick}
       data-modal-id={id}
     >
       <ExpandIcon width={16} height={16} />
-    </button>
-  );
+    </StyledButton>
+  )
 }
+
+const StyledButton = styled.button`
+  width: 32px;
+  height: 32px;
+  border-bottom-left-radius: 6px;
+  padding: 0;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(2px);
+  cursor: pointer;
+`
 
 ImageExpandButton.propTypes = {
   className: PropTypes.string,
   id: PropTypes.string,
-  onClick: PropTypes.func,
-};
+  onClick: PropTypes.func
+}
 
-export default memo(ImageExpandButton);
+export default memo(ImageExpandButton)

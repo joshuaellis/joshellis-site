@@ -3,7 +3,7 @@ export default {
   title: 'Image',
   type: 'image',
   options: {
-    hotspot: true,
+    hotspot: true
   },
   fields: [
     {
@@ -12,16 +12,16 @@ export default {
       title: 'Full width image',
       layout: 'checkbox',
       options: {
-        isHighlighted: true,
-      },
+        isHighlighted: true
+      }
     },
     {
       name: 'caption',
       type: 'string',
       title: 'Caption',
       options: {
-        isHighlighted: true,
-      },
+        isHighlighted: true
+      }
     },
     {
       name: 'alt',
@@ -31,22 +31,22 @@ export default {
       validation: Rule =>
         Rule.error('You have to fill out the alternative text.').required(),
       options: {
-        isHighlighted: true,
-      },
+        isHighlighted: true
+      }
     },
     {
       name: 'color',
       title: 'Background color',
       type: 'color',
       options: {
-        isHighlighted: true,
-      },
-    },
+        isHighlighted: true
+      }
+    }
   ],
   preview: {
     select: {
       imageUrl: 'asset.url',
-      title: 'caption',
-    },
-  },
-};
+      title: 'caption'
+    }
+  }
+}

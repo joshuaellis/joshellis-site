@@ -6,12 +6,12 @@ export default {
     {
       name: 'copy',
       type: 'simple-block',
-      title: 'Main body',
+      title: 'Main body'
     },
     {
       name: 'collaboration_text',
       type: 'markdown',
-      title: 'Collaboration text',
-    },
-  ],
-};
+      title: 'Collaboration text'
+    }
+  ]
+}

@@ -4,7 +4,9 @@ tools
 package-lock.json
 yarn.lock
 package.json
+.next
 node_modules
 ./node_modules/
-./sanity/node_modules/
-
+sanity/node_modules/
+sanity/dist/
+public/

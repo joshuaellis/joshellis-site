@@ -4,6 +4,6 @@ export default {
   title: 'Year of project',
   validation: Rule => Rule.required(),
   options: {
-    dateFormat: 'MM YYYY',
-  },
-};
+    dateFormat: 'MM YYYY'
+  }
+}

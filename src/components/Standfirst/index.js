@@ -1,66 +1,89 @@
-/* eslint-disable react/jsx-curly-brace-presence */
 /**
  *
  * Standfirst
  *
  */
 
-import React, { memo } from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
+import React, { memo } from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
-// import { BREAKPOINTS, HEADER_HEIGHTS } from 'lib/constants';
+import {
+  COLORS,
+  FONT_FAMILIES,
+  FONT_SIZES,
+  LINE_HEIGHTS,
+  MEDIA_QUERIES,
+  MISC
+} from 'styles'
 
-import './styles.scss';
-
-function Standfirst({ className }) {
-  // const [isStuck, setIsStuck] = useState(false);
-  // const stickyRef = useRef(null);
-
-  // const handleScroll = () => {
-  //   const windowWidth = window.innerWidth;
-  //   if (stickyRef.current) {
-  //     if (windowWidth >= BREAKPOINTS.desktop) {
-  //       setIsStuck(
-  //         stickyRef.current.getBoundingClientRect().top <=
-  //           HEADER_HEIGHTS.desktop,
-  //       );
-  //     } else if (windowWidth >= BREAKPOINTS.tablet) {
-  //       setIsStuck(
-  //         stickyRef.current.getBoundingClientRect().top <=
-  //           HEADER_HEIGHTS.tablet,
-  //       );
-  //     } else {
-  //       setIsStuck(
-  //         stickyRef.current.getBoundingClientRect().top <=
-  //           HEADER_HEIGHTS.mobile,
-  //       );
-  //     }
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   handleScroll();
-  //   window.addEventListener('scroll', handleScroll);
-
-  //   return () => {
-  //     window.removeEventListener('scroll', () => handleScroll);
-  //   };
-  // }, []);
-
+function Standfirst ({ className }) {
   return (
-    <div className={clsx('standfirst', className)}>
-      <div className="standfirst__container">
-        <h2>
-          <span>{"Here's my work –"}</span>
-        </h2>
-      </div>
-    </div>
-  );
+    <StandfirstDiv className={className}>
+      <StandfirstContainer>
+        <StandfirstCopy>
+          <span>Here's my work –</span>
+        </StandfirstCopy>
+      </StandfirstContainer>
+    </StandfirstDiv>
+  )
 }
 
-Standfirst.propTypes = {
-  className: PropTypes.string,
-};
+const StandfirstDiv = styled.div`
+  background-color: ${COLORS.black};
+  color: ${COLORS.white};
+  padding-top: 12px;
+  padding-bottom: 16px;
+  position: fixed;
+  top: ${MISC.mobileHeaderHeight}px;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  box-shadow: 0 2px 6px 0 rgba(26, 26, 26, 0.56);
 
-export default memo(Standfirst);
+  ${MEDIA_QUERIES.tabletUp} {
+    padding-top: 0;
+    padding-bottom: 28px;
+    top: ${MISC.tabletHeaderHeight}px;
+  }
+
+  ${MEDIA_QUERIES.desktopUp} {
+    top: ${MISC.desktopHeaderHeight}px;
+  }
+`
+
+const StandfirstContainer = styled.div`
+  padding: 0 16px;
+
+  ${MEDIA_QUERIES.tabletUp} {
+    padding: 0 40px;
+  }
+
+  ${MEDIA_QUERIES.desktopUp} {
+    margin: 0 auto;
+    max-width: ${MISC.maxWidth + MISC.pageGutter * 15}px;
+    padding: 0 80px;
+  }
+`
+
+const StandfirstCopy = styled.h2`
+  font-family: ${FONT_FAMILIES.surt};
+  font-size: ${FONT_SIZES.mediumSmall};
+  line-height: ${LINE_HEIGHTS.mediumSmall};
+  font-weight: 500;
+
+  ${MEDIA_QUERIES.tabletUp} {
+    font-size: ${FONT_SIZES.large};
+    line-height: ${LINE_HEIGHTS.large};
+  }
+
+  ${MEDIA_QUERIES.desktopUp} {
+    font-size: ${FONT_SIZES.larger};
+  }
+`
+
+Standfirst.propTypes = {
+  className: PropTypes.string
+}
+
+export default memo(Standfirst)
