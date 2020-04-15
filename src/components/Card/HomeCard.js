@@ -14,7 +14,7 @@ import {
 
 export default function HomeCard ({ className, client, image, slug, title }) {
   return (
-    <HomeCardAnchor href={`/work/${slug}`} className={className}>
+    <HomeCardAnchor href={slug} className={className}>
       <HomeCardMeta>
         <MetaCaption>{client}</MetaCaption>
         <MetaTitle>{title}</MetaTitle>

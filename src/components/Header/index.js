@@ -11,7 +11,7 @@ import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import styled from 'styled-components'
 
-import useClickOutside from 'lib/useClickOutside'
+import useClickOutside from 'hooks/useClickOutside'
 import Portal from 'components/Portal'
 import InfoModal from 'components/InfoModal'
 

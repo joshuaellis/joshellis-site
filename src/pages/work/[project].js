@@ -142,7 +142,7 @@ export function ProjectPage ({
             fullWidth={x.card_full_image}
             image={x.card_pagination}
             title={x.title}
-            slug={x.slug}
+            slug={`/work/${x.slug}`}
             variant={i === 0 ? 'prev' : 'next'}
           />
         ))}

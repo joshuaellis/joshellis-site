@@ -8,7 +8,7 @@
     "build": "NODE_ENV_CUSTOM=production next build",
     "start": "NODE_ENV_CUSTOM=production babel-node --presets @babel/preset-env ./server/server.js",
     "storybook": "start-storybook -p 9001 -s ./",
-    "fetch:strings": "node ./src/lib/fetchStrings.js",
+    "fetch:strings": "node ./tools/fetchStrings.js",
     "deploy:staging": "git push heroku-staging develop:master",
     "deploy:prod": "git push heroku-production master:master",
     "generate": "plop --plopfile tools/generators/index.js",

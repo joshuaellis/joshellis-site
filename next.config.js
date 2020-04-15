@@ -7,11 +7,11 @@ const initExport = {
     config.resolve.alias = {
       ...config.resolve.alias,
       components: path.resolve(__dirname, './src/components/'),
-      styles: path.resolve(__dirname, './src/styles'),
       lib: path.resolve(__dirname, 'src/lib/'),
-      layouts: path.resolve(__dirname, './src/layouts/'),
+      hooks: path.resolve(__dirname, './src/hooks/'),
       icons: path.resolve(__dirname, './public/icons/'),
-      store: path.resolve(__dirname, './src/store/')
+      store: path.resolve(__dirname, './src/store/'),
+      styles: path.resolve(__dirname, './src/styles')
     }
 
     const iconsPath = path.resolve(__dirname, '.', 'public', 'icons')

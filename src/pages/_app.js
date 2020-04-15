@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 
 import { CSS_GLOBAL, CSS_FONTS } from 'styles'
 
-import withReduxStore from 'lib/with-redux-store'
+import withReduxStore from 'hooks/withReduxStore'
 import sanity from 'lib/client'
 
 import Header from 'components/Header'

@@ -8,7 +8,7 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled, { keyframes } from 'styled-components'
 
-import handleModalScrollling from 'lib/handleModalScrollling'
+import handleModalScrollling from 'hooks/handleModalScrollling'
 
 import Close from 'icons/close.svg'
 

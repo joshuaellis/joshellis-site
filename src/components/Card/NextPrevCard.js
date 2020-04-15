@@ -24,7 +24,7 @@ export default function NextPrevCard ({
 }) {
   return (
     <NextPrev
-      href={`/work/${slug}`}
+      href={slug}
       className={clsx(
         fullWidth && 'card--full-width',
         variant === 'prev' && 'card--prev',

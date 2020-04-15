@@ -11,7 +11,7 @@ import BlockContent from '@sanity/block-content-to-react'
 
 import Text from 'components/Text'
 import { testMarkdownLink } from 'lib/utils'
-import handleModalScrollling from 'lib/handleModalScrollling'
+import handleModalScrollling from 'hooks/handleModalScrollling'
 import {
   COLORS,
   FONT_FAMILIES,
