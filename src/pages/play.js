@@ -44,8 +44,7 @@ export function Play ({ projects = [] }) {
     </>
   )
 }
-
-Play.getInitialProps = async () => {
+export async function getStaticProps () {
   const [{ projects }] = await sanity.fetch(queries.getPlayCards)
   return {
     projects: projects.map(x => ({

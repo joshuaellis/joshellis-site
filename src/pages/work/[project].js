@@ -362,7 +362,7 @@ const ProjectIframe = styled.div`
   }
 `
 
-ProjectPage.getInitialProps = async ({ query, res }) => {
+export async function getServerSideProps ({ query, res }) {
   const { project } = query
   const [data] = await sanity.fetch(queries.getProject(project))
   const [{ projects }] = await sanity.fetch(queries.getNextPrevCard())

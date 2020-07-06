@@ -75,7 +75,7 @@ WorkHome.propTypes = {
   projectCards: PropTypes.array
 }
 
-WorkHome.getInitialProps = async () => {
+export async function getStaticProps () {
   const [{ projects }] = await sanity.fetch(queries.getProjectCards)
   return {
     projectCards: projects
