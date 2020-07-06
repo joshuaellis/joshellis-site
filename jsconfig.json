@@ -2,27 +2,14 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "components/*": [
-        "./src/components/'"
-      ],
-      "lib/*": [
-        "src/lib/'"
-      ],
-      "hooks/*": [
-        "./src/hooks/'"
-      ],
-      "icons/*": [
-        "./public/icons/'"
-      ],
-      "store/*": [
-        "./src/store/'"
-      ],
-      "styles/*": [
-        "./src/styles'"
-      ]
+      "components/*": ["./src/components/*"],
+      "lib/*": ["src/lib/*"],
+      "hooks/*": ["./src/hooks/*"],
+      "icons/*": ["./public/icons/*"],
+      "store/*": ["./src/store/*"],
+      "references/*": ["./src/references/*"],
+      "styles/*": ["./src/references/styles"]
     }
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

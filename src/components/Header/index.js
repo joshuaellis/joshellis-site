@@ -15,6 +15,8 @@ import useClickOutside from 'hooks/useClickOutside'
 import Portal from 'components/Portal'
 import InfoModal from 'components/InfoModal'
 
+import { SLUG_WORK, SLUG_PLAY } from 'references/slugs'
+
 import {
   COLORS,
   EASING,
@@ -33,8 +35,8 @@ function Header ({ infoContent }) {
   const [openMenu, setOpenMenu] = useState(false)
   const [showInfo, setShowInfo] = useState(false)
   const menuRef = useRef(null)
-  const small = router ? router.pathname !== '/' : true
-  const play = router ? router.pathname === '/play' : false
+  const small = router ? router.pathname !== SLUG_WORK : true
+  const play = router ? router.pathname === SLUG_PLAY : false
 
   const INFO_DURATION = 800
 

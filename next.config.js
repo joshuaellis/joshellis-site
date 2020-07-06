@@ -1,9 +1,7 @@
 const path = require('path')
 
 const initExport = {
-  webpack: (config, { dev, isServer }) => {
-    const prod = !dev
-
+  webpack: config => {
     config.resolve.alias = {
       ...config.resolve.alias,
       components: path.resolve(__dirname, './src/components/'),
@@ -11,7 +9,8 @@ const initExport = {
       hooks: path.resolve(__dirname, './src/hooks/'),
       icons: path.resolve(__dirname, './public/icons/'),
       store: path.resolve(__dirname, './src/store/'),
-      styles: path.resolve(__dirname, './src/styles')
+      references: path.resolve(__dirname, './src/references/'),
+      styles: path.resolve(__dirname, './src/references/styles')
     }
 
     const iconsPath = path.resolve(__dirname, '.', 'public', 'icons')
@@ -37,17 +36,6 @@ const initExport = {
       ],
       include: [iconsPath]
     })
-
-    if (!prod && process.env.ANALYZE_BUILD) {
-      const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
-      config.plugins.push(
-        new BundleAnalyzerPlugin({
-          analyzerMode: 'server',
-          analyzerPort: isServer ? 8888 : 8889,
-          openAnalyzer: true
-        })
-      )
-    }
 
     return config
   }

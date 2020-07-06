@@ -1,6 +1,6 @@
-import express from 'express'
-import compression from 'compression'
-import next from 'next'
+const express = require('express')
+const compression = require('compression')
+const next = require('next')
 
 const FILE_NAME_SITEMAP = 'sitemap.xml'
 const FILE_NAME_ROBOTS = 'robots.txt'
