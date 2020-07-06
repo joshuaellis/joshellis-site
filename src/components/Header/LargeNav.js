@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import clsx from 'clsx'
 
-import PlayIcon from 'icons/play.svg'
+// import PlayIcon from 'icons/play.svg'
 import InfoIcon from 'icons/info.svg'
 
 import { COLORS, MEDIA_QUERIES } from 'styles'
@@ -80,29 +80,29 @@ const LargeNavButton = styled.button`
   }
 `
 
-const LargeNavAnchor = styled.a`
-  display: block;
-  width: 32px;
-  height: 32px;
-  border: solid 2px ${COLORS.white};
-  border-radius: 50%;
-  margin-right: 24px;
-  display: none;
+// const LargeNavAnchor = styled.a`
+//   display: block;
+//   width: 32px;
+//   height: 32px;
+//   border: solid 2px ${COLORS.white};
+//   border-radius: 50%;
+//   margin-right: 24px;
+//   display: none;
 
-  &:focus {
-    outline: none;
-  }
+//   &:focus {
+//     outline: none;
+//   }
 
-  > svg {
-    margin-top: -2px;
-    margin-left: -2px;
-    fill: ${COLORS.white};
-  }
+//   > svg {
+//     margin-top: -2px;
+//     margin-left: -2px;
+//     fill: ${COLORS.white};
+//   }
 
-  ${MEDIA_QUERIES.tabletUp} {
-    display: block;
-  }
-`
+//   ${MEDIA_QUERIES.tabletUp} {
+//     display: block;
+//   }
+// `
 
 LargeNav.propTypes = {
   handleInfoClick: PropTypes.func,

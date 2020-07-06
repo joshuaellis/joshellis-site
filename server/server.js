@@ -17,14 +17,6 @@ switch (process.env.NODE_ENV_CUSTOM) {
 
 const port = process.env.PORT || 3000
 
-if (
-  dev ||
-  process.env.NODE_ENV_TEST === 'staging' ||
-  process.env.NODE_ENV_TEST === 'production'
-) {
-  require('dotenv').config()
-}
-
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
