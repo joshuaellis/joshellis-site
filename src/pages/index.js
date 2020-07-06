@@ -1,10 +1,12 @@
 import React from 'react'
 import Head from 'next/head'
-// import styled from 'styled-components'
+import styled from 'styled-components'
 
 import t from 'lib/strings'
 
-export function Home ({ projectCards }) {
+import Canvas from 'components/Canvas'
+
+export default function Home ({ projectCards }) {
   return (
     <>
       <Head>
@@ -20,6 +22,22 @@ export function Home ({ projectCards }) {
         <meta name='twitter:description' content={t('meta-share')} />
         <meta name='twitter:image' content='/home_share.png' />
       </Head>
+      <HomeMain>
+        <HomeCanvas />
+      </HomeMain>
     </>
   )
 }
+
+const HomeMain = styled.main`
+  height: 100vh;
+  width: 100vw;
+`
+
+const HomeCanvas = styled(Canvas)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+`

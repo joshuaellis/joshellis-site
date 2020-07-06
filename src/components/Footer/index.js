@@ -11,6 +11,8 @@ import { useRouter } from 'next/router'
 
 import t from 'lib/strings'
 
+import { SLUG_PLAY, SLUG_HOME } from 'references/slugs'
+
 import {
   COLORS,
   FONT_FAMILIES,
@@ -22,7 +24,11 @@ import {
 
 function Footer () {
   const router = useRouter()
-  const play = router ? router.pathname === '/play' : false
+  const play = router ? router.pathname === SLUG_PLAY : false
+  const isHome = router ? router.pathname === SLUG_HOME : false
+
+  if (isHome) return null
+
   return (
     <StyledFooter className={clsx(play && 'foot--play')}>
       <FooterList>
