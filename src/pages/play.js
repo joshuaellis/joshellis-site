@@ -47,10 +47,12 @@ export function Play ({ projects = [] }) {
 export async function getStaticProps () {
   const [{ projects }] = await sanity.fetch(queries.getPlayCards)
   return {
-    projects: projects.map(x => ({
-      href: x.play_slug,
-      img: x.play_gif
-    }))
+    props: {
+      projects: projects.map(x => ({
+        href: x.play_slug,
+        img: x.play_gif
+      }))
+    }
   }
 }
 
