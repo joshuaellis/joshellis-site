@@ -78,7 +78,9 @@ WorkHome.propTypes = {
 export async function getStaticProps () {
   const [{ projects }] = await sanity.fetch(queries.getProjectCards)
   return {
-    projectCards: projects
+    props: {
+      projectCards: projects
+    }
   }
 }
 

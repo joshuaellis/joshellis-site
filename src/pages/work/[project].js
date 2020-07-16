@@ -391,15 +391,17 @@ export async function getServerSideProps ({ query, res }) {
     share_image: shareImg
   } = data
   return {
-    body,
-    excerpt,
-    iframe,
-    title,
-    url,
-    paginationItems,
-    slug,
-    shareImg,
-    meta: { client, role, studio, tech }
+    props: {
+      body,
+      excerpt,
+      iframe: iframe || null,
+      title,
+      url,
+      paginationItems,
+      slug,
+      shareImg,
+      meta: { client, role, studio, tech }
+    }
   }
 }
 

@@ -9,9 +9,6 @@
     "start": "NODE_ENV_CUSTOM=production node ./server/server.js",
     "storybook": "start-storybook -p 9001 -s ./",
     "fetch:strings": "node ./tools/fetchStrings.js",
-    "deploy:staging": "git push heroku-staging develop:master",
-    "deploy:prod": "git push heroku-production master:master",
-    "generate": "plop --plopfile tools/generators/index.js",
     "test": "standard",
     "format": "prettier-standard --format",
     "lint": "standard --fix && yarn format"
@@ -26,10 +23,7 @@
   },
   "standard": {
     "parser": "babel-eslint",
-    "ignore": [
-      ".next/",
-      "public/"
-    ]
+    "ignore": [".next/", "public/"]
   },
   "author": "Josh Ellis",
   "license": "ISC",
