@@ -135,7 +135,7 @@ const HomeTitle = styled.h1`
   font-weight: 800;
   font-size: ${FONT_SIZES.massiveSmall};
   line-height: ${LINE_HEIGHTS.massiveSmall};
-  color: ${COLORS.black};
+  color: ${COLORS.grey};
   margin-bottom: 2.5rem;
 `
 
@@ -144,7 +144,7 @@ const HomeSubtitle = styled.h2`
   font-weight: 800;
   font-size: ${FONT_SIZES.mediumLarge};
   line-height: ${LINE_HEIGHTS.mediumLarge};
-  color: ${COLORS.black};
+  color: ${COLORS.grey};
   margin-bottom: 2.5rem;
 `
 
@@ -153,7 +153,7 @@ const HomeSubSubtitle = styled.h3`
   font-weight: 800;
   font-size: ${FONT_SIZES.mediumLarge};
   line-height: ${LINE_HEIGHTS.mediumLarge};
-  color: ${COLORS.black};
+  color: ${COLORS.grey};
   margin-bottom: 2.5rem;
 `
 
@@ -177,7 +177,7 @@ const HomeAnchor = styled.a`
     left: 0;
     height: 8px;
     width: 100%;
-    background: ${COLORS.black};
+    background: ${COLORS.grey};
     opacity: 0.5;
   }
 
@@ -190,5 +190,5 @@ const FooterAnchor = styled.a`
   text-decoration: none;
   position: relative;
   display: inline-block;
-  color: ${COLORS.black};
+  color: ${COLORS.grey};
 `
