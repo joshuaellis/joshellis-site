@@ -1,21 +1,17 @@
-import COLORS from './colors'
-import EASING from './easing'
-import { CSS_FONTS, FONT_SIZES, LINE_HEIGHTS, FONT_FAMILIES } from './fonts'
+import { COLOURS } from './colours'
+import { CSS_FONTS, FONT_FAMILIES } from './fonts'
 import CSS_GLOBAL from './global'
-import MISC from './misc'
-import MEDIA_QUERIES from './mediaQueries'
-import WIDTHS, { HEADER_HEIGHTS } from './widths'
+import { EASINGS } from './easings'
+import { WIDTHS, WRAPPERS } from './dimensions'
+import { MEDIA_QUERIES } from './mediaqueries'
 
 export {
-  COLORS,
+  COLOURS,
   CSS_FONTS,
   CSS_GLOBAL,
-  EASING,
+  EASINGS,
   FONT_FAMILIES,
-  FONT_SIZES,
-  HEADER_HEIGHTS,
-  LINE_HEIGHTS,
-  MISC,
   MEDIA_QUERIES,
-  WIDTHS
+  WIDTHS,
+  WRAPPERS
 }

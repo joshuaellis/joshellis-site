@@ -1,4 +1,4 @@
-import GTMTrackingHead from './gtm-head'
-import GTMTrackingBody from './gtm-body'
+import TrackingGtmBody from './TrackingGtmBody'
+import TrackingGtmHead from './TrackingGtmHead'
 
-export { GTMTrackingHead, GTMTrackingBody }
+export { TrackingGtmBody, TrackingGtmHead }

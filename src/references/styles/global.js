@@ -1,4 +1,6 @@
-import { FONT_FAMILIES, FONT_SIZES, LINE_HEIGHTS } from './fonts'
+import getFontStyles from 'helpers/getFontStyles'
+
+import { FONT_STYLE_SURT_14_400 } from './fonts'
 
 export default `
     *,
@@ -11,13 +13,11 @@ export default `
         font-size: 62.5%;
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        ${getFontStyles(FONT_STYLE_SURT_14_400)}
     }
 
     body {
         margin: 0;
-        font-family: ${FONT_FAMILIES.surt};
-        font-size: ${FONT_SIZES.default};
-        line-height: ${LINE_HEIGHTS.default};
     }
 
     h1,
@@ -43,15 +43,5 @@ export default `
         list-style: none;
         padding: 0;
         margin: 0;
-    }
-
-    .modal--active {
-      overflow: hidden;
-      position: fixed;
-      width: 100%;
-    }
-
-    #__next {
-      height: 100%;
     }
 `
