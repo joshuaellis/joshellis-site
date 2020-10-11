@@ -6,6 +6,7 @@
     "build": "NODE_ENV_CUSTOM=production next build",
     "dev": "NODE_ENV_CUSTOM=dev node ./server/server.js",
     "dev:ally": "NODE_ENV_CUSTOM=dev NODE_ENV_ALLY=true next",
+    "fetch:strings": "cd ./tools && node fetchStrings && cd ../",
     "format": "prettier-standard --format",
     "lint": "standard --fix && yarn format",
     "start": "NODE_ENV_CUSTOM=production node ./server/server.js",
@@ -22,10 +23,7 @@
   },
   "standard": {
     "parser": "babel-eslint",
-    "ignore": [
-      ".next/",
-      "public/"
-    ]
+    "ignore": [".next/", "public/"]
   },
   "author": "Josh Ellis",
   "license": "ISC",
@@ -38,7 +36,10 @@
     "babel-plugin-styled-components": "^1.11.1",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "babel-plugin-transform-remove-console": "^6.9.4",
+    "dotenv": "^8.2.0",
     "eslint": "^7.10.0",
+    "markdown-it": "^11.0.1",
+    "node-fetch": "^2.6.1",
     "prettier-standard": "^16.4.1",
     "standard": "^14.3.4"
   },
@@ -53,6 +54,7 @@
     "react": "^16.13.1",
     "react-axe": "^3.5.4",
     "react-dom": "^16.13.1",
+    "react-intl": "^5.8.6",
     "styled-components": "^5.2.0"
   }
 }
