@@ -1,6 +1,6 @@
 import getFontStyles from 'helpers/getFontStyles'
 
-import { FONT_STYLE_SURT_14_400 } from './fonts'
+import { FONT_STYLE_SURT_16_400 } from './fonts'
 
 export default `
     *,
@@ -13,7 +13,7 @@ export default `
         font-size: 62.5%;
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
-        ${getFontStyles(FONT_STYLE_SURT_14_400)}
+        ${getFontStyles(FONT_STYLE_SURT_16_400)}
     }
 
     body {

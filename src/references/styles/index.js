@@ -1,4 +1,4 @@
-import { COLOURS } from './colours'
+import { COLORS } from './colors'
 import { CSS_FONTS, FONT_FAMILIES } from './fonts'
 import CSS_GLOBAL from './global'
 import { EASINGS } from './easings'
@@ -6,7 +6,7 @@ import { WIDTHS, WRAPPERS } from './dimensions'
 import { MEDIA_QUERIES } from './mediaqueries'
 
 export {
-  COLOURS,
+  COLORS,
   CSS_FONTS,
   CSS_GLOBAL,
   EASINGS,

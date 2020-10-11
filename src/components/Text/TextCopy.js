@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import { FONT_STYLE_SURT_16_400 } from 'references/styles/fonts'
 
-import { getFontStyles } from 'helpers/text'
+import getFontStyles from 'helpers/getFontStyles'
 
 export default function TextCopy ({ className, children, fontStyle }) {
   return (

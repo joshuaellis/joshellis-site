@@ -2,16 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import { FONT_STYLE_SURT_32_800 } from 'references/styles/fonts'
+import { FONT_STYLE_SURT_24_400 } from 'references/styles/fonts'
 
-import { getFontStyles } from 'helpers/text'
+import getFontStyles from 'helpers/getFontStyles'
 
 export const TextTitle = ({
   className,
   id,
   forwardedRef,
-  tag,
-  fontStyle,
+  tag = 'h2',
+  fontStyle = FONT_STYLE_SURT_24_400,
   children,
   gaLabel
 }) => (
@@ -31,13 +31,8 @@ TextTitle.propTypes = {
   className: PropTypes.string,
   gaLabel: PropTypes.string,
   id: PropTypes.string,
-  fontStyle: PropTypes.string.isRequired,
-  tag: PropTypes.string.isRequired
-}
-
-TextTitle.defaultProps = {
-  fontStyle: FONT_STYLE_SURT_32_800,
-  tag: 'h2'
+  fontStyle: PropTypes.string,
+  tag: PropTypes.string
 }
 
 const Title = styled(({ tag, children, ...props }) => {

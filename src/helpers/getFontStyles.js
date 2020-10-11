@@ -1,11 +1,7 @@
 import {
-  FONT_STYLE_SURT_14_200,
-  FONT_STYLE_SURT_14_400,
-  FONT_STYLE_SURT_12_800_UPPERCASE,
   FONT_STYLE_SURT_16_400,
-  FONT_STYLE_SURT_24_800,
-  FONT_STYLE_SURT_32_800,
-  FONT_STYLE_SURT_40_800,
+  FONT_STYLE_SURT_24_400,
+  FONT_STYLE_SURT_40_400,
   FONT_FAMILIES
 } from 'references/styles/fonts'
 
@@ -29,62 +25,31 @@ const getFontStyles = type => {
   }
 
   switch (type) {
-    case FONT_STYLE_SURT_14_200:
-    case FONT_STYLE_SURT_14_400:
+    case FONT_STYLE_SURT_16_400:
       fontProps += `
-        font-size: 1.4rem;
+        font-size: 1.2rem;
+        line-height: 2.8rem;
+
+        ${MEDIA_QUERIES.tabletUp}{
+          font-size: 1.6rem;
+          line-height: 3.2rem;
+        }
+      `
+      break
+    case FONT_STYLE_SURT_24_400:
+      fontProps += `
+        font-size: 1.5rem;
         line-height: 1.6;
 
         ${MEDIA_QUERIES.tabletUp} {
-          font-size: 1.4rem;
-        }
-      `
-      break
-    case FONT_STYLE_SURT_12_800_UPPERCASE:
-      fontProps += `
-        font-size: 1.2rem;
-        line-height: 1.4;
-
-        ${MEDIA_QUERIES.tabletUp} {
-          font-size: 1.4rem;
-        }
-      `
-      break
-    case FONT_STYLE_SURT_16_400:
-      fontProps += `
-        font-size: 1.6rem;
-        line-height: 1.65;
-
-        ${MEDIA_QUERIES.tabletUp} {
-          font-size: 1.8rem;
-        }
-      `
-      break
-    case FONT_STYLE_SURT_24_800:
-      fontProps += `
-        font-size: 1.5rem;
-        line-height: 1.3;
-
-        ${MEDIA_QUERIES.tabletUp} {
           font-size: 2.4rem;
         }
       `
       break
-    case FONT_STYLE_SURT_32_800:
-      fontProps += `
-          font-size: 2.4rem;
-          line-height: 1.35;
-  
-          ${MEDIA_QUERIES.tabletUp} {
-            font-size: 3.2rem;
-            line-height: 1.35;
-          }
-        `
-      break
-    case FONT_STYLE_SURT_40_800:
+    case FONT_STYLE_SURT_40_400:
       fontProps += `
         font-size: 2.4rem;
-        line-height: 1.35;
+        line-height: 1.4;
 
         ${MEDIA_QUERIES.tabletUp} {
           font-size: 4rem;
