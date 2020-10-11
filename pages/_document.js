@@ -3,7 +3,7 @@ import { ServerStyleSheet } from 'styled-components'
 
 import { PATH_STATIC } from 'env'
 
-import { COLOURS } from 'references/styles'
+import { COLORS } from 'references/styles'
 import { TrackingGtmHead, TrackingGtmBody } from 'components/Tracking'
 
 export default class JoshDocument extends Document {
@@ -54,10 +54,10 @@ export default class JoshDocument extends Document {
             href={`${PATH_STATIC}/site/favicon-16x16.png`}
           />
           <link rel='manifest' href={`${PATH_STATIC}/site/site.webmanifest`} />
-          <link rel='mask-icon' color={COLOURS.blue} />
+          <link rel='mask-icon' color={COLORS.blue} />
           <link rel='shortcut icon' href={`${PATH_STATIC}/site/favicon.ico`} />
-          <meta name='msapplication-TileColor' content={COLOURS.blue} />
-          <meta name='theme-color' content={COLOURS.blue} />
+          <meta name='msapplication-TileColor' content={COLORS.blue} />
+          <meta name='theme-color' content={COLORS.blue} />
           <TrackingGtmHead />
         </Head>
         <body>

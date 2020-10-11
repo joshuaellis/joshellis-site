@@ -5,7 +5,7 @@ export default {
   openGraph: {
     type: 'website',
     locale: 'en_GB',
-    url: 'https://www.joshellis.com/',
+    url: 'https://www.joshellis.co.uk/',
     site_name: 'Josh Ellis',
     images: [
       {
@@ -23,4 +23,4 @@ export default {
   }
 }
 
-export const getUrl = path => `https://www.joshellis.com${path}`
+export const getUrl = path => `https://www.joshellis.co.uk${path}`

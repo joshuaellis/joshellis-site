@@ -1,15 +1,67 @@
 import React from 'react'
 import styled from 'styled-components'
 import { NextSeo } from 'next-seo'
+import { FormattedMessage } from 'react-intl'
+
+import { TextTitle } from 'components/Text'
+import { ButtonSimple } from 'components/Button'
+
+import { COLORS, MEDIA_QUERIES } from 'references/styles'
+import { FONT_STYLE_SURT_40_400 } from 'references/styles/fonts'
 
 const HomePage = () => {
   return (
     <Home>
-      <NextSeo title='Josh Ellis' titleTemplate='%s' />
+      <FormattedMessage id='meta-title'>
+        {titleStr => (
+          <FormattedMessage id='meta-description'>
+            {descriptionStr => (
+              <NextSeo
+                title={titleStr}
+                titleTemplate='%s'
+                description={descriptionStr}
+              />
+            )}
+          </FormattedMessage>
+        )}
+      </FormattedMessage>
+      <HomeTitle tag='h1' fontStyle={FONT_STYLE_SURT_40_400}>
+        <FormattedMessage id='title' />
+        <HomeSubtitle>
+          <FormattedMessage id='subtitle' />
+        </HomeSubtitle>
+      </HomeTitle>
+      <HomeContactButton tag='a' href='mailto:hello@joshellis.co.uk'>
+        Get in touch
+      </HomeContactButton>
     </Home>
   )
 }
 
 export default HomePage
 
-const Home = styled.main``
+const Home = styled.main`
+  width: 100vw;
+  height: 100vh;
+  background-color: ${COLORS.white};
+  padding: 2rem 3.2rem 4rem;
+
+  ${MEDIA_QUERIES.tabletUp} {
+    padding: 3.6rem 5.2rem 8rem;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+  }
+`
+
+const HomeTitle = styled(TextTitle)`
+  grid-column: span 6;
+`
+
+const HomeSubtitle = styled.span``
+
+const HomeContactButton = styled(ButtonSimple)`
+  display: inline-block;
+  cursor: pointer;
+  position: absolute;
+  bottom: 8rem;
+`
