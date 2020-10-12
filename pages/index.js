@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { NextSeo } from 'next-seo'
 import { FormattedMessage } from 'react-intl'
+import dynamic from 'next/dynamic'
 
 import { TextTitle } from 'components/Text'
 import { ButtonSimple } from 'components/Button'
@@ -9,6 +10,10 @@ import { ContentHomeSections } from 'components/Content'
 
 import { COLORS, MEDIA_QUERIES } from 'references/styles'
 import { FONT_STYLE_SURT_40_400 } from 'references/styles/fonts'
+
+const DynamicHapticCanvas = dynamic(() => import('components/HapticCanvas'), {
+  ssr: false
+})
 
 const HomePage = () => {
   return (
@@ -42,6 +47,9 @@ const HomePage = () => {
       <HomeContactButton tag='a' href='mailto:hello@joshellis.co.uk'>
         Get in touch
       </HomeContactButton>
+      <HapticBackground>
+        <DynamicHapticCanvas />
+      </HapticBackground>
     </Home>
   )
 }
@@ -82,6 +90,7 @@ const HomeContactButton = styled(ButtonSimple)`
     bottom: 8rem;
     left: 5.2rem;
     z-index: 1;
+    margin: 0;
   }
 `
 
@@ -106,8 +115,11 @@ const HomeGrid = styled.div`
     max-height: calc(100vh - 21.6rem);
     margin-bottom: 21.6rem;
     overflow: scroll;
+    padding: 3.6rem 5.2rem 8rem;
+  }
+
+  ${MEDIA_QUERIES.desktopUp} {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    padding: 3.6rem 5.2rem 8rem;
   }
 `

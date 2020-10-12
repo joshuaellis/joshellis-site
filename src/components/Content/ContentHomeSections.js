@@ -35,7 +35,7 @@ const renderSection = section => {
       )
     case 'experience':
       return (
-        <HomeSectionCopy>
+        <HomeSectionDiv>
           {Array(EXPERIENCE_AMOUNT)
             .fill({})
             .map((_, i) => (
@@ -48,7 +48,7 @@ const renderSection = section => {
                 </TextTitle>
               </HomeSectionFlex>
             ))}
-        </HomeSectionCopy>
+        </HomeSectionDiv>
       )
     case 'social':
       return (
@@ -125,8 +125,18 @@ const HomeSectionCopy = styled(TextCopy)`
   }
 `
 
+const HomeSectionDiv = styled.div`
+  ${MEDIA_QUERIES.tabletUp} {
+    margin-right: 20%;
+  }
+`
+
 const HomeSectionFlex = styled.p`
   width: 100%;
   display: flex;
   justify-content: space-between;
+
+  > *:nth-child(2) {
+    text-align: right;
+  }
 `

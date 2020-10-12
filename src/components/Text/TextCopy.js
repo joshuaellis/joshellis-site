@@ -16,7 +16,7 @@ export default function TextCopy ({ className, children, fontStyle }) {
 
 TextCopy.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.string,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   fontStyle: PropTypes.string.isRequired
 }
 
