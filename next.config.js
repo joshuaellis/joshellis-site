@@ -38,5 +38,12 @@ switch (NODE_ENV_CUSTOM) {
 
 module.exports = {
   publicRuntimeConfig: publicRuntimeConfig,
-  useFileSystemPublicRoutes: true
+  async rewrites () {
+    return [
+      {
+        source: '/play/circlewave',
+        destination: '/play/circlewave/index.html'
+      }
+    ]
+  }
 }
