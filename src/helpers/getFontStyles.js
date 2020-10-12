@@ -1,4 +1,5 @@
 import {
+  FONT_STYLE_SURT_14_300,
   FONT_STYLE_SURT_16_400,
   FONT_STYLE_SURT_24_400,
   FONT_STYLE_SURT_40_400,
@@ -25,6 +26,17 @@ const getFontStyles = type => {
   }
 
   switch (type) {
+    case FONT_STYLE_SURT_14_300:
+      fontProps += `
+        font-size: 1.2rem;
+        line-height: 2.8rem;
+
+        ${MEDIA_QUERIES.tabletUp}{
+          font-size: 1.4rem;
+          line-height: 3rem;
+        }
+      `
+      break
     case FONT_STYLE_SURT_16_400:
       fontProps += `
         font-size: 1.2rem;

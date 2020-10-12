@@ -18,6 +18,20 @@ const markdownFormatter = new MarkdownIt({
   typographer: true
 })
 
+const parseArrayData = str =>
+  str.split('\n\n').map(string =>
+    string.split(',').map(x => {
+      if (x.match('https: //')) {
+        return x
+          .split(' ')
+          .join('')
+          .trim()
+      } else {
+        return x.trim()
+      }
+    })
+  )
+
 async function fetchAndParseTab (tabId) {
   try {
     const res = await fetch(
@@ -32,13 +46,38 @@ async function fetchAndParseTab (tabId) {
         if (item.gsx$id && item.gsx$id.$t) {
           const id = `${item.gsx$id.$t.toLowerCase().trim()}`
           let value
+          let dontMarkdown = false
 
           try {
             value = item[`gsx$${FINAL_TEXT_COLUMN}`].$t
+
+            if (value.match('\n\n')) {
+              dontMarkdown = true
+              value = parseArrayData(value)
+            }
           } catch (err) {
             value = ''
           }
-          output[id] = markdownFormatter.renderInline(value)
+
+          if (dontMarkdown) {
+            if (id.split('.')[1] === 'experience') {
+              value.forEach((val, i) => {
+                const [place, time] = val
+                output[`${id}.${i}.place`] = place
+                output[`${id}.${i}.time`] = time
+              })
+            } else if (id.split('.')[1] === 'social') {
+              value.forEach((val, i) => {
+                const [label, link] = val
+                output[`${id}.${i}.label`] = label
+                output[`${id}.${i}.link`] = link
+              })
+            } else {
+              output[id] = value
+            }
+          } else {
+            output[id] = markdownFormatter.renderInline(value)
+          }
         }
       })
     }

@@ -2,6 +2,7 @@ export const FONT_FAMILIES = {
   surt: 'Surt, Helvetica, Arial, sans-serif'
 }
 
+export const FONT_STYLE_SURT_14_300 = 'FONT_STYLE_SURT_14_300'
 export const FONT_STYLE_SURT_16_400 = 'FONT_STYLE_SURT_16_400'
 export const FONT_STYLE_SURT_24_400 = 'FONT_STYLE_SURT_24_400'
 export const FONT_STYLE_SURT_40_400 = 'FONT_STYLE_SURT_40_400'

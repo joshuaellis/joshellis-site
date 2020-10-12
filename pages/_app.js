@@ -37,25 +37,6 @@ const App = ({ language, Component, pageProps }) => {
       },
       false
     )
-    return () => {
-      const body = document.body
-      document.removeEventListener(
-        'mousedown',
-        () => {
-          body.classList.remove('js-focus-visible')
-        },
-        false
-      )
-      document.removeEventListener(
-        'keydown',
-        e => {
-          if (e.keyCode === 9) {
-            body.classList.add('js-focus-visible')
-          }
-        },
-        false
-      )
-    }
   }, [])
 
   return (

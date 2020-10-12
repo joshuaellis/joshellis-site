@@ -2,14 +2,12 @@ const express = require('express')
 const next = require('next')
 const compression = require('compression')
 
-const routes = require('./routes')
-
 const port = process.env.PORT || 3000
 const dev = process.env.NODE_ENV_CUSTOM === 'dev'
 const prod = process.env.NODE_ENV_CUSTOM === 'production'
 
 const app = next({ dev })
-const handle = routes.getRequestHandler(app)
+const handle = app.getRequestHandler()
 
 const redirects = [
   { from: '/work', to: '/', type: 301 },
