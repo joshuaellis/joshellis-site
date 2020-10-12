@@ -16,4 +16,13 @@ export const CSS_FONTS = `
     font-weight: 400;
     font-style: normal;
   }
+
+  @font-face {
+    font-family: 'Surt';
+    src: url('/fonts/Surt-Light.eot') format('embedded-opentype'),
+      url('/fonts/Surt-Light.woff') format('woff'),
+      url('/fonts/Surt-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+  }
 `

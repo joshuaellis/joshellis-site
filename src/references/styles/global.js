@@ -20,6 +20,7 @@ export default `
         margin: 0;
         color: ${COLORS.black};
         ${getFontStyles(FONT_STYLE_SURT_16_400)}
+        overflow: hidden;
     }
 
     h1,

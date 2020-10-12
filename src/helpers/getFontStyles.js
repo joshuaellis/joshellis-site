@@ -28,11 +28,11 @@ const getFontStyles = type => {
   switch (type) {
     case FONT_STYLE_SURT_14_300:
       fontProps += `
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         line-height: 2.8rem;
 
         ${MEDIA_QUERIES.tabletUp}{
-          font-size: 1.4rem;
+          font-size: 1.6rem;
           line-height: 3rem;
         }
       `

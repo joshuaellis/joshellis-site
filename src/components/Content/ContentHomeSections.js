@@ -4,7 +4,11 @@ import { FormattedMessage } from 'react-intl'
 
 import { TextTitle, TextCopy } from 'components/Text'
 
-import { FONT_STYLE_SURT_14_300 } from 'references/styles/fonts'
+import { COLORS, MEDIA_QUERIES } from 'references/styles'
+import {
+  FONT_STYLE_SURT_14_300,
+  FONT_STYLE_SURT_24_400
+} from 'references/styles/fonts'
 
 const SECTIONS = ['about', 'experience', 'social']
 const EXPERIENCE_AMOUNT = 3
@@ -13,11 +17,8 @@ const SOCIAL_AMOUNT = 2
 export default function ContentHomeSections () {
   return SECTIONS.map(section => (
     <HomeSection key={section}>
-      <HomeSectionTitle tag='h2'>
-        <FormattedMessage
-          fontStyle={FONT_STYLE_SURT_14_300}
-          id={`home.${section}.title`}
-        />
+      <HomeSectionTitle fontStyle={FONT_STYLE_SURT_14_300} tag='h2'>
+        <FormattedMessage id={`home.${section}.title`} />
       </HomeSectionTitle>
       {renderSection(section)}
     </HomeSection>
@@ -28,7 +29,7 @@ const renderSection = section => {
   switch (section) {
     case 'about':
       return (
-        <HomeSectionCopy>
+        <HomeSectionCopy fontStyle={FONT_STYLE_SURT_24_400}>
           <FormattedMessage id={`home.${section}.content`} />
         </HomeSectionCopy>
       )
@@ -39,26 +40,26 @@ const renderSection = section => {
             .fill({})
             .map((_, i) => (
               <HomeSectionFlex key={i}>
-                <HomeSectionCopy>
+                <TextTitle fontStyle={FONT_STYLE_SURT_24_400} tag='span'>
                   <FormattedMessage id={`home.${section}.content.${i}.place`} />
-                </HomeSectionCopy>
-                <HomeSectionCopy>
+                </TextTitle>
+                <TextTitle fontStyle={FONT_STYLE_SURT_24_400} tag='span'>
                   <FormattedMessage id={`home.${section}.content.${i}.time`} />
-                </HomeSectionCopy>
+                </TextTitle>
               </HomeSectionFlex>
             ))}
         </HomeSectionCopy>
       )
     case 'social':
       return (
-        <HomeSectionList>
+        <ul>
           {Array(SOCIAL_AMOUNT)
             .fill({})
             .map((_, i) => (
-              <HomeSectionListItem tag='li' key={i}>
+              <TextTitle fontStyle={FONT_STYLE_SURT_24_400} tag='li' key={i}>
                 <FormattedMessage id={`home.${section}.content.${i}.label`}>
                   {label => (
-                    <FormattedMessage id={`home.${section}.content.${i}.href`}>
+                    <FormattedMessage id={`home.${section}.content.${i}.link`}>
                       {href => (
                         <a href={href} rel='nofollow noopener noreferrer'>
                           {label}
@@ -67,9 +68,9 @@ const renderSection = section => {
                     </FormattedMessage>
                   )}
                 </FormattedMessage>
-              </HomeSectionListItem>
+              </TextTitle>
             ))}
-        </HomeSectionList>
+        </ul>
       )
     default:
       console.warn('CONTENT_HOME_SECTION SECTION NOT HANDLED')
@@ -77,17 +78,55 @@ const renderSection = section => {
 }
 
 const HomeSection = styled.section`
-  margin-bottom: 6.4rem;
+  & + & {
+    margin-top: 4rem;
+  }
+
+  ${MEDIA_QUERIES.tabletUp} {
+    & + & {
+      margin-top: 6.4rem;
+    }
+  }
 `
 
 const HomeSectionTitle = styled(TextTitle)`
-  margin-left: 3.2rem;
+  position: relative;
+  display: inline-block;
+  z-index: 0;
+  margin-left: 1.6rem;
+
+  &:after {
+    background-color: ${COLORS.turquoise};
+    content: '';
+    display: block;
+    position: absolute;
+    width: calc(100% + 1rem);
+    height: 6px;
+    border-radius: 4px;
+    top: 50%;
+    left: -0.5rem;
+    transform: translateY(-50%);
+    z-index: -1;
+  }
+
+  ${MEDIA_QUERIES.tabletUp} {
+    margin-left: 3.2rem;
+
+    &:after {
+      width: calc(100% + 2rem);
+      left: -1rem;
+    }
+  }
 `
 
-const HomeSectionCopy = styled(TextCopy)``
+const HomeSectionCopy = styled(TextCopy)`
+  ${MEDIA_QUERIES.tabletUp} {
+    margin-right: 20%;
+  }
+`
 
-const HomeSectionList = styled.ul``
-
-const HomeSectionListItem = styled(TextTitle)``
-
-const HomeSectionFlex = styled.div``
+const HomeSectionFlex = styled.p`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`
