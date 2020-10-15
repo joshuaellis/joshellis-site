@@ -3,7 +3,7 @@ import { CSS_FONTS, FONT_FAMILIES } from './fonts'
 import CSS_GLOBAL from './global'
 import { EASINGS } from './easings'
 import { WIDTHS, WRAPPERS } from './dimensions'
-import { MEDIA_QUERIES } from './mediaqueries'
+import { MEDIA_QUERIES } from './mediaQueries'
 
 export {
   COLORS,
