@@ -6,7 +6,7 @@ import {
   FONT_FAMILIES
 } from 'references/styles/fonts'
 
-import { MEDIA_QUERIES } from 'references/styles/mediaqueries' // DONT CHANGE THIS TO references/styles AS IT WILL BREAK THE SERVER SIDE RENDERING
+import { MEDIA_QUERIES } from 'references/styles/mediaQueries' // DONT CHANGE THIS TO references/styles AS IT WILL BREAK THE SERVER SIDE RENDERING
 
 const getFontStyles = type => {
   if (!type) {
