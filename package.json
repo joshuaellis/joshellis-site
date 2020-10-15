@@ -23,10 +23,7 @@
   },
   "standard": {
     "parser": "babel-eslint",
-    "ignore": [
-      ".next/",
-      "public/"
-    ]
+    "ignore": [".next/", "public/"]
   },
   "author": "Josh Ellis",
   "license": "ISC",
@@ -41,8 +38,6 @@
     "babel-plugin-transform-remove-console": "^6.9.4",
     "dotenv": "^8.2.0",
     "eslint": "^7.10.0",
-    "markdown-it": "^11.0.1",
-    "node-fetch": "^2.6.1",
     "prettier-standard": "^16.4.1",
     "standard": "^14.3.4"
   },
@@ -51,9 +46,11 @@
     "compression": "^1.7.4",
     "core-js": "^3.6.5",
     "express": "^4.17.1",
+    "markdown-it": "^11.0.1",
     "next": "^9.5.4",
     "next-routes": "^1.4.2",
     "next-seo": "^4.11.0",
+    "node-fetch": "^2.6.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-axe": "^3.5.4",
