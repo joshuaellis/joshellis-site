@@ -44,9 +44,6 @@ const HomePage = () => {
           <ContentHomeSections />
         </HomeContent>
       </HomeGrid>
-      <HomeContactButton tag='a' href='mailto:hello@joshellis.co.uk'>
-        Get in touch
-      </HomeContactButton>
       <HapticBackground>
         <DynamicHapticCanvas />
       </HapticBackground>
@@ -57,6 +54,8 @@ const HomePage = () => {
 export default HomePage
 
 const Home = styled.main`
+  width: 100%;
+  height: 100%;
   max-width: 100vw;
   max-height: 100vh;
   background-color: ${COLORS.white};
@@ -106,14 +105,14 @@ const HapticBackground = styled.div`
 const HomeContent = styled.article`
   grid-column: span 6;
   user-select: none;
+  padding-bottom: 8rem;
 `
 
 const HomeGrid = styled.div`
   padding: 2rem 2.5rem 4rem;
 
   ${MEDIA_QUERIES.tabletUp} {
-    max-height: calc(100vh - 21.6rem);
-    margin-bottom: 21.6rem;
+    max-height: calc(100vh);
     overflow: scroll;
     padding: 3.6rem 5.2rem 8rem;
   }

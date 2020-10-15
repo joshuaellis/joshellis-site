@@ -12,7 +12,7 @@ import {
 
 const SECTIONS = ['about', 'experience', 'social']
 const EXPERIENCE_AMOUNT = 3
-const SOCIAL_AMOUNT = 2
+const SOCIAL_AMOUNT = 3
 
 export default function ContentHomeSections () {
   return SECTIONS.map(section => (

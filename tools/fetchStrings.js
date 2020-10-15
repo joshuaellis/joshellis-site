@@ -1,13 +1,13 @@
-const fs = require('fs')
-const path = require('path')
+// const fs = require('fs')
+// const path = require('path')
 const fetch = require('node-fetch')
 const MarkdownIt = require('markdown-it')
-const dotenv = require('dotenv')
+// const dotenv = require('dotenv')
 
-dotenv.config({ path: path.resolve(process.cwd(), '../.env') })
+// dotenv.config({ path: path.resolve(process.cwd(), '../.env') })
 
-const createOutputPath = locale =>
-  `../src/references/locales/${locale}/index.json`
+// const createOutputPath = locale =>
+//   `../src/references/locales/${locale}/index.json`
 
 const SHEET_KEY = process.env.STRINGS_SHEET_KEY
 const TABS = [1, 2, 3, 4, 5, 6]
@@ -21,7 +21,7 @@ const markdownFormatter = new MarkdownIt({
 const parseArrayData = str =>
   str.split('\n\n').map(string =>
     string.split(',').map(x => {
-      if (x.match('https: //')) {
+      if (x.match('https: //') || x.match('mailto: ')) {
         return x
           .split(' ')
           .join('')
@@ -88,15 +88,27 @@ async function fetchAndParseTab (tabId) {
   }
 }
 
-async function main () {
+// async function main () {
+//   for (const tab of TABS) {
+//     const { data, title } = await fetchAndParseTab(tab)
+
+//     fs.writeFileSync(
+//       path.resolve(__dirname, createOutputPath(title)),
+//       JSON.stringify(data, null, 2)
+//     )
+//   }
+// }
+
+// main()
+
+export const fetchStrings = async () => {
+  let messages = {}
+
   for (const tab of TABS) {
     const { data, title } = await fetchAndParseTab(tab)
 
-    fs.writeFileSync(
-      path.resolve(__dirname, createOutputPath(title)),
-      JSON.stringify(data, null, 2)
-    )
+    messages = { ...messages, [title]: data }
   }
-}
 
-main()
+  return messages
+}

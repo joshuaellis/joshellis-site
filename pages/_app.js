@@ -8,7 +8,8 @@ import getLanguage from 'helpers/getLanguage'
 
 import { CSS_GLOBAL, CSS_FONTS } from 'references/styles'
 import SEO from 'references/seo'
-import MESSAGES from 'references/locales'
+
+import { fetchStrings } from './../tools/fetchStrings'
 
 const GlobalStyle = createGlobalStyle`
   ${CSS_FONTS}
@@ -18,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
 // non-production running accessibility helper
 addReactAxe()
 
-const App = ({ language, Component, pageProps }) => {
+const App = ({ language, Component, pageProps, messages }) => {
   useEffect(() => {
     const body = document.body
     document.addEventListener(
@@ -40,7 +41,7 @@ const App = ({ language, Component, pageProps }) => {
   }, [])
 
   return (
-    <IntlProvider messages={MESSAGES[language]} locale={language}>
+    <IntlProvider messages={messages[language]} locale={language}>
       <DefaultSeo {...SEO} />
       <Component {...pageProps} />
       <GlobalStyle />
@@ -50,6 +51,10 @@ const App = ({ language, Component, pageProps }) => {
 
 export default App
 
-App.getInitialProps = async ctx => ({
-  language: getLanguage(ctx).toUpperCase()
-})
+App.getInitialProps = async ctx => {
+  const messages = await fetchStrings()
+  return {
+    messages,
+    language: getLanguage(ctx)
+  }
+}
