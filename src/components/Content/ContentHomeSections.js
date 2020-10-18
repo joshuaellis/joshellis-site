@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl'
 
 import { TextTitle, TextCopy } from 'components/Text'
 
-import { COLORS, MEDIA_QUERIES } from 'references/styles'
+import { COLORS, MEDIA_QUERIES, EASINGS } from 'references/styles'
 import {
   FONT_STYLE_SURT_14_300,
   FONT_STYLE_SURT_24_400
@@ -52,25 +52,32 @@ const renderSection = section => {
       )
     case 'social':
       return (
-        <ul>
+        <SocialList>
           {Array(SOCIAL_AMOUNT)
             .fill({})
             .map((_, i) => (
-              <TextTitle fontStyle={FONT_STYLE_SURT_24_400} tag='li' key={i}>
+              <SocialListItem
+                fontStyle={FONT_STYLE_SURT_24_400}
+                tag='li'
+                key={i}
+              >
                 <FormattedMessage id={`home.${section}.content.${i}.label`}>
                   {label => (
                     <FormattedMessage id={`home.${section}.content.${i}.link`}>
                       {href => (
-                        <a href={href} rel='nofollow noopener noreferrer'>
+                        <SocialListAnchor
+                          href={href}
+                          rel='nofollow noopener noreferrer'
+                        >
                           {label}
-                        </a>
+                        </SocialListAnchor>
                       )}
                     </FormattedMessage>
                   )}
                 </FormattedMessage>
-              </TextTitle>
+              </SocialListItem>
             ))}
-        </ul>
+        </SocialList>
       )
     default:
       console.warn('CONTENT_HOME_SECTION SECTION NOT HANDLED')
@@ -139,4 +146,41 @@ const HomeSectionFlex = styled.p`
   > *:nth-child(2) {
     text-align: right;
   }
+`
+
+const SocialList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`
+
+const SocialListItem = styled(TextTitle)`
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0.2rem;
+    left: -1rem;
+    height: calc(100% - 0.4rem);
+    width: 0;
+    z-index: 0;
+    background-color: ${COLORS.pink};
+    opacity: 0.7;
+    transition: width 0.3s ${EASINGS.easeOutQuad};
+  }
+
+  &:hover:before {
+    width: calc(100% + 2rem);
+  }
+`
+
+const SocialListAnchor = styled.a`
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
 `

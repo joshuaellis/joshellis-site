@@ -23,7 +23,10 @@
   },
   "standard": {
     "parser": "babel-eslint",
-    "ignore": [".next/", "public/"]
+    "ignore": [
+      ".next/",
+      "public/"
+    ]
   },
   "author": "Josh Ellis",
   "license": "ISC",

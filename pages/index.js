@@ -5,7 +5,6 @@ import { FormattedMessage } from 'react-intl'
 import dynamic from 'next/dynamic'
 
 import { TextTitle } from 'components/Text'
-import { ButtonSimple } from 'components/Button'
 import { ContentHomeSections } from 'components/Content'
 
 import { COLORS, MEDIA_QUERIES } from 'references/styles'
@@ -78,34 +77,13 @@ const HomeTitle = styled(TextTitle)`
 
 const HomeSubtitle = styled.span``
 
-const HomeContactButton = styled(ButtonSimple)`
-  display: inline-block;
-  cursor: pointer;
-  margin-bottom: 6.4rem;
-  margin-left: 2.5rem;
-
-  ${MEDIA_QUERIES.tabletUp} {
-    position: absolute;
-    bottom: 8rem;
-    left: 5.2rem;
-    z-index: 1;
-    margin: 0;
-  }
-`
-
 const HapticBackground = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: -1;
   width: 100%;
   height: 100%;
-`
-
-const HomeContent = styled.article`
-  grid-column: span 6;
-  user-select: none;
-  padding-bottom: 8rem;
 `
 
 const HomeGrid = styled.div`
@@ -121,4 +99,10 @@ const HomeGrid = styled.div`
     display: grid;
     grid-template-columns: repeat(12, 1fr);
   }
+`
+
+const HomeContent = styled.article`
+  grid-column: span 6;
+  user-select: none;
+  padding-bottom: 5.6rem;
 `
