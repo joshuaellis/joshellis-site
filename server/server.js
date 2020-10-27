@@ -1,87 +1,43 @@
 const express = require('express')
-const compression = require('compression')
 const next = require('next')
-
-const FILE_NAME_SITEMAP = 'sitemap.xml'
-const FILE_NAME_ROBOTS = 'robots.txt'
-
-let dev
-switch (process.env.NODE_ENV_CUSTOM) {
-  case 'production':
-    dev = false
-    break
-  default:
-    dev = true
-    break
-}
+const compression = require('compression')
 
 const port = process.env.PORT || 3000
+const dev = process.env.NODE_ENV_CUSTOM === 'dev'
+const prod = process.env.NODE_ENV_CUSTOM === 'production'
 
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
+const redirects = [
+  { from: '/work', to: '/', type: 301 },
+  { from: '/work/*', to: '/', type: 301 }
+]
+
 app.prepare().then(() => {
   const server = express()
-
   server.enable('strict routing')
   server.use(compression())
-  server.use(express.json())
 
-  // FILES //
+  /**
+   *
+   * Redirects of the old website
+   *
+   */
 
-  server.get(`/${FILE_NAME_ROBOTS}`, (req, res) => {
-    res.status(200).sendFile(FILE_NAME_ROBOTS, {
-      root: `${__dirname}/static/`,
-      headers: {
-        'Content-Type': 'text/plain;charset=UTF-8'
-      }
+  redirects.forEach(({ from, to, type = 301, method = 'get' }) => {
+    server[method](from, (req, res) => {
+      res.redirect(type, to)
     })
   })
 
-  server.get(`/${FILE_NAME_SITEMAP}`, (req, res) => {
-    res.status(200).sendFile(FILE_NAME_SITEMAP, {
-      root: `${__dirname}/static/`,
-      headers: {
-        'Content-Type': 'text/plain;charset=UTF-8'
-      }
-    })
+  server.all('*', (req, res) => {
+    if (!prod) res.setHeader('X-Robots-Tag', 'noindex, nofollow')
+    return handle(req, res)
   })
-
-  // HOME //
-
-  server.get('/', (req, res) => {
-    render(req, res, '/', req.query)
-  })
-
-  // CATCHALL //
-
-  server.get('*', (req, res) => handle(req, res))
-
-  // LISTEN //
 
   server.listen(port, err => {
     if (err) throw err
-    console.log(`WEBSITE MODE: ${process.env.NODE_ENV_CUSTOM}`)
-    console.log(`RUNNING ON PORT: ${port}`)
+    console.log(`> Ready on port ${port} 💁🏻‍♀️`)
   })
-
-  //
 })
-
-const render = (req, res, pagePath, queryParams, options = null) => {
-  if (options) {
-    // console.log('set options', options)
-    if (options.maxAge !== null && options.maxAge > 0) {
-      res.header('Cache-Control', `public, max-age=${options.maxAge}`)
-    }
-  }
-
-  app
-    .renderToHTML(req, res, pagePath, queryParams)
-    .then(html => {
-      res.send(html)
-    })
-    .catch(err => {
-      app.renderError(err, req, res, pagePath, queryParams)
-    })
-}

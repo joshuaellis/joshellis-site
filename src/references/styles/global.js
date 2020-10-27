@@ -1,4 +1,7 @@
-import { FONT_FAMILIES, FONT_SIZES, LINE_HEIGHTS } from './fonts'
+import getFontStyles from 'helpers/getFontStyles'
+
+import { FONT_STYLE_SURT_16_400 } from './fonts'
+import { COLORS } from './colors'
 
 export default `
     *,
@@ -15,9 +18,9 @@ export default `
 
     body {
         margin: 0;
-        font-family: ${FONT_FAMILIES.surt};
-        font-size: ${FONT_SIZES.default};
-        line-height: ${LINE_HEIGHTS.default};
+        color: ${COLORS.black};
+        ${getFontStyles(FONT_STYLE_SURT_16_400)}
+        overflow: hidden;
     }
 
     h1,
@@ -43,15 +46,5 @@ export default `
         list-style: none;
         padding: 0;
         margin: 0;
-    }
-
-    .modal--active {
-      overflow: hidden;
-      position: fixed;
-      width: 100%;
-    }
-
-    #__next {
-      height: 100%;
     }
 `

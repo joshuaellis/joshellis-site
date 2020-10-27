@@ -1,5 +1,12 @@
 {
   "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "usage",
+        "corejs": 3
+      }
+    ],
     "next/babel"
   ],
   "plugins": [
@@ -7,17 +14,15 @@
       "styled-components",
       {
         "ssr": true,
-        "displayName": true,
         "preprocess": false
       }
-    ],
-    "@babel/plugin-proposal-class-properties"
+    ]
   ],
   "env": {
     "production": {
       "plugins": [
-        "transform-react-remove-prop-types",
-        "transform-remove-console"
+        ["transform-remove-console", { "exclude": ["error"] }],
+        "transform-react-remove-prop-types"
       ]
     }
   }

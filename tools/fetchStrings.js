@@ -1,52 +1,114 @@
-const fs = require('fs')
-const path = require('path')
+// const fs = require('fs')
+// const path = require('path')
 const fetch = require('node-fetch')
 const MarkdownIt = require('markdown-it')
+// const dotenv = require('dotenv')
 
-const SHEET_KEY = '1s8q_k8eTo0Rx7l5EnacQv300jRF6k0J-29ax2IQCtTU'
-const TABS = [1]
+// dotenv.config({ path: path.resolve(process.cwd(), '../.env') })
+
+// const createOutputPath = locale =>
+//   `../src/references/locales/${locale}/index.json`
+
+const SHEET_KEY = process.env.STRINGS_SHEET_KEY
+const TABS = [1, 2, 3, 4, 5, 6]
 const FINAL_TEXT_COLUMN = 'text'
 
 const markdownFormatter = new MarkdownIt({
+  html: true,
   typographer: true
 })
+
+const parseArrayData = str =>
+  str.split('\n\n').map(string =>
+    string.split(',').map(x => {
+      if (x.match('https: //') || x.match('mailto: ')) {
+        return x
+          .split(' ')
+          .join('')
+          .trim()
+      } else {
+        return x.trim()
+      }
+    })
+  )
 
 async function fetchAndParseTab (tabId) {
   try {
     const res = await fetch(
       `https://spreadsheets.google.com/feeds/list/${SHEET_KEY}/${tabId}/public/values?alt=json`
     )
-    const data = await res.json()
+    const { feed } = await res.json()
     const output = {}
-    data.feed.entry.forEach(item => {
-      if (item.gsx$id && item.gsx$id.$t) {
-        const id = item.gsx$id.$t.toLowerCase().trim()
-        let value
+    const title = feed.title.$t.toLowerCase()
 
-        try {
-          value = item[`gsx$${FINAL_TEXT_COLUMN}`].$t
-        } catch (err) {
-          value = ''
+    if (feed.entry) {
+      feed.entry.forEach(item => {
+        if (item.gsx$id && item.gsx$id.$t) {
+          const id = `${item.gsx$id.$t.toLowerCase().trim()}`
+          let value
+          let dontMarkdown = false
+
+          try {
+            value = item[`gsx$${FINAL_TEXT_COLUMN}`].$t
+
+            if (value.match('\n\n')) {
+              dontMarkdown = true
+              value = parseArrayData(value)
+            }
+          } catch (err) {
+            value = ''
+          }
+
+          if (dontMarkdown) {
+            if (id.split('.')[1] === 'experience') {
+              value.forEach((val, i) => {
+                const [place, time] = val
+                output[`${id}.${i}.place`] = place
+                output[`${id}.${i}.time`] = time
+              })
+            } else if (id.split('.')[1] === 'social') {
+              value.forEach((val, i) => {
+                const [label, link] = val
+                output[`${id}.${i}.label`] = label
+                output[`${id}.${i}.link`] = link
+              })
+            } else {
+              output[id] = value
+            }
+          } else {
+            output[id] = markdownFormatter.renderInline(value)
+          }
         }
-        output[id] = markdownFormatter.renderInline(value)
-      }
-    })
-    return output
+      })
+    }
+
+    return { data: output, title }
   } catch (err) {
     console.log(err)
   }
 }
 
-async function main () {
-  let output = {}
+// async function main () {
+//   for (const tab of TABS) {
+//     const { data, title } = await fetchAndParseTab(tab)
+
+//     fs.writeFileSync(
+//       path.resolve(__dirname, createOutputPath(title)),
+//       JSON.stringify(data, null, 2)
+//     )
+//   }
+// }
+
+// main()
+
+export const fetchStrings = async () => {
+  let messages = {}
 
   for (const tab of TABS) {
-    const data = await fetchAndParseTab(tab)
-    output = Object.assign(output, data)
+    const { data, title } = await fetchAndParseTab(tab)
+
+    messages = { ...messages, [title]: data }
   }
 
-  const outputPath = path.resolve(__dirname, '../../public/strings.json')
-  fs.writeFileSync(outputPath, JSON.stringify(output, null, 2))
+  return messages
 }
-
-main()

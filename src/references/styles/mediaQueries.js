@@ -1,6 +1,7 @@
-import WIDTHS from './widths'
+import { WIDTHS } from './dimensions'
 
-export default {
-  tabletUp: `@media only screen and (min-width: ${WIDTHS.tablet}px)`,
-  desktopUp: `@media only screen and (min-width: ${WIDTHS.desktop}px)`
+export const MEDIA_QUERIES = {
+  desktopUp: `@media (min-width: ${WIDTHS.desktop}px)`,
+  largeDesktopUp: `@media (min-width: ${WIDTHS.largeDesktop}px)`,
+  tabletUp: `@media (min-width: ${WIDTHS.tablet}px)`
 }

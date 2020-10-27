@@ -1,12 +1,7 @@
-export default {
-  black: '#1a1a1a',
-  grey: '#333333',
-  white: '#fdfdfd',
-  blue: '#5da9e2',
-  red: '#ff6f85',
-  orange: '#f8a22d',
-  green: '#5fd16d',
-  teal: '#4cccaf',
-  footBg: '#e8e8e8',
-  type: '#423f4a'
+export const COLORS = {
+  white: '#f2f2f2',
+  blue: '#277ef4',
+  turquoise: '#3CFFD0',
+  black: '#121212',
+  pink: '#ff3c6a'
 }

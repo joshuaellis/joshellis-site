@@ -1,44 +1,49 @@
-const path = require('path')
+const NODE_ENV_CUSTOM = process.env.NODE_ENV_CUSTOM
+const NODE_ENV_ALLY = process.env.NODE_ENV_ALLY || false
 
-const initExport = {
-  webpack: config => {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      components: path.resolve(__dirname, './src/components/'),
-      lib: path.resolve(__dirname, 'src/lib/'),
-      hooks: path.resolve(__dirname, './src/hooks/'),
-      icons: path.resolve(__dirname, './public/icons/'),
-      store: path.resolve(__dirname, './src/store/'),
-      references: path.resolve(__dirname, './src/references/'),
-      styles: path.resolve(__dirname, './src/references/styles')
+let publicRuntimeConfig
+
+switch (NODE_ENV_CUSTOM) {
+  case 'production':
+    publicRuntimeConfig = {
+      ENV: NODE_ENV_CUSTOM,
+      ENV_SITE_DOMAIN: 'https://www.joshellis.co.uk',
+      ENV_PATH_STATIC: '',
+      ENV_GTM_CONTAINER_ID: '',
+      ENV_ALLY: NODE_ENV_ALLY
     }
+    break
 
-    const iconsPath = path.resolve(__dirname, '.', 'public', 'icons')
+  case 'staging':
+    publicRuntimeConfig = {
+      ENV: NODE_ENV_CUSTOM,
+      ENV_SITE_DOMAIN: 'https://josh-ellis-staging.herokuapp.com',
+      ENV_PATH_STATIC: '',
+      ENV_GTM_CONTAINER_ID: '',
+      ENV_ALLY: NODE_ENV_ALLY
+    }
+    break
 
-    config.module.rules.forEach(rule => {
-      if (rule.test && rule.test.toString().indexOf('svg') !== -1) {
-        rule.exclude = [iconsPath]
-      }
-    })
-
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: [
-        'babel-loader',
-        {
-          loader: 'react-svg-loader',
-          options: {
-            svgo: {
-              plugins: [{ removeTitle: true }]
-            }
-          }
-        }
-      ],
-      include: [iconsPath]
-    })
-
-    return config
-  }
+  default:
+  case 'dev':
+    publicRuntimeConfig = {
+      ENV: NODE_ENV_CUSTOM,
+      ENV_SITE_DOMAIN: 'http://localhost:3000',
+      ENV_PATH_STATIC: '',
+      ENV_GTM_CONTAINER_ID: '',
+      ENV_ALLY: NODE_ENV_ALLY
+    }
+    break
 }
 
-module.exports = initExport
+module.exports = {
+  publicRuntimeConfig: publicRuntimeConfig,
+  async rewrites () {
+    return [
+      {
+        source: '/play/circlewave',
+        destination: '/play/circlewave/index.html'
+      }
+    ]
+  }
+}
