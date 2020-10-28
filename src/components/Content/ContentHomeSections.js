@@ -64,14 +64,22 @@ const renderSection = section => {
                 <FormattedMessage id={`home.${section}.content.${i}.label`}>
                   {label => (
                     <FormattedMessage id={`home.${section}.content.${i}.link`}>
-                      {href => (
-                        <SocialListAnchor
-                          href={href}
-                          rel='nofollow noopener noreferrer'
-                        >
-                          {label}
-                        </SocialListAnchor>
-                      )}
+                      {href => {
+                        const gaLabel = label[0]
+                          .split(' ')
+                          .join('')
+                          .toLowerCase()
+                        return (
+                          <SocialListAnchor
+                            href={href}
+                            rel='nofollow noopener noreferrer'
+                            data-ga-label={gaLabel}
+                            id={`ga-contact-${gaLabel}`}
+                          >
+                            {label}
+                          </SocialListAnchor>
+                        )
+                      }}
                     </FormattedMessage>
                   )}
                 </FormattedMessage>
