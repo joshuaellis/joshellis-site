@@ -1,6 +1,6 @@
 {
   "name": "joshellis-site",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "my own personal site",
   "scripts": {
     "build": "NODE_ENV_CUSTOM=production next build",
@@ -23,10 +23,7 @@
   },
   "standard": {
     "parser": "babel-eslint",
-    "ignore": [
-      ".next/",
-      "public/"
-    ]
+    "ignore": [".next/", "public/"]
   },
   "author": "Josh Ellis",
   "license": "ISC",
