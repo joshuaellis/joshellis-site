@@ -6,7 +6,12 @@ import BoxMesh from './BoxMesh'
 const HapticScene = () => {
   return (
     <>
-      <PerspectiveCamera makeDefault position={[0, 0, 15]} near={10} far={20} />
+      <PerspectiveCamera
+        makeDefault
+        position={[0, 0, 50]}
+        near={0.1}
+        far={55}
+      />
       <BoxMesh />
       <ambientLight />
       <pointLight position={[0, 0, 150]} />

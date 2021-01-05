@@ -31,7 +31,7 @@ const HomePage = () => {
         )}
       </FormattedMessage>
       <HomeGrid>
-        <HomeContent>
+        {/* <HomeContent>
           <header>
             <HomeTitle tag='h1' fontStyle={FONT_STYLE_SURT_40_400}>
               <FormattedMessage id='title' />
@@ -41,7 +41,7 @@ const HomePage = () => {
             </HomeTitle>
           </header>
           <ContentHomeSections />
-        </HomeContent>
+        </HomeContent> */}
       </HomeGrid>
       <HapticBackground>
         <DynamicHapticCanvas />
