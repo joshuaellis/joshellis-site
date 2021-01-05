@@ -1,6 +1,6 @@
 import React from 'react'
 import { Canvas } from 'react-three-fiber'
-import { Stats } from '@react-three/drei/Stats'
+import { Stats } from '@react-three/drei'
 
 import { ENV } from 'env'
 

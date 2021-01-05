@@ -1,5 +1,5 @@
 import React from 'react'
-import { PerspectiveCamera } from '@react-three/drei/PerspectiveCamera'
+import { PerspectiveCamera } from '@react-three/drei'
 
 import BoxMesh from './BoxMesh'
 
