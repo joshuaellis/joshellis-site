@@ -1,3 +1,8 @@
+const withTM = require('next-transpile-modules')(
+  ['@react-three/drei', 'three'],
+  { debug: false, resolveSymlinks: true }
+)
+
 const NODE_ENV_CUSTOM = process.env.NODE_ENV_CUSTOM
 const NODE_ENV_ALLY = process.env.NODE_ENV_ALLY || false
 
@@ -8,7 +13,6 @@ switch (NODE_ENV_CUSTOM) {
     publicRuntimeConfig = {
       ENV: NODE_ENV_CUSTOM,
       ENV_SITE_DOMAIN: 'https://www.joshellis.co.uk',
-      ENV_PATH_STATIC: '',
       ENV_GTM_CONTAINER_ID: 'GTM-KBT9ZLS',
       ENV_ALLY: NODE_ENV_ALLY
     }
@@ -18,7 +22,6 @@ switch (NODE_ENV_CUSTOM) {
     publicRuntimeConfig = {
       ENV: NODE_ENV_CUSTOM,
       ENV_SITE_DOMAIN: 'https://josh-ellis-staging.herokuapp.com',
-      ENV_PATH_STATIC: '',
       ENV_GTM_CONTAINER_ID: '',
       ENV_ALLY: NODE_ENV_ALLY
     }
@@ -29,14 +32,13 @@ switch (NODE_ENV_CUSTOM) {
     publicRuntimeConfig = {
       ENV: NODE_ENV_CUSTOM,
       ENV_SITE_DOMAIN: 'http://localhost:3000',
-      ENV_PATH_STATIC: '',
       ENV_GTM_CONTAINER_ID: '',
       ENV_ALLY: NODE_ENV_ALLY
     }
     break
 }
 
-module.exports = {
+module.exports = withTM(_ => ({
   publicRuntimeConfig: publicRuntimeConfig,
   async rewrites () {
     return [
@@ -46,4 +48,4 @@ module.exports = {
       }
     ]
   }
-}
+}))
