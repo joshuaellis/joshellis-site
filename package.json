@@ -23,7 +23,10 @@
   },
   "standard": {
     "parser": "babel-eslint",
-    "ignore": [".next/", "public/"]
+    "ignore": [
+      ".next/",
+      "public/"
+    ]
   },
   "author": "Josh Ellis",
   "license": "ISC",
@@ -47,7 +50,7 @@
     "core-js": "^3.6.5",
     "express": "^4.17.1",
     "markdown-it": "^11.0.1",
-    "next": "^9.5.4",
+    "next": "^10.0.4",
     "next-routes": "^1.4.2",
     "next-seo": "^4.11.0",
     "node-fetch": "^2.6.1",
