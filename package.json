@@ -18,7 +18,7 @@
     "url": "git+https://joshua_ellis@bitbucket.org/joshua_ellis/joshellis.co.uk.git"
   },
   "engines": {
-    "node": ">=14.0.0",
+    "node": "12.0.0",
     "yarn": "^1.21.1"
   },
   "standard": {
