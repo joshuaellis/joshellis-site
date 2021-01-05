@@ -9,7 +9,7 @@ switch (NODE_ENV_CUSTOM) {
       ENV: NODE_ENV_CUSTOM,
       ENV_SITE_DOMAIN: 'https://www.joshellis.co.uk',
       ENV_PATH_STATIC: '',
-      ENV_GTM_CONTAINER_ID: 'GTM-KBT9ZLS',
+      ENV_GTM_CONTAINER_ID: process.env.GTM,
       ENV_ALLY: NODE_ENV_ALLY
     }
     break

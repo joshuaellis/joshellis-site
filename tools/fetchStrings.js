@@ -1,13 +1,5 @@
-// const fs = require('fs')
-// const path = require('path')
 const fetch = require('node-fetch')
 const MarkdownIt = require('markdown-it')
-// const dotenv = require('dotenv')
-
-// dotenv.config({ path: path.resolve(process.cwd(), '../.env') })
-
-// const createOutputPath = locale =>
-//   `../src/references/locales/${locale}/index.json`
 
 const SHEET_KEY = process.env.STRINGS_SHEET_KEY
 const TABS = [1, 2, 3, 4, 5, 6]
@@ -87,17 +79,6 @@ async function fetchAndParseTab (tabId) {
     console.log(err)
   }
 }
-
-// async function main () {
-//   for (const tab of TABS) {
-//     const { data, title } = await fetchAndParseTab(tab)
-
-//     fs.writeFileSync(
-//       path.resolve(__dirname, createOutputPath(title)),
-//       JSON.stringify(data, null, 2)
-//     )
-//   }
-// }
 
 // main()
 
