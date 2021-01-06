@@ -1,6 +1,6 @@
 import React from 'react'
 import { Canvas } from 'react-three-fiber'
-import { Stats } from '@react-three/drei'
+import { Stats, OrbitControls } from '@react-three/drei'
 
 import { ENV } from 'env'
 
@@ -17,6 +17,7 @@ const HapticCanvas = () => {
         updateDefaultCamera={false}
       >
         {ENV !== 'production' && <Stats showPanel={0} />}
+        {ENV !== 'production' && <OrbitControls />}
         <HapticScene />
       </Canvas>
     </>

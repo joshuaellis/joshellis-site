@@ -1,47 +1,39 @@
-import React, { useMemo, useCallback, useRef } from 'react'
-import { useTweaks } from 'use-tweaks'
+import React, { useRef } from 'react'
+import { useTweaks, makeSeparator } from 'use-tweaks'
 import * as THREE from 'three'
 import { useFrame } from 'react-three-fiber'
 
-import waveNoiseGenerator from 'helpers/waveNoise'
-
 const tempObject = new THREE.Object3D()
-const color = new THREE.Color()
-
-const normalize = (min, max) => val => (val - min) / (max - min)
+const tempColor = new THREE.Color()
 
 export default function BoxGrid ({ gridSize = [96, 72] }) {
   const [gridSizeX, gridSizeY] = gridSize
   const TOTAL_BOXES = gridSizeX * gridSizeY
   const meshRef = useRef()
-  const editor = 1
 
-  // const { amplitude, frequency, length, speed, waveMultiplier } = useTweaks(
-  //   'wave',
-  //   {
-  //     amplitude: { value: 0.5, min: 0, max: 2 },
-  //     frequency: { value: 0.1, min: 0, max: 2 },
-  //     length: { value: 25, min: 0, max: 80 },
-  //     speed: { value: 1.2, min: 0, max: 10 },
-  //     waveMultiplier: { value: 10, min: 0, max: 40 }
-  //   }
-  // )
-
-  // const waveNoise = waveNoiseGenerator({
-  //   waveHeight: frequency,
-  //   amplitude,
-  //   waveLength: length,
-  //   speed,
-  //   waveMultiplier
-  // })
+  const {
+    amplitude,
+    frequency,
+    speed,
+    crest,
+    hue,
+    saturation,
+    dampen,
+    colorIntensity
+  } = useTweaks('wave', {
+    frequency: { value: 0.7, min: 0, max: 1 },
+    amplitude: { value: 0.17, min: 0, max: 2 },
+    crest: { value: 0.45, min: 0, max: 1 },
+    speed: { value: 4.1, min: 1, max: 20 },
+    dampen: { value: 1.1, min: 0, max: 1.2 },
+    ...makeSeparator(),
+    hue: { value: 234, min: 0, max: 360 },
+    saturation: { value: 100, min: 0, max: 100 },
+    colorIntensity: { value: 1.04, min: 1, max: 5 }
+  })
 
   const cx = gridSizeX / 2
   const cy = gridSizeY / 2
-
-  const normalizeVelocity = useMemo(() => {
-    const maxVal = Math.sqrt(Math.pow(cx, 2) + Math.pow(cy, 2))
-    return normalize(0, maxVal)
-  }, [gridSize])
 
   useFrame(({ clock }) => {
     const time = clock.getElapsedTime()
@@ -52,23 +44,33 @@ export default function BoxGrid ({ gridSize = [96, 72] }) {
         const id = totalCount++
         // const posZ = waveNoise(posX + Math.sin(time), posY)
 
-        const vel = Math.abs(
-          Math.sqrt(
-            Math.pow((x - cx) * Math.sin(time), 2) +
-              Math.pow((y - cy) * Math.sin(time), 2)
-          )
-        )
+        const vel = Math.sqrt(Math.pow(x - cx, 2) + Math.pow(y - cy, 2))
 
-        tempObject.position.set(x, y, normalizeVelocity(vel) * 50)
+        const l =
+          amplitude *
+            Math.pow(Math.E, (-dampen / 10) * vel) *
+            Math.cos((vel - time * speed) * frequency + Math.PI) +
+          1 -
+          crest
+
+        tempObject.position.set(x, y, (1 - l) * 20)
 
         tempObject.updateMatrix()
 
         meshRef.current.setMatrixAt(id, tempObject.matrix)
-        // meshRef.current.setColorAt(id, color.setHSL(240 / 360, 1, posZ))
+
+        meshRef.current.setColorAt(
+          id,
+          tempColor.setHSL(
+            hue / 360,
+            saturation / 100,
+            l <= dampen / 2 ? l / colorIntensity : 1
+          )
+        )
       }
     }
 
-    // meshRef.current.instanceColor.needsUpdate = true
+    meshRef.current.instanceColor.needsUpdate = true
     meshRef.current.instanceMatrix.needsUpdate = true
   })
 
@@ -80,7 +82,7 @@ export default function BoxGrid ({ gridSize = [96, 72] }) {
           args={[1, 1, 1]}
           position={[0, 0, 0]}
         />
-        <meshNormalMaterial attach='material' color='#0000ff' />
+        <meshStandardMaterial attach='material' />
       </instancedMesh>
     </group>
   )

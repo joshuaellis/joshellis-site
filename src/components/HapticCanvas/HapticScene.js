@@ -10,7 +10,7 @@ const HapticScene = () => {
         makeDefault
         position={[0, 0, 50]}
         near={0.1}
-        far={55}
+        far={200}
       />
       <BoxMesh />
       <ambientLight />

@@ -4,7 +4,7 @@
   "description": "my own personal site",
   "scripts": {
     "build": "NODE_ENV_CUSTOM=production next build",
-    "dev": "NODE_ENV_CUSTOM=dev node ./server/server.js",
+    "dev": "NODE_ENV_CUSTOM=dev node ./server/server.js --max-old-space-size=4096",
     "dev:ally": "NODE_ENV_CUSTOM=dev NODE_ENV_ALLY=true next",
     "fetch:strings": "cd ./tools && node fetchStrings && cd ../",
     "format": "prettier-standard --format",
