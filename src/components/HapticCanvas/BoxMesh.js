@@ -16,18 +16,18 @@ export default function BoxGrid ({ gridSize = [96, 72] }) {
   const {
     amplitude,
     frequency,
-    speed,
     crest,
     hue,
     saturation,
     dampen,
-    colorIntensity
+    colorIntensity,
+    lerpAmount
   } = useTweaks('wave', {
-    frequency: { value: 0.89, min: 0, max: 1 },
-    amplitude: { value: 0.48, min: 0, max: 2 },
+    frequency: { value: 1.47, min: 0, max: 5 },
+    amplitude: { value: 0.61, min: 0, max: 2 },
     crest: { value: 0.42, min: 0, max: 1 },
-    speed: { value: 5.9, min: 1, max: 20 },
-    dampen: { value: 1.43, min: 0, max: 2 },
+    dampen: { value: 2.43, min: 0, max: 8 },
+    lerpAmount: { value: 0.06, min: 0, max: 0.1 },
     ...makeSeparator(),
     hue: { value: 234, min: 0, max: 360 },
     saturation: { value: 100, min: 0, max: 100 },
@@ -49,12 +49,13 @@ export default function BoxGrid ({ gridSize = [96, 72] }) {
   }, [])
 
   const createWave = (cx, cy) => {
-    waves.current = [
-      polarCubes.map(cube => ({
+    waves.current = polarCubes.map(cube => {
+      return {
         ...cube,
+        lifeLength: 0,
         vel: Math.sqrt(Math.pow(cube.x - cx, 2) + Math.pow(cube.y - cy, 2))
-      }))
-    ]
+      }
+    })
   }
 
   const handlePointerDown = e => {
@@ -64,7 +65,7 @@ export default function BoxGrid ({ gridSize = [96, 72] }) {
 
   useLayoutEffect(() => {
     polarCubes.forEach(({ x, y, id }) => {
-      tempObject.position.set(x, y, 0)
+      tempObject.position.set(x, y)
 
       tempObject.updateMatrix()
 
@@ -74,37 +75,49 @@ export default function BoxGrid ({ gridSize = [96, 72] }) {
     })
   }, [])
 
-  useFrame(({ clock }) => {
-    const time = clock.getElapsedTime()
+  useFrame(({ clock }, delta) => {
+    const t = clock.elapsedTime
 
-    waves.current.forEach(cubes => {
-      cubes.forEach(({ x, vel, y, id }) => {
-        const l =
-          amplitude *
-            Math.pow(Math.E, (-dampen / 10) * vel) *
-            Math.cos((vel - time * speed) * frequency + Math.PI) +
-          1 -
-          crest
+    waves.current.forEach(({ x, vel: prevVel, y, id }, i) => {
+      const vel = THREE.MathUtils.lerp(prevVel, 0, lerpAmount)
 
-        const isPastLimit = l <= 0.56
+      if (vel < 0.1) {
+        waves.current[i].vel = 0
+        return
+      }
 
-        const posZ = isPastLimit ? l : 0.5
+      if ((x === 0) & (y === 0)) {
+        console.log(vel)
+      }
 
-        tempObject.position.set(x, y, posZ * 5)
+      const newL =
+        amplitude *
+          Math.pow(Math.E, (-dampen / 10) * vel) *
+          Math.cos(vel * frequency - Math.PI / 4) +
+        1 -
+        crest
 
-        tempObject.updateMatrix()
+      const l = THREE.MathUtils.lerp(newL, 0, 0.001)
 
-        meshRef.current.setMatrixAt(id, tempObject.matrix)
+      const isOverLimit = l <= 0.56
 
-        meshRef.current.setColorAt(
-          id,
-          tempColor.setHSL(
-            hue / 360,
-            saturation / 100,
-            isPastLimit ? l / colorIntensity : 1
-          )
+      const posZ = isOverLimit ? l : 0.5
+
+      tempObject.position.set(x, y, (1.2 - posZ) * 5)
+
+      tempObject.updateMatrix()
+
+      meshRef.current.setMatrixAt(id, tempObject.matrix)
+
+      meshRef.current.setColorAt(
+        id,
+        tempColor.setHSL(
+          hue / 360,
+          saturation / 100,
+          isOverLimit ? l / colorIntensity : 1
         )
-      })
+      )
+      waves.current[i].vel = vel
     })
 
     if (waves.current.length > 0) {
