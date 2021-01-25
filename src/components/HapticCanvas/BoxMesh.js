@@ -20,12 +20,11 @@ export default function BoxGrid ({ gridSize = [96, 72] }) {
     hue,
     saturation,
     dampen,
-    colorIntensity,
     lerpAmount
   } = useTweaks('wave', {
-    frequency: { value: 1.47, min: 0, max: 5 },
-    amplitude: { value: 0.61, min: 0, max: 2 },
-    crest: { value: 0.42, min: 0, max: 1 },
+    frequency: { value: 1.52, min: 0, max: 5 },
+    amplitude: { value: 0.52, min: 0, max: 2 },
+    crest: { value: 0.13, min: 0, max: 1 },
     dampen: { value: 2.43, min: 0, max: 8 },
     lerpAmount: { value: 0.06, min: 0, max: 0.1 },
     ...makeSeparator(),
@@ -53,7 +52,7 @@ export default function BoxGrid ({ gridSize = [96, 72] }) {
       return {
         ...cube,
         lifeLength: 0,
-        vel: Math.sqrt(Math.pow(cube.x - cx, 2) + Math.pow(cube.y - cy, 2))
+        vel: Math.sqrt(Math.pow(cube.x - cx, 2) + Math.pow(cube.y - cy, 2)) * 5
       }
     })
   }
@@ -75,32 +74,22 @@ export default function BoxGrid ({ gridSize = [96, 72] }) {
     })
   }, [])
 
-  useFrame(({ clock }, delta) => {
-    const t = clock.elapsedTime
-
+  useFrame(() => {
     waves.current.forEach(({ x, vel: prevVel, y, id }, i) => {
       const vel = THREE.MathUtils.lerp(prevVel, 0, lerpAmount)
 
       if (vel < 0.1) {
         waves.current[i].vel = 0
-        return
       }
 
-      if ((x === 0) & (y === 0)) {
-        console.log(vel)
-      }
-
-      const newL =
+      const l =
         amplitude *
           Math.pow(Math.E, (-dampen / 10) * vel) *
           Math.cos(vel * frequency - Math.PI / 4) +
         1 -
         crest
 
-      const l = THREE.MathUtils.lerp(newL, 0, 0.001)
-
       const isOverLimit = l <= 0.56
-
       const posZ = isOverLimit ? l : 0.5
 
       tempObject.position.set(x, y, (1.2 - posZ) * 5)
@@ -111,11 +100,7 @@ export default function BoxGrid ({ gridSize = [96, 72] }) {
 
       meshRef.current.setColorAt(
         id,
-        tempColor.setHSL(
-          hue / 360,
-          saturation / 100,
-          isOverLimit ? l / colorIntensity : 1
-        )
+        tempColor.setHSL(hue / 360, saturation / 100, l)
       )
       waves.current[i].vel = vel
     })
