@@ -17,20 +17,21 @@ export default function BoxGrid ({ gridSize = [96, 72] }) {
     amplitude,
     frequency,
     crest,
-    hue,
     saturation,
     dampen,
-    lerpAmount
+    lerpAmount,
+    lLimit,
+    colorIntensity
   } = useTweaks('wave', {
     frequency: { value: 1.52, min: 0, max: 5 },
     amplitude: { value: 0.52, min: 0, max: 2 },
-    crest: { value: 0.13, min: 0, max: 1 },
-    dampen: { value: 2.43, min: 0, max: 8 },
-    lerpAmount: { value: 0.06, min: 0, max: 0.1 },
+    crest: { value: 0.3, min: 0, max: 1 },
+    dampen: { value: 1.3, min: 0, max: 8 },
+    lerpAmount: { value: 0.08, min: 0, max: 0.1 },
+    lLimit: { value: 0.61, min: 0, max: 1 },
     ...makeSeparator(),
-    hue: { value: 234, min: 0, max: 360 },
     saturation: { value: 100, min: 0, max: 100 },
-    colorIntensity: { value: 1.04, min: 1, max: 5 }
+    colorIntensity: { value: 0.98, min: 0, max: 2 }
   })
 
   const polarCubes = React.useMemo(() => {
@@ -48,11 +49,13 @@ export default function BoxGrid ({ gridSize = [96, 72] }) {
   }, [])
 
   const createWave = (cx, cy) => {
+    const hue = Math.random()
     waves.current = polarCubes.map(cube => {
       return {
         ...cube,
         lifeLength: 0,
-        vel: Math.sqrt(Math.pow(cube.x - cx, 2) + Math.pow(cube.y - cy, 2)) * 5
+        vel: Math.sqrt(Math.pow(cube.x - cx, 2) + Math.pow(cube.y - cy, 2)) * 5,
+        col: hue
       }
     })
   }
@@ -75,7 +78,7 @@ export default function BoxGrid ({ gridSize = [96, 72] }) {
   }, [])
 
   useFrame(() => {
-    waves.current.forEach(({ x, vel: prevVel, y, id }, i) => {
+    waves.current.forEach(({ x, vel: prevVel, y, id, col }, i) => {
       const vel = THREE.MathUtils.lerp(prevVel, 0, lerpAmount)
 
       if (vel < 0.1) {
@@ -89,10 +92,10 @@ export default function BoxGrid ({ gridSize = [96, 72] }) {
         1 -
         crest
 
-      const isOverLimit = l <= 0.56
-      const posZ = isOverLimit ? l : 0.5
+      const isOverLimit = l >= lLimit
+      const posZ = isOverLimit ? 0.5 : l
 
-      tempObject.position.set(x, y, (1.2 - posZ) * 5)
+      tempObject.position.set(x, y, posZ * -5 - 3)
 
       tempObject.updateMatrix()
 
@@ -100,7 +103,11 @@ export default function BoxGrid ({ gridSize = [96, 72] }) {
 
       meshRef.current.setColorAt(
         id,
-        tempColor.setHSL(hue / 360, saturation / 100, l)
+        tempColor.setHSL(
+          col,
+          saturation / 100,
+          isOverLimit ? 1 : l * colorIntensity
+        )
       )
       waves.current[i].vel = vel
     })
