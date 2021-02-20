@@ -3,116 +3,140 @@ import { useTweaks, makeSeparator } from 'use-tweaks'
 import * as THREE from 'three'
 import { useFrame } from 'react-three-fiber'
 
+import { distance } from 'helpers/vectors'
+
+import { sinc } from 'helpers/math'
+
 const tempObject = new THREE.Object3D()
 const tempColor = new THREE.Color()
 
-export default function BoxGrid ({ gridSize = [96, 72] }) {
+export default function BoxGrid({ gridSize = [96, 72] }) {
   const [gridSizeX, gridSizeY] = gridSize
   const TOTAL_BOXES = gridSizeX * gridSizeY
   const meshRef = useRef()
 
-  const waves = useRef([])
+  const wavePoints = useRef(
+    new Array(8).fill(0).map((_) => ({ x: 0, y: 0, z: 0, time: 0, color: 235 }))
+  )
 
-  const {
-    amplitude,
-    frequency,
-    crest,
-    saturation,
-    dampen,
-    lerpAmount,
-    lLimit,
-    colorIntensity
-  } = useTweaks('wave', {
-    frequency: { value: 1.52, min: 0, max: 5 },
-    amplitude: { value: 0.52, min: 0, max: 2 },
-    crest: { value: 0.3, min: 0, max: 1 },
-    dampen: { value: 1.3, min: 0, max: 8 },
-    lerpAmount: { value: 0.08, min: 0, max: 0.1 },
-    lLimit: { value: 0.61, min: 0, max: 1 },
-    ...makeSeparator(),
-    saturation: { value: 100, min: 0, max: 100 },
-    colorIntensity: { value: 0.98, min: 0, max: 2 }
+  const { amplitude, dampen, maxDist, fade, start, speed } = useTweaks('wave', {
+    amplitude: { value: 6, min: 1, max: 10 },
+    dampen: { value: 0.34, min: 0, max: 8 },
+    maxDist: { value: 0.3, min: 0, max: 1, step: 0.001 },
+    fade: { value: 3.0, min: 1, max: 10, step: 1 },
+    start: { value: 0.58, min: 0, max: 1, step: 0.01 },
+    speed: { value: 24, min: 1, max: 50 },
   })
 
   const polarCubes = React.useMemo(() => {
     let cubes = []
-    let totalCount = 0
 
     for (let x = 0; x < gridSizeX; x++) {
       for (let y = 0; y < gridSizeY; y++) {
-        const id = totalCount++
-        cubes = [...cubes, { x, y, id }]
+        cubes = [...cubes, { x, y }]
       }
     }
 
     return cubes
-  }, [])
+  }, [gridSizeX, gridSizeY])
 
   const createWave = (cx, cy) => {
-    const hue = Math.random()
-    waves.current = polarCubes.map(cube => {
-      return {
-        ...cube,
-        lifeLength: 0,
-        vel: Math.sqrt(Math.pow(cube.x - cx, 2) + Math.pow(cube.y - cy, 2)) * 5,
-        col: hue
+    for (let i = 0; i < wavePoints.current.length; i++) {
+      if (wavePoints.current[i].z === 0) {
+        wavePoints.current[i] = {
+          x: cx,
+          y: cy,
+          z: 1,
+          time: 0,
+          color: 235,
+        }
+        break
       }
-    })
+    }
   }
 
-  const handlePointerDown = e => {
+  const handlePointerDown = (e) => {
     const { x, y } = polarCubes[e.instanceId]
     createWave(x, y)
   }
 
   useLayoutEffect(() => {
-    polarCubes.forEach(({ x, y, id }) => {
+    polarCubes.forEach(({ x, y }, i) => {
       tempObject.position.set(x, y)
-
       tempObject.updateMatrix()
 
-      meshRef.current.setMatrixAt(id, tempObject.matrix)
-
-      meshRef.current.setColorAt(id, tempColor.setHSL(360, 1, 1))
+      meshRef.current.setMatrixAt(i, tempObject.matrix)
+      meshRef.current.setColorAt(i, tempColor.setHSL(360, 1, 1))
     })
-  }, [])
+  }, [polarCubes])
 
-  useFrame(() => {
-    waves.current.forEach(({ x, vel: prevVel, y, id, col }, i) => {
-      const vel = THREE.MathUtils.lerp(prevVel, 0, lerpAmount)
+  useFrame((_, delta) => {
+    polarCubes.forEach((polarVec, i) => {
+      let posZ = 0
+      let hue = 235
 
-      if (vel < 0.1) {
-        waves.current[i].vel = 0
-      }
+      wavePoints.current.forEach((waveVec) => {
+        if (waveVec.z === 1) {
+          const dist = distance(polarVec, { x: waveVec.x, y: waveVec.y })
+          const normDist = dist / maxDist
+          const time = waveVec.time / fade
 
-      const l =
-        amplitude *
-          Math.pow(Math.E, (-dampen / 10) * vel) *
-          Math.cos(vel * frequency - Math.PI / 4) +
-        1 -
-        crest
+          /**
+           * if the lerped x would return 0 then
+           * we don't need to calc anything saving
+           * some time and resource
+           */
+          if (normDist - waveVec.time * speed > 1) {
+            return
+          }
 
-      const isOverLimit = l >= lLimit
-      const posZ = isOverLimit ? 0.5 : l
+          if (1 - time > 0) {
+            posZ +=
+              sinc(
+                THREE.MathUtils.lerp(
+                  start - dampen,
+                  0.0,
+                  normDist - waveVec.time * speed
+                ),
+                dampen,
+                Math.pow(time, 1.0 + Math.pow(normDist, 2.0)),
+                amplitude
+              ) *
+              (1.0 - time)
+          }
+        }
+      })
 
-      tempObject.position.set(x, y, posZ * -5 - 3)
+      const multiPosZ = posZ * 5
 
-      tempObject.updateMatrix()
+      /**
+       * if the posZ is above 0 then it
+       * should move, saving calc times
+       */
+      if (multiPosZ > 0) {
+        tempObject.position.set(polarVec.x, polarVec.y, multiPosZ)
+        tempObject.updateMatrix()
 
-      meshRef.current.setMatrixAt(id, tempObject.matrix)
-
-      meshRef.current.setColorAt(
-        id,
-        tempColor.setHSL(
-          col,
-          saturation / 100,
-          isOverLimit ? 1 : l * colorIntensity
+        meshRef.current.setMatrixAt(i, tempObject.matrix)
+        meshRef.current.setColorAt(
+          i,
+          tempColor.setHSL(hue / 360, 1, Math.abs(1 - multiPosZ))
         )
-      )
-      waves.current[i].vel = vel
+      }
     })
 
-    if (waves.current.length > 0) {
+    wavePoints.current.forEach((vec) => {
+      const newTime = vec.time + delta
+      if (1 - newTime / fade > 0) {
+        // if it's not finsihed add to it
+        vec.time = newTime
+      } else {
+        // if its finished stop the ripple
+        vec.z = 0
+      }
+    })
+
+    if (wavePoints.current.length > 0) {
       meshRef.current.instanceColor.needsUpdate = true
       meshRef.current.instanceMatrix.needsUpdate = true
     }
@@ -125,12 +149,8 @@ export default function BoxGrid ({ gridSize = [96, 72] }) {
         args={[null, null, TOTAL_BOXES]}
         onPointerDown={handlePointerDown}
       >
-        <boxBufferGeometry
-          attach='geometry'
-          args={[1, 1, 1]}
-          position={[0, 0, 0]}
-        />
-        <meshStandardMaterial attach='material' />
+        <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
+        <meshStandardMaterial attach="material" />
       </instancedMesh>
     </group>
   )

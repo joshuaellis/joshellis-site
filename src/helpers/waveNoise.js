@@ -1,9 +1,9 @@
-export default function waveNoiseGenerator ({
+export default function waveNoiseGenerator({
   amplitude,
   speed,
   waveHeight,
   waveLength,
-  waveMultiplier
+  waveMultiplier,
 }) {
   return (x, y) => {
     const freq = (2.0 * Math.PI) / waveLength
