@@ -11,7 +11,7 @@ const handle = app.getRequestHandler()
 
 const redirects = [
   { from: '/work', to: '/', type: 301 },
-  { from: '/work/*', to: '/', type: 301 }
+  { from: '/work/*', to: '/', type: 301 },
 ]
 
 app.prepare().then(() => {
@@ -36,7 +36,7 @@ app.prepare().then(() => {
     return handle(req, res)
   })
 
-  server.listen(port, err => {
+  server.listen(port, (err) => {
     if (err) throw err
     console.log(`> Ready on port ${port} 💁🏻‍♀️`)
   })

@@ -33,5 +33,5 @@ export const EASINGS = {
 
   easeInOutFast: 'cubic-bezier(1,0,0,1)',
 
-  authenticMotion: 'cubic-bezier(.4,0,.2,1)'
+  authenticMotion: 'cubic-bezier(.4,0,.2,1)',
 }

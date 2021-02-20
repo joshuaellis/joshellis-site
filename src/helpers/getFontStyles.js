@@ -3,12 +3,12 @@ import {
   FONT_STYLE_SURT_16_400,
   FONT_STYLE_SURT_24_400,
   FONT_STYLE_SURT_40_400,
-  FONT_FAMILIES
+  FONT_FAMILIES,
 } from 'references/styles/fonts'
 
 import { MEDIA_QUERIES } from 'references/styles/mediaQueries' // DONT CHANGE THIS TO references/styles AS IT WILL BREAK THE SERVER SIDE RENDERING
 
-const getFontStyles = type => {
+const getFontStyles = (type) => {
   if (!type) {
     console.error('CANNOT RENDER FONT: MISSING TYPE VARIABLE')
     return null
@@ -73,7 +73,7 @@ const getFontStyles = type => {
   return fontProps
 }
 
-const getFontData = type => {
+const getFontData = (type) => {
   const lowerCaseType = type.toLowerCase()
   const arrayType = lowerCaseType.split('_')
   const typeProps = arrayType.splice(2, arrayType.length - 1)

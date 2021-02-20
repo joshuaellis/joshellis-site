@@ -6,7 +6,7 @@ import { FONT_STYLE_SURT_16_400 } from 'references/styles/fonts'
 
 import getFontStyles from 'helpers/getFontStyles'
 
-export default function TextCopy ({ className, children, fontStyle }) {
+export default function TextCopy({ className, children, fontStyle }) {
   return (
     <Copy className={className} fontStyle={fontStyle}>
       {children}
@@ -17,14 +17,14 @@ export default function TextCopy ({ className, children, fontStyle }) {
 TextCopy.propTypes = {
   className: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  fontStyle: PropTypes.string.isRequired
+  fontStyle: PropTypes.string.isRequired,
 }
 
 TextCopy.defaultProps = {
   children: '',
-  fontStyle: FONT_STYLE_SURT_16_400
+  fontStyle: FONT_STYLE_SURT_16_400,
 }
 
 const Copy = styled.p`
-  ${props => getFontStyles(props.fontStyle)}
+  ${(props) => getFontStyles(props.fontStyle)}
 `

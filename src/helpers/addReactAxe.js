@@ -10,12 +10,16 @@ import React from 'react'
 
 import { ALLY_ENABLED } from 'env'
 
-export default function addReactAxe (duration = 1000) {
+export default function addReactAxe(duration = 1000) {
   const getIsServerRendered = () => {
     return typeof window === 'undefined'
   }
 
-  if (process.env.NODE_ENV !== 'production' && ALLY_ENABLED && !getIsServerRendered()) {
+  if (
+    process.env.NODE_ENV !== 'production' &&
+    ALLY_ENABLED &&
+    !getIsServerRendered()
+  ) {
     const ReactDOM = require('react-dom')
     const axe = require('react-axe')
     axe(React, ReactDOM, duration)

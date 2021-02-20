@@ -31,7 +31,7 @@ const App = ({ language, Component, pageProps, messages }) => {
     )
     document.addEventListener(
       'keydown',
-      e => {
+      (e) => {
         if (e.keyCode === 9) {
           body.classList.add('js-focus-visible')
         }
@@ -51,10 +51,10 @@ const App = ({ language, Component, pageProps, messages }) => {
 
 export default App
 
-App.getInitialProps = async ctx => {
+App.getInitialProps = async (ctx) => {
   const messages = await fetchStrings()
   return {
     messages,
-    language: getLanguage(ctx)
+    language: getLanguage(ctx),
   }
 }

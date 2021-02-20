@@ -1,7 +1,7 @@
 export const WIDTHS = {
   tablet: 768,
   desktop: 1024,
-  largeDesktop: 1440
+  largeDesktop: 1440,
 }
 
 export const WRAPPERS = {
@@ -10,5 +10,5 @@ export const WRAPPERS = {
   large: '140rem',
   medium: '96rem',
   small: '78rem',
-  tiny: '52rem'
+  tiny: '52rem',
 }

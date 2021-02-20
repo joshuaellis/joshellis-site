@@ -13,7 +13,7 @@ export const TextTitle = ({
   tag = 'h2',
   fontStyle = FONT_STYLE_SURT_24_400,
   children,
-  gaLabel
+  gaLabel,
 }) => (
   <Title
     className={className}
@@ -32,7 +32,7 @@ TextTitle.propTypes = {
   gaLabel: PropTypes.string,
   id: PropTypes.string,
   fontStyle: PropTypes.string,
-  tag: PropTypes.string
+  tag: PropTypes.string,
 }
 
 const Title = styled(({ tag, children, ...props }) => {
@@ -43,12 +43,12 @@ const Title = styled(({ tag, children, ...props }) => {
       className: props.className,
       id: props.id,
       forwardref: props.forwardedRef,
-      ref: props.forwardref
+      ref: props.forwardref,
     },
     children
   )
 })`
-  ${props => getFontStyles(props.fontStyle)}
+  ${(props) => getFontStyles(props.fontStyle)}
 `
 
 export default React.forwardRef((props, ref) => (

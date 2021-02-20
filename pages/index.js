@@ -11,19 +11,19 @@ import { COLORS, MEDIA_QUERIES } from 'references/styles'
 import { FONT_STYLE_SURT_40_400 } from 'references/styles/fonts'
 
 const DynamicHapticCanvas = dynamic(() => import('components/HapticCanvas'), {
-  ssr: false
+  ssr: false,
 })
 
 const HomePage = () => {
   return (
     <Home>
-      <FormattedMessage id='meta-title'>
-        {titleStr => (
-          <FormattedMessage id='meta-description'>
-            {descriptionStr => (
+      <FormattedMessage id="meta-title">
+        {(titleStr) => (
+          <FormattedMessage id="meta-description">
+            {(descriptionStr) => (
               <NextSeo
                 title={titleStr}
-                titleTemplate='%s'
+                titleTemplate="%s"
                 description={descriptionStr}
               />
             )}
