@@ -57,7 +57,7 @@
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-intl": "^5.10.11",
+    "react-intl": "^5.12.4",
     "react-three-fiber": "^5.3.17",
     "styled-components": "^5.2.0",
     "three": "^0.124.0"
