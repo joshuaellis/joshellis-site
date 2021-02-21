@@ -12,15 +12,15 @@ export default {
         url: '',
         width: 0,
         height: 0,
-        alt: ''
-      }
-    ]
+        alt: '',
+      },
+    ],
   },
   twitter: {
     handle: '@_josh_ellis_',
     site: '@_josh_ellis_',
-    cardType: 'summary_large_image'
-  }
+    cardType: 'summary_large_image',
+  },
 }
 
-export const getUrl = path => `https://www.joshellis.co.uk${path}`
+export const getUrl = (path) => `https://www.joshellis.co.uk${path}`

@@ -7,17 +7,17 @@ import { TextTitle, TextCopy } from 'components/Text'
 import { COLORS, MEDIA_QUERIES, EASINGS } from 'references/styles'
 import {
   FONT_STYLE_SURT_14_300,
-  FONT_STYLE_SURT_24_400
+  FONT_STYLE_SURT_24_400,
 } from 'references/styles/fonts'
 
 const SECTIONS = ['about', 'experience', 'social']
 const EXPERIENCE_AMOUNT = 3
 const SOCIAL_AMOUNT = 4
 
-export default function ContentHomeSections () {
-  return SECTIONS.map(section => (
+export default function ContentHomeSections() {
+  return SECTIONS.map((section) => (
     <HomeSection key={section}>
-      <HomeSectionTitle fontStyle={FONT_STYLE_SURT_14_300} tag='h2'>
+      <HomeSectionTitle fontStyle={FONT_STYLE_SURT_14_300} tag="h2">
         <FormattedMessage id={`home.${section}.title`} />
       </HomeSectionTitle>
       {renderSection(section)}
@@ -25,7 +25,7 @@ export default function ContentHomeSections () {
   ))
 }
 
-const renderSection = section => {
+const renderSection = (section) => {
   switch (section) {
     case 'about':
       return (
@@ -40,10 +40,10 @@ const renderSection = section => {
             .fill({})
             .map((_, i) => (
               <HomeSectionFlex key={i}>
-                <TextTitle fontStyle={FONT_STYLE_SURT_24_400} tag='span'>
+                <TextTitle fontStyle={FONT_STYLE_SURT_24_400} tag="span">
                   <FormattedMessage id={`home.${section}.content.${i}.place`} />
                 </TextTitle>
-                <TextTitle fontStyle={FONT_STYLE_SURT_24_400} tag='span'>
+                <TextTitle fontStyle={FONT_STYLE_SURT_24_400} tag="span">
                   <FormattedMessage id={`home.${section}.content.${i}.time`} />
                 </TextTitle>
               </HomeSectionFlex>
@@ -58,13 +58,13 @@ const renderSection = section => {
             .map((_, i) => (
               <SocialListItem
                 fontStyle={FONT_STYLE_SURT_24_400}
-                tag='li'
+                tag="li"
                 key={i}
               >
                 <FormattedMessage id={`home.${section}.content.${i}.label`}>
-                  {label => (
+                  {(label) => (
                     <FormattedMessage id={`home.${section}.content.${i}.link`}>
-                      {href => {
+                      {(href) => {
                         const gaLabel = label[0]
                           .split(' ')
                           .join('')
@@ -72,7 +72,7 @@ const renderSection = section => {
                         return (
                           <SocialListAnchor
                             href={href}
-                            rel='nofollow noopener noreferrer'
+                            rel="nofollow noopener noreferrer"
                             data-ga-label={gaLabel}
                             id={`ga-contact-${gaLabel}`}
                           >

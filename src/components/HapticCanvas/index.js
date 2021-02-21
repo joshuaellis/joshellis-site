@@ -1,6 +1,6 @@
 import React from 'react'
 import { Canvas } from 'react-three-fiber'
-import { Stats } from '@react-three/drei/Stats'
+import { Stats, OrbitControls } from '@react-three/drei'
 
 import { ENV } from 'env'
 
@@ -13,10 +13,12 @@ const HapticCanvas = () => {
     <>
       <Canvas
         gl={{ antialias: false, alpha: false }}
-        onCreated={({ gl }) => gl.setClearColor(COLORS.white)}
+        // onCreated={({ gl }) => gl.setClearColor(COLORS.white)}
         updateDefaultCamera={false}
       >
         {ENV !== 'production' && <Stats showPanel={0} />}
+        {ENV !== 'production' && <OrbitControls />}
+        <color attach="background" args={[0, 0, 0]} />
         <HapticScene />
       </Canvas>
     </>

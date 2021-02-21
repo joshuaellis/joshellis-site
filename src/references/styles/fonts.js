@@ -1,5 +1,5 @@
 export const FONT_FAMILIES = {
-  surt: 'Surt, Helvetica, Arial, sans-serif'
+  surt: 'Surt, Helvetica, Arial, sans-serif',
 }
 
 export const FONT_STYLE_SURT_14_300 = 'FONT_STYLE_SURT_14_300'

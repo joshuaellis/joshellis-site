@@ -4,11 +4,11 @@
   "description": "my own personal site",
   "scripts": {
     "build": "NODE_ENV_CUSTOM=production next build",
-    "dev": "NODE_ENV_CUSTOM=dev node ./server/server.js",
+    "dev": "NODE_ENV_CUSTOM=dev node ./server/server.js --max-old-space-size=4096",
     "dev:ally": "NODE_ENV_CUSTOM=dev NODE_ENV_ALLY=true next",
     "fetch:strings": "cd ./tools && node fetchStrings && cd ../",
-    "format": "prettier-standard --format",
-    "lint": "standard --fix && yarn format",
+    "format": "prettier --write .",
+    "lint": "eslint . --ext .js,.jsx --fix && yarn format",
     "start": "NODE_ENV_CUSTOM=production node ./server/server.js",
     "test": "standard",
     "version": "echo $npm_package_version"
@@ -20,13 +20,6 @@
   "engines": {
     "node": ">=12.19.0",
     "yarn": "^1.21.1"
-  },
-  "standard": {
-    "parser": "babel-eslint",
-    "ignore": [
-      ".next/",
-      "public/"
-    ]
   },
   "author": "Josh Ellis",
   "license": "ISC",
@@ -41,26 +34,32 @@
     "babel-plugin-transform-remove-console": "^6.9.4",
     "dotenv": "^8.2.0",
     "eslint": "^7.20.0",
-    "prettier-standard": "^16.4.1",
-    "standard": "^16.0.3"
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "^2.2.1",
+    "tweakpane": "^1.5.7",
+    "use-tweaks": "^0.3.1"
   },
   "dependencies": {
-    "@react-three/drei": "^2.2.17",
+    "@react-three/drei": "3.0.0-beta.3",
     "compression": "^1.7.4",
     "core-js": "^3.9.0",
     "express": "^4.17.1",
     "markdown-it": "^12.0.4",
     "next": "^10.0.7",
     "next-routes": "^1.4.2",
-    "next-seo": "^4.19.0",
+    "next-seo": "^4.11.0",
+    "next-transpile-modules": "^6.0.0",
     "node-fetch": "^2.6.1",
     "prop-types": "^15.7.2",
-    "react": "^16.14.0",
-    "react-axe": "^3.5.4",
-    "react-dom": "^16.14.0",
-    "react-intl": "^5.12.3",
-    "react-three-fiber": "^5.0.3",
-    "styled-components": "^5.2.1",
-    "three": "^0.121.1"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-intl": "^5.10.11",
+    "react-three-fiber": "^5.3.17",
+    "styled-components": "^5.2.0",
+    "three": "^0.124.0"
   }
 }

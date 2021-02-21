@@ -14,9 +14,9 @@ const ButtonSimple = ({
   gaLabel,
   id,
   href,
-  tag = 'button'
+  tag = 'button',
 }) => {
-  const handleOnClick = e => {
+  const handleOnClick = (e) => {
     if (onClick) {
       onClick(e)
     }
@@ -27,7 +27,7 @@ const ButtonSimple = ({
       gaLabel={gaLabel}
       id={id}
       onClick={handleOnClick}
-      type='button'
+      type="button"
       href={href}
       tag={tag}
       {...(tag === 'a' ? { rel: 'nofollow noopener noreferrer' } : {})}
@@ -43,7 +43,7 @@ ButtonSimple.propTypes = {
   gaLabel: PropTypes.string,
   id: PropTypes.string,
   onClick: PropTypes.func,
-  tag: PropTypes.string
+  tag: PropTypes.string,
 }
 
 export default ButtonSimple
@@ -57,7 +57,7 @@ const Button = styled(({ tag, children, gaLabel, ...props }) => {
     tag,
     {
       'data-ga-label': gaLabel,
-      ...props
+      ...props,
     },
     children
   )

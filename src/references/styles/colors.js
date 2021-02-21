@@ -3,5 +3,5 @@ export const COLORS = {
   blue: '#277ef4',
   turquoise: '#3CFFD0',
   black: '#121212',
-  pink: '#ff3c6a'
+  pink: '#ff3c6a',
 }

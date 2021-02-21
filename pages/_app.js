@@ -3,7 +3,6 @@ import { createGlobalStyle } from 'styled-components'
 import { DefaultSeo } from 'next-seo'
 import { IntlProvider } from 'react-intl'
 
-import addReactAxe from 'helpers/addReactAxe'
 import getLanguage from 'helpers/getLanguage'
 
 import { CSS_GLOBAL, CSS_FONTS } from 'references/styles'
@@ -15,9 +14,6 @@ const GlobalStyle = createGlobalStyle`
   ${CSS_FONTS}
   ${CSS_GLOBAL}
 `
-
-// non-production running accessibility helper
-addReactAxe()
 
 const App = ({ language, Component, pageProps, messages }) => {
   useEffect(() => {
@@ -31,7 +27,7 @@ const App = ({ language, Component, pageProps, messages }) => {
     )
     document.addEventListener(
       'keydown',
-      e => {
+      (e) => {
         if (e.keyCode === 9) {
           body.classList.add('js-focus-visible')
         }
@@ -51,10 +47,10 @@ const App = ({ language, Component, pageProps, messages }) => {
 
 export default App
 
-App.getInitialProps = async ctx => {
+App.getInitialProps = async (ctx) => {
   const messages = await fetchStrings()
   return {
     messages,
-    language: getLanguage(ctx)
+    language: getLanguage(ctx),
   }
 }

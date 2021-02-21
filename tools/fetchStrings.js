@@ -7,24 +7,21 @@ const FINAL_TEXT_COLUMN = 'text'
 
 const markdownFormatter = new MarkdownIt({
   html: true,
-  typographer: true
+  typographer: true,
 })
 
-const parseArrayData = str =>
-  str.split('\n\n').map(string =>
-    string.split(',').map(x => {
+const parseArrayData = (str) =>
+  str.split('\n\n').map((string) =>
+    string.split(',').map((x) => {
       if (x.match('https: //') || x.match('mailto: ')) {
-        return x
-          .split(' ')
-          .join('')
-          .trim()
+        return x.split(' ').join('').trim()
       } else {
         return x.trim()
       }
     })
   )
 
-async function fetchAndParseTab (tabId) {
+async function fetchAndParseTab(tabId) {
   try {
     const res = await fetch(
       `https://spreadsheets.google.com/feeds/list/${SHEET_KEY}/${tabId}/public/values?alt=json`
@@ -34,7 +31,7 @@ async function fetchAndParseTab (tabId) {
     const title = feed.title.$t.toLowerCase()
 
     if (feed.entry) {
-      feed.entry.forEach(item => {
+      feed.entry.forEach((item) => {
         if (item.gsx$id && item.gsx$id.$t) {
           const id = `${item.gsx$id.$t.toLowerCase().trim()}`
           let value
