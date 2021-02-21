@@ -3,7 +3,6 @@ import { createGlobalStyle } from 'styled-components'
 import { DefaultSeo } from 'next-seo'
 import { IntlProvider } from 'react-intl'
 
-import addReactAxe from 'helpers/addReactAxe'
 import getLanguage from 'helpers/getLanguage'
 
 import { CSS_GLOBAL, CSS_FONTS } from 'references/styles'
@@ -15,9 +14,6 @@ const GlobalStyle = createGlobalStyle`
   ${CSS_FONTS}
   ${CSS_GLOBAL}
 `
-
-// non-production running accessibility helper
-addReactAxe()
 
 const App = ({ language, Component, pageProps, messages }) => {
   useEffect(() => {

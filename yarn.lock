@@ -1260,11 +1260,6 @@ astral-regex@^2.0.0:
   resolved "https://registry.yarnpkg.com/astral-regex/-/astral-regex-2.0.0.tgz#483143c567aeed4785759c0865786dc77d7d2e31"
   integrity sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==
 
-axe-core@^3.5.0:
-  version "3.5.5"
-  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-3.5.5.tgz#84315073b53fa3c0c51676c588d59da09a192227"
-  integrity sha512-5P0QZ6J5xGikH780pghEdbEKijCTrruK9KxtPZCFWUpef0f6GipO+xEZ5GKCb020mmqgbiNO6TcA55CriL784Q==
-
 babel-eslint@^10.1.0:
   version "10.1.0"
   resolved "https://registry.yarnpkg.com/babel-eslint/-/babel-eslint-10.1.0.tgz#6968e568a910b78fb3779cdd8b6ac2f479943232"
@@ -3915,14 +3910,6 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-axe@^3.5.4:
-  version "3.5.4"
-  resolved "https://registry.yarnpkg.com/react-axe/-/react-axe-3.5.4.tgz#f59b9ea08eb82341f53cb26c5c53724417bc8c8f"
-  integrity sha512-5xNO0QVCCEZnJiyhAGox0MGFyclgU3XL8se+5H+whdxV1VTtA9/uux9BSCF5mGNSgtSZkb+tQtrOaF+zGf/oWw==
-  dependencies:
-    axe-core "^3.5.0"
-    requestidlecallback "^0.3.0"
-
 react-dom@^17.0.1:
   version "17.0.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-17.0.1.tgz#1de2560474ec9f0e334285662ede52dbc5426fc6"
@@ -4115,11 +4102,6 @@ regjsparser@^0.6.4:
   integrity sha512-ib77G0uxsA2ovgiYbCVGx4Pv3PSttAx2vIwidqQzbL2U5S4Q+j00HdSAneSBuyVcMvEnTXMjiGgB+DlXozVhpQ==
   dependencies:
     jsesc "~0.5.0"
-
-requestidlecallback@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/requestidlecallback/-/requestidlecallback-0.3.0.tgz#6fb74e0733f90df3faa4838f9f6a2a5f9b742ac5"
-  integrity sha1-b7dOBzP5DfP6pIOPn2oqX5t0KsU=
 
 require-from-string@^2.0.2:
   version "2.0.2"

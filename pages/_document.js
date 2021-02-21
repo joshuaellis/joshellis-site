@@ -1,9 +1,8 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
-import { PATH_STATIC } from 'env'
-
 import { COLORS } from 'references/styles'
+
 import { TrackingGtmHead, TrackingGtmBody } from 'components/Tracking'
 
 export default class JoshDocument extends Document {
@@ -40,23 +39,23 @@ export default class JoshDocument extends Document {
           <link
             rel="apple-touch-icon"
             sizes="180x180"
-            href={`${PATH_STATIC}/site/apple-touch-icon.png`}
+            href={`/site/apple-touch-icon.png`}
           />
           <link
             rel="icon"
             type="image/png"
             sizes="32x32"
-            href={`${PATH_STATIC}/site/favicon-32x32.png`}
+            href={`/site/favicon-32x32.png`}
           />
           <link
             rel="icon"
             type="image/png"
             sizes="16x16"
-            href={`${PATH_STATIC}/site/favicon-16x16.png`}
+            href={`/site/favicon-16x16.png`}
           />
-          <link rel="manifest" href={`${PATH_STATIC}/site/site.webmanifest`} />
+          <link rel="manifest" href={`/site/site.webmanifest`} />
           <link rel="mask-icon" color={COLORS.blue} />
-          <link rel="shortcut icon" href={`${PATH_STATIC}/site/favicon.ico`} />
+          <link rel="shortcut icon" href={`/site/favicon.ico`} />
           <meta name="msapplication-TileColor" content={COLORS.blue} />
           <meta name="theme-color" content={COLORS.blue} />
           <TrackingGtmHead />
