@@ -78,6 +78,8 @@ export default function BoxGrid({ gridSize = [96, 72] }) {
 
   React.useEffect(() => {
     createWave(getRandomInt(0, gridSizeY), getRandomInt(0, gridSizeX))
+    createWave(getRandomInt(0, gridSizeY), getRandomInt(0, gridSizeX))
+    createWave(getRandomInt(0, gridSizeY), getRandomInt(0, gridSizeX))
   }, [createWave, gridSizeX, gridSizeY])
 
   const handlePointerDown = (e) => {
