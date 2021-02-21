@@ -31,20 +31,20 @@ export default function BoxGrid({ gridSize = [96, 72] }) {
     new Array(8).fill(0).map((_) => ({ x: 0, y: 0, z: 0, time: 0, color: 235 }))
   )
 
-  const { amplitude, dampen, maxDist, fade, start, speed, color } = useTweaks(
-    'wave',
-    {
-      amplitude: { value: DEFAULT_VALUES.amplitude, min: 1, max: 10 },
-      dampen: { value: DEFAULT_VALUES.dampen, min: 0, max: 8 },
-      maxDist: { value: DEFAULT_VALUES.maxDist, min: 0, max: 1, step: 0.001 },
-      fade: { value: DEFAULT_VALUES.fade, min: 1, max: 10, step: 1 },
-      start: { value: DEFAULT_VALUES.start, min: 0, max: 1, step: 0.01 },
-      speed: { value: DEFAULT_VALUES.speed, min: 1, max: 50 },
-      ...makeSeparator(),
-      color: DEFAULT_VALUES.color,
-      darkMode: DEFAULT_VALUES.darkMode,
-    }
-  )
+  // const { amplitude, dampen, maxDist, fade, start, speed, color } = useTweaks(
+  //   'wave',
+  //   {
+  //     amplitude: { value: DEFAULT_VALUES.amplitude, min: 1, max: 10 },
+  //     dampen: { value: DEFAULT_VALUES.dampen, min: 0, max: 8 },
+  //     maxDist: { value: DEFAULT_VALUES.maxDist, min: 0, max: 1, step: 0.001 },
+  //     fade: { value: DEFAULT_VALUES.fade, min: 1, max: 10, step: 1 },
+  //     start: { value: DEFAULT_VALUES.start, min: 0, max: 1, step: 0.01 },
+  //     speed: { value: DEFAULT_VALUES.speed, min: 1, max: 50 },
+  //     ...makeSeparator(),
+  //     color: DEFAULT_VALUES.color,
+  //     darkMode: DEFAULT_VALUES.darkMode,
+  //   }
+  // )
 
   const polarCubes = React.useMemo(() => {
     let cubes = []
@@ -66,14 +66,14 @@ export default function BoxGrid({ gridSize = [96, 72] }) {
             z: 1,
             time: 0,
             points: polarCubes.map(
-              (x) => distance(x, { x: cx, y: cy }) / maxDist
+              (x) => distance(x, { x: cx, y: cy }) / DEFAULT_VALUES.maxDist
             ),
           }
           break
         }
       }
     },
-    [maxDist, polarCubes]
+    [/*maxDist,*/ polarCubes]
   )
 
   React.useEffect(() => {
@@ -99,19 +99,19 @@ export default function BoxGrid({ gridSize = [96, 72] }) {
   useFrame((_, delta) => {
     polarCubes.forEach((polarVec, i) => {
       let posZ = 0
-      const { h: hue } = convertRGBtoHSL(color)
+      const { h: hue } = convertRGBtoHSL(DEFAULT_VALUES.color)
 
       wavePoints.current.forEach((waveVec) => {
         if (waveVec.z === 1) {
           const normDist = waveVec.points[i]
-          const time = waveVec.time / fade
+          const time = waveVec.time / DEFAULT_VALUES.fade
 
           /**
            * if the lerped x would return 0 then
            * we don't need to calc anything saving
            * some time and resource
            */
-          if (normDist - waveVec.time * speed > 1) {
+          if (normDist - waveVec.time * DEFAULT_VALUES.speed > 1) {
             return
           }
 
@@ -124,13 +124,13 @@ export default function BoxGrid({ gridSize = [96, 72] }) {
             posZ +=
               sinc(
                 THREE.MathUtils.lerp(
-                  start - dampen,
+                  DEFAULT_VALUES.start - DEFAULT_VALUES.dampen,
                   0.0,
-                  normDist - waveVec.time * speed
+                  normDist - waveVec.time * DEFAULT_VALUES.speed
                 ),
-                dampen,
+                DEFAULT_VALUES.dampen,
                 Math.pow(time, 1.0 + Math.pow(normDist, 2.0)),
-                amplitude
+                DEFAULT_VALUES.amplitude
               ) *
               (1.0 - time)
           }
@@ -159,7 +159,7 @@ export default function BoxGrid({ gridSize = [96, 72] }) {
 
     wavePoints.current.forEach((vec) => {
       const newTime = vec.time + delta
-      if (1 - newTime / fade > 0) {
+      if (1 - newTime / DEFAULT_VALUES.fade > 0) {
         // if it's not finsihed add to it
         vec.time = newTime
       } else if (vec.z === 1) {
