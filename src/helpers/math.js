@@ -8,3 +8,9 @@ export const sinc = (x, k, w, amp) => {
 
   return Math.sin(a) / (a * amp)
 }
+
+export const getRandomInt = (min, max) => {
+  min = Math.ceil(min)
+  max = Math.floor(max)
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}

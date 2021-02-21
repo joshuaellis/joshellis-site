@@ -4,11 +4,23 @@ import * as THREE from 'three'
 import { useFrame } from 'react-three-fiber'
 
 import { distance } from 'helpers/vectors'
-
-import { sinc } from 'helpers/math'
+import { convertRGBtoHSL } from 'helpers/color'
+import { sinc, getRandomInt } from 'helpers/math'
 
 const tempObject = new THREE.Object3D()
 const tempColor = new THREE.Color()
+
+const DEFAULT_VALUES = {
+  amplitude: 6,
+  dampen: 0.34,
+  maxDist: 0.3,
+  fade: 3.0,
+  start: 0.58,
+  speed: 34,
+  ...makeSeparator(),
+  color: { r: 0, g: 21, b: 255 },
+  darkMode: false,
+}
 
 export default function BoxGrid({ gridSize = [96, 72] }) {
   const [gridSizeX, gridSizeY] = gridSize
@@ -19,14 +31,20 @@ export default function BoxGrid({ gridSize = [96, 72] }) {
     new Array(8).fill(0).map((_) => ({ x: 0, y: 0, z: 0, time: 0, color: 235 }))
   )
 
-  const { amplitude, dampen, maxDist, fade, start, speed } = useTweaks('wave', {
-    amplitude: { value: 6, min: 1, max: 10 },
-    dampen: { value: 0.34, min: 0, max: 8 },
-    maxDist: { value: 0.3, min: 0, max: 1, step: 0.001 },
-    fade: { value: 3.0, min: 1, max: 10, step: 1 },
-    start: { value: 0.58, min: 0, max: 1, step: 0.01 },
-    speed: { value: 24, min: 1, max: 50 },
-  })
+  const { amplitude, dampen, maxDist, fade, start, speed, color } = useTweaks(
+    'wave',
+    {
+      amplitude: { value: DEFAULT_VALUES.amplitude, min: 1, max: 10 },
+      dampen: { value: DEFAULT_VALUES.dampen, min: 0, max: 8 },
+      maxDist: { value: DEFAULT_VALUES.maxDist, min: 0, max: 1, step: 0.001 },
+      fade: { value: DEFAULT_VALUES.fade, min: 1, max: 10, step: 1 },
+      start: { value: DEFAULT_VALUES.start, min: 0, max: 1, step: 0.01 },
+      speed: { value: DEFAULT_VALUES.speed, min: 1, max: 50 },
+      ...makeSeparator(),
+      color: DEFAULT_VALUES.color,
+      darkMode: DEFAULT_VALUES.darkMode,
+    }
+  )
 
   const polarCubes = React.useMemo(() => {
     let cubes = []
@@ -40,25 +58,32 @@ export default function BoxGrid({ gridSize = [96, 72] }) {
     return cubes
   }, [gridSizeX, gridSizeY])
 
-  const createWave = (cx, cy) => {
-    for (let i = 0; i < wavePoints.current.length; i++) {
-      if (wavePoints.current[i].z === 0) {
-        wavePoints.current[i] = {
-          z: 1,
-          time: 0,
-          color: Math.floor(Math.random() * 360),
-          points: polarCubes.map(
-            (x) => distance(x, { x: cx, y: cy }) / maxDist
-          ),
+  const createWave = React.useCallback(
+    (cx, cy) => {
+      for (let i = 0; i < wavePoints.current.length; i++) {
+        if (wavePoints.current[i].z === 0) {
+          wavePoints.current[i] = {
+            z: 1,
+            time: 0,
+            points: polarCubes.map(
+              (x) => distance(x, { x: cx, y: cy }) / maxDist
+            ),
+          }
+          break
         }
-        break
       }
-    }
-  }
+    },
+    [maxDist, polarCubes]
+  )
+
+  React.useEffect(() => {
+    createWave(getRandomInt(0, gridSizeY), getRandomInt(0, gridSizeX))
+  }, [createWave, gridSizeX, gridSizeY])
 
   const handlePointerDown = (e) => {
     const { x, y } = polarCubes[e.instanceId]
-    createWave(x, y)
+    // not ready for this
+    // createWave(x, y)
   }
 
   useLayoutEffect(() => {
@@ -74,7 +99,7 @@ export default function BoxGrid({ gridSize = [96, 72] }) {
   useFrame((_, delta) => {
     polarCubes.forEach((polarVec, i) => {
       let posZ = 0
-      let hue = 235
+      const { h: hue } = convertRGBtoHSL(color)
 
       wavePoints.current.forEach((waveVec) => {
         if (waveVec.z === 1) {
@@ -127,7 +152,7 @@ export default function BoxGrid({ gridSize = [96, 72] }) {
         // need a formula for correctly "mixing" colors, could be up to 8 cols
         meshRef.current.setColorAt(
           i,
-          tempColor.setHSL(hue / 360, 1, Math.abs(1 - multiPosZ))
+          tempColor.setHSL(hue, 1, Math.abs(1 - multiPosZ))
         )
       }
     })
@@ -137,9 +162,10 @@ export default function BoxGrid({ gridSize = [96, 72] }) {
       if (1 - newTime / fade > 0) {
         // if it's not finsihed add to it
         vec.time = newTime
-      } else {
+      } else if (vec.z === 1) {
         // if its finished stop the ripple
         vec.z = 0
+        createWave(getRandomInt(0, gridSizeY), getRandomInt(0, gridSizeX))
       }
     })
 
