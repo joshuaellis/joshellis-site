@@ -44,11 +44,12 @@ export default function BoxGrid({ gridSize = [96, 72] }) {
     for (let i = 0; i < wavePoints.current.length; i++) {
       if (wavePoints.current[i].z === 0) {
         wavePoints.current[i] = {
-          x: cx,
-          y: cy,
           z: 1,
           time: 0,
-          color: 235,
+          color: Math.floor(Math.random() * 360),
+          points: polarCubes.map(
+            (x) => distance(x, { x: cx, y: cy }) / maxDist
+          ),
         }
         break
       }
@@ -77,8 +78,7 @@ export default function BoxGrid({ gridSize = [96, 72] }) {
 
       wavePoints.current.forEach((waveVec) => {
         if (waveVec.z === 1) {
-          const dist = distance(polarVec, { x: waveVec.x, y: waveVec.y })
-          const normDist = dist / maxDist
+          const normDist = waveVec.points[i]
           const time = waveVec.time / fade
 
           /**
@@ -90,6 +90,11 @@ export default function BoxGrid({ gridSize = [96, 72] }) {
             return
           }
 
+          /**
+           * now lets make sure that time
+           * is still valid before doing
+           * another spenny calc
+           */
           if (1 - time > 0) {
             posZ +=
               sinc(
@@ -118,6 +123,8 @@ export default function BoxGrid({ gridSize = [96, 72] }) {
         tempObject.updateMatrix()
 
         meshRef.current.setMatrixAt(i, tempObject.matrix)
+
+        // need a formula for correctly "mixing" colors, could be up to 8 cols
         meshRef.current.setColorAt(
           i,
           tempColor.setHSL(hue / 360, 1, Math.abs(1 - multiPosZ))
