@@ -25,7 +25,7 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/joshua_ellis/joshellis.co.uk#readme",
   "devDependencies": {
-    "@babel/core": "^7.13.1",
+    "@babel/core": "^7.13.8",
     "@babel/preset-env": "^7.13.5",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
@@ -33,7 +33,7 @@
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "dotenv": "^8.2.0",
-    "eslint": "^7.20.0",
+    "eslint": "^7.21.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.3.1",
@@ -44,9 +44,9 @@
     "use-tweaks": "^0.3.1"
   },
   "dependencies": {
-    "@react-three/drei": "^3.8.6",
+    "@react-three/drei": "^3.9.0",
     "compression": "^1.7.4",
-    "core-js": "^3.9.0",
+    "core-js": "^3.9.1",
     "express": "^4.17.1",
     "markdown-it": "^12.0.4",
     "next": "^10.0.7",
@@ -57,7 +57,7 @@
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-intl": "^5.13.1",
+    "react-intl": "^5.13.2",
     "react-three-fiber": "^5.3.19",
     "styled-components": "^5.2.0",
     "three": "^0.125.2"
