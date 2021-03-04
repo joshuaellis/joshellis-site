@@ -60,6 +60,6 @@
     "react-intl": "^5.13.2",
     "react-three-fiber": "^5.3.19",
     "styled-components": "^5.2.0",
-    "three": "^0.125.2"
+    "three": "^0.126.1"
   }
 }
