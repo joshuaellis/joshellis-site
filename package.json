@@ -44,7 +44,7 @@
     "use-tweaks": "^0.3.1"
   },
   "dependencies": {
-    "@react-three/drei": "^3.10.2",
+    "@react-three/drei": "^3.11.0",
     "compression": "^1.7.4",
     "core-js": "^3.9.1",
     "express": "^4.17.1",
