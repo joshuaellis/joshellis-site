@@ -46,7 +46,7 @@
   "dependencies": {
     "@react-three/drei": "^3.11.2",
     "compression": "^1.7.4",
-    "core-js": "^3.10.0",
+    "core-js": "^3.10.1",
     "express": "^4.17.1",
     "markdown-it": "^12.0.4",
     "next": "^10.1.3",
