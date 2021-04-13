@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useRef } from 'react'
 import { useTweaks, makeSeparator } from 'use-tweaks'
 import * as THREE from 'three'
-import { useFrame } from 'react-three-fiber'
+import { useFrame } from '@react-three/fiber'
 
 import { distance } from 'helpers/vectors'
 import { convertRGBtoHSL } from 'helpers/color'
