@@ -1,9 +1,5 @@
-const withTM = require('next-transpile-modules')(
-  ['@react-three/drei', 'three'],
-  { debug: false, resolveSymlinks: true }
-)
-
-module.exports = withTM((_) => ({
+module.exports = {
+  future: { webpack5: true },
   async rewrites() {
     return [
       {
@@ -12,4 +8,4 @@ module.exports = withTM((_) => ({
       },
     ]
   },
-}))
+}
