@@ -59,6 +59,6 @@
     "react-dom": "^17.0.2",
     "react-intl": "^5.17.0",
     "styled-components": "^5.2.3",
-    "three": "^0.127.0"
+    "three": "^0.128.0"
   }
 }
