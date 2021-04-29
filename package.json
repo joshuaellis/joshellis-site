@@ -52,7 +52,7 @@
     "markdown-it": "^12.0.6",
     "next": "^10.2.0",
     "next-seo": "^4.24.0",
-    "next-transpile-modules": "^6.4.1",
+    "next-transpile-modules": "^7.0.0",
     "node-fetch": "^2.6.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
