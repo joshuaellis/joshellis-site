@@ -1186,10 +1186,10 @@
     utility-types "^3.10.0"
     zustand "^3.0.3"
 
-"@react-three/fiber@^6.1.1":
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/@react-three/fiber/-/fiber-6.1.1.tgz#1c06ff6c314a617f1525aed409d2bdf49afe74bf"
-  integrity sha512-XmcbhAmNUpQIiFFcm13ci2AM0ATLu6VfSYT5ybGgL0R9+9iUJlIj99qArO385W3hcwEfBCev5ajasPrVCL2tMQ==
+"@react-three/fiber@^6.1.2":
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/@react-three/fiber/-/fiber-6.1.2.tgz#31d6c6ae6d5d9995e8da562aca4b9a9a27f29565"
+  integrity sha512-Bz4fIbiaVdIExRi6Xir1sS4X3flPgwpfZR0sq6GdKwNcTyHIVEK9A8i+cb17chM1EoH2ZqcXfF7UPzC+sWMPxg==
   dependencies:
     "@babel/runtime" "^7.13.10"
     react-merge-refs "^1.1.0"
