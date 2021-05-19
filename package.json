@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@react-three/drei": "^5.0.0",
-    "@react-three/fiber": "^6.1.4",
+    "@react-three/fiber": "^6.1.5",
     "compression": "^1.7.4",
     "core-js": "^3.12.1",
     "express": "^4.17.1",
