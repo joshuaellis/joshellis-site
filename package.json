@@ -50,7 +50,7 @@
     "core-js": "^3.12.1",
     "express": "^4.17.1",
     "markdown-it": "^12.0.6",
-    "next": "^10.2.0",
+    "next": "^10.2.2",
     "next-seo": "^4.24.0",
     "next-transpile-modules": "^7.1.2",
     "node-fetch": "^2.6.1",
