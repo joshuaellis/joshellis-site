@@ -1107,10 +1107,10 @@
   resolved "https://registry.yarnpkg.com/@opentelemetry/context-base/-/context-base-0.14.0.tgz#c67fc20a4d891447ca1a855d7d70fa79a3533001"
   integrity sha512-sDOAZcYwynHFTbLo6n8kIbLiVF3a3BLkrmehJUyEbT9F+Smbi47kLGS2gG2g0fjBLR/Lr1InPD7kXL7FaTqEkw==
 
-"@react-three/drei@^6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-6.0.0.tgz#9be42a2efa135555b921f61a9144d7eb123e7abd"
-  integrity sha512-KyUFkJS+dVOBb7El6Jqzz0hNmQPWELmaU5LaOw7mu35oAhg6KP+ho3y1yEEKWYG9I4wRl71sva5M6CCdHki8Zw==
+"@react-three/drei@^6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-6.0.1.tgz#42578b9298c2d36f83c5f49c1bbc95b6b94dc216"
+  integrity sha512-A9MkGipdLN+R8yWCms4BzyNKclhPya/yymaC5F6F01nXimayO53J2QfgGo+wpH1PHPv3HoZKmOre5T0GNMHB1w==
   dependencies:
     "@babel/runtime" "^7.11.2"
     blob-polyfill "^5.0.20210201"
