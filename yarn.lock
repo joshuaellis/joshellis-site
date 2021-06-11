@@ -1088,10 +1088,10 @@
   resolved "https://registry.yarnpkg.com/@opentelemetry/context-base/-/context-base-0.14.0.tgz#c67fc20a4d891447ca1a855d7d70fa79a3533001"
   integrity sha512-sDOAZcYwynHFTbLo6n8kIbLiVF3a3BLkrmehJUyEbT9F+Smbi47kLGS2gG2g0fjBLR/Lr1InPD7kXL7FaTqEkw==
 
-"@react-three/drei@^6.0.3":
-  version "6.0.3"
-  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-6.0.3.tgz#3052a8d77b43d2d237364ee484f5d85c5ff07649"
-  integrity sha512-LAmkLDWdy64PrWBaSI+l/vSie3Ert9Gs31XzbY/qO9Tz0/tqQmc2stVe/cQyEofNBXOQnxrBmDMqc6hrxsitag==
+"@react-three/drei@^6.0.4":
+  version "6.0.4"
+  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-6.0.4.tgz#9fcbb0107adbfed26edc0643c735f63c7f77ec3c"
+  integrity sha512-pLOqY6sJd/VCjTp0NHsTCBIs8lwClmpfi2uHeMsUPXiREa7XCJUx39K8pro/3vQoUCIHCWk6IwMUYTFoAFDJLA==
   dependencies:
     "@babel/runtime" "^7.11.2"
     blob-polyfill "^5.0.20210201"
@@ -1101,7 +1101,7 @@
     lodash.pick "^4.4.0"
     react-merge-refs "^1.0.0"
     stats.js "^0.17.0"
-    three-stdlib "^2.0.1"
+    three-stdlib "^2.0.8"
     troika-three-text "^0.42.0"
     use-asset "^1.0.4"
     utility-types "^3.10.0"
@@ -4631,10 +4631,10 @@ text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-three-stdlib@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/three-stdlib/-/three-stdlib-2.0.1.tgz#6b0523f2929f0082f70b47f83a77afd89b68d56e"
-  integrity sha512-MULMOiqTO6XFG3dh1c6iX4cIJQcHsl6VaVn7LdL8Ye1yuLoLkwYlzIl5MkeoKPm3zZClZS4u3mj+wl8KyVeRbg==
+three-stdlib@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/three-stdlib/-/three-stdlib-2.0.8.tgz#114c48fc7b2c02d6ebbe0d66d248437b65d38ab2"
+  integrity sha512-KjRJ5/51/i1eI7k/PWw7I/KUdaiU1nfOLBN9t/iquGAUk/cEp57COnyllfJR2tNIl1IUsvyd7gSkwpAFil0Flw==
   dependencies:
     "@babel/runtime" "^7.13.17"
     "@webgpu/glslang" "^0.0.15"
