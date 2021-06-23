@@ -5,10 +5,10 @@
     "node": true
   },
   "extends": [
+    "next",
     "plugin:react-hooks/recommended",
     "plugin:prettier/recommended",
-    "prettier",
-    "prettier/react"
+    "prettier"
   ],
   "plugins": ["react", "prettier", "react-hooks", "import"],
   "rules": {},
