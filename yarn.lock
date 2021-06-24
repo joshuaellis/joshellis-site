@@ -879,17 +879,10 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.10.2":
+"@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.13.10", "@babel/runtime@^7.13.17", "@babel/runtime@^7.8.4":
   version "7.14.6"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.6.tgz#535203bc0892efc7dec60bdc27b2ecf6e409062d"
   integrity sha512-/PCB2uJ7oM44tz8YhC4Z/6PeOKXp4K588f+5M3clr1M4zbqztlo0XEfJ2LEzj/FgwfgGcIdl8n7YYjTCI0BYwg==
-  dependencies:
-    regenerator-runtime "^0.13.4"
-
-"@babel/runtime@^7.11.2", "@babel/runtime@^7.13.10", "@babel/runtime@^7.13.17", "@babel/runtime@^7.8.4":
-  version "7.13.17"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.13.17.tgz#8966d1fc9593bf848602f0662d6b4d0069e3a7ec"
-  integrity sha512-NCdgJEelPTSh+FEFylhnP1ylq848l1z9t9N0j1Lfbcw0+KXGjsTvUmkxy+voLLXB5SOKMbLLx4jxYliGrYQseA==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -1117,10 +1110,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@react-three/drei@^6.2.2":
-  version "6.2.2"
-  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-6.2.2.tgz#739a3c147a34efd30848435d529a8f43e4588eaa"
-  integrity sha512-CgUPtQDb91MMu9BQ/H62hvKz1nyTW1pcFI/iwN1T12pLwpGcTB1CBqjoLoN2pfjZwCe5QxQvKS+ErWwAUPDqkA==
+"@react-three/drei@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-7.0.0.tgz#f19e47d745c5987ea7bdf33051be864e49857543"
+  integrity sha512-W/MEfH6iK4EFZTRh2TRWXrvyT7hpKxMB3h19WPIAeKfQrHgojLDd1QCMHYyciX7DmqF9RUPIHHp1JYLxDIbm6w==
   dependencies:
     "@babel/runtime" "^7.11.2"
     blob-polyfill "^5.0.20210201"
