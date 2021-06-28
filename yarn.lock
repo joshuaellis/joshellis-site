@@ -1110,10 +1110,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@react-three/drei@^7.0.1":
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-7.0.1.tgz#c35840cebc7b77dce0b51e35a11079e4fe60a00f"
-  integrity sha512-RDldUSymP9Pg1T/XbO6pmez6DWxKYGsY5ik+gpprnzeClL2MZc+9Qt0zyV7Tzf3bjf++dsssmkoMtPnB+mtkTA==
+"@react-three/drei@^7.0.2":
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-7.0.2.tgz#36c4b0170962770a53173983a146602f58cecbe0"
+  integrity sha512-xj/Y9DvrVAwn3rVt1SJ4q6/AohLo5arilqT5CNnOdb6iTkQYtwySQrt5RyySQHg78kYrhPsk6/FFrLIVcwfogQ==
   dependencies:
     "@babel/runtime" "^7.11.2"
     blob-polyfill "^5.0.20210201"
@@ -1123,7 +1123,7 @@
     lodash.pick "^4.4.0"
     react-merge-refs "^1.0.0"
     stats.js "^0.17.0"
-    three-mesh-bvh "^0.4.0"
+    three-mesh-bvh "^0.4.1"
     three-stdlib "^2.3.0"
     troika-three-text "^0.42.0"
     use-asset "^1.0.4"
@@ -4899,10 +4899,10 @@ text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-three-mesh-bvh@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/three-mesh-bvh/-/three-mesh-bvh-0.4.0.tgz#5b0c53925986e85e64ead2bce65933dee8bc936b"
-  integrity sha512-76tvmdM+fMlRQIg2yxBDPuQ035fqE0PrnJ+Sn5ZU33lujgRwlFtDUkZzjvdFv51bfVBVaDnUTBoV5o/P0tflJA==
+three-mesh-bvh@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/three-mesh-bvh/-/three-mesh-bvh-0.4.1.tgz#ba0bf1dac7cbd41f2132c8446545c8ad9fbeb892"
+  integrity sha512-1ALlGVjArZpi0SdqZhjwFA3DZHgBF/Uo4LnL8G7PczI7rpOoBK87CaBL073DVrrbIE4OONJvpq/PEzluKoRHbg==
 
 three-stdlib@^2.3.0:
   version "2.3.0"
