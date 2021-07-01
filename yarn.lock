@@ -1096,10 +1096,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@react-three/drei@^7.0.3":
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-7.0.3.tgz#b0d5ed835a973f236bc24b57897ce6c106ff2b8b"
-  integrity sha512-936C93iIg4QFc00FokJO21kiZyJf5sIDMVyTA4b/2n8qqLX4gS/tU7Xe5cpJGH0S6yTGtniONSqhfpUwrvJHWw==
+"@react-three/drei@^7.0.6":
+  version "7.0.6"
+  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-7.0.6.tgz#649eb94d53eae659e516a7c575912ab049a9a1a7"
+  integrity sha512-JRToy+1lg+y0mMzWMRmR0wM4VKPH6Q0jXL7030q9GJE68amZJsXeXYVIORbNaxSt1EtExMnxrX2tolxPDSnH7w==
   dependencies:
     "@babel/runtime" "^7.11.2"
     blob-polyfill "^5.0.20210201"
