@@ -2,7 +2,7 @@ const fetch = require('node-fetch')
 const MarkdownIt = require('markdown-it')
 
 const SHEET_KEY = process.env.STRINGS_SHEET_KEY
-const TABS = [1, 2, 3, 4, 5, 6]
+const TABS = [1, 2, 3, 4, 5]
 const FINAL_TEXT_COLUMN = 'text'
 
 const markdownFormatter = new MarkdownIt({
@@ -26,6 +26,9 @@ async function fetchAndParseTab(tabId) {
     const res = await fetch(
       `https://spreadsheets.google.com/feeds/list/${SHEET_KEY}/${tabId}/public/values?alt=json`
     )
+
+    console.log(res)
+
     const { feed } = await res.json()
     const output = {}
     const title = feed.title.$t.toLowerCase()
