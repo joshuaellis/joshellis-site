@@ -48,7 +48,7 @@
     "@react-three/drei": "^7.5.0",
     "@react-three/fiber": "^7.0.6",
     "compression": "^1.7.4",
-    "core-js": "^3.16.1",
+    "core-js": "^3.17.1",
     "express": "^4.17.1",
     "markdown-it": "^12.2.0",
     "next": "^11.1.0",
