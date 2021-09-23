@@ -1169,10 +1169,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@react-three/drei@^7.5.0":
-  version "7.5.0"
-  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-7.5.0.tgz#89eddc2a500e02fcf7a024a091efa42b4fffd3a4"
-  integrity sha512-GNDSAUgEsOncWsmp68kdiP0hjt15lDN8xnY4xrORnXCtNoTvoaIzZNtLVz2E8NZrrC1rQ5dvmaGHvDg4u506Hw==
+"@react-three/drei@^7.11.0":
+  version "7.11.0"
+  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-7.11.0.tgz#43f80a037e28fbffb2a3e89fb95ab8a35975c1bc"
+  integrity sha512-kwXpl0Flwr0PvawRea0GNu8bEJU3m5q7FQNlB0Of09ktdlRgDlR23pDLeQxk7iszOV/a8L8bJQi3/g6Q3dTjwA==
   dependencies:
     "@babel/runtime" "^7.11.2"
     blob-polyfill "^5.0.20210201"
@@ -1180,6 +1180,7 @@
     glsl-noise "^0.0.0"
     lodash.omit "^4.5.0"
     lodash.pick "^4.4.0"
+    react-composer "^5.0.1"
     react-merge-refs "^1.0.0"
     stats.js "^0.17.0"
     three-mesh-bvh "^0.4.1"
@@ -4178,7 +4179,7 @@ progress@^2.0.0:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-prop-types@^15.7.2:
+prop-types@^15.6.0, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -4293,6 +4294,13 @@ raw-body@2.4.1:
     http-errors "1.7.3"
     iconv-lite "0.4.24"
     unpipe "1.0.0"
+
+react-composer@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/react-composer/-/react-composer-5.0.1.tgz#8d61c61fccc287b0a7d7bf762a88d5d654ca8486"
+  integrity sha512-gp+fEJpZU6mmnKAEskGblwtM0HV6Yh2NiwtUBeGzjEcGSeqxKqGxKq6Ae0ca08SkSDqmeazm09Ybwk8ESHQBIQ==
+  dependencies:
+    prop-types "^15.6.0"
 
 react-dom@^17.0.2:
   version "17.0.2"
