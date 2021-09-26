@@ -3,15 +3,13 @@
   "version": "3.0.1",
   "description": "my own personal site",
   "scripts": {
-    "build": "NODE_ENV_CUSTOM=production next build",
-    "dev": "NODE_ENV_CUSTOM=dev node ./server/server.js --max-old-space-size=4096",
-    "dev:ally": "NODE_ENV_CUSTOM=dev NODE_ENV_ALLY=true next",
+    "build": "next build",
+    "dev": "next dev",
     "fetch:strings": "cd ./tools && node fetchStrings && cd ../",
     "format": "prettier --write .",
     "lint": "eslint . --ext .js,.jsx --fix && yarn format",
-    "start": "NODE_ENV_CUSTOM=production node ./server/server.js",
-    "test": "standard",
-    "version": "echo $npm_package_version"
+    "start": "next start",
+    "test": "standard"
   },
   "repository": {
     "type": "git",
@@ -45,16 +43,12 @@
     "use-tweaks": "^0.3.1"
   },
   "dependencies": {
-    "@react-three/drei": "^7.5.0",
+    "@react-three/drei": "^7.12.3",
     "@react-three/fiber": "^7.0.6",
-    "compression": "^1.7.4",
     "core-js": "^3.17.1",
-    "express": "^4.17.1",
-    "markdown-it": "^12.2.0",
+    "moment": "^2.29.1",
     "next": "^11.1.2",
     "next-seo": "^4.26.0",
-    "node-fetch": "^3.0.0",
-    "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-intl": "^5.20.10",
