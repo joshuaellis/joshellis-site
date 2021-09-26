@@ -3,19 +3,17 @@ import { createGlobalStyle } from 'styled-components'
 import { DefaultSeo } from 'next-seo'
 import { IntlProvider } from 'react-intl'
 
-import getLanguage from 'helpers/getLanguage'
-
 import { CSS_GLOBAL, CSS_FONTS } from 'references/styles'
 import SEO from 'references/seo'
 
-import { fetchStrings } from './../tools/fetchStrings'
+import EN from 'references/locales/en'
 
 const GlobalStyle = createGlobalStyle`
   ${CSS_FONTS}
   ${CSS_GLOBAL}
 `
 
-const App = ({ language, Component, pageProps, messages }) => {
+const App = ({ Component, pageProps }) => {
   useEffect(() => {
     const body = document.body
     document.addEventListener(
@@ -37,7 +35,7 @@ const App = ({ language, Component, pageProps, messages }) => {
   }, [])
 
   return (
-    <IntlProvider messages={messages[language]} locale={language}>
+    <IntlProvider messages={EN} locale={'en'}>
       <DefaultSeo {...SEO} />
       <Component {...pageProps} />
       <GlobalStyle />
@@ -46,11 +44,3 @@ const App = ({ language, Component, pageProps, messages }) => {
 }
 
 export default App
-
-App.getInitialProps = async (ctx) => {
-  const messages = await fetchStrings()
-  return {
-    messages,
-    language: getLanguage(ctx),
-  }
-}

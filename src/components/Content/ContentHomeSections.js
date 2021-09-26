@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FormattedMessage } from 'react-intl'
+import moment from 'moment'
 
 import { TextTitle, TextCopy } from 'components/Text'
 
@@ -11,7 +12,7 @@ import {
 } from 'references/styles/fonts'
 
 const SECTIONS = ['about', 'experience', 'social']
-const EXPERIENCE_AMOUNT = 3
+const EXPERIENCE_AMOUNT = 4
 const SOCIAL_AMOUNT = 4
 
 export default function ContentHomeSections() {
@@ -44,7 +45,17 @@ const renderSection = (section) => {
                   <FormattedMessage id={`home.${section}.content.${i}.place`} />
                 </TextTitle>
                 <TextTitle fontStyle={FONT_STYLE_SURT_24_400} tag="span">
-                  <FormattedMessage id={`home.${section}.content.${i}.time`} />
+                  {i === 0 ? (
+                    `${Math.floor(
+                      moment
+                        .duration(moment().diff(moment('19/04/21', 'DD:MM:YY')))
+                        .asMonths()
+                    )} months`
+                  ) : (
+                    <FormattedMessage
+                      id={`home.${section}.content.${i}.time`}
+                    />
+                  )}
                 </TextTitle>
               </HomeSectionFlex>
             ))}
