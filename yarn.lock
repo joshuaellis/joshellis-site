@@ -1264,13 +1264,12 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@react-three/drei@^7.14.1":
-  version "7.14.1"
-  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-7.14.1.tgz#1e90a3997f7290a705c9c292c23e620d74e6baaa"
-  integrity sha512-bfxax/ATc1OITjoet5auJtxygUrFzULtXL1n+6+2QdQpiFw2XdjS2bwmTYwEUCtfe1L+wj9rk8Q7dXfHfBFZ5g==
+"@react-three/drei@^7.14.3":
+  version "7.14.3"
+  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-7.14.3.tgz#4631af9217cdffe553362547e5c6906c0103137f"
+  integrity sha512-r+z5/VJmX+GduxD+ACLpWrDqkRNiMbgYzwzvkTNRXxf+yUlbOGT0jaasTJcq4AOtg+Y5YoKDUieuQVAJ12O44w==
   dependencies:
     "@babel/runtime" "^7.11.2"
-    blob-polyfill "^5.0.20210201"
     detect-gpu "^3.1.21"
     glsl-noise "^0.0.0"
     lodash.omit "^4.5.0"
@@ -1279,7 +1278,7 @@
     react-merge-refs "^1.1.0"
     stats.js "^0.17.0"
     three-mesh-bvh "^0.5.0"
-    three-stdlib "^2.5.3"
+    three-stdlib "^2.5.4"
     troika-three-text "^0.43.0"
     use-asset "^1.0.4"
     utility-types "^3.10.0"
@@ -1693,11 +1692,6 @@ binary-extensions@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.2.0.tgz#75f502eeaf9ffde42fc98829645be4ea76bd9e2d"
   integrity sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==
-
-blob-polyfill@^5.0.20210201:
-  version "5.0.20210201"
-  resolved "https://registry.yarnpkg.com/blob-polyfill/-/blob-polyfill-5.0.20210201.tgz#0024bfa5dcc3440eb5a2f1e5991cb1612a558465"
-  integrity sha512-SrH6IG6aXL9pCgSysBCiDpGcAJ1j6/c1qCwR3sTEQJhb+MTk6FITNA6eW6WNYQDNZVi4Z9GjxH5v2MMTv59CrQ==
 
 bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.11.9:
   version "4.12.0"
@@ -4783,10 +4777,10 @@ three-mesh-bvh@^0.5.0:
   resolved "https://registry.yarnpkg.com/three-mesh-bvh/-/three-mesh-bvh-0.5.0.tgz#3dac1812b7df682df932efaa43f68da79fc7ff73"
   integrity sha512-CvWHCltKn7oVY5ckcA0QC5GtkfwWcnOxUuazrTKvAB0OroFV2hOKj974Oh0Gi7MvNiqFYkHYgxnUSaUQzlAfgQ==
 
-three-stdlib@^2.5.3:
-  version "2.5.3"
-  resolved "https://registry.yarnpkg.com/three-stdlib/-/three-stdlib-2.5.3.tgz#30d60a8c0a06d93c5207920d071dd0bfd15ffd2f"
-  integrity sha512-zTzK22uuaCoH4eUopMbn0kGD5YmQjDtzwUrDcAu3nLjWqp6FGpxMzgHikK99AOQUVcoCWJcm9DZKNrux7+PRig==
+three-stdlib@^2.5.4:
+  version "2.5.4"
+  resolved "https://registry.yarnpkg.com/three-stdlib/-/three-stdlib-2.5.4.tgz#2eda85a067ac572c698eba288d82a07121ccca25"
+  integrity sha512-uuzjg8CBp5S6uHIR5DsUOxmFfl25p5aXo31Pdj0wq9wlBnj2xYynW4bBBKp24Q3KnQXKy5H5119soIIBui06ig==
   dependencies:
     "@babel/runtime" "^7.14.6"
     "@webgpu/glslang" "^0.0.15"
