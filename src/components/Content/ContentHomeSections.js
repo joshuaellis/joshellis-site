@@ -83,6 +83,7 @@ const renderSection = (section) => {
                         return (
                           <SocialListAnchor
                             href={href}
+                            target="_blank"
                             rel="nofollow noopener noreferrer"
                             data-ga-label={gaLabel}
                             id={`ga-contact-${gaLabel}`}

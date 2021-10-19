@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://joshua_ellis@bitbucket.org/joshua_ellis/joshellis.co.uk.git"
+    "url": "git+https://github.com/joshuaellis/joshellis-site.git"
   },
   "engines": {
     "node": ">=12.19.0",
@@ -21,10 +21,12 @@
   },
   "author": "Josh Ellis",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/joshua_ellis/joshellis.co.uk#readme",
+  "homepage": "https://github.com/joshuaellis/joshellis-site#readme",
   "devDependencies": {
     "@babel/core": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
+    "@mdx-js/loader": "^1.6.22",
+    "@next/mdx": "^11.1.2",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "babel-plugin-styled-components": "^1.13.3",
