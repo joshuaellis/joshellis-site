@@ -24,7 +24,7 @@
   "homepage": "https://github.com/joshuaellis/joshellis-site#readme",
   "devDependencies": {
     "@babel/core": "^7.16.0",
-    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-env": "^7.16.0",
     "@mdx-js/loader": "^1.6.22",
     "@next/mdx": "^12.0.2",
     "babel-eslint": "^10.1.0",
