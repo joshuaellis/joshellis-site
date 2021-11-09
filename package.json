@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "@react-three/drei": "^7.20.1",
-    "@react-three/fiber": "^7.0.17",
+    "@react-three/fiber": "^7.0.18",
     "core-js": "^3.19.1",
     "moment": "^2.29.1",
     "next": "^12.0.3",
