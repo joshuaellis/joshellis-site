@@ -1311,10 +1311,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@react-three/drei@^7.22.0":
-  version "7.22.0"
-  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-7.22.0.tgz#934387a04b9791b1d3aa9ef3af670055b14ed6ee"
-  integrity sha512-TkNXg9VddYSNiVcc6UQui1zkOtCuCmwU3Ts080NPOFvoel34w8K/PZ70iPSr6FBC+2WCjECnSSwQYwb3/9c1oQ==
+"@react-three/drei@^7.22.6":
+  version "7.22.6"
+  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-7.22.6.tgz#947313d1bfe6287f3a88773768914aafd81c4c16"
+  integrity sha512-FB5xrfLdNK1end1Rm8jhq03x/e2c2AOT2Dq7Bg9Goqwbqh2MHyw9/o8dBAHCnams+2YOCjy/6Fbi/n71t0ZthQ==
   dependencies:
     "@babel/runtime" "^7.11.2"
     detect-gpu "^3.1.25"
