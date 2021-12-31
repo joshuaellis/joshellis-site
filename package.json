@@ -23,7 +23,7 @@
   "license": "ISC",
   "homepage": "https://github.com/joshuaellis/joshellis-site#readme",
   "devDependencies": {
-    "@babel/core": "^7.16.5",
+    "@babel/core": "^7.16.7",
     "@babel/preset-env": "^7.16.7",
     "@mdx-js/loader": "^1.6.22",
     "@next/mdx": "^12.0.7",
