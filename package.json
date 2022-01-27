@@ -26,7 +26,7 @@
     "@babel/core": "^7.16.12",
     "@babel/preset-env": "^7.16.11",
     "@mdx-js/loader": "^1.6.22",
-    "@next/mdx": "^12.0.8",
+    "@next/mdx": "^12.0.9",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.3",
     "babel-plugin-styled-components": "^2.0.2",
