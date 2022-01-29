@@ -14,7 +14,6 @@ const HapticCanvas = () => {
       <Canvas
         gl={{ antialias: false, alpha: false }}
         // onCreated={({ gl }) => gl.setClearColor(COLORS.white)}
-        updateDefaultCamera={false}
       >
         {/* {ENV !== 'production' && <Stats showPanel={0} />} */}
         {/* {ENV !== 'production' && <OrbitControls />} */}

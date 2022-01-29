@@ -1,3 +1,4 @@
+/** @type {import('next').NextConfig} */
 module.exports = {
   async rewrites() {
     return [
@@ -6,5 +7,8 @@ module.exports = {
         destination: '/play/circlewave/index.html',
       },
     ]
+  },
+  experimental: {
+    styledComponents: true,
   },
 }
