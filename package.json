@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@react-three/drei": "latest",
-    "@react-three/fiber": "7.0.25",
+    "@react-three/fiber": "7.0.26",
     "moment": "^2.29.1",
     "next": "^12.0.9",
     "next-seo": "^5.0.0",
