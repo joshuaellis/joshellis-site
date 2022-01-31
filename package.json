@@ -13,10 +13,6 @@
     "type": "git",
     "url": "git+https://github.com/joshuaellis/joshellis-site.git"
   },
-  "engines": {
-    "node": ">=12.19.0",
-    "yarn": "^1.21.1"
-  },
   "author": "Josh Ellis",
   "license": "ISC",
   "homepage": "https://github.com/joshuaellis/joshellis-site#readme",
