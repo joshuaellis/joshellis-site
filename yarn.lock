@@ -342,8 +342,8 @@
   resolved "https://registry.yarnpkg.com/@react-spring/types/-/types-9.4.2.tgz#f0518f6d23a0b0f699a71976483323ac84bc4ace"
 
 "@react-three/drei@latest":
-  version "8.8.4"
-  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-8.8.4.tgz#28f56c17d23265685cd0d4cdb1627ce05a488ef2"
+  version "8.9.0"
+  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-8.9.0.tgz#6a253b1ad8d4344ead111ad017428625c9ef7345"
   dependencies:
     "@babel/runtime" "^7.11.2"
     "@react-spring/three" "^9.3.1"
