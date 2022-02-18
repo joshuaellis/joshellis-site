@@ -8,7 +8,7 @@ module.exports = {
       },
     ]
   },
-  experimental: {
+  compiler: {
     styledComponents: true,
   },
 }
