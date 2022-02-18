@@ -342,8 +342,8 @@
   resolved "https://registry.yarnpkg.com/@react-spring/types/-/types-9.4.2.tgz#f0518f6d23a0b0f699a71976483323ac84bc4ace"
 
 "@react-three/drei@latest":
-  version "8.8.4"
-  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-8.8.4.tgz#28f56c17d23265685cd0d4cdb1627ce05a488ef2"
+  version "8.10.1"
+  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-8.10.1.tgz#8871cc6e17e9592dcb6bf61df5ee3c103da49c5e"
   dependencies:
     "@babel/runtime" "^7.11.2"
     "@react-spring/three" "^9.3.1"
@@ -357,7 +357,7 @@
     stats.js "^0.17.0"
     three-mesh-bvh "^0.5.4"
     three-stdlib "^2.8.6"
-    troika-three-text "^0.44.0"
+    troika-three-text "^0.45.0"
     use-asset "^1.0.4"
     utility-types "^3.10.0"
     zustand "^3.5.13"
@@ -2062,21 +2062,21 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
-troika-three-text@^0.44.0:
-  version "0.44.0"
-  resolved "https://registry.yarnpkg.com/troika-three-text/-/troika-three-text-0.44.0.tgz#7c1a785c1aea9acc7631651acac97f2dbed2f26f"
+troika-three-text@^0.45.0:
+  version "0.45.0"
+  resolved "https://registry.yarnpkg.com/troika-three-text/-/troika-three-text-0.45.0.tgz#d3e4f1f0637d3dea5735e9887a77d9a010b1c041"
   dependencies:
     bidi-js "^1.0.2"
-    troika-three-utils "^0.44.0"
-    troika-worker-utils "^0.44.0"
+    troika-three-utils "^0.45.0"
+    troika-worker-utils "^0.45.0"
 
-troika-three-utils@^0.44.0:
-  version "0.44.0"
-  resolved "https://registry.yarnpkg.com/troika-three-utils/-/troika-three-utils-0.44.0.tgz#c19bcbedb08bff96b8a38cf8b4a60da3b12bb44b"
+troika-three-utils@^0.45.0:
+  version "0.45.0"
+  resolved "https://registry.yarnpkg.com/troika-three-utils/-/troika-three-utils-0.45.0.tgz#d624e4d2427275fd2750d542766635be37042920"
 
-troika-worker-utils@^0.44.0:
-  version "0.44.0"
-  resolved "https://registry.yarnpkg.com/troika-worker-utils/-/troika-worker-utils-0.44.0.tgz#a236dc004b7a3c187ae8f14a6b497e54661e12c8"
+troika-worker-utils@^0.45.0:
+  version "0.45.0"
+  resolved "https://registry.yarnpkg.com/troika-worker-utils/-/troika-worker-utils-0.45.0.tgz#94a7b5c7f6f54c81f229eafae2224259e182c010"
 
 tsconfig-paths@^3.12.0, tsconfig-paths@^3.9.0:
   version "3.12.0"
