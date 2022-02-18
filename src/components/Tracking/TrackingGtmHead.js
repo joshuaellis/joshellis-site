@@ -1,4 +1,5 @@
 import { PureComponent } from 'react'
+import Script from 'next/script'
 import { GTM_CONTAINER_ID } from 'env'
 
 export default class TrackingGtmHead extends PureComponent {
@@ -6,7 +7,9 @@ export default class TrackingGtmHead extends PureComponent {
     if (!GTM_CONTAINER_ID) return null
 
     return (
-      <script
+      <Script
+        strategy="afterInteractive"
+        id="gtm__head"
         dangerouslySetInnerHTML={{
           __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
