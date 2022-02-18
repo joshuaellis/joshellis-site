@@ -18,7 +18,7 @@
   "homepage": "https://github.com/joshuaellis/joshellis-site#readme",
   "devDependencies": {
     "eslint": "^8.7.0",
-    "eslint-config-next": "^12.0.9",
+    "eslint-config-next": "^12.1.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-prettier": "^4.0.0",
