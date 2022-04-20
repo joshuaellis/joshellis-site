@@ -58,7 +58,6 @@ export default class JoshDocument extends Document {
           <link rel="shortcut icon" href={`/site/favicon.ico`} />
           <meta name="msapplication-TileColor" content={COLORS.blue} />
           <meta name="theme-color" content={COLORS.blue} />
-          <TrackingGtmHead />
         </Head>
         <body>
           <TrackingGtmBody />

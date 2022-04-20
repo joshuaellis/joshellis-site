@@ -7,6 +7,7 @@ import { CSS_GLOBAL, CSS_FONTS } from 'references/styles'
 import SEO from 'references/seo'
 
 import EN from 'references/locales/en'
+import { TrackingGtmHead } from 'components/Tracking'
 
 const GlobalStyle = createGlobalStyle`
   ${CSS_FONTS}
@@ -35,11 +36,14 @@ const App = ({ Component, pageProps }) => {
   }, [])
 
   return (
-    <IntlProvider messages={EN} locale={'en'}>
-      <DefaultSeo {...SEO} />
-      <Component {...pageProps} />
-      <GlobalStyle />
-    </IntlProvider>
+    <>
+      <TrackingGtmHead />
+      <IntlProvider messages={EN} locale={'en'}>
+        <DefaultSeo {...SEO} />
+        <Component {...pageProps} />
+        <GlobalStyle />
+      </IntlProvider>
+    </>
   )
 }
 
