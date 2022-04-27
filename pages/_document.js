@@ -54,6 +54,9 @@ export default class JoshDocument extends Document {
             href={`/site/favicon-16x16.png`}
           />
           <link rel="manifest" href={`/site/site.webmanifest`} />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
           <link rel="mask-icon" color={COLORS.blue} />
           <link rel="shortcut icon" href={`/site/favicon.ico`} />
           <meta name="msapplication-TileColor" content={COLORS.blue} />
