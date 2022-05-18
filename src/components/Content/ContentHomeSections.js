@@ -35,22 +35,47 @@ const renderSection = (section) => {
         </HomeSectionCopy>
       )
     case 'experience':
+      const time = moment.duration(
+        moment().diff(moment('17/04/21', 'DD:MM:YY'))
+      )
+
+      const years = Math.floor(time.asYears())
+      const months = Math.floor(time.asMonths()) % 12
+
       return (
         <HomeSectionDiv>
           {Array(EXPERIENCE_AMOUNT)
             .fill({})
             .map((_, i) => (
               <HomeSectionFlex key={i}>
-                <TextTitle fontStyle={FONT_STYLE_SURT_24_400} tag="span">
-                  <FormattedMessage id={`home.${section}.content.${i}.place`} />
-                </TextTitle>
+                {i !== EXPERIENCE_AMOUNT - 1 ? (
+                  <FormattedMessage id={`home.${section}.content.${i}.link`}>
+                    {(href) => (
+                      <SocialListItem>
+                        <SocialListAnchor
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href={href}
+                        >
+                          <FormattedMessage
+                            id={`home.${section}.content.${i}.place`}
+                          />
+                        </SocialListAnchor>
+                      </SocialListItem>
+                    )}
+                  </FormattedMessage>
+                ) : (
+                  <TextTitle fontStyle={FONT_STYLE_SURT_24_400} tag="span">
+                    <FormattedMessage
+                      id={`home.${section}.content.${i}.place`}
+                    />
+                  </TextTitle>
+                )}
                 <TextTitle fontStyle={FONT_STYLE_SURT_24_400} tag="span">
                   {i === 0 ? (
-                    `${Math.floor(
-                      moment
-                        .duration(moment().diff(moment('19/04/21', 'DD:MM:YY')))
-                        .asMonths()
-                    )} months`
+                    `${years} year ${
+                      months > 1 ? `${months} months` : `${months} month`
+                    }`
                   ) : (
                     <FormattedMessage
                       id={`home.${section}.content.${i}.time`}
@@ -84,7 +109,7 @@ const renderSection = (section) => {
                           <SocialListAnchor
                             href={href}
                             target="_blank"
-                            rel="nofollow noopener noreferrer"
+                            rel="noopener noreferrer"
                             data-ga-label={gaLabel}
                             id={`ga-contact-${gaLabel}`}
                           >
@@ -152,13 +177,13 @@ const HomeSectionCopy = styled(TextCopy)`
   }
 `
 
-const HomeSectionDiv = styled.div`
+const HomeSectionDiv = styled.ul`
   ${MEDIA_QUERIES.tabletUp} {
     margin-right: 20%;
   }
 `
 
-const HomeSectionFlex = styled.p`
+const HomeSectionFlex = styled.li`
   width: 100%;
   display: flex;
   justify-content: space-between;
