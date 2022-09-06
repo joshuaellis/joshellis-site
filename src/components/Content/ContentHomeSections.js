@@ -12,7 +12,7 @@ import {
 } from 'references/styles/fonts'
 
 const SECTIONS = ['about', 'experience', 'social']
-const EXPERIENCE_AMOUNT = 4
+const EXPERIENCE_AMOUNT = 5
 const SOCIAL_AMOUNT = 4
 
 export default function ContentHomeSections() {
@@ -36,11 +36,15 @@ const renderSection = (section) => {
       )
     case 'experience':
       const time = moment.duration(
-        moment().diff(moment('17/04/21', 'DD:MM:YY'))
+        moment().diff(moment('05/09/22', 'DD:MM:YY'))
       )
 
       const years = Math.floor(time.asYears())
-      const months = Math.floor(time.asMonths()) % 12
+      let months = Math.floor(time.asMonths()) % 12
+
+      if (months === 0) {
+        months = 1
+      }
 
       return (
         <HomeSectionDiv>
@@ -74,7 +78,7 @@ const renderSection = (section) => {
                 <TextTitle fontStyle={FONT_STYLE_SURT_24_400} tag="span">
                   {i === 0 ? (
                     `${years} year ${
-                      months > 1 ? `${months} months` : `${months} month`
+                      months === 1 ? `${months} months` : `${months} month`
                     }`
                   ) : (
                     <FormattedMessage
