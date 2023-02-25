@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 type TAllKeys<T> = T extends any ? keyof T : never
 
 type TIndexValue<T, K extends PropertyKey, D = never> = T extends any

@@ -11,7 +11,7 @@
     "lint:fix": "eslint . --ext .js,.jsx --fix",
     "start": "next start",
     "test": "yarn test:ts",
-    "test:ts": "tsc --incremental=false"
+    "test:ts": "tsc"
   },
   "repository": {
     "type": "git",

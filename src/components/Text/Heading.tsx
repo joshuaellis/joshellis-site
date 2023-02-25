@@ -1,5 +1,4 @@
 import { CSSProperties, forwardRef, ReactNode } from 'react'
-import { Link2Icon as Link } from '@radix-ui/react-icons'
 
 import { getFontStyles } from 'styles/fontStyles'
 import { styled, ScaleValue, CSS } from 'styles/stitches.config'
@@ -27,7 +26,6 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
       className,
       children,
       css,
-      isLink = false,
       ...restProps
     },
     ref
@@ -49,18 +47,6 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
     )
   }
 )
-
-const LinkIcon = styled(Link, {
-  position: 'absolute',
-  left: -24,
-  bottom: 2,
-  transform: 'translateY(-50%)',
-  opacity: 0,
-
-  '@motion': {
-    transition: 'opacity 200ms ease-out',
-  },
-})
 
 const HeadingElement = styled('h1', {
   whiteSpace: 'pre-line',

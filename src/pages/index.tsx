@@ -206,7 +206,7 @@ const HomePage = () => {
                       }}
                       key={index}
                     >
-                      <Heading tag="h3" fontStyle="$XS" tag="dt">
+                      <Heading fontStyle="$XS" tag="dt">
                         {item.href ? (
                           <Anchor variant={item.variant} href={item.href}>
                             {item.title}
