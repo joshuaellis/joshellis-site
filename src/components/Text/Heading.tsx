@@ -7,7 +7,7 @@ import { styled, ScaleValue, CSS } from 'styles/stitches.config'
 export interface HeadingProps {
   tag?: keyof Pick<
     JSX.IntrinsicElements,
-    'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'figcaption'
+    'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'figcaption' | 'dt'
   >
   fontStyle?: ScaleValue<'fontSizes'>
   className?: string
@@ -45,7 +45,6 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
         {...restProps}
       >
         {children}
-        {isLink ? <LinkIcon width={16} /> : null}
       </HeadingElement>
     )
   }
@@ -66,15 +65,4 @@ const LinkIcon = styled(Link, {
 const HeadingElement = styled('h1', {
   whiteSpace: 'pre-line',
   position: 'relative',
-
-  '& > a': {
-    pointerEvents: 'auto',
-    textDecoration: 'none',
-    fontWeight: 'inherit',
-    hover: {
-      [`& + ${LinkIcon}`]: {
-        opacity: 1,
-      },
-    },
-  },
 })

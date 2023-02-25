@@ -40,6 +40,7 @@ export const { styled, globalCss, getCssText, config, keyframes, css } =
         '70': '7rem',
         '75': '7.5rem',
         '80': '8rem',
+        '120': '12rem',
       },
       radii: {
         r4: '0.4rem',
