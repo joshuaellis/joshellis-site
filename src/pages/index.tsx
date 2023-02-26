@@ -1,4 +1,4 @@
-import { ReactNode, FC, Component } from 'react'
+import { ReactNode, FC } from 'react'
 import { NextSeo } from 'next-seo'
 import * as Avatar from '@radix-ui/react-avatar'
 import { styled } from 'styles/stitches.config'
