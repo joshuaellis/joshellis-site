@@ -6,8 +6,8 @@ export const WidgetPlausible = () => {
   return (
     <script
       defer
-      data-domain="joshellis"
-      src="https://plausible.io/js/plausible.js"
+      data-domain="joshellis.co.uk"
+      src="https://plausible.io/js/script.js"
     />
   )
 }
