@@ -3,7 +3,7 @@ const visit = require('unist-util-visit')
 /** @type {import('unified').Plugin<[], import('mdast').Root>} */
 module.exports = function parseCallouts() {
   return (tree, file) => {
-    visit(tree, node => {
+    visit(tree, (node) => {
       if (
         node.type === 'textDirective' ||
         node.type === 'leafDirective' ||

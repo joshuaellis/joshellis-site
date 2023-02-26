@@ -10,7 +10,7 @@ const highlightLine = require('./rehype-highlight-line')
 const highlightWord = require('./rehype-highlight-word')
 
 module.exports = () => {
-  return tree => {
+  return (tree) => {
     visit(tree, 'element', visitor)
   }
 
@@ -27,7 +27,7 @@ module.exports = () => {
 
       // line highlight
       if (node.data?.meta) {
-        node.data.meta.split(' ').forEach(bit => {
+        node.data.meta.split(' ').forEach((bit) => {
           if (bit.includes('line')) {
             const [_, lineRange] = bit.split('=')
             linesToHighlight.push(...rangeParser(lineRange || '0'))

@@ -8,7 +8,7 @@ const parse = require('rehype-parse')
 
 const CALLOUT = /__(.*?)__/g
 
-module.exports = code => {
+module.exports = (code) => {
   const html = hastToHtml(code)
   const result = html.replace(
     CALLOUT,
