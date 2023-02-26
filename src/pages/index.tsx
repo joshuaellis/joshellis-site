@@ -164,9 +164,12 @@ const HomePage = () => {
           <Section
             as="section"
             css={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '$40',
+
               '@tabletUp': {
-                display: 'flex',
-                gap: '$40',
+                flexDirection: 'row',
                 alignItems: 'flex-start',
               },
             }}
