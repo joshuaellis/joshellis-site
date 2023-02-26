@@ -62,7 +62,7 @@ export const Anchor = ({
   }
 }
 
-const sharedLinkStyles = {
+export const sharedLinkStyles = {
   textDecoration: 'underline',
   textDecorationThickness: 1,
   textUnderlineOffset: 2.5,

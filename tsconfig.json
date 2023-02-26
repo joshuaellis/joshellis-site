@@ -1,10 +1,7 @@
 {
   "compilerOptions": {
     "jsx": "preserve",
-    "lib": [
-      "DOM",
-      "ESNext"
-    ],
+    "lib": ["DOM", "ESNext"],
     "target": "ESNext",
     "module": "ESNext",
     "composite": false,
@@ -19,29 +16,18 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "components/*": [
-        "./src/components/*"
-      ],
-      "helpers/*": [
-        "./src/helpers/*"
-      ],
-      "hooks/*": [
-        "./src/hooks/*"
-      ],
-      "styles/*": [
-        "./src/styles/*"
-      ]
+      "components/*": ["./src/components/*"],
+      "helpers/*": ["./src/helpers/*"],
+      "features/*": ["./src/features/*"],
+      "hooks/*": ["./src/hooks/*"],
+      "layouts/*": ["./src/layouts/*"],
+      "styles/*": ["./src/styles/*"]
     },
     "allowJs": true,
     "noEmit": true,
     "resolveJsonModule": true,
     "incremental": true
   },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "node_modules",
-    "src/features/HapticCanvas/**"
-  ]
+  "include": ["src"],
+  "exclude": ["node_modules", "src/features/HapticCanvas/**"]
 }

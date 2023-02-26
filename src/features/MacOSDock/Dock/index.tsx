@@ -64,7 +64,7 @@ export const Dock = ({ children }: DockProps) => {
 }
 
 const StyledDock = styled(animated.div, {
-  position: 'fixed',
+  position: 'absolute',
   bottom: 12,
   left: '50%',
   transform: 'translateX(-50%)',

@@ -9,3 +9,10 @@ export const isValidHttpUrl = (string: string) => {
 
   return url.protocol === 'http:' || url.protocol === 'https:'
 }
+
+export const capitalize = (string: string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1)
+}
+
+export const generateExperimentUrl = (experiment: string) =>
+  `https://github.com/joshuaellis/joshellis-site/tree/main/src/features/${experiment}`
