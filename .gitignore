@@ -102,3 +102,5 @@ $RECYCLE.BIN/
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+tsconfig.tsbuildinfo
