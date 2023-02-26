@@ -5,7 +5,8 @@ import { globalStyles } from 'styles/global'
 
 const SEO = {
   title: 'Josh Ellis',
-  description: '',
+  description:
+    'creating free open-source libraries for communities. crafting software that brings users joy. special interests in design-systems, components APIs and composable architectures.',
   titleTemplate: '%s – Josh Ellis',
   openGraph: {
     type: 'website',
