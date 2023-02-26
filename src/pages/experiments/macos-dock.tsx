@@ -2,7 +2,13 @@ import { MacOSDock } from 'features/MacOSDock'
 import * as Layout from 'layouts/Experiments'
 
 const MacOSDockPage = () => (
-  <Layout.Root>
+  <Layout.Root
+    seo={{
+      title: 'MacOS Dock',
+      description:
+        'A MacOS Dock replica in web using the useSpringValue hook from react-spring.',
+    }}
+  >
     <Layout.Header experimentName="MacOSDock">
       <Layout.HeaderTitle>MacOS Dock</Layout.HeaderTitle>
       <Layout.HeaderSubtitle>November 2022</Layout.HeaderSubtitle>
@@ -15,11 +21,9 @@ const MacOSDockPage = () => (
       <MacOSDock />
     </Layout.Main>
     <Layout.Footer>
-      <Layout.FooterLink type="previous" href="/experiments/css-gradient">
-        CSS Graident
-      </Layout.FooterLink>
-      <Layout.FooterLink type="next" href="/experiments/css-gradient">
-        CSS Graident
+      <div />
+      <Layout.FooterLink type="next" href="/experiments/theme-toggle">
+        Theme Toggle
       </Layout.FooterLink>
     </Layout.Footer>
   </Layout.Root>

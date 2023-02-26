@@ -58,8 +58,9 @@ const MID_SECTION: Section[] = [
         description: 'November 2022',
       },
       {
-        title: 'Circle Wave',
-        description: 'April 2020',
+        title: 'Theme Toggle',
+        description: 'September 2022',
+        href: '/experiments/theme-toggle',
       },
     ],
   },
@@ -301,11 +302,11 @@ const HomePage = () => {
                 )
 
                 return item.href ? (
-                  <li>
+                  <li key={item.title}>
                     <Link href={item.href}>{component}</Link>
                   </li>
                 ) : (
-                  <li>{component}</li>
+                  <li key={item.title}>{component}</li>
                 )
               })}
             </Flex>
