@@ -7,8 +7,9 @@
     "dev": "next dev",
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
-    "lint": "eslint . --ext .js,.jsx",
-    "lint:fix": "eslint . --ext .js,.jsx --fix",
+    "lint": "TIMING=1 eslint --cache --cache-location=node_modules/.cache/.eslintcache . --ext .ts,.tsx",
+    "lint:fix": "TIMING=1 eslint --cache --cache-location=node_modules/.cache/.eslintcache . --ext .ts,.tsx --fix",
+    "prepare": "husky install",
     "start": "next start",
     "test": "yarn test:ts",
     "test:ts": "tsc"
@@ -21,17 +22,21 @@
   "license": "ISC",
   "homepage": "https://github.com/joshuaellis/joshellis-site#readme",
   "devDependencies": {
+    "@commitlint/config-conventional": "^17.4.4",
     "@types/node": "^18.14.1",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.53.0",
     "@typescript-eslint/parser": "^5.53.0",
+    "commitlint": "^17.4.4",
     "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.2",
     "prettier": "^2.8.4",
     "typescript": "^4.9.5"
   },
@@ -58,6 +63,14 @@
     "remark-directive": "1.0.1",
     "unified": "9.2.2",
     "unist-util-visit": "2.0.3"
+  },
+  "lint-staged": {
+    "*.{md,yaml,yml}": [
+      "yarn prettier:check"
+    ],
+    "*.{js,ts,tsx}": [
+      "yarn lint"
+    ]
   },
   "packageManager": "yarn@3.4.1"
 }
