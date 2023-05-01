@@ -1,5 +1,6 @@
 import { DefaultSeo } from 'next-seo'
 import type { AppProps } from 'next/app'
+import { Analytics } from '@vercel/analytics/react'
 
 import { globalStyles } from 'styles/global'
 
@@ -35,6 +36,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     <>
       <DefaultSeo {...SEO} />
       <Component {...pageProps} />
+      <Analytics />
     </>
   )
 }
