@@ -54,7 +54,7 @@
     "hast-util-to-html": "7.1.3",
     "hast-util-to-string": "1.0.4",
     "next": "^13.4.9",
-    "next-seo": "^5.15.0",
+    "next-seo": "^6.1.0",
     "parse-numeric-range": "^1.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
