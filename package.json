@@ -22,14 +22,14 @@
   "license": "ISC",
   "homepage": "https://github.com/joshuaellis/joshellis-site#readme",
   "devDependencies": {
-    "@commitlint/config-conventional": "^18.1.0",
-    "@types/node": "^20.8.10",
-    "@types/react": "^18.2.33",
-    "@types/react-dom": "^18.2.14",
-    "@typescript-eslint/eslint-plugin": "^6.9.1",
-    "@typescript-eslint/parser": "^6.9.1",
-    "commitlint": "^18.2.0",
-    "eslint": "^8.52.0",
+    "@commitlint/config-conventional": "^18.4.3",
+    "@types/node": "^20.10.1",
+    "@types/react": "^18.2.39",
+    "@types/react-dom": "^18.2.17",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "commitlint": "^18.4.3",
+    "eslint": "^8.54.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-prettier": "^5.0.1",
@@ -37,8 +37,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^8.0.3",
     "lint-staged": "^15.1.0",
-    "prettier": "^3.0.3",
-    "typescript": "^5.2.2"
+    "prettier": "^3.1.0",
+    "typescript": "^5.3.2"
   },
   "dependencies": {
     "@mdx-js/loader": "^2.3.0",
@@ -73,5 +73,5 @@
       "yarn lint"
     ]
   },
-  "packageManager": "yarn@3.6.4"
+  "packageManager": "yarn@3.7.0"
 }
