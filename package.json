@@ -60,7 +60,7 @@
     "react-dom": "^18.2.0",
     "react-wrap-balancer": "^1.1.0",
     "refractor": "3.6.0",
-    "rehype-parse": "7.0.1",
+    "rehype-parse": "9.0.0",
     "remark-directive": "1.0.1",
     "unified": "9.2.2",
     "unist-util-visit": "2.0.3"
