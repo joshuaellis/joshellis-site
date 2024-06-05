@@ -47,6 +47,13 @@ const MID_SECTION: Section[] = [
         variant: 'outlink',
         description: 'A react test renderer for threejs in node.',
       },
+      {
+        title: '@strapi/pack-up',
+        href: 'https://github.com/strapi/pack-up',
+        variant: 'outlink',
+        description:
+          'Simple tools for creating interoperable CJS & ESM packages.',
+      },
     ],
   },
   {
