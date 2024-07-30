@@ -1,0 +1,42 @@
+import { Date } from '../../components/Text/Date'
+
+# Critical Thinking in Engineering
+
+<Date>30th July 2024</Date>
+
+The easiest way to explain why critical thinking is so valuable to you, as an
+engineer is to consider this scenario:
+
+> You find that a value is nullish in a codebase you didn't originally write.
+> But the code doesn't handle nullish values, what's the solution?
+
+The first solution you might think of would be to add a check to see if it's
+nullish and handle that. That works for this scenario, but I'd argue you've just
+fixed the symptom and not the problem. Subsequentally, you might find the same
+bug cropping up in numerous places in the codebase and if you're not the one
+fixing the next bug, those dots might not be connected.
+
+You might say "Well I use typescript, so that will save me" but remember,
+Typescript doesn't do anything at runtime. So how do you solve this using
+critical thinking?
+
+**Start asking why.**
+
+"Why is the value nullish?" is the most obvious one, but in reality, critical
+thinking isn't overly complex. It's about asking the most obvious questions to
+challenge your assumptions on the given problem. When you start asking the
+suggested question, you might end up looking at a function that's called several
+layers higher in the codebase noting that this function doesn't handle the edge
+case that's happening all too often. Or perhaps the API you're calling is now
+returning nullish values that you previously were not expecting.
+
+import { WritingLayout } from '../../layouts/Writing'
+
+export default function Page({ children }) {
+  return <WritingLayout seo={{
+    title: "Critical Thinking in Engineering",
+    description: "It's not just about fixing the issue, but understanding why it broke in the first place.",
+    noindex:true,
+}}>{children}</WritingLayout>
+
+}

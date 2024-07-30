@@ -92,9 +92,11 @@ interface WritingComingSoon extends Writing {
 
 const WRITING: Array<WritingWithLink | WritingComingSoon> = [
   {
-    title: 'Why I rebuilt the react-spring docs.',
+    title: 'Critical thinking in engineering',
     description:
-      'A look at why sometimes your docs need a complete rewrite & why react-spring needed it.',
+      "It's not just about fixing the issue, but understanding why it broke in the first place.",
+    // href: '/writing/critical-thinking-in-engineering',
+    // date: 'Aug 2024',
     comingSoon: true,
   },
 ]
