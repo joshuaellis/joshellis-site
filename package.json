@@ -63,7 +63,7 @@
     "rehype-parse": "7.0.1",
     "remark-directive": "1.0.1",
     "unified": "9.2.2",
-    "unist-util-visit": "2.0.3"
+    "unist-util-visit": "5.0.0"
   },
   "lint-staged": {
     "*.{md,yaml,yml}": [
