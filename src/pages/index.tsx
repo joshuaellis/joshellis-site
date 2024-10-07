@@ -179,10 +179,14 @@ const HomePage = () => {
             >
               <Balancer ratio={BALANCE_RATIO}>
                 currently engineering at{' '}
+                <Anchor variant="headline" href="https://sanity.io">
+                  sanity
+                </Anchor>
+                . previously at{' '}
                 <Anchor variant="headline" href="https://strapi.io">
                   strapi
                 </Anchor>
-                . previously at{' '}
+                ,{' '}
                 <Anchor variant="headline" href="https://companion.studio">
                   companion
                 </Anchor>
