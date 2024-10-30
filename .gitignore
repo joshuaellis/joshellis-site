@@ -10,12 +10,7 @@ yarn-error.log*
 # Optional npm cache directory
 .npm
 
-# Dependency directories
-/node_modules
-/jspm_packages
-/bower_components
-
-sanity/node_modules
+node_modules
 
 # Yarn Integrity file
 .yarn-integrity
@@ -94,13 +89,5 @@ $RECYCLE.BIN/
 .com.apple.timemachine.donotpresent
 .DS_Store
 
-
-.yarn/*
-!.yarn/cache
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
-
 tsconfig.tsbuildinfo
+.turbo
