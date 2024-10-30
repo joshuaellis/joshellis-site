@@ -1,77 +1,41 @@
 {
-  "name": "joshellis-site",
-  "version": "3.0.1",
-  "description": "my own personal site",
+  "name": "joshellis-site--root",
   "scripts": {
-    "build": "next build",
-    "dev": "next dev",
+    "build": "turbo run build",
+    "dev": "turbo run dev --no-cache --parallel --continue",
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
-    "lint": "TIMING=1 eslint --cache --cache-location=node_modules/.cache/.eslintcache . --ext .ts,.tsx",
-    "lint:fix": "TIMING=1 eslint --cache --cache-location=node_modules/.cache/.eslintcache . --ext .ts,.tsx --fix",
+    "lint": "TIMING=1 eslint --cache --cache-location=node_modules/.cache/.eslintcache .",
     "prepare": "husky install",
-    "start": "next start",
-    "test": "yarn test:ts",
-    "test:ts": "tsc"
+    "test:ts": "turbo run test:ts"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/joshuaellis/joshellis-site.git"
   },
   "author": "Josh Ellis",
-  "license": "ISC",
-  "homepage": "https://github.com/joshuaellis/joshellis-site#readme",
   "devDependencies": {
     "@commitlint/config-conventional": "^19.5.0",
-    "@types/node": "^20.16.10",
-    "@types/react": "^18.3.10",
-    "@types/react-dom": "^18.3.0",
-    "@typescript-eslint/eslint-plugin": "^8.8.0",
-    "@typescript-eslint/parser": "^8.8.0",
+    "@eslint/js": "^9.13.0",
+    "@types/eslint__js": "^8.42.3",
     "commitlint": "^19.5.0",
-    "eslint": "^8.57.1",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-import": "^2.30.0",
-    "eslint-plugin-prettier": "^5.2.1",
-    "eslint-plugin-react": "^7.37.0",
-    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint": "^9.13.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "globals": "^15.11.0",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
-    "typescript": "^5.6.2"
-  },
-  "dependencies": {
-    "@mdx-js/loader": "^3.0.1",
-    "@mdx-js/react": "^3.0.1",
-    "@next/mdx": "^14.2.13",
-    "@radix-ui/react-avatar": "^1.1.0",
-    "@radix-ui/react-icons": "^1.3.0",
-    "@radix-ui/react-tooltip": "^1.1.2",
-    "@react-spring/web": "^9.7.4",
-    "@stitches/react": "^1.2.8",
-    "@use-gesture/react": "^10.3.1",
-    "@vercel/analytics": "^1.3.1",
-    "hast-util-to-html": "7.1.3",
-    "hast-util-to-string": "1.0.4",
-    "next": "^14.2.13",
-    "next-seo": "^6.6.0",
-    "parse-numeric-range": "^1.3.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-wrap-balancer": "^1.1.1",
-    "refractor": "3.6.0",
-    "rehype-parse": "7.0.1",
-    "remark-directive": "1.0.1",
-    "unified": "9.2.2",
-    "unist-util-visit": "2.0.3"
+    "turbo": "^2.2.3",
+    "typescript-eslint": "^8.12.2"
   },
   "lint-staged": {
     "*.{md,yaml,yml}": [
-      "yarn prettier:check"
+      "pnpm prettier:check"
     ],
     "*.{js,ts,tsx}": [
-      "yarn lint"
+      "pnpm lint"
     ]
   },
-  "packageManager": "yarn@3.8.5"
+  "packageManager": "pnpm@9.12.0"
 }

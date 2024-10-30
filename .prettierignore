@@ -3,4 +3,4 @@ dist
 node_modules
 .next
 public
-.yarn
+pnpm-lock.yaml
