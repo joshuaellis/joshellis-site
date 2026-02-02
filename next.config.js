@@ -16,10 +16,6 @@ const withMDX = require('@next/mdx')({
 /** @type {import('next').NextConfig} */
 const config = {
   pageExtensions: ['tsx', 'ts', 'mdx'],
-  swcMinify: true,
-  experimental: {
-    legacyBrowsers: false,
-  },
 }
 
 module.exports = withMDX(config)

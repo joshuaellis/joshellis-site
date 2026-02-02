@@ -20,6 +20,11 @@ interface IconButtonProps extends ComponentPropsWithoutRef<typeof Button> {
 
 const AnimatedCopy = animated(Copy)
 
+interface IconButtonChildProps {
+  'aria-hidden': 'true'
+  focusable: 'false'
+}
+
 export const IconButton = ({
   label,
   children,
@@ -31,7 +36,7 @@ export const IconButton = ({
 
   const component = (
     <Button {...props}>
-      {cloneElement(child as React.ReactElement, {
+      {cloneElement(child as React.ReactElement<IconButtonChildProps>, {
         // accessibility
         'aria-hidden': 'true',
         focusable: 'false', // See: https://allyjs.io/tutorials/focusing-in-svg.html#making-svg-elements-focusable

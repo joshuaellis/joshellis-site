@@ -83,7 +83,7 @@ export const DockCard = ({ children }: DockCardProps) => {
   })
 
   const timesLooped = React.useRef(0)
-  const timeoutRef = React.useRef<number>()
+  const timeoutRef = React.useRef<number>(null)
   const isAnimating = React.useRef(false)
 
   const handleClick = () => {
@@ -100,7 +100,7 @@ export const DockCard = ({ children }: DockCardProps) => {
               opacity.start(0)
               y.set(0)
               isAnimating.current = false
-              timeoutRef.current = undefined
+              timeoutRef.current = null
             }, 2000)
             y.stop()
           }
@@ -112,14 +112,23 @@ export const DockCard = ({ children }: DockCardProps) => {
        * Allow premature exit of animation
        * on a second click if we're currently animating
        */
-      clearTimeout(timeoutRef.current)
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
       opacity.start(0)
       y.start(0)
       isAnimating.current = false
     }
   }
 
-  React.useEffect(() => () => clearTimeout(timeoutRef.current), [])
+  React.useEffect(
+    () => () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+    },
+    []
+  )
 
   return (
     <Flex
