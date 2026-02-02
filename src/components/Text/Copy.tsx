@@ -1,4 +1,4 @@
-import { ComponentType, CSSProperties, forwardRef, ReactNode } from 'react'
+import { ComponentType, CSSProperties, forwardRef, ReactNode, JSX } from 'react'
 
 import { getFontStyles } from 'styles/fontStyles'
 import { styled, ScaleValue, CSS } from 'styles/stitches.config'
