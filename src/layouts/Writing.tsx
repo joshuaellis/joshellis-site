@@ -4,10 +4,11 @@ import { ReactNode } from 'react'
 import { Heading, HeadingProps } from '../components/Text/Heading'
 import { Copy, CopyProps } from '../components/Text/Copy'
 import Link from 'next/link'
+import Head from 'next/head'
 import { Flex } from '../components/Flex'
 import { DoubleArrowLeftIcon } from '@radix-ui/react-icons'
 import { Box } from '../components/Box'
-import { NextSeo, NextSeoProps } from 'next-seo'
+import { generateNextSeo, NextSeoProps } from 'next-seo/pages'
 import { Anchor } from '../components/Text/Anchor'
 
 const comps = {
@@ -152,7 +153,7 @@ export const WritingLayout = ({
 }) => {
   return (
     <>
-      <NextSeo {...seo} />
+      <Head>{seo && generateNextSeo(seo)}</Head>
       <MDXProvider components={comps}>
         <Box
           css={{
