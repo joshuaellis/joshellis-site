@@ -10,6 +10,9 @@ yarn-error.log*
 # Optional npm cache directory
 .npm
 
+# npm lockfile (project uses pnpm)
+package-lock.json
+
 # Dependency directories
 /node_modules
 /jspm_packages
