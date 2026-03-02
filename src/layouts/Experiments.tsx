@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
-import { NextSeo, NextSeoProps } from 'next-seo'
+import { generateNextSeo, NextSeoProps } from 'next-seo/pages'
 import Link from 'next/link'
+import Head from 'next/head'
 import { CodeIcon, DoubleArrowLeftIcon, Link2Icon } from '@radix-ui/react-icons'
 
 import { Box } from 'components/Box'
@@ -22,7 +23,7 @@ interface RootProps {
 
 const Root = ({ children, seo }: RootProps) => (
   <>
-    <NextSeo {...seo} />
+    <Head>{seo && generateNextSeo(seo)}</Head>
     <Box
       css={{
         display: 'grid',
