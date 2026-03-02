@@ -1,7 +1,8 @@
-import { DefaultSeo } from 'next-seo'
+import { generateDefaultSeo } from 'next-seo/pages'
 import type { AppProps } from 'next/app'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import Head from 'next/head'
 
 import { globalStyles } from 'styles/global'
 
@@ -35,7 +36,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <>
-      <DefaultSeo {...SEO} />
+      <Head>{generateDefaultSeo(SEO)}</Head>
       <Component {...pageProps} />
       <Analytics />
       <SpeedInsights />

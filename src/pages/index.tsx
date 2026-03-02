@@ -1,8 +1,9 @@
 import { ReactNode, FC } from 'react'
-import { NextSeo } from 'next-seo'
+import { generateNextSeo } from 'next-seo/pages'
 import * as Avatar from '@radix-ui/react-avatar'
 import { styled } from 'styles/stitches.config'
 import Balancer, { Provider } from 'react-wrap-balancer'
+import Head from 'next/head'
 
 import { Flex } from 'components/Flex'
 import { Box } from 'components/Box'
@@ -119,7 +120,9 @@ const HomePage = () => {
           },
         }}
       >
-        <NextSeo title="Josh Ellis" titleTemplate="%s" />
+        <Head>
+          {generateNextSeo({ title: 'Josh Ellis', titleTemplate: '%s' })}
+        </Head>
         <Flex
           css={{
             gap: '$20',
