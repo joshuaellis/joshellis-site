@@ -15,13 +15,7 @@ type TPartialKeys<T, K extends keyof T> = Omit<T, K> &
 type TFunction = (...a: any[]) => any
 
 type TPrimitives =
-  | string
-  | number
-  | boolean
-  | bigint
-  | symbol
-  | Date
-  | TFunction
+  string | number | boolean | bigint | symbol | Date | TFunction
 
 type TMerged<T> = [T] extends [Array<any>]
   ? { [K in keyof T]: TMerged<T[K]> }
