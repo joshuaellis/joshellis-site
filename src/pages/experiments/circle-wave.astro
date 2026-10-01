@@ -1,0 +1,21 @@
+---
+import Experiment from '../../layouts/Experiment.astro'
+import { CircleWave } from '../../features/CircleWave'
+---
+
+<Experiment
+  title="Circle Wave"
+  description="Inspired by Mike Bostock's circle wave observable, i've created my own versions of wavy circles"
+  date="December 2019"
+  class="circle-wave-stage"
+  experimentName="CircleWave"
+  previous={{ title: 'Theme Toggle', href: '/experiments/theme-toggle' }}
+>
+  <CircleWave client:load />
+</Experiment>
+
+<style is:global>
+  .circle-wave-stage {
+    height: 480px;
+  }
+</style>
