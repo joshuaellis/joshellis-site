@@ -1,4 +1,7 @@
 import * as Stitches from '@stitches/react'
+import { Inter } from 'next/font/google'
+
+const inter = Inter({ subsets: ['latin'], axes: ['opsz'] })
 
 interface GradientBorderParams {
   width?: number
@@ -57,8 +60,7 @@ export const { styled, globalCss, getCssText, config, keyframes, css } =
         max: '999',
       },
       fonts: {
-        sans: 'Inter, -apple-system, system-ui, sans-serif',
-        'sans-var': '"Inter var", -apple-system, system-ui, sans-serif',
+        sans: inter.style.fontFamily,
         mono: '"Space Mono", monospace',
         serif: '',
       },

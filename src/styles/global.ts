@@ -20,10 +20,6 @@ export const globalStyles = globalCss({
     margin: 0,
     minHeight: '100%',
 
-    '@supports(font-variation-settings: normal)': {
-      fontFamily: '$sans-var',
-    },
-
     '@motion': {
       scrollBehavior: 'smooth',
     },

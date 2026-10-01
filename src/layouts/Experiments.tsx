@@ -59,7 +59,7 @@ const Root = ({ children, seo }: RootProps) => (
           },
         }}
       >
-        <Link href="/">
+        <Link href="/" prefetch={false}>
           <Copy tag={Flex} fontStyle="$XXS" css={{ gap: '$10', opacity: 0.6 }}>
             <DoubleArrowLeftIcon />
             <Box as="span" css={{ position: 'relative', bottom: 1 }}>
@@ -215,6 +215,7 @@ const FooterLink = ({ children, href, type }: FooterLinkProps) => {
     <Flex
       as={Link}
       href={href}
+      prefetch={false}
       css={{
         flexDirection: 'column',
         alignItems: type === 'next' ? 'flex-end' : 'flex-start',
