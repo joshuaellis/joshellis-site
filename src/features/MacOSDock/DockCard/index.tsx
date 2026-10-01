@@ -5,14 +5,12 @@ import {
   useSpringValue,
 } from '@react-spring/web'
 
-import { styled } from 'styles/stitches.config'
-
-import { Flex } from 'components/Flex'
-
 import { useMousePosition } from '../hooks/useMousePosition'
 import { useWindowResize } from '../hooks/useWindowResize'
 
 import { useDock } from '../Dock/DockContext'
+
+import styles from '../MacOSDock.module.css'
 
 interface DockCardProps {
   children: React.ReactNode
@@ -131,13 +129,9 @@ export const DockCard = ({ children }: DockCardProps) => {
   )
 
   return (
-    <Flex
-      css={{
-        flexDirection: 'column',
-        gap: 4,
-      }}
-    >
-      <StyledDockCard
+    <div className={styles.dockCardWrapper}>
+      <animated.button
+        className={styles.dockCard}
         ref={cardRef}
         onClick={handleClick}
         style={{
@@ -147,30 +141,8 @@ export const DockCard = ({ children }: DockCardProps) => {
         }}
       >
         {children}
-      </StyledDockCard>
-      <DockDot style={{ opacity }} />
-    </Flex>
+      </animated.button>
+      <animated.div className={styles.dockDot} style={{ opacity }} />
+    </div>
   )
 }
-
-const StyledDockCard = styled(animated.button, {
-  borderRadius: 12,
-  border: 'solid 1px rgba(255, 255, 255, 0.1)',
-  backgroundColor: '#262626',
-  filter: 'saturate(0.9) brightness(0.9)',
-  transition: 'filter 200ms',
-  padding: 0,
-  margin: 0,
-  cursor: 'pointer',
-
-  hover: {
-    filter: 'saturate(1) brightness(1.12)',
-  },
-})
-
-const DockDot = styled(animated.div, {
-  width: 6,
-  height: 6,
-  borderRadius: '$round',
-  backgroundColor: '#fff',
-})

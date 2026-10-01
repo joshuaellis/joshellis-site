@@ -2,11 +2,11 @@ import * as React from 'react'
 import { animated, useSpringValue } from '@react-spring/web'
 import { clamp } from '@react-spring/shared'
 
-import { styled } from 'styles/stitches.config'
-
 import { useWindowResize } from '../hooks/useWindowResize'
 
 import { DockContext } from './DockContext'
+
+import styles from '../MacOSDock.module.css'
 
 interface DockProps {
   children: React.ReactNode
@@ -37,7 +37,8 @@ export const Dock = ({ children }: DockProps) => {
 
   return (
     <DockContext.Provider value={{ hovered, setIsZooming, width, zoomLevel }}>
-      <StyledDock
+      <animated.div
+        className={styles.dock}
         ref={dockRef}
         onMouseOver={() => {
           if (!isZooming.current) {
@@ -58,25 +59,7 @@ export const Dock = ({ children }: DockProps) => {
         }}
       >
         {children}
-      </StyledDock>
+      </animated.div>
     </DockContext.Provider>
   )
 }
-
-const StyledDock = styled(animated.div, {
-  position: 'absolute',
-  bottom: 12,
-  left: '50%',
-  transform: 'translateX(-50%)',
-  alignItems: 'flex-end',
-  height: 58,
-  display: 'flex',
-  padding: 10,
-  paddingBottom: 6,
-  gap: 12,
-  backgroundColor: 'rgba(0, 0, 0, 0.92)',
-  willChange: 'contents',
-  boxSizing: 'content-box',
-  borderRadius: 12,
-  transformOrigin: 'center bottom',
-})

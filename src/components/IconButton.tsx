@@ -1,24 +1,15 @@
-import {
-  Children,
-  cloneElement,
-  ComponentPropsWithoutRef,
-  ComponentType,
-  useState,
-} from 'react'
+import { Children, cloneElement, type ReactElement, useState } from 'react'
 import * as Tooltip from '@radix-ui/react-tooltip'
 import { useTransition, animated } from '@react-spring/web'
 
-import { Box } from './Box'
-import { Button } from './Button'
-import { Copy } from './Text/Copy'
+import styles from './IconButton.module.css'
 
-interface IconButtonProps extends ComponentPropsWithoutRef<typeof Button> {
+interface IconButtonProps {
   label: string
-  withToolip?: boolean
-  as?: string | ComponentType
+  children: ReactElement
+  href?: string
+  onClick?: () => void
 }
-
-const AnimatedCopy = animated(Copy)
 
 interface IconButtonChildProps {
   'aria-hidden': 'true'
@@ -28,26 +19,22 @@ interface IconButtonChildProps {
 export const IconButton = ({
   label,
   children,
-  withToolip = false,
-  ...props
+  href,
+  onClick,
 }: IconButtonProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const child = Children.only(children)
 
-  const component = (
-    <Button {...props}>
-      {cloneElement(child as React.ReactElement<IconButtonChildProps>, {
+  const content = (
+    <>
+      {cloneElement(child as ReactElement<IconButtonChildProps>, {
         // accessibility
         'aria-hidden': 'true',
         focusable: 'false', // See: https://allyjs.io/tutorials/focusing-in-svg.html#making-svg-elements-focusable
       })}
-      <Box as="span" css={{ visuallyHidden: '' }}>
-        {label}
-      </Box>
-    </Button>
+      <span className="visually-hidden">{label}</span>
+    </>
   )
-
-  const handleOpenChange = (isOpen: boolean) => setIsOpen(isOpen)
 
   const transition = useTransition(isOpen, {
     from: { opacity: 0, y: 10 },
@@ -58,43 +45,37 @@ export const IconButton = ({
     },
   })
 
-  if (!withToolip) {
-    return component
-  } else {
-    return (
-      <Tooltip.Provider>
-        <Tooltip.Root
-          delayDuration={400}
-          open={isOpen}
-          onOpenChange={handleOpenChange}
-        >
-          <Tooltip.Trigger asChild>{component}</Tooltip.Trigger>
-          <Tooltip.Portal forceMount>
-            {transition((style, item) =>
-              item ? (
-                <Tooltip.Content sideOffset={10} forceMount asChild>
-                  <div>
-                    <AnimatedCopy
-                      tag="span"
-                      fontStyle="$XXS"
-                      css={{
-                        padding: '$5 $10',
-                        backgroundColor: 'rgba(28, 28, 28, 0.2)',
-                        backdropFilter: 'blur(20px)',
-                        borderRadius: '$r8',
-                        border: '1px solid rgba(255, 255, 255, 0.2)',
-                      }}
-                      style={style}
-                    >
-                      {label}
-                    </AnimatedCopy>
-                  </div>
-                </Tooltip.Content>
-              ) : null
-            )}
-          </Tooltip.Portal>
-        </Tooltip.Root>
-      </Tooltip.Provider>
-    )
-  }
+  return (
+    <Tooltip.Provider>
+      <Tooltip.Root delayDuration={400} open={isOpen} onOpenChange={setIsOpen}>
+        <Tooltip.Trigger asChild>
+          {href ? (
+            <a className={styles.button} href={href}>
+              {content}
+            </a>
+          ) : (
+            <button className={styles.button} onClick={onClick}>
+              {content}
+            </button>
+          )}
+        </Tooltip.Trigger>
+        <Tooltip.Portal forceMount>
+          {transition((style, item) =>
+            item ? (
+              <Tooltip.Content sideOffset={10} forceMount asChild>
+                <div>
+                  <animated.span
+                    className={`t-XXS ${styles.tooltip}`}
+                    style={style}
+                  >
+                    {label}
+                  </animated.span>
+                </div>
+              </Tooltip.Content>
+            ) : null
+          )}
+        </Tooltip.Portal>
+      </Tooltip.Root>
+    </Tooltip.Provider>
+  )
 }

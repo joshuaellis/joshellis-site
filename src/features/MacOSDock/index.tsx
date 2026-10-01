@@ -1,9 +1,9 @@
-import { Box } from 'components/Box'
-
 import { Card } from './Card'
 import { Dock } from './Dock'
 import { DockCard } from './DockCard'
 import { DockDivider } from './DockDivider'
+
+import styles from './MacOSDock.module.css'
 
 const GRADIENTS = [
   'https://products.ls.graphics/mesh-gradients/images/03.-Snowy-Mint_1-p-130x130q80.jpeg',
@@ -18,13 +18,7 @@ const GRADIENTS = [
 
 export function MacOSDock() {
   return (
-    <Box
-      css={{
-        width: '100%',
-        height: '100%',
-        position: 'relative',
-      }}
-    >
+    <div className={styles.root}>
       <Dock>
         {GRADIENTS.map((src, index) =>
           src ? (
@@ -36,6 +30,6 @@ export function MacOSDock() {
           )
         )}
       </Dock>
-    </Box>
+    </div>
   )
 }

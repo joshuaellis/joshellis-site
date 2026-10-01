@@ -1,6 +1,4 @@
-import { Children, cloneElement, ReactNode } from 'react'
-
-import { Box } from 'components/Box'
+import { Children, cloneElement, type ReactNode } from 'react'
 
 interface AccessibleIconProps {
   children: ReactNode
@@ -28,9 +26,7 @@ export const AccessibleIcon = ({
         focusable: 'false',
         className,
       })}
-      <Box as="span" css={{ visuallyHidden: '' }}>
-        {label}
-      </Box>
+      <span className="visually-hidden">{label}</span>
     </>
   )
 }

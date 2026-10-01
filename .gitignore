@@ -104,3 +104,6 @@ $RECYCLE.BIN/
 !.yarn/versions
 
 tsconfig.tsbuildinfo
+
+# Astro
+.astro/
