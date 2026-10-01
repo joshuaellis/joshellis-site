@@ -54,6 +54,8 @@ export const Anchor = ({
         variant={variant}
         onClick={handleClick}
         href={href}
+        // Pages Router still prefetches on hover/touch, this only stops the in-viewport prefetch
+        prefetch={false}
         css={css}
       >
         {children}
