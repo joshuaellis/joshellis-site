@@ -1,3 +1,10 @@
 {
-  "framework": "astro"
+  "framework": "astro",
+  "redirects": [
+    {
+      "source": "/play/circlewave(/.*)?",
+      "destination": "/experiments/circle-wave",
+      "permanent": true
+    }
+  ]
 }
