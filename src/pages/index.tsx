@@ -11,7 +11,6 @@ import { Box } from 'components/Box'
 import { Anchor, AnchorProps } from 'components/Text/Anchor'
 import { Heading } from 'components/Text/Heading'
 import { Copy } from 'components/Text/Copy'
-import Link from 'next/link'
 
 const BALANCE_RATIO = 0.5
 
@@ -71,34 +70,6 @@ const MID_SECTION: Section[] = [
         href: '/experiments/theme-toggle',
       },
     ],
-  },
-]
-
-interface Writing {
-  title: string
-  description: string
-}
-
-interface WritingWithLink extends Writing {
-  comingSoon?: never
-  href: string
-  date: string
-}
-
-interface WritingComingSoon extends Writing {
-  comingSoon: boolean
-  href?: never
-  date?: never
-}
-
-const WRITING: Array<WritingWithLink | WritingComingSoon> = [
-  {
-    title: 'Critical thinking in engineering',
-    description:
-      "It's not just about fixing the issue, but understanding why it broke in the first place.",
-    // href: '/writing/critical-thinking-in-engineering',
-    // date: 'Aug 2024',
-    comingSoon: true,
   },
 ]
 
@@ -278,56 +249,6 @@ const HomePage = () => {
             ))}
           </Section>
           <Section as="section">
-            <SectionHeader>Writing</SectionHeader>
-            <Flex
-              as="ul"
-              css={{
-                flexDirection: 'column',
-                m: 0,
-                p: 0,
-                listStyle: 'none',
-                mt: '$15',
-                gap: '$30',
-
-                '@tabletUp': {
-                  flexDirection: 'row',
-                  flexWrap: 'wrap',
-                  gap: '$20',
-                  justifyContent: 'flex-start',
-
-                  '& > li': {
-                    flex: '0 0 calc(33% - 11px)',
-                  },
-                },
-              }}
-            >
-              {WRITING.map((item) => {
-                const component = (
-                  <WritingCard isComingSoon={Boolean(item.comingSoon)}>
-                    <WritingBackground />
-                    <Heading tag="h3" fontStyle="$XS">
-                      {item.title}
-                    </Heading>
-                    <Copy fontStyle="$XXS" css={{ opacity: 0.8 }}>
-                      {item.description}
-                    </Copy>
-                    <Copy tag="span" fontStyle="$XXS" css={{ opacity: 0.6 }}>
-                      {item.date ?? 'Coming Soon'}
-                    </Copy>
-                  </WritingCard>
-                )
-
-                return item.href ? (
-                  <li key={item.title}>
-                    <Link href={item.href}>{component}</Link>
-                  </li>
-                ) : (
-                  <li key={item.title}>{component}</li>
-                )
-              })}
-            </Flex>
-          </Section>
-          <Section as="section">
             <SectionHeader>Connect</SectionHeader>
             <Copy css={{ mt: '$15' }}>
               <Balancer ratio={0.4}>
@@ -385,36 +306,3 @@ const SectionHeader: FC<{ children: ReactNode }> = ({ children }) => (
     {children}
   </Heading>
 )
-
-const WritingBackground = styled('span', {
-  display: 'block',
-  position: 'absolute',
-  inset: -10,
-  opacity: 0,
-  zIndex: 0,
-  background: '$blueGreenGradient40',
-  borderRadius: '$r8',
-
-  '@motion': {
-    transition: 'opacity 250ms ease-out',
-  },
-})
-
-const WritingCard = styled(Flex, {
-  flexDirection: 'column',
-  gap: '$5',
-  alignItems: 'flex-start',
-  position: 'relative',
-
-  variants: {
-    isComingSoon: {
-      false: {
-        hover: {
-          [`& ${WritingBackground}`]: {
-            opacity: 0.6,
-          },
-        },
-      },
-    },
-  },
-})

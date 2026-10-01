@@ -11,7 +11,6 @@ export interface HeadingProps {
   fontStyle?: ScaleValue<'fontSizes'>
   className?: string
   children?: ReactNode
-  isLink?: boolean
   css?: CSS
   weight?: ScaleValue<'fontWeights'> | CSSProperties['fontWeight']
   style?: CSSProperties
