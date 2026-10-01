@@ -1,11 +1,10 @@
 import * as React from 'react'
 import { useGesture } from '@use-gesture/react'
 
-import { Box } from 'components/Box'
-import { Flex } from 'components/Flex'
-
 import { useDock } from '../Dock/DockContext'
 import { DOCK_ZOOM_LIMIT } from '../Dock'
+
+import styles from '../MacOSDock.module.css'
 
 export const DockDivider = () => {
   const { zoomLevel, setIsZooming } = useDock()
@@ -47,25 +46,8 @@ export const DockDivider = () => {
   }
 
   return (
-    <Flex
-      css={{
-        height: '100%',
-        px: 4,
-        hover: {
-          cursor: 'ns-resize',
-        },
-      }}
-      {...bind()}
-    >
-      <Box
-        as="span"
-        css={{
-          width: 1,
-          height: '100%',
-          borderRadius: 2,
-          backgroundColor: 'rgba(255, 255, 255, 0.1)',
-        }}
-      />
-    </Flex>
+    <div className={styles.divider} {...bind()}>
+      <span className={styles.dividerLine} />
+    </div>
   )
 }

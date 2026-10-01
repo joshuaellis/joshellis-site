@@ -1,11 +1,10 @@
-import { FormEventHandler, useState } from 'react'
+import { type FormEventHandler, useState } from 'react'
 import { animated, useSpring } from '@react-spring/web'
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
 
-import { Box } from 'components/Box'
-import { styled } from 'styles/stitches.config'
-
 import { AccessibleIcon } from './AccessibleIcon'
+
+import styles from './ThemeToggle.module.css'
 
 export enum ThemeValue {
   Dark = 'dark',
@@ -15,7 +14,7 @@ export enum ThemeValue {
 export const ThemeToggle = () => {
   const [theme, setTheme] = useState(ThemeValue.Light)
 
-  const [styles, api] = useSpring(
+  const [blobStyles, api] = useSpring(
     () => ({
       width: 42,
       left: theme === 'light' ? '2px' : 'unset',
@@ -66,81 +65,38 @@ export const ThemeToggle = () => {
   }
 
   return (
-    <ThemeGroup as="fieldset" onChange={handleValueChange}>
-      <ThemePicker
-        as="label"
+    <fieldset className={styles.group} onChange={handleValueChange}>
+      <label
+        className={styles.picker}
         onPointerEnter={handlePointerEnter(ThemeValue.Light)}
         onPointerOut={handlePointerOut(ThemeValue.Light)}
       >
-        <Box
-          as="input"
+        <input
+          className="visually-hidden"
           value="light"
           type="radio"
           name="theme"
-          css={{ visuallyHidden: '' }}
         />
         <AccessibleIcon label="Enable light mode">
           <SunIcon width={20} height={20} />
         </AccessibleIcon>
-      </ThemePicker>
-      <ThemePicker
-        as="label"
+      </label>
+      <label
+        className={styles.picker}
         onPointerEnter={handlePointerEnter(ThemeValue.Dark)}
         onPointerOut={handlePointerOut(ThemeValue.Dark)}
       >
-        <Box
-          as="input"
+        <input
+          className="visually-hidden"
           value="dark"
           type="radio"
           name="theme"
-          css={{ visuallyHidden: '' }}
         />
         <AccessibleIcon label="Enable dark mode">
           <MoonIcon width={20} height={20} />
         </AccessibleIcon>
-      </ThemePicker>
-      <ThemeActiveBlob style={styles} />
-    </ThemeGroup>
+      </label>
+      <animated.div className={styles.blob} style={blobStyles} />
+    </fieldset>
   )
 }
-
-const ThemeGroup = styled(Box, {
-  m: 0,
-  p: 0,
-  border: 'none',
-  height: '4.6rem',
-  width: '9.2rem',
-  position: 'relative',
-  backgroundColor: '#2b2b37',
-  borderRadius: '$r8',
-  zIndex: 0,
-})
-
-const ThemePicker = styled(Box, {
-  background: 'transparent',
-  border: 'none',
-  width: '50%',
-  height: '100%',
-  display: 'inline-flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  borderRadius: '$r8',
-  p: 2,
-  cursor: 'pointer',
-  position: 'relative',
-  zIndex: 1,
-
-  svg: {
-    pointerEvents: 'none',
-  },
-})
-
-const ThemeActiveBlob = styled(animated.div, {
-  height: 42,
-  backgroundColor: '$black',
-  position: 'absolute',
-  zIndex: 0,
-  top: 2,
-  borderRadius: '$r8',
-  transition: 'left 400ms ease-out, right 400ms ease-out',
-})

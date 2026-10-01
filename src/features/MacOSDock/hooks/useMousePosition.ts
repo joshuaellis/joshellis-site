@@ -1,4 +1,4 @@
-import { useSpring, UseSpringProps } from '@react-spring/web'
+import { useSpring, type UseSpringProps } from '@react-spring/web'
 import { useEffect, useMemo } from 'react'
 
 export const useMousePosition = (

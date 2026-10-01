@@ -1,0 +1,42 @@
+.group {
+  margin: 0;
+  padding: 0;
+  border: none;
+  height: 4.6rem;
+  width: 9.2rem;
+  position: relative;
+  background-color: #2b2b37;
+  border-radius: var(--r8);
+  z-index: 0;
+}
+
+.picker {
+  background: transparent;
+  border: none;
+  width: 50%;
+  height: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--r8);
+  padding: 2px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+
+.picker svg {
+  pointer-events: none;
+}
+
+.blob {
+  height: 42px;
+  background-color: var(--black);
+  position: absolute;
+  z-index: 0;
+  top: 2px;
+  border-radius: var(--r8);
+  transition:
+    left 400ms ease-out,
+    right 400ms ease-out;
+}

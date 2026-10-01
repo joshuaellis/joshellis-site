@@ -1,0 +1,145 @@
+:root {
+  --white: #fafafa;
+  --black: #171717;
+  --blue: #3357c9;
+  --r4: 0.4rem;
+  --r8: 0.8rem;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  color: var(--white);
+  background-color: var(--black);
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-inter);
+  font-kerning: normal;
+  font-size: 62.5%;
+  letter-spacing: -0.005em;
+  margin: 0;
+  min-height: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html,
+  body {
+    scroll-behavior: smooth;
+  }
+}
+
+html {
+  display: flex;
+}
+
+body {
+  flex: 1 0 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+button,
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Matches what Stitches rendered: its focus ring referenced an undefined `$red-outline` token */
+*:focus-visible {
+  outline: none;
+  border-radius: var(--r4);
+}
+
+.visually-hidden {
+  position: absolute;
+  border: 0;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+/* Type scale: each step renders one size smaller below tablet */
+.t-XXS {
+  font-size: 1.4rem;
+  line-height: 180%;
+}
+
+.t-XS {
+  font-size: 1.4rem;
+  line-height: 180%;
+}
+
+.t-S {
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+}
+
+.t-M {
+  font-size: 2rem;
+  line-height: 3rem;
+}
+
+@media (min-width: 768px) {
+  .t-XS {
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+  }
+
+  .t-S {
+    font-size: 2rem;
+    line-height: 3rem;
+  }
+
+  .t-M {
+    font-size: 2.6rem;
+    line-height: 3.6rem;
+  }
+}
+
+.heading {
+  white-space: pre-line;
+  position: relative;
+  font-weight: 400;
+}
+
+.link-regular {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2.5px;
+  text-decoration-color: rgba(250, 250, 250, 0.4);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .link-regular {
+    transition: all 200ms ease-out;
+  }
+}
+
+@media (hover: hover) {
+  .link-regular:hover {
+    text-decoration-color: rgba(250, 250, 250, 0.8);
+  }
+}

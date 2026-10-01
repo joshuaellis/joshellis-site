@@ -1,0 +1,36 @@
+.button {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: var(--r4);
+  transition: background-color 200ms ease-out;
+}
+
+.button > svg {
+  transition: opacity 200ms ease-out;
+  opacity: 0.6;
+}
+
+@media (hover: hover) {
+  .button:hover {
+    background-color: #fafafa33;
+  }
+
+  .button:hover > svg {
+    opacity: 1;
+  }
+}
+
+.tooltip {
+  margin: 0;
+  font-weight: 400;
+  padding: 0.5rem 1rem;
+  background-color: rgba(28, 28, 28, 0.2);
+  backdrop-filter: blur(20px);
+  border-radius: var(--r8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}

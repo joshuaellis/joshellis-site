@@ -1,0 +1,24 @@
+---
+import Experiment from '../../layouts/Experiment.astro'
+import { ThemeToggle } from '../../features/ThemeToggle'
+---
+
+<Experiment
+  title="Theme Toggle"
+  description="A theme toggle experiment for the react-spring website."
+  date="September 2022"
+  class="toggle-stage"
+  experimentName="ThemeToggle"
+  previous={{ title: 'MacOS Dock', href: '/experiments/macos-dock' }}
+>
+  <ThemeToggle client:load />
+</Experiment>
+
+<style is:global>
+  .toggle-stage {
+    height: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>

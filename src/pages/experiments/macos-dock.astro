@@ -1,0 +1,21 @@
+---
+import Experiment from '../../layouts/Experiment.astro'
+import { MacOSDock } from '../../features/MacOSDock'
+---
+
+<Experiment
+  title="MacOS Dock"
+  description="A MacOS Dock replica in web using the useSpringValue hook from react-spring."
+  date="November 2022"
+  class="dock-stage"
+  experimentName="MacOSDock"
+  next={{ title: 'Theme Toggle', href: '/experiments/theme-toggle' }}
+>
+  <MacOSDock client:load />
+</Experiment>
+
+<style is:global>
+  .dock-stage {
+    height: 420px;
+  }
+</style>
