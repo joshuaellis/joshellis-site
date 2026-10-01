@@ -1,0 +1,18 @@
+{
+  "semi": false,
+  "trailingComma": "es5",
+  "singleQuote": true,
+  "tabWidth": 2,
+  "printWidth": 80,
+  "proseWrap": "always",
+  "sortPackageJson": false,
+  "ignorePatterns": [
+    ".out",
+    "dist",
+    "node_modules",
+    ".next",
+    "public",
+    ".yarn",
+    "pnpm-lock.yaml"
+  ]
+}

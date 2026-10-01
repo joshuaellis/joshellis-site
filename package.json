@@ -5,10 +5,10 @@
   "scripts": {
     "build": "next build --webpack",
     "dev": "next dev",
-    "prettier:check": "prettier --check .",
-    "prettier:write": "prettier --write .",
-    "lint": "TIMING=1 eslint --cache --cache-location=node_modules/.cache/.eslintcache .",
-    "lint:fix": "TIMING=1 eslint --cache --cache-location=node_modules/.cache/.eslintcache . --fix",
+    "format:check": "oxfmt --check",
+    "format": "oxfmt",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
     "prepare": "husky install",
     "start": "next start",
     "test": "pnpm test:ts",
@@ -26,19 +26,12 @@
     "@types/node": "^24.19.0",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
-    "@typescript-eslint/eslint-plugin": "^8.71.0",
-    "@typescript-eslint/parser": "^8.71.0",
     "commitlint": "^21.2.3",
-    "eslint": "^10.11.0",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-prettier": "^5.5.6",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^7.1.1",
     "husky": "^9.1.7",
     "lint-staged": "^17.6.0",
-    "prettier": "^3.9.9",
-    "typescript": "^6.0.3"
+    "oxfmt": "^0.71.0",
+    "oxlint": "^1.86.0",
+    "typescript": "^7.0.2"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
@@ -68,11 +61,11 @@
     "unist-util-visit": "2.0.3"
   },
   "lint-staged": {
-    "*.{md,yaml,yml}": [
-      "pnpm prettier:check"
-    ],
     "*.{js,ts,tsx}": [
-      "pnpm lint"
+      "oxlint"
+    ],
+    "*": [
+      "oxfmt --check --no-error-on-unmatched-pattern"
     ]
   },
   "packageManager": "pnpm@10.34.6"
