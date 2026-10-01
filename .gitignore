@@ -23,9 +23,6 @@ sanity/node_modules
 # Yarn Integrity file
 .yarn-integrity
 
-# Optional eslint cache
-.eslintcache
-
 # dotenv environment variables file(s)
 .env
 .env.*
