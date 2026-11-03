@@ -23,7 +23,7 @@
   "homepage": "https://github.com/joshuaellis/joshellis-site#readme",
   "devDependencies": {
     "@commitlint/config-conventional": "^21.2.4",
-    "@types/node": "^24.19.2",
+    "@types/node": "^26.6.6",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "commitlint": "^21.2.4",
